@@ -1,1 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marriage Biodata - Md. Mahbubur Rahman</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <div id="root"></div>
 
+    <div class="music-player" id="music-player" aria-live="polite">
+        <button
+            type="button"
+            class="music-player-collapse"
+            id="music-panel-toggle"
+            aria-controls="music-player-body"
+            aria-expanded="true"
+            aria-label="Collapse music controls"
+        >
+            <i class="fas fa-chevron-right music-player-collapse-icon" id="music-panel-toggle-icon" aria-hidden="true"></i>
+        </button>
+        <div class="music-player-body" id="music-player-body">
+            <div class="music-player-label">Background Music</div>
+            <div class="music-player-track" id="music-track-name">Preparing playlist...</div>
+            <div class="music-player-meta" id="music-status">3 MP3 tracks, auto play after 10 seconds at 15% volume</div>
+            <div class="music-player-volume">
+                <div class="music-player-volume-row">
+                    <span>Volume</span>
+                    <span class="music-player-volume-value" id="music-volume-value">15%</span>
+                </div>
+                <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    step="1"
+                    value="15"
+                    class="music-player-slider"
+                    id="music-volume"
+                    aria-label="Music volume"
+                >
+            </div>
+            <div class="music-player-actions">
+                <button type="button" class="music-player-button primary" id="music-toggle">Play</button>
+                <button type="button" class="music-player-button secondary" id="music-next">Next Song</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/babel" src="assets/js/app.jsx"></script>
+    <script src="assets/js/site.js"></script>
+</body>
+</html>
