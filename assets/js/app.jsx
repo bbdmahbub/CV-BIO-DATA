@@ -699,7 +699,7 @@ const BioDataComponent = () => {
 
                 if (!SpeechRecognition) {
                     setVoiceUiState('error');
-                    setVoicePrompt('This browser does not support voice recognition. Use Chrome or Edge and allow microphone permission.');
+                    setVoicePrompt('This browser does not provide web speech recognition for this site. Check browser support or use a supported browser/device.');
                     return;
                 }
 
@@ -777,12 +777,12 @@ const BioDataComponent = () => {
                     setVoiceUiState('error');
                     const errorMessages = {
                         'not-allowed': 'Microphone access was blocked. Please allow microphone permission and try again.',
-                        'service-not-allowed': 'Speech recognition is blocked on this browser. Use Chrome or Edge and allow microphone permission.',
+                        'service-not-allowed': 'Speech recognition is blocked on this browser. Check browser support and microphone permission, then try again.',
                         'aborted': 'Voice recording stopped before it could start. Tap the mic again.',
                         'audio-capture': 'No microphone was found. Connect a microphone and try again.',
                         'no-speech': 'No speech was detected. Tap the mic again and say "Bismillah".',
-                        'language-not-supported': 'This browser does not support the selected speech language. Use Chrome or Edge.',
-                        'network': 'Your browser could not reach its speech service. Please try again in Chrome or Edge with microphone permission allowed.'
+                        'language-not-supported': 'This browser does not support the selected speech language for web speech recognition.',
+                        'network': 'Your browser could not reach its speech service. Please check your connection and browser settings, then try again.'
                     };
 
                     setVoicePrompt(errorMessages[event.error] || 'Voice recognition did not start properly. If a browser popup appears, tap Allow microphone permission and try again.');
@@ -921,7 +921,7 @@ const BioDataComponent = () => {
                                             : voiceUiState === 'error'
                                                 ? microphonePermissionState === 'denied'
                                                     ? 'Microphone permission is blocked in browser settings. Allow it for this site, then tap the mic again.'
-                                                    : 'If no popup appears, use Chrome or Edge and make sure microphone permission is enabled for this site.'
+                                                    : 'If no popup appears, check this site\'s microphone permission and whether your browser supports web speech recognition.'
                                             : isVoiceListening
                                                 ? 'Recording is active now. Speak once, then wait a moment for verification.'
                                                 : microphonePermissionState === 'granted'
