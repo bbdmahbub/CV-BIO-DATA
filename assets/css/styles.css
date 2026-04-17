@@ -65,7 +65,7 @@
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
-            transform: translateX(calc(-100% - 24px));
+            transform: translateX(calc(100% + 24px));
         }
 
         .intro-popup {
@@ -1794,11 +1794,13 @@
             --language-tab-width: 38px;
             --language-tab-gap: 12px;
             position: fixed;
-            left: 0;
-            top: calc(var(--menu-offset) + 18px);
+            right: 0;
+            left: auto;
+            top: auto;
+            bottom: calc(var(--music-player-stack-bottom, 24px) + var(--music-player-stack-height, 0px) + 12px);
             width: min(288px, calc(100vw - 10px));
-            padding: 0 0 0 18px;
-            border-radius: 0 18px 18px 0;
+            padding: 0 18px 0 0;
+            border-radius: 18px 0 0 18px;
             background: rgba(255, 255, 255, 0.94);
             border: 1px solid rgba(13, 115, 119, 0.18);
             box-shadow: 0 18px 36px rgba(13, 115, 119, 0.16);
@@ -1807,7 +1809,7 @@
             transition: transform 0.28s ease, box-shadow 0.28s ease;
             overflow: hidden;
             display: grid;
-            grid-template-columns: minmax(0, 1fr) var(--language-tab-width);
+            grid-template-columns: var(--language-tab-width) minmax(0, 1fr);
             column-gap: var(--language-tab-gap);
             align-items: stretch;
         }
@@ -1831,7 +1833,7 @@
             position: relative;
             width: var(--language-tab-width);
             min-width: var(--language-tab-width);
-            border-radius: 0 18px 18px 0;
+            border-radius: 18px 0 0 18px;
             align-self: stretch;
         }
 
@@ -1902,14 +1904,14 @@
         }
 
         .language-panel.is-collapsed {
-            transform: translateX(calc(-100% + var(--language-tab-width)));
+            transform: translateX(calc(100% - var(--language-tab-width)));
             box-shadow: 0 12px 26px rgba(13, 115, 119, 0.14);
         }
 
         .language-panel.is-collapsed .language-panel-body {
             opacity: 0;
             pointer-events: none;
-            transform: translateX(-18px);
+            transform: translateX(18px);
         }
 
         .music-player {
@@ -2425,16 +2427,23 @@
             .language-panel {
                 --language-tab-width: 32px;
                 --language-tab-gap: 10px;
-                top: calc(var(--menu-offset) + 12px);
-                left: 0;
+                right: 0;
                 width: min(252px, calc(100vw - 8px));
                 max-width: calc(100vw - 8px);
-                padding: 0 0 0 12px;
-                border-radius: 0 16px 16px 0;
+                padding: 0 12px 0 0;
+                border-radius: 16px 0 0 16px;
             }
 
             .language-panel-body {
                 padding: 10px 0;
+            }
+
+            .language-panel-collapse {
+                border-radius: 16px 0 0 16px;
+            }
+
+            .language-panel-collapse-icon {
+                font-size: 16px;
             }
 
             .language-panel-actions {
@@ -2568,7 +2577,7 @@
                 --language-tab-width: 30px;
                 --language-tab-gap: 8px;
                 width: min(232px, calc(100vw - 6px));
-                padding: 0 0 0 10px;
+                padding: 0 10px 0 0;
             }
 
             .language-panel-body {

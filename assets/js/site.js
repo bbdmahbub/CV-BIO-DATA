@@ -204,14 +204,26 @@
             document.documentElement.style.setProperty('--menu-offset', `${menu.offsetHeight}px`);
         }
 
+        function updateFloatingPanelOffsets() {
+            const player = document.getElementById('music-player');
+            if (!player) return;
+
+            const computedStyle = window.getComputedStyle(player);
+            const playerBottom = Number.parseFloat(computedStyle.bottom) || 0;
+            document.documentElement.style.setProperty('--music-player-stack-height', `${player.offsetHeight}px`);
+            document.documentElement.style.setProperty('--music-player-stack-bottom', `${playerBottom}px`);
+        }
+
         function loadTrack(index) {
             currentTrackIndex = index;
             audioPlayer.src = playlist[currentTrackIndex].src;
             document.getElementById('music-track-name').textContent = getCurrentTrackTitle();
+            requestAnimationFrame(updateFloatingPanelOffsets);
         }
 
         function updateMusicStatus(message) {
             document.getElementById('music-status').textContent = message;
+            requestAnimationFrame(updateFloatingPanelOffsets);
         }
 
         function updateToggleLabel() {
@@ -230,6 +242,7 @@
             panelToggle.setAttribute('aria-label', isMusicPanelCollapsed ? getMusicCopy().expand : getMusicCopy().collapse);
             panelToggleIcon.classList.toggle('fa-chevron-right', !isMusicPanelCollapsed);
             panelToggleIcon.classList.toggle('fa-chevron-left', isMusicPanelCollapsed);
+            requestAnimationFrame(updateFloatingPanelOffsets);
         }
 
         function autoCollapseMusicPanel() {
@@ -491,8 +504,10 @@
             window.addEventListener('resize', () => {
                 updateMenuOffset();
                 updateMusicPanelState();
+                updateFloatingPanelOffsets();
             });
             window.addEventListener('load', updateMenuOffset, { once: true });
+            window.addEventListener('load', updateFloatingPanelOffsets, { once: true });
 
             window.addEventListener('bbdMahbub:enter-biodata', startBiodataExperience, { once: true });
         });

@@ -1676,7 +1676,7 @@
                         aria-label={isLanguagePanelCollapsed ? copy.navigation.languagePanelExpand : copy.navigation.languagePanelCollapse}
                         onClick={() => setIsLanguagePanelCollapsed((currentValue) => !currentValue)}
                     >
-                        <i className={`fas ${isLanguagePanelCollapsed ? 'fa-chevron-right' : 'fa-chevron-left'} language-panel-collapse-icon`} aria-hidden="true"></i>
+                        <i className={`fas ${isLanguagePanelCollapsed ? 'fa-chevron-left' : 'fa-chevron-right'} language-panel-collapse-icon`} aria-hidden="true"></i>
                     </button>
                 </div>
                 <div className="container">
