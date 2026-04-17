@@ -55,7 +55,10 @@
                     navigation: {
                         quickJump: 'Quick Jump',
                         sectionsAria: 'Page sections',
-                        languageSwitcherLabel: 'Language versions'
+                        languageSwitcherLabel: 'Language versions',
+                        languagePanelHint: 'Change the page language at any time.',
+                        languagePanelCollapse: 'Collapse language controls',
+                        languagePanelExpand: 'Expand language controls'
                     },
                     common: {
                         visit: 'Visit',
@@ -314,7 +317,10 @@
                     navigation: {
                         quickJump: 'انتقال سريع',
                         sectionsAria: 'أقسام الصفحة',
-                        languageSwitcherLabel: 'إصدارات اللغة'
+                        languageSwitcherLabel: 'إصدارات اللغة',
+                        languagePanelHint: 'يمكنك تغيير لغة الصفحة في أي وقت.',
+                        languagePanelCollapse: 'طي عناصر التحكم باللغة',
+                        languagePanelExpand: 'إظهار عناصر التحكم باللغة'
                     },
                     common: {
                         visit: 'زيارة',
@@ -573,7 +579,10 @@
                     navigation: {
                         quickJump: 'দ্রুত নেভিগেশন',
                         sectionsAria: 'পেজ সেকশনসমূহ',
-                        languageSwitcherLabel: 'ভাষা সংস্করণ'
+                        languageSwitcherLabel: 'ভাষা সংস্করণ',
+                        languagePanelHint: 'যেকোনো সময় পেজের ভাষা বদলান।',
+                        languagePanelCollapse: 'ভাষা কন্ট্রোল লুকান',
+                        languagePanelExpand: 'ভাষা কন্ট্রোল দেখান'
                     },
                     common: {
                         visit: 'ভিজিট',
@@ -888,6 +897,7 @@
             const [microphonePermissionState, setMicrophonePermissionState] = React.useState('unknown');
             const [voicePrompt, setVoicePrompt] = React.useState(introVoiceHint);
             const [isMenuDragging, setIsMenuDragging] = React.useState(false);
+            const [isLanguagePanelCollapsed, setIsLanguagePanelCollapsed] = React.useState(false);
             const menuLinksRef = React.useRef(null);
             const hasCenteredMenuRef = React.useRef(false);
             const speechRecognitionRef = React.useRef(null);
@@ -924,6 +934,7 @@
             const contactBlocks = copy.contact.blocks;
             const permanentAddressValue = copy.contact.permanentAddressValue;
             const voiceCopy = copy.voice;
+            const currentLanguageOption = languageOptions.find((option) => option.code === language) || languageOptions[0];
             const trainingIconClasses = [
                 'fas fa-medal',
                 'fas fa-briefcase',
@@ -1642,24 +1653,40 @@
                         </div>
                     </div>
                 ) : null}
+                <div className={`language-panel${isLanguagePanelCollapsed ? ' is-collapsed' : ''}`} aria-live="polite">
+                    <div className="language-panel-body" id="language-panel-body">
+                        <div className="language-panel-label">{copy.navigation.languageSwitcherLabel}</div>
+                        <div className="language-panel-track">{currentLanguageOption.nativeLabel}</div>
+                        <div className="language-panel-meta">{copy.navigation.languagePanelHint}</div>
+                        <div className="language-panel-actions" role="group" aria-label={copy.navigation.languageSwitcherLabel}>
+                            {languageOptions.map((option) => (
+                                <button
+                                    type="button"
+                                    key={option.code}
+                                    className={`language-panel-button${language === option.code ? ' is-active' : ''}`}
+                                    onClick={() => setLanguage(option.code)}
+                                    aria-pressed={language === option.code}
+                                >
+                                    {option.nativeLabel}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                    <button
+                        type="button"
+                        className="language-panel-collapse"
+                        aria-controls="language-panel-body"
+                        aria-expanded={String(!isLanguagePanelCollapsed)}
+                        aria-label={isLanguagePanelCollapsed ? copy.navigation.languagePanelExpand : copy.navigation.languagePanelCollapse}
+                        onClick={() => setIsLanguagePanelCollapsed((currentValue) => !currentValue)}
+                    >
+                        <i className={`fas ${isLanguagePanelCollapsed ? 'fa-chevron-right' : 'fa-chevron-left'} language-panel-collapse-icon`} aria-hidden="true"></i>
+                    </button>
+                </div>
                 <div className="container">
                     <nav className="top-menu" aria-label={copy.navigation.sectionsAria}>
                         <div className="top-menu-head">
                             <div className="top-menu-label">{copy.navigation.quickJump}</div>
-                            <div className="language-switcher" role="group" aria-label={copy.navigation.languageSwitcherLabel}>
-                                {languageOptions.map((option) => (
-                                    <button
-                                        type="button"
-                                        key={option.code}
-                                        className={`language-switcher-button${language === option.code ? ' is-active' : ''}`}
-                                        onClick={() => setLanguage(option.code)}
-                                        aria-pressed={language === option.code}
-                                    >
-                                        <span className="language-switcher-code">{option.shortLabel}</span>
-                                        <span className="language-switcher-label">{option.nativeLabel}</span>
-                                    </button>
-                                ))}
-                            </div>
                         </div>
                         <div
                             className={`top-menu-links${isMenuDragging ? ' is-dragging' : ''}`}
