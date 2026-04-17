@@ -891,13 +891,13 @@
                 const hashId = window.location.hash.replace('#', '');
                 return menuItems.some(([id]) => id === hashId) ? hashId : menuItems[0][0];
             });
+            const [isLanguageChooserOpen, setIsLanguageChooserOpen] = React.useState(true);
             const [isIntroPopupOpen, setIsIntroPopupOpen] = React.useState(() => !hasStoredVoiceVerification());
             const [isVoiceListening, setIsVoiceListening] = React.useState(false);
             const [voiceUiState, setVoiceUiState] = React.useState('idle');
             const [microphonePermissionState, setMicrophonePermissionState] = React.useState('unknown');
             const [voicePrompt, setVoicePrompt] = React.useState(introVoiceHint);
             const [isMenuDragging, setIsMenuDragging] = React.useState(false);
-            const [isLanguagePanelCollapsed, setIsLanguagePanelCollapsed] = React.useState(false);
             const menuLinksRef = React.useRef(null);
             const hasCenteredMenuRef = React.useRef(false);
             const speechRecognitionRef = React.useRef(null);
@@ -1006,14 +1006,15 @@
 
             React.useEffect(() => {
                 if (hasBootstrappedSavedVerificationRef.current) return;
+                if (isLanguageChooserOpen || isIntroPopupOpen) return;
 
                 hasBootstrappedSavedVerificationRef.current = true;
 
-                if (!isIntroPopupOpen) {
+                if (!document.body.classList.contains('has-entered-biodata')) {
                     document.body.classList.add('has-entered-biodata');
                     window.dispatchEvent(new Event('bbdMahbub:enter-biodata'));
                 }
-            }, [isIntroPopupOpen]);
+            }, [isIntroPopupOpen, isLanguageChooserOpen]);
 
             React.useEffect(() => {
                 const selectedCopy = translations[language] || translations.en;
@@ -1190,12 +1191,12 @@
             }, [isMenuDragging]);
 
             React.useEffect(() => {
-                document.body.classList.toggle('is-popup-open', isIntroPopupOpen);
+                document.body.classList.toggle('is-popup-open', isLanguageChooserOpen || isIntroPopupOpen);
 
                 return () => {
                     document.body.classList.remove('is-popup-open');
                 };
-            }, [isIntroPopupOpen]);
+            }, [isIntroPopupOpen, isLanguageChooserOpen]);
 
             React.useEffect(() => () => {
                 clearSpeechRecognition();
@@ -1279,6 +1280,11 @@
                 document.body.classList.add('has-entered-biodata');
                 setIsIntroPopupOpen(false);
                 window.dispatchEvent(new Event('bbdMahbub:enter-biodata'));
+            };
+
+            const handleLanguageSelection = (nextLanguage) => {
+                setLanguage(nextLanguage);
+                setIsLanguageChooserOpen(false);
             };
 
             const normalizeVoiceTranscript = (value) => value
@@ -1592,94 +1598,91 @@
 
             return (
                 <div className={`app-shell${isRtl ? ' is-rtl' : ''}`}>
-                {isIntroPopupOpen ? (
-                    <div
-                        className="intro-popup"
-                        role="dialog"
-                        aria-modal="true"
-                        aria-labelledby="intro-popup-title"
-                    >
-                        <div className="intro-popup-panel">
-                            <div className="intro-popup-inner">
-                                <div className="intro-popup-bismillah">{popupBismillah}</div>
-                                <div className="intro-popup-darud">{popupDarud}</div>
-                                <div className="intro-popup-kicker">{iconPrayerHands} {copy.intro.kicker}</div>
-                                <h2 className="intro-popup-title" id="intro-popup-title">{copy.intro.title}</h2>
-
-                                <div className="intro-popup-dua">
-                                    <div className="intro-popup-dua-arabic">{duaArabicLines[0]}</div>
-                                    <div className="intro-popup-dua-meaning">{copy.intro.duaMeaning}</div>
-                                </div>
-
-                                <div className="intro-popup-instruction">
-                                    <div className="intro-popup-section-title">{copy.intro.instructionsTitle}</div>
-                                    <ul className="intro-popup-list">
-                                        {copy.intro.instructions.map((item) => (
-                                            <li key={item}>{item}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-
-                                <div className={`intro-popup-voice-status${isVoiceError ? ' is-error' : isVoicePreparing ? ' is-preparing' : isVoiceListening ? ' is-listening' : ''}`}>
-                                    <i className={`fas ${voiceStatusIconClass}`} aria-hidden="true"></i>
-                                    <span>{voicePrompt}</span>
-                                </div>
-
-                                <div className="intro-popup-voice-gate">
-                                    {showVoiceMicButton ? (
+                    {isLanguageChooserOpen ? (
+                        <div
+                            className="language-chooser"
+                            role="dialog"
+                            aria-modal="true"
+                            aria-label="Select language"
+                        >
+                            <div className="language-chooser-panel">
+                                <div className="language-chooser-actions" role="group" aria-label="Select language">
+                                    {languageOptions.map((option) => (
                                         <button
                                             type="button"
-                                            className={`intro-popup-mic-button${voiceUiState === 'error' ? ' is-error' : voiceUiState === 'permission' || voiceUiState === 'preparing' ? ' is-preparing' : isVoiceListening ? ' is-listening' : ''}`}
-                                            onClick={handleVoiceButtonClick}
-                                            onContextMenu={(event) => event.preventDefault()}
-                                            aria-label={voiceUiState === 'permission' || voiceUiState === 'preparing' ? voiceCopy.micAriaPermission : voiceUiState === 'error' ? voiceCopy.micAriaRetry : isVoiceListening ? voiceCopy.micAriaStop : voiceCopy.micAriaStart}
+                                            key={option.code}
+                                            className={`language-chooser-button${language === option.code ? ' is-active' : ''}`}
+                                            onClick={() => handleLanguageSelection(option.code)}
+                                            aria-pressed={language === option.code}
                                         >
-                                            <i className={`fas ${voiceUiState === 'error' ? 'fa-microphone-slash' : voiceUiState === 'permission' || voiceUiState === 'preparing' ? 'fa-spinner fa-spin' : isVoiceListening ? 'fa-microphone-lines' : 'fa-microphone'}`} aria-hidden="true"></i>
+                                            {option.nativeLabel}
                                         </button>
-                                    ) : null}
-                                    <div className="intro-popup-support-note">{voiceSupportNote}</div>
-                                    {showVoiceFallbackAction ? (
-                                        <button
-                                            type="button"
-                                            className="intro-popup-action"
-                                            onClick={handleEnterBiodata}
-                                        >
-                                            {hasSpeechRecognitionSupport ? voiceCopy.continueWithoutVoice : voiceCopy.continueInBrowser}
-                                        </button>
-                                    ) : null}
+                                    ))}
                                 </div>
                             </div>
                         </div>
-                    </div>
-                ) : null}
-                <div className={`language-panel${isLanguagePanelCollapsed ? ' is-collapsed' : ''}`} aria-live="polite">
-                    <div className="language-panel-body" id="language-panel-body">
-                        <div className="language-panel-actions" role="group" aria-label={copy.navigation.languageSwitcherLabel}>
-                            {languageOptions.map((option) => (
-                                <button
-                                    type="button"
-                                    key={option.code}
-                                    className={`language-panel-button${language === option.code ? ' is-active' : ''}`}
-                                    onClick={() => setLanguage(option.code)}
-                                    aria-pressed={language === option.code}
-                                >
-                                    {option.nativeLabel}
-                                </button>
-                            ))}
+                    ) : null}
+                    {!isLanguageChooserOpen && isIntroPopupOpen ? (
+                        <div
+                            className="intro-popup"
+                            role="dialog"
+                            aria-modal="true"
+                            aria-labelledby="intro-popup-title"
+                        >
+                            <div className="intro-popup-panel">
+                                <div className="intro-popup-inner">
+                                    <div className="intro-popup-bismillah">{popupBismillah}</div>
+                                    <div className="intro-popup-darud">{popupDarud}</div>
+                                    <div className="intro-popup-kicker">{iconPrayerHands} {copy.intro.kicker}</div>
+                                    <h2 className="intro-popup-title" id="intro-popup-title">{copy.intro.title}</h2>
+
+                                    <div className="intro-popup-dua">
+                                        <div className="intro-popup-dua-arabic">{duaArabicLines[0]}</div>
+                                        <div className="intro-popup-dua-meaning">{copy.intro.duaMeaning}</div>
+                                    </div>
+
+                                    <div className="intro-popup-instruction">
+                                        <div className="intro-popup-section-title">{copy.intro.instructionsTitle}</div>
+                                        <ul className="intro-popup-list">
+                                            {copy.intro.instructions.map((item) => (
+                                                <li key={item}>{item}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+
+                                    <div className={`intro-popup-voice-status${isVoiceError ? ' is-error' : isVoicePreparing ? ' is-preparing' : isVoiceListening ? ' is-listening' : ''}`}>
+                                        <i className={`fas ${voiceStatusIconClass}`} aria-hidden="true"></i>
+                                        <span>{voicePrompt}</span>
+                                    </div>
+
+                                    <div className="intro-popup-voice-gate">
+                                        {showVoiceMicButton ? (
+                                            <button
+                                                type="button"
+                                                className={`intro-popup-mic-button${voiceUiState === 'error' ? ' is-error' : voiceUiState === 'permission' || voiceUiState === 'preparing' ? ' is-preparing' : isVoiceListening ? ' is-listening' : ''}`}
+                                                onClick={handleVoiceButtonClick}
+                                                onContextMenu={(event) => event.preventDefault()}
+                                                aria-label={voiceUiState === 'permission' || voiceUiState === 'preparing' ? voiceCopy.micAriaPermission : voiceUiState === 'error' ? voiceCopy.micAriaRetry : isVoiceListening ? voiceCopy.micAriaStop : voiceCopy.micAriaStart}
+                                            >
+                                                <i className={`fas ${voiceUiState === 'error' ? 'fa-microphone-slash' : voiceUiState === 'permission' || voiceUiState === 'preparing' ? 'fa-spinner fa-spin' : isVoiceListening ? 'fa-microphone-lines' : 'fa-microphone'}`} aria-hidden="true"></i>
+                                            </button>
+                                        ) : null}
+                                        <div className="intro-popup-support-note">{voiceSupportNote}</div>
+                                        {showVoiceFallbackAction ? (
+                                            <button
+                                                type="button"
+                                                className="intro-popup-action"
+                                                onClick={handleEnterBiodata}
+                                            >
+                                                {hasSpeechRecognitionSupport ? voiceCopy.continueWithoutVoice : voiceCopy.continueInBrowser}
+                                            </button>
+                                        ) : null}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <button
-                        type="button"
-                        className="language-panel-collapse"
-                        aria-controls="language-panel-body"
-                        aria-expanded={String(!isLanguagePanelCollapsed)}
-                        aria-label={isLanguagePanelCollapsed ? copy.navigation.languagePanelExpand : copy.navigation.languagePanelCollapse}
-                        onClick={() => setIsLanguagePanelCollapsed((currentValue) => !currentValue)}
-                    >
-                        <i className={`fas ${isLanguagePanelCollapsed ? 'fa-chevron-left' : 'fa-chevron-right'} language-panel-collapse-icon`} aria-hidden="true"></i>
-                    </button>
-                </div>
-                <div className="container">
+                    ) : null}
+                    <div className="container">
                     <nav className="top-menu" aria-label={copy.navigation.sectionsAria}>
                         <div className="top-menu-head">
                             <div className="top-menu-label">{copy.navigation.quickJump}</div>
