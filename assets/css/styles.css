@@ -508,7 +508,10 @@
 
         .app-shell.is-rtl .detail-label,
         .app-shell.is-rtl .icon-text,
-        .app-shell.is-rtl .work-title-wrap {
+        .app-shell.is-rtl .work-title-wrap,
+        .app-shell.is-rtl .language-title-wrap,
+        .app-shell.is-rtl .education-title-wrap,
+        .app-shell.is-rtl .activity-title-wrap {
             flex-direction: row-reverse;
         }
 
@@ -927,42 +930,65 @@
             font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
         }
         
-        .detail-row { 
-            display: grid; 
-            grid-template-columns: minmax(160px, 220px) 1fr;
+        .section-item-list,
+        .contact-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .section-item-list-compact {
+            margin-top: 0;
+        }
+
+        .section-card-item {
+            position: relative;
+            border: 1px solid rgba(13, 115, 119, 0.1);
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(13, 115, 119, 0.07) 0%, rgba(255, 255, 255, 0.98) 55%, rgba(212, 70, 79, 0.08) 100%);
+            box-shadow: 0 12px 26px rgba(13, 115, 119, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .section-card-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 32px rgba(13, 115, 119, 0.1);
+            border-color: rgba(13, 115, 119, 0.16);
+        }
+
+        .section-card-item::before,
+        .detail-row::before,
+        .sub-detail-row::before {
+            display: none;
+        }
+
+        .detail-row.section-card-item {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            align-items: start;
+            padding: 16px;
+            border-bottom: none;
+            margin: 0;
+        }
+
+        .training-row.section-card-item {
+            grid-template-columns: auto minmax(0, 1fr);
             gap: 14px;
             align-items: start;
-            padding: 16px 0; 
-            border-bottom: 1px solid #f0e0e8;
-            position: relative;
         }
 
-        .training-row {
-            grid-template-columns: auto 1fr;
-            gap: 14px;
-            align-items: center;
-        }
-
-        .training-row .detail-label {
-            width: 32px;
+        .training-row.section-card-item .detail-label {
+            width: auto;
             justify-content: center;
         }
 
-        .work-row {
+        .work-row.section-card-item,
+        .language-row.section-card-item,
+        .education-row.section-card-item,
+        .activity-item.section-card-item {
             display: block;
-            padding: 18px 0;
-        }
-
-        .work-row:hover {
-            padding-left: 0;
-            padding-right: 0;
-            margin: 0;
-            background: transparent;
-            border-radius: 0;
-        }
-
-        .work-row::before {
-            display: none;
+            padding: 16px;
+            border-bottom: none;
         }
 
         .work-header {
@@ -998,7 +1024,7 @@
         }
 
         .work-title {
-            color: #0d7377;
+            color: #0f172a;
             font-size: 1.02rem;
             font-weight: 700;
             line-height: 1.45;
@@ -1012,26 +1038,39 @@
         }
 
         .work-org {
-            color: #334155;
+            color: #475569;
             font-size: 15px;
             line-height: 1.7;
         }
 
-        .language-row {
-            display: block;
-            padding: 18px 0;
+        .language-title-wrap,
+        .education-title-wrap,
+        .activity-title-wrap {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            min-width: 0;
         }
 
-        .language-row::before {
-            display: none;
+        .language-title-icon,
+        .education-title-icon,
+        .activity-title-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(13, 115, 119, 0.12) 0%, rgba(212, 70, 79, 0.12) 100%);
+            color: #0d7377;
+            box-shadow: 0 8px 18px rgba(13, 115, 119, 0.08);
+            flex-shrink: 0;
         }
 
-        .language-row:hover {
-            padding-left: 0;
-            padding-right: 0;
-            margin: 0;
-            background: transparent;
-            border-radius: 0;
+        .language-title-icon i,
+        .education-title-icon i,
+        .activity-title-icon i {
+            font-size: 15px;
         }
 
         .language-header {
@@ -1043,7 +1082,7 @@
         }
 
         .language-title {
-            color: #0d7377;
+            color: #0f172a;
             font-size: 1.02rem;
             font-weight: 700;
             line-height: 1.4;
@@ -1082,23 +1121,6 @@
             background: linear-gradient(90deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 65%);
         }
 
-        .education-row {
-            display: block;
-            padding: 18px 0;
-        }
-
-        .education-row:hover {
-            padding-left: 0;
-            padding-right: 0;
-            margin: 0;
-            background: transparent;
-            border-radius: 0;
-        }
-
-        .education-row::before {
-            display: none;
-        }
-
         .education-header {
             display: grid;
             grid-template-columns: minmax(0, 1fr) auto;
@@ -1115,7 +1137,7 @@
         }
 
         .education-subtitle {
-            color: #0d7377;
+            color: #0f172a;
             font-size: 1.02rem;
             font-weight: 700;
             line-height: 1.4;
@@ -1131,7 +1153,7 @@
         }
 
         .education-meta {
-            color: #334155;
+            color: #475569;
             font-size: 15px;
             line-height: 1.7;
         }
@@ -1145,43 +1167,18 @@
             text-transform: uppercase;
         }
 
-        .sub-detail-row {
-            --sub-row-indent: 12px;
+        .sub-detail-row.section-card-item {
             display: grid;
-            grid-template-columns: minmax(120px, 170px) 1fr auto;
-            gap: 14px;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 10px 14px;
             align-items: start;
-            padding: 14px 0;
-            border-bottom: 1px solid rgba(13, 115, 119, 0.08);
-            margin-left: var(--sub-row-indent);
-            position: relative;
-            border-radius: 8px;
-            transition: background 0.2s ease, margin 0.2s ease, padding 0.2s ease;
-        }
-
-        .sub-detail-row::before {
-            content: "\25C6";
-            position: absolute;
-            left: -18px;
-            top: 18px;
-            font-size: 8px;
-            color: rgba(13, 115, 119, 0.2);
-            opacity: 0;
-            transition: opacity 0.2s ease;
-        }
-
-        .sub-detail-row:hover::before {
-            opacity: 1;
-        }
-
-        .sub-detail-row:hover {
-            background: #f0fdf4;
-            margin: 0 -10px 0 calc(var(--sub-row-indent) - 10px);
-            padding: 14px 10px;
-        }
-
-        .sub-detail-row:last-child {
+            padding: 16px;
             border-bottom: none;
+            margin: 0;
+        }
+
+        .sub-detail-row.section-card-item .detail-value {
+            grid-column: 1 / -1;
         }
 
         .sibling-label {
@@ -1209,43 +1206,13 @@
             box-shadow: 0 4px 15px rgba(146, 64, 14, 0.12);
         }
 
-        .detail-row::before {
-            content: "\25C6";
-            position: absolute;
-            left: -20px;
-            top: 20px;
-            font-size: 8px;
-            color: rgba(13, 115, 119, 0.2);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .detail-row:hover::before {
-            opacity: 1;
-            align-items: start;
-            transition: all 0.2s;
-        }
-        
-        .detail-row:hover {
-            background: #f0fdf4;
-            padding-left: 10px;
-            padding-right: 10px;
-            margin: 0 -10px;
-            padding: 16px 10px;
-            border-radius: 8px;
-        }
-        
-        .detail-row:last-child { 
-            border-bottom: none; 
-        }
-        
         .detail-label { 
             font-weight: 700; 
-            color: #0d7377;
-            font-size: 15px;
+            color: #0f172a;
+            font-size: 0.98rem;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .detail-label-icon {
@@ -1266,9 +1233,9 @@
         }
         
         .detail-value { 
-            color: #333;
+            color: #475569;
             font-size: 15px;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         .photo-gallery-grid {
@@ -1388,20 +1355,20 @@
         }
 
         .training-bullet {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #0d7377 0%, #14919b 100%);
-            color: white;
-            box-shadow: 0 8px 18px rgba(13, 115, 119, 0.18);
+            background: linear-gradient(135deg, rgba(13, 115, 119, 0.12) 0%, rgba(212, 70, 79, 0.12) 100%);
+            color: #0d7377;
+            box-shadow: 0 8px 18px rgba(13, 115, 119, 0.08);
             flex-shrink: 0;
         }
 
         .training-bullet i {
-            font-size: 13px;
+            font-size: 15px;
         }
 
         .hobby-list {
@@ -1411,11 +1378,7 @@
 
         .activity-list {
             display: grid;
-            gap: 0;
-        }
-
-        .activity-item {
-            padding: 8px 0 4px;
+            gap: 14px;
         }
 
         .activity-header {
@@ -1427,7 +1390,7 @@
         }
 
         .activity-title {
-            color: #0d7377;
+            color: #0f172a;
             font-size: 1.02rem;
             font-weight: 700;
             line-height: 1.4;
@@ -1514,10 +1477,6 @@
             align-items: flex-start;
             gap: 14px;
             padding: 16px;
-            border-radius: 18px;
-            border: 1px solid rgba(13, 115, 119, 0.1);
-            background: linear-gradient(135deg, rgba(13, 115, 119, 0.07) 0%, rgba(255, 255, 255, 0.98) 55%, rgba(212, 70, 79, 0.08) 100%);
-            box-shadow: 0 12px 26px rgba(13, 115, 119, 0.06);
         }
 
         .expectation-item-icon {
@@ -1603,17 +1562,12 @@
             box-shadow: 0 6px 14px rgba(13, 115, 119, 0.08);
         }
 
-        .hobby-item {
+        .hobby-item.section-card-item {
             display: grid;
             grid-template-columns: auto 1fr;
             gap: 14px;
             align-items: start;
-            padding: 14px 0;
-            border-bottom: 1px solid rgba(13, 115, 119, 0.08);
-        }
-
-        .hobby-item:last-child {
-            border-bottom: none;
+            padding: 16px;
         }
 
         .hobby-icon {
@@ -1658,23 +1612,22 @@
             border: 1px solid #a8d5d8;
         }
         
-        .contact-section {
-            background: linear-gradient(135deg, #f0fdf4 0%, #d4f1f4 100%);
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 20px;
-        }
-        
-        .address-box {
-            background: linear-gradient(135deg, #d4f1f4 0%, #c7ede9 100%);
+        .contact-block.section-card-item {
+            display: grid;
+            gap: 10px;
             padding: 16px;
-            border-left: 4px solid #0d7377;
-            border-radius: 8px;
-            margin: 12px 0;
+        }
+
+        .address-box {
+            background: rgba(255, 255, 255, 0.72);
+            padding: 12px 14px;
+            border: 1px solid rgba(13, 115, 119, 0.08);
+            border-radius: 12px;
+            margin: 0;
         }
 
         .address-actions {
-            margin-top: 12px;
+            margin-top: 2px;
         }
 
         .map-link-button {
@@ -1698,16 +1651,21 @@
         }
 
         .section-header,
+        .section-card-item,
         .detail-row,
         .sub-detail-row,
         .work-header,
         .language-header,
+        .language-title-wrap,
         .education-header,
         .education-title-row,
+        .education-title-wrap,
         .activity-header,
+        .activity-title-wrap,
         .activity-points li,
         .expectation-item,
-        .hobby-item {
+        .hobby-item,
+        .contact-block {
             min-width: 0;
         }
 
@@ -1758,9 +1716,26 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            color: #0d7377;
+            color: #0f172a;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 0;
+        }
+
+        .contact-title-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(13, 115, 119, 0.12) 0%, rgba(212, 70, 79, 0.12) 100%);
+            color: #0d7377;
+            box-shadow: 0 8px 18px rgba(13, 115, 119, 0.08);
+            flex-shrink: 0;
+        }
+
+        .contact-title-icon i {
+            font-size: 15px;
         }
         
         h2 { 
@@ -2145,37 +2120,24 @@
                 line-height: 1.35;
             }
 
-            .detail-row,
-            .sub-detail-row {
+            .section-card-item,
+            .expectation-item,
+            .activity-points li {
+                padding: 14px;
+                gap: 12px;
+            }
+
+            .detail-row.section-card-item {
                 grid-template-columns: 1fr;
-                gap: 8px;
-            }
-
-            #personal-section .detail-row {
-                grid-template-columns: minmax(118px, 138px) minmax(0, 1fr);
                 gap: 10px;
-                align-items: center;
             }
 
-            #personal-section .detail-label {
-                gap: 6px;
-                font-size: 13px;
+            .sub-detail-row.section-card-item {
+                grid-template-columns: minmax(0, 1fr) auto;
+                gap: 10px 12px;
             }
 
-            #personal-section .detail-label span:last-child {
-                white-space: nowrap;
-            }
-
-            #personal-section .detail-row:nth-child(-n + 2) .detail-value {
-                white-space: nowrap;
-            }
-
-            .sub-detail-row {
-                grid-template-columns: 1fr auto;
-                gap: 8px 10px;
-            }
-
-            .sub-detail-row .detail-value {
+            .sub-detail-row.section-card-item .detail-value {
                 grid-column: 1 / -1;
             }
 
@@ -2184,47 +2146,42 @@
                 grid-row: 1;
             }
 
-            .hobby-item {
+            .detail-label {
                 gap: 10px;
+                font-size: 13px;
             }
 
-            .sub-detail-row {
-                --sub-row-indent: 0px;
-                margin-left: 0;
+            .detail-label-icon,
+            .work-title-icon,
+            .language-title-icon,
+            .education-title-icon,
+            .activity-title-icon,
+            .contact-title-icon,
+            .training-bullet,
+            .expectation-item-icon,
+            .activity-point-icon,
+            .hobby-icon {
+                width: 38px;
+                height: 38px;
             }
 
-            .detail-row::before,
-            .sub-detail-row::before {
-                display: none;
-            }
-
-            .detail-row:hover,
-            .sub-detail-row:hover {
-                margin: 0;
-                padding-left: 0;
-                padding-right: 0;
-                background: transparent;
-                border-radius: 0;
-            }
-
-            .training-row {
+            .training-row.section-card-item {
                 grid-template-columns: auto minmax(0, 1fr);
                 align-items: start;
                 gap: 12px;
             }
 
-            .training-row .detail-label {
-                width: 32px;
-                justify-content: center;
+            .hobby-item.section-card-item {
+                gap: 12px;
             }
 
-            .contact-section {
-                padding: 16px;
-                margin-top: 16px;
+            .contact-list,
+            .activity-list {
+                gap: 14px;
             }
 
             .address-box {
-                padding: 14px;
+                padding: 12px;
             }
 
             .family-summary {
@@ -2238,28 +2195,8 @@
                 line-height: 1.55;
             }
 
-            .activity-points li,
-            .expectation-item {
-                padding: 14px;
-                gap: 12px;
-            }
-
-            .activity-list {
-                gap: 0;
-            }
-
-            .activity-item {
-                padding: 6px 0 2px;
-            }
-
             .activity-header {
                 margin-bottom: 8px;
-            }
-
-            .activity-point-icon,
-            .expectation-item-icon {
-                width: 38px;
-                height: 38px;
             }
 
             .activity-link-button {

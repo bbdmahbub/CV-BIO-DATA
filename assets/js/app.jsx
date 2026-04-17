@@ -924,6 +924,22 @@
             const contactBlocks = copy.contact.blocks;
             const permanentAddressValue = copy.contact.permanentAddressValue;
             const voiceCopy = copy.voice;
+            const trainingIconClasses = [
+                'fas fa-medal',
+                'fas fa-briefcase',
+                'fas fa-laptop-code',
+                'fas fa-desktop',
+                'fas fa-shield-halved',
+                'fas fa-file-word',
+                'fas fa-video',
+                'fas fa-lock',
+                'fas fa-lightbulb'
+            ];
+            const familyDetailIconClass = 'fas fa-people-roof';
+            const siblingDetailIconClass = 'fas fa-user-group';
+            const languageDetailIconClass = 'fas fa-language';
+            const educationDetailIconClass = 'fas fa-graduation-cap';
+            const activityDetailIconClass = 'fas fa-star';
 
             const renderDetailValue = (value) => {
                 if (typeof value === 'string' && value === permanentAddressValue) {
@@ -1730,9 +1746,10 @@
                                 </div>
                             )}
                             <div className="card-content">
+                                <div className="section-item-list">
                                 {group === 'work' ? (
                                     workData.map(({ title, organization, duration, iconClass }, idx) => (
-                                        <div className="detail-row work-row" key={idx}>
+                                        <div className="detail-row work-row section-card-item" key={idx}>
                                             <div className="work-header">
                                                 <div className="work-title-wrap">
                                                     <span className="work-title-icon">
@@ -1751,13 +1768,14 @@
                                         const label = isObjectDetail ? detail.label : detail[0];
                                         const value = isObjectDetail ? detail.value : detail[1];
                                         const iconClass = isObjectDetail ? detail.iconClass : null;
+                                        const resolvedIconClass = iconClass || (group === 'family' ? familyDetailIconClass : null);
 
                                         return (
-                                        <div className="detail-row" key={idx}>
+                                        <div className="detail-row section-card-item" key={idx}>
                                             <div className="detail-label">
-                                                {iconClass ? (
+                                                {resolvedIconClass ? (
                                                     <span className="detail-label-icon">
-                                                        <i className={iconClass} aria-hidden="true"></i>
+                                                        <i className={resolvedIconClass} aria-hidden="true"></i>
                                                     </span>
                                                 ) : null}
                                                 <span>{label}</span>
@@ -1767,12 +1785,17 @@
                                         );
                                     })
                                 )}
+                                </div>
                                 {group === 'family' && (
                                     <>
                                         <div className="subsection-title">{copy.familySiblingsTitle}</div>
+                                        <div className="section-item-list section-item-list-compact">
                                         {familySiblings.map(([label, value], idx) => (
-                                            <div className="sub-detail-row" key={idx}>
+                                            <div className="sub-detail-row section-card-item" key={idx}>
                                                 <div className="detail-label sibling-label">
+                                                    <span className="detail-label-icon">
+                                                        <i className={siblingDetailIconClass} aria-hidden="true"></i>
+                                                    </span>
                                                     <span>{label}</span>
                                                 </div>
                                                 <div className="detail-value">{value}</div>
@@ -1781,6 +1804,7 @@
                                                 </div>
                                             </div>
                                         ))}
+                                        </div>
                                     </>
                                 )}
                             </div>
@@ -1793,8 +1817,9 @@
                             {copy.lifestyle.title}
                         </div>
                         <div className="card-content">
+                            <div className="section-item-list">
                             {lifestyleData.map(({ label, value, iconClass }, idx) => (
-                                <div className="detail-row" key={idx}>
+                                <div className="detail-row section-card-item" key={idx}>
                                     <div className="detail-label">
                                         <span className="detail-label-icon">
                                             <i className={iconClass} aria-hidden="true"></i>
@@ -1804,6 +1829,7 @@
                                     <div className="detail-value">{value}</div>
                                 </div>
                             ))}
+                            </div>
                         </div>
                     </div>
 
@@ -1813,10 +1839,16 @@
                             {copy.languages.title}
                         </div>
                         <div className="card-content">
+                            <div className="section-item-list">
                             {languageData.map(({ title, level, percent }, idx) => (
-                                <div className="detail-row language-row" key={idx}>
+                                <div className="detail-row language-row section-card-item" key={idx}>
                                     <div className="language-header">
-                                        <div className="language-title">{title}</div>
+                                        <div className="language-title-wrap">
+                                            <span className="language-title-icon">
+                                                <i className={languageDetailIconClass} aria-hidden="true"></i>
+                                            </span>
+                                            <div className="language-title">{title}</div>
+                                        </div>
                                         <span className="badge language-level-badge">{level}</span>
                                     </div>
                                     <div
@@ -1834,6 +1866,7 @@
                                     </div>
                                 </div>
                             ))}
+                            </div>
                         </div>
                     </div>
 
@@ -1843,11 +1876,17 @@
                             {copy.education.title}
                         </div>
                         <div className="card-content">
+                            <div className="section-item-list">
                             {educationData.map(({ title, institution, institutionHref, scoreLabel, score, session }, idx) => (
-                                <div className="detail-row education-row" key={idx}>
+                                <div className="detail-row education-row section-card-item" key={idx}>
                                     <div className="education-header">
                                         <div className="education-title-row">
-                                            <div className="education-subtitle">{title}</div>
+                                            <div className="education-title-wrap">
+                                                <span className="education-title-icon">
+                                                    <i className={educationDetailIconClass} aria-hidden="true"></i>
+                                                </span>
+                                                <div className="education-subtitle">{title}</div>
+                                            </div>
                                             <span className="badge education-score-badge">{scoreLabel} {score}</span>
                                         </div>
                                         <span className="badge education-year-badge">{session}</span>
@@ -1867,6 +1906,7 @@
                                     </div>
                                 </div>
                             ))}
+                            </div>
                         </div>
                     </div>
 
@@ -1876,25 +1916,16 @@
                             {copy.training.title}
                         </div>
                         <div className="card-content">
+                            <div className="section-item-list">
                             {trainingItems.map((item, idx) => {
                                 const isLinkItem = typeof item === 'object' && item !== null;
 
                                 return (
-                                <div className="detail-row training-row" key={isLinkItem ? item.text : item}>
+                                <div className="detail-row training-row section-card-item" key={isLinkItem ? item.text : item}>
                                     <div className="detail-label">
                                         <span className="training-bullet">
                                             <i
-                                                className={[
-                                                    'fas fa-medal',
-                                                    'fas fa-briefcase',
-                                                    'fas fa-laptop-code',
-                                                    'fas fa-desktop',
-                                                    'fas fa-shield-halved',
-                                                    'fas fa-file-word',
-                                                    'fas fa-video',
-                                                    'fas fa-lock',
-                                                    'fas fa-lightbulb'
-                                                ][idx]}
+                                                className={trainingIconClasses[idx]}
                                                 aria-hidden="true"
                                             ></i>
                                         </span>
@@ -1919,6 +1950,7 @@
                                 </div>
                                 );
                             })}
+                            </div>
                         </div>
                     </div>
 
@@ -1930,9 +1962,14 @@
                         <div className="card-content">
                             <div className="activity-list">
                                 {activityData.map(({ title, period, items }, idx) => (
-                                    <div className="activity-item" key={idx}>
+                                    <div className="activity-item section-card-item" key={idx}>
                                         <div className="activity-header">
-                                            <div className="activity-title">{title}</div>
+                                            <div className="activity-title-wrap">
+                                                <span className="activity-title-icon">
+                                                    <i className={activityDetailIconClass} aria-hidden="true"></i>
+                                                </span>
+                                                <div className="activity-title">{title}</div>
+                                            </div>
                                             {period ? <span className="badge activity-period">{period}</span> : null}
                                         </div>
                                         <ul className="activity-points">
@@ -1975,7 +2012,7 @@
                         <div className="card-content">
                             <div className="hobby-list">
                                 {hobbiesData.map(([iconClass, text], idx) => (
-                                    <div className="hobby-item" key={idx}>
+                                    <div className="hobby-item section-card-item" key={idx}>
                                         <span className="hobby-icon">
                                             <i className={iconClass} aria-hidden="true"></i>
                                         </span>
@@ -1994,7 +2031,7 @@
                         <div className="card-content">
                             <div className="expectation-list">
                                 {expectationItems.map(({ iconClass, title, text }) => (
-                                    <div className="expectation-item" key={title}>
+                                    <div className="expectation-item section-card-item" key={title}>
                                         <span className="expectation-item-icon"><i className={iconClass} aria-hidden="true"></i></span>
                                         <div className="expectation-item-content">
                                             <div className="expectation-item-title">{title}</div>
@@ -2012,12 +2049,14 @@
                             {copy.contact.title}
                         </div>
                         <div className="card-content">
-                            <div className="contact-section">
+                            <div className="contact-list">
                                 {contactBlocks.map(({ iconClass, label, value, href, mapHref }, idx) => (
-                                    <div key={`${label}-${value}`} style={{marginBottom: idx === contactBlocks.length - 1 ? '0' : '20px'}}>
+                                    <div className="contact-block section-card-item" key={`${label}-${value}`}>
                                         <div className="icon-text">
-                                            <i className={iconClass}></i>
-                                            {label}
+                                            <span className="contact-title-icon">
+                                                <i className={iconClass} aria-hidden="true"></i>
+                                            </span>
+                                            <span>{label}</span>
                                         </div>
                                         <div className="address-box">
                                             {href ? (
