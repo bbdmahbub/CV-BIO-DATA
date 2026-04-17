@@ -613,6 +613,16 @@
             margin-left: 8px;
         }
 
+        .app-shell.is-rtl #personal-section .detail-row.section-card-item,
+        .app-shell.is-rtl #personal-section .detail-label {
+            text-align: right;
+        }
+
+        .app-shell.is-rtl #personal-section .detail-label {
+            justify-content: flex-end;
+            width: 100%;
+        }
+
         .app-shell.is-rtl .activity-link-button {
             margin-left: 0;
             margin-right: 10px;
