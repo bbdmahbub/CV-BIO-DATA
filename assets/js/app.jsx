@@ -76,6 +76,7 @@
             });
             const [isIntroPopupOpen, setIsIntroPopupOpen] = React.useState(true);
             const [isManualEntryVisible, setIsManualEntryVisible] = React.useState(false);
+            const [manualBismillahValue, setManualBismillahValue] = React.useState('');
             const [isVoiceListening, setIsVoiceListening] = React.useState(false);
             const [voicePrompt, setVoicePrompt] = React.useState(introVoiceHint);
             const [isMenuDragging, setIsMenuDragging] = React.useState(false);
@@ -539,6 +540,41 @@
                 .replace(/[\u064B-\u065F\u0670]/g, '')
                 .replace(/[\s.,/#!$%^&*;:{}=\-_`~()"'?؟،]+/g, '');
 
+            const matchesBismillahPhrase = (value) => {
+                const normalizedValue = normalizeVoiceTranscript(value);
+                if (!normalizedValue) return false;
+
+                const fallbackFragments = [
+                    'bismil',
+                    'bismilla',
+                    'bismillah',
+                    'bismillahir',
+                    'besmillah',
+                    'bisimillah',
+                    'বিসমিল',
+                    'بسمالله',
+                    'بسماللهالرحمن'
+                ];
+
+                return acceptedBismillahPhrases.some((phrase) => (
+                    normalizedValue.includes(normalizeVoiceTranscript(phrase))
+                )) || fallbackFragments.some((fragment) => (
+                    normalizedValue.includes(normalizeVoiceTranscript(fragment))
+                ));
+            };
+
+            const handleManualBismillahVerify = () => {
+                if (matchesBismillahPhrase(manualBismillahValue)) {
+                    setVoicePrompt('Verified from typed "Bismillah". Opening biodata...');
+                    window.setTimeout(() => {
+                        handleEnterBiodata();
+                    }, 180);
+                    return;
+                }
+
+                setVoicePrompt('Typed text did not match "Bismillah". Please type it again, use the mic, or use Open Biodata below.');
+            };
+
             const stopBismillahVoiceCheck = () => {
                 const recognition = speechRecognitionRef.current;
                 if (!recognition) return;
@@ -561,7 +597,7 @@
 
                 if (!SpeechRecognition) {
                     setIsManualEntryVisible(true);
-                    setVoicePrompt('This browser does not support voice recognition. Use Chrome or Edge for the audio trigger, or use Open Biodata below.');
+                    setVoicePrompt('This browser does not support voice recognition. Use Chrome or Edge, type "Bismillah" below, or use Open Biodata.');
                     return;
                 }
 
@@ -571,8 +607,12 @@
                 speechRecognitionRef.current = recognition;
                 voiceMatchedRef.current = false;
                 voiceStopReasonRef.current = 'listening';
-                recognition.lang = navigator.language || 'en-US';
-                recognition.interimResults = false;
+                recognition.lang = (navigator.language || '').toLowerCase().startsWith('bn')
+                    ? 'bn-BD'
+                    : (navigator.language || '').toLowerCase().startsWith('ar')
+                        ? 'ar-SA'
+                        : 'en-US';
+                recognition.interimResults = true;
                 recognition.maxAlternatives = 10;
                 recognition.continuous = false;
 
@@ -591,10 +631,7 @@
 
                     const transcript = transcriptParts.join(' ');
 
-                    const normalizedTranscript = normalizeVoiceTranscript(transcript);
-                    const matchedBismillah = acceptedBismillahPhrases.some((phrase) => (
-                        normalizedTranscript.includes(normalizeVoiceTranscript(phrase))
-                    ));
+                    const matchedBismillah = matchesBismillahPhrase(transcript);
 
                     if (matchedBismillah) {
                         voiceMatchedRef.current = true;
@@ -607,7 +644,7 @@
                     }
 
                     setIsManualEntryVisible(true);
-                    setVoicePrompt(`Heard: "${transcript.trim()}". Tap the mic and say "Bismillah" again, or use Open Biodata below.`);
+                    setVoicePrompt(`Heard: "${transcript.trim()}". Tap the mic and say "Bismillah" again, type it below, or use Open Biodata.`);
                 };
 
                 recognition.onerror = (event) => {
@@ -621,7 +658,7 @@
                         'network': 'Speech recognition needs network access. Please check your connection and try again.'
                     };
 
-                    setVoicePrompt((errorMessages[event.error] || 'Voice recognition did not start properly. Please try again.') + ' You can also use Open Biodata below.');
+                    setVoicePrompt((errorMessages[event.error] || 'Voice recognition did not start properly. Please try again.') + ' You can also type "Bismillah" below or use Open Biodata.');
                 };
 
                 recognition.onend = () => {
@@ -636,10 +673,10 @@
                         setVoicePrompt(introVoiceHint);
                     } else if (voiceStopReasonRef.current === 'timeout' && !voiceMatchedRef.current) {
                         setIsManualEntryVisible(true);
-                        setVoicePrompt('Listening timed out. Tap the mic and say "Bismillah" again, or use Open Biodata below.');
+                        setVoicePrompt('Listening timed out. Tap the mic and say "Bismillah" again, type it below, or use Open Biodata.');
                     } else if (voiceStopReasonRef.current === 'listening' && !voiceMatchedRef.current) {
                         setIsManualEntryVisible(true);
-                        setVoicePrompt('I could not verify "Bismillah". Tap the mic and say it again, or use Open Biodata below.');
+                        setVoicePrompt('I could not verify "Bismillah". Tap the mic and say it again, type it below, or use Open Biodata.');
                     }
 
                     if (voiceStopReasonRef.current !== 'matched') {
@@ -667,7 +704,7 @@
                     voiceStopReasonRef.current = 'error';
                     setIsManualEntryVisible(true);
                     setIsVoiceListening(false);
-                    setVoicePrompt('Microphone could not start right now. Tap the mic again and allow access, or use Open Biodata below.');
+                    setVoicePrompt('Microphone could not start right now. Tap the mic again, type "Bismillah" below, or use Open Biodata.');
                 }
             };
 
@@ -756,16 +793,48 @@
                                             ? 'Listening now. Say "Bismillah" clearly.'
                                             : 'Tap once, say "Bismillah", and the biodata will open automatically.'}
                                     </div>
+                                    <div className="intro-popup-support-note">
+                                        Voice works best in Chrome or Edge with microphone permission allowed.
+                                    </div>
                                 </div>
 
                                 {isManualEntryVisible ? (
-                                    <button
-                                        type="button"
-                                        className="intro-popup-action"
-                                        onClick={handleEnterBiodata}
-                                    >
-                                        Open Biodata
-                                    </button>
+                                    <div className="intro-popup-manual-entry">
+                                        <label className="intro-popup-manual-label" htmlFor="bismillah-text-input">
+                                            If voice does not work, type "Bismillah" here:
+                                        </label>
+                                        <div className="intro-popup-manual-row">
+                                            <input
+                                                id="bismillah-text-input"
+                                                type="text"
+                                                className="intro-popup-manual-input"
+                                                value={manualBismillahValue}
+                                                onChange={(event) => setManualBismillahValue(event.target.value)}
+                                                onKeyDown={(event) => {
+                                                    if (event.key === 'Enter') {
+                                                        event.preventDefault();
+                                                        handleManualBismillahVerify();
+                                                    }
+                                                }}
+                                                placeholder='Type "Bismillah"'
+                                                autoComplete="off"
+                                            />
+                                            <button
+                                                type="button"
+                                                className="intro-popup-verify-button"
+                                                onClick={handleManualBismillahVerify}
+                                            >
+                                                Verify
+                                            </button>
+                                        </div>
+                                        <button
+                                            type="button"
+                                            className="intro-popup-action"
+                                            onClick={handleEnterBiodata}
+                                        >
+                                            Open Biodata
+                                        </button>
+                                    </div>
                                 ) : null}
                             </div>
                         </div>
