@@ -78,6 +78,7 @@ const BioDataComponent = () => {
             const [isManualEntryVisible, setIsManualEntryVisible] = React.useState(false);
             const [manualBismillahValue, setManualBismillahValue] = React.useState('');
             const [isVoiceListening, setIsVoiceListening] = React.useState(false);
+            const [voiceUiState, setVoiceUiState] = React.useState('idle');
             const [voicePrompt, setVoicePrompt] = React.useState(introVoiceHint);
             const [isMenuDragging, setIsMenuDragging] = React.useState(false);
             const menuLinksRef = React.useRef(null);
@@ -531,6 +532,7 @@ const BioDataComponent = () => {
                 voiceMatchedRef.current = true;
                 voiceStopReasonRef.current = 'matched';
                 setIsVoiceListening(false);
+                setVoiceUiState('idle');
                 document.body.classList.add('has-entered-biodata');
                 setIsIntroPopupOpen(false);
                 window.dispatchEvent(new Event('bbdMahbub:enter-biodata'));
@@ -667,6 +669,7 @@ const BioDataComponent = () => {
 
                 if (!SpeechRecognition) {
                     setIsManualEntryVisible(true);
+                    setVoiceUiState('idle');
                     setVoicePrompt('This browser does not support voice recognition. Use Chrome or Edge, or type "Bismillah" below for verification.');
                     return;
                 }
@@ -674,7 +677,8 @@ const BioDataComponent = () => {
                 if (isVoiceListening || speechRecognitionRef.current || isPreparingVoiceRef.current) return;
 
                 isPreparingVoiceRef.current = true;
-                setVoicePrompt('Preparing voice recognition...');
+                setVoiceUiState('preparing');
+                setVoicePrompt('Starting microphone. If your browser asks, tap Allow microphone permission.');
 
                 const recognitionMode = await resolveRecognitionMode(StandardSpeechRecognition);
                 const recognition = new SpeechRecognition();
@@ -697,6 +701,7 @@ const BioDataComponent = () => {
                 configureRecognitionBias(recognition);
 
                 setIsVoiceListening(true);
+                setVoiceUiState('listening');
                 setVoicePrompt(
                     isLocalRecognition
                         ? 'Microphone is active. Say "Bismillah" once and wait for verification.'
@@ -737,6 +742,8 @@ const BioDataComponent = () => {
                     isPreparingVoiceRef.current = false;
                     voiceStopReasonRef.current = 'error';
                     setIsManualEntryVisible(true);
+                    setIsVoiceListening(false);
+                    setVoiceUiState('idle');
                     const errorMessages = {
                         'not-allowed': 'Microphone access was blocked. Please allow microphone permission and try again.',
                         'audio-capture': 'No microphone was found. Connect a microphone and try again.',
@@ -757,6 +764,7 @@ const BioDataComponent = () => {
                     }
 
                     setIsVoiceListening(false);
+                    setVoiceUiState('idle');
 
                     if (voiceStopReasonRef.current === 'cancelled' && !voiceMatchedRef.current) {
                         setVoicePrompt(introVoiceHint);
@@ -794,7 +802,8 @@ const BioDataComponent = () => {
                     voiceStopReasonRef.current = 'error';
                     setIsManualEntryVisible(true);
                     setIsVoiceListening(false);
-                    setVoicePrompt('Microphone could not start right now. Tap the mic again, or type "Bismillah" below for verification.');
+                    setVoiceUiState('idle');
+                    setVoicePrompt('Microphone could not start right now. If the browser asks, allow microphone permission, then tap the mic again. You can also type "Bismillah" below for verification.');
                 }
             };
 
@@ -867,28 +876,34 @@ const BioDataComponent = () => {
                                     </ul>
                                 </div>
 
-                                <div className={`intro-popup-voice-status${isVoiceListening ? ' is-listening' : ''}`}>
-                                    <i className={`fas ${isVoiceListening ? 'fa-wave-square' : 'fa-microphone-lines'}`} aria-hidden="true"></i>
+                                <div className={`intro-popup-voice-status${voiceUiState === 'preparing' ? ' is-preparing' : isVoiceListening ? ' is-listening' : ''}`}>
+                                    <i className={`fas ${voiceUiState === 'preparing' ? 'fa-spinner fa-spin' : isVoiceListening ? 'fa-wave-square' : 'fa-microphone-lines'}`} aria-hidden="true"></i>
                                     <span>{voicePrompt}</span>
                                 </div>
 
                                 <div className="intro-popup-voice-gate">
                                     <button
                                         type="button"
-                                        className={`intro-popup-mic-button${isVoiceListening ? ' is-listening' : ''}`}
+                                        className={`intro-popup-mic-button${voiceUiState === 'preparing' ? ' is-preparing' : isVoiceListening ? ' is-listening' : ''}`}
                                         onClick={handleVoiceButtonClick}
                                         onContextMenu={(event) => event.preventDefault()}
-                                        aria-label={isVoiceListening ? 'Stop voice recognition' : 'Start voice recognition and say Bismillah'}
+                                        aria-label={voiceUiState === 'preparing' ? 'Microphone permission is being requested' : isVoiceListening ? 'Stop voice recognition' : 'Start voice recognition and say Bismillah'}
                                     >
-                                        <i className={`fas ${isVoiceListening ? 'fa-microphone-lines' : 'fa-microphone'}`} aria-hidden="true"></i>
+                                        <i className={`fas ${voiceUiState === 'preparing' ? 'fa-spinner fa-spin' : isVoiceListening ? 'fa-microphone-lines' : 'fa-microphone'}`} aria-hidden="true"></i>
                                     </button>
                                     <div className="intro-popup-mic-caption">
-                                        {isVoiceListening
+                                        {voiceUiState === 'preparing'
+                                            ? 'Starting mic now. If a browser popup appears, tap Allow permission.'
+                                            : isVoiceListening
                                             ? 'Mic is on now. Say "Bismillah" one time, then wait.'
                                             : 'Mic is off now. Tap once to start voice verification.'}
                                     </div>
                                     <div className="intro-popup-support-note">
-                                        Voice works best in Chrome or Edge with microphone permission allowed.
+                                        {voiceUiState === 'preparing'
+                                            ? 'Permission may be needed here. Allow microphone access in Chrome or Edge to continue.'
+                                            : isVoiceListening
+                                                ? 'Recording is active now. Speak once, then wait a moment for verification.'
+                                                : 'If needed, your browser will ask for microphone permission. Tap Allow to use voice.'}
                                     </div>
                                 </div>
 
