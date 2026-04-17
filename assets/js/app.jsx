@@ -1,4 +1,4 @@
-const BioDataComponent = () => {
+﻿const BioDataComponent = () => {
             const iconProfile = String.fromCodePoint(0x1F464);
             const iconFamily = String.fromCodePoint(0x1F46A);
             const iconEducation = String.fromCodePoint(0x1F393);
@@ -18,14 +18,6 @@ const BioDataComponent = () => {
                 '\u0631\u064e\u0628\u0650\u0651 \u0647\u064e\u0628\u0652 \u0644\u0650\u064a \u0645\u0650\u0646\u064e \u0627\u0644\u0635\u064e\u0651\u0627\u0644\u0650\u062d\u0650\u064a\u0646\u064e',
                 '\u0631\u064e\u0628\u064e\u0651\u0646\u064e\u0627 \u0622\u062a\u0650\u0646\u064e\u0627 \u0645\u0650\u0646\u0652 \u0644\u064e\u062f\u064f\u0646\u0643\u064e \u0631\u064e\u062d\u0652\u0645\u064e\u0629\u064b \u0648\u064e\u0647\u064e\u064a\u0650\u0651\u0626\u0652 \u0644\u064e\u0646\u064e\u0627 \u0645\u0650\u0646\u0652 \u0623\u064e\u0645\u0652\u0631\u0650\u0646\u064e\u0627 \u0631\u064e\u0634\u064e\u062f\u064b\u0627'
             ];
-            const introDuaMeaning = "Our Rabb (Allah), grant us from among our wives and offspring comfort to our eyes and make us an example for the righteous.";
-            const introInstructions = [
-                "Begin reading with respect and a sincere intention.",
-                "Use the top menu to move quickly between each section.",
-                "If this biodata feels suitable, contact through the shared details.",
-                "Please maintain privacy while reviewing this profile."
-            ];
-            const introVoiceHint = 'Tap the mic once to start Bismillah voice verification.';
             const acceptedBismillahPhrases = [
                 'bismillah',
                 'bismillahirrahmanirrahim',
@@ -45,6 +37,822 @@ const BioDataComponent = () => {
                 'بسم الله الرحمن الرحيم',
                 'بسماللهالرحمنالرحيم'
             ];
+            const permanentAddressMapHref = 'https://maps.app.goo.gl/hvcHqxMvhF9cGFbM6';
+            const voiceVerificationStorageKey = 'bbdMahbubVoiceVerified';
+            const languageOptions = [
+                { code: 'en', shortLabel: 'EN', nativeLabel: 'English' },
+                { code: 'ar', shortLabel: 'AR', nativeLabel: 'العربية' },
+                { code: 'bn', shortLabel: 'BN', nativeLabel: 'বাংলা' }
+            ];
+            const translations = {
+                en: {
+                    locale: 'en',
+                    dir: 'ltr',
+                    meta: {
+                        title: 'Marriage Biodata - Md. Mahbubur Rahman',
+                        description: 'Marriage biodata of Md. Mahbubur Rahman with personal, family, education, work, and contact details.'
+                    },
+                    navigation: {
+                        quickJump: 'Quick Jump',
+                        sectionsAria: 'Page sections',
+                        languageSwitcherLabel: 'Language versions'
+                    },
+                    common: {
+                        visit: 'Visit',
+                        lateBadge: 'Late',
+                        latePrefix: 'Late '
+                    },
+                    intro: {
+                        kicker: 'Dua & Instruction',
+                        title: 'Please Read Before Exploring',
+                        duaMeaning: 'Our Rabb (Allah), grant us from among our wives and offspring comfort to our eyes and make us an example for the righteous.',
+                        instructionsTitle: 'Instruction',
+                        instructions: [
+                            'Begin reading with respect and a sincere intention.',
+                            'Use the top menu to move quickly between each section.',
+                            'If this biodata feels suitable, contact through the shared details.',
+                            'Please maintain privacy while reviewing this profile.'
+                        ]
+                    },
+                    voice: {
+                        tapToStart: 'Tap the mic once to start Bismillah voice verification.',
+                        browserNoSupport: 'This browser does not include live speech recognition. Use Continue below to open the biodata.',
+                        permissionBlocked: 'Microphone permission is blocked. Allow it in your browser settings, then tap the mic again.',
+                        permissionRequired: 'Browser microphone permission is required. Tap Allow in the popup.',
+                        permissionAllowed: 'Microphone permission allowed. Tap the mic once more to start voice verification.',
+                        permissionDenied: 'Microphone permission was denied. Allow it in browser settings, then tap the mic again.',
+                        noMicrophone: 'No microphone was found. Connect a microphone and try again.',
+                        permissionUnknown: 'Microphone permission could not be confirmed. Please try again.',
+                        starting: 'Starting microphone. If your browser asks, tap Allow microphone permission.',
+                        listening: 'Microphone is active. Say "Bismillah" once and wait for verification.',
+                        detected: (transcript) => `Detected: "${transcript}". Opening biodata...`,
+                        heard: (transcript) => `Heard: "${transcript}". Tap the mic and say "Bismillah" again.`,
+                        errors: {
+                            'not-allowed': 'Microphone access was blocked. Please allow microphone permission and try again.',
+                            'service-not-allowed': 'Speech recognition is blocked on this browser. Check browser support and microphone permission, then try again.',
+                            aborted: 'Voice recording stopped before it could start. Tap the mic again.',
+                            'audio-capture': 'No microphone was found. Connect a microphone and try again.',
+                            'no-speech': 'No speech was detected. Tap the mic again and say "Bismillah".',
+                            'language-not-supported': 'This browser does not support the selected speech language for web speech recognition.',
+                            network: 'Your browser could not reach its speech service. Please check your connection and browser settings, then try again.'
+                        },
+                        defaultError: 'Voice recognition did not start properly. If a browser popup appears, tap Allow microphone permission and try again.',
+                        timeout: 'Listening timed out. Tap the mic and say "Bismillah" again.',
+                        notVerified: 'I could not verify "Bismillah". Tap the mic and say it again.',
+                        couldNotStart: 'Microphone could not start right now. If the browser asks, allow microphone permission, then tap the mic again.',
+                        supportNoSupport: 'Live speech recognition is not built into this browser, so the page now falls back to the Continue button below.',
+                        supportPermission: 'A browser popup should appear now. Tap Allow microphone permission. After that, tap the mic again.',
+                        supportPreparing: 'Microphone is starting now. Please wait a moment.',
+                        supportErrorDenied: 'Microphone permission is blocked in browser settings. Allow it for this site, then tap the mic again.',
+                        supportErrorGeneral: 'If no popup appears, check this site\'s microphone permission and whether your browser supports web speech recognition. You can also continue without voice below.',
+                        supportListening: 'Recording is active now. Speak once, then wait a moment for verification.',
+                        supportReady: 'Microphone permission is ready. Tap the mic to start voice verification.',
+                        supportIdle: 'Tap the mic. If a browser popup appears, tap Allow microphone permission.',
+                        micAriaPermission: 'Microphone permission is being requested',
+                        micAriaRetry: 'Retry voice recognition',
+                        micAriaStop: 'Stop voice recognition',
+                        micAriaStart: 'Start voice recognition and say Bismillah',
+                        continueWithoutVoice: 'Continue Without Voice',
+                        continueInBrowser: 'Continue In This Browser'
+                    },
+                    menu: {
+                        profile: 'Profile',
+                        gallery: 'Gallery',
+                        personal: 'Personal',
+                        family: 'Family',
+                        work: 'Work',
+                        lifestyle: 'Lifestyle',
+                        language: 'Language',
+                        education: 'Education',
+                        training: 'Training',
+                        activities: 'Activities',
+                        hobbies: 'Hobbies',
+                        expectation: 'Expectation',
+                        contact: 'Contact',
+                        dua: 'Dua'
+                    },
+                    profile: {
+                        name: 'Md Mahbubur Rahman',
+                        subtitle: 'IT Professional',
+                        tagline: 'A faithful Muslim seeking a loving and pious life partner',
+                        stats: {
+                            age: 'YEARS OLD',
+                            education: 'HIGHLY EDUCATED',
+                            work: 'WELL ESTABLISHED',
+                            faith: 'PRACTICING MUSLIM'
+                        }
+                    },
+                    gallery: {
+                        title: 'Photo Gallery',
+                        photos: [
+                            { src: 'assets/images/mahbub-portrait-1.jpg', alt: 'Md Mahbubur Rahman portrait 1', label: 'Portrait 01', featured: true },
+                            { src: 'assets/images/mahbub-portrait-2.jpg', alt: 'Md Mahbubur Rahman portrait 2', label: 'Portrait 02', featured: false }
+                        ]
+                    },
+                    sectionHeaders: {
+                        personal: 'Personal Information',
+                        family: 'Family Information',
+                        work: 'Professional Information'
+                    },
+                    personalDetails: [
+                        { label: 'Full Name', value: 'Md. Mahbubur Rahman', iconClass: 'fas fa-user' },
+                        { label: 'Nickname', value: 'Nasir Uddin', iconClass: 'fas fa-signature' },
+                        { label: 'Date of Birth', value: '20 December 1997', iconClass: 'fas fa-calendar-days' },
+                        { label: 'Age', value: '27 Years', iconClass: 'fas fa-hourglass-half' },
+                        { label: 'Religion', value: 'Islam (Practicing Muslim)', iconClass: 'fas fa-mosque' },
+                        { label: 'Marital Status', value: 'Unmarried', iconClass: 'fas fa-ring' },
+                        { label: 'Complexion', value: 'Medium Dark', iconClass: 'fas fa-palette' },
+                        { label: 'Height & Weight', value: 'About 5\' 3" & 72 KGs', iconClass: 'fas fa-ruler-combined' },
+                        { label: 'Blood Group', value: 'A+', iconClass: 'fas fa-droplet' },
+                        { label: 'Health Status', value: 'Healthy, non-smoker, no addiction', iconClass: 'fas fa-heart-pulse' }
+                    ],
+                    familyDetails: [
+                        ['Father', 'Late Abdul Kader Howlader (Village Doctor and Primary Teacher)'],
+                        ['Mother', 'Farida Begum - Housewife'],
+                        ['Siblings', '4 Brothers and 3 Sisters'],
+                        ['Permanent Address', 'Uttar Sutalori, Jomaddar Para, Morrelganj, Bagerhat'],
+                        ['District', 'Bagerhat']
+                    ],
+                    familySummary: {
+                        label: 'Family Background',
+                        title: 'A respectable, middle-class family grounded in education and religious values.',
+                        tags: ['Respectable', 'Middle-Class', 'Educated', 'Religious']
+                    },
+                    familySiblingsTitle: 'Sibling Details',
+                    familySiblings: [
+                        ['1st Sister', 'Shahanaj Shanti, Housewife with 4 Children. Morrelganj.'],
+                        ['2nd Brother', 'Alauddin, was a worker in UAE, Business (Dhaka). 2 Children. Morrelganj.'],
+                        ['3rd Brother', 'Giash Uddin, Driver, Bananja PCL, Chattagram, BD Navy. 2 Children, Morrelganj.'],
+                        ['4th Sister', 'Zerin Salma Beby, Housewife with 3 children. Morrelganj.'],
+                        ['5th Brother', 'Mohiuddin, Driver, Doctor Couple\'s, Chattagram. 4 Children, Chattagram.'],
+                        ['6th Sister', 'Nazma Sultana, Housewife with 2 children. Khulna.'],
+                        ['7th', 'Youngest son, self.']
+                    ],
+                    siblingStatusData: {
+                        '1st Sister': { text: 'Married', className: 'married' },
+                        '2nd Brother': { text: 'Married', className: 'married' },
+                        '3rd Brother': { text: 'Married', className: 'married' },
+                        '4th Sister': { text: 'Married', className: 'married' },
+                        '5th Brother': { text: 'Married', className: 'married' },
+                        '6th Sister': { text: 'Married', className: 'married' },
+                        '7th': { text: 'Unmarried', className: 'unmarried' }
+                    },
+                    workSection: {
+                        items: [
+                            { title: 'Procurement & Servicing Lead', organization: 'Earthface IT, Dhaka', duration: '27 Nov 2021 - Present', iconClass: 'fas fa-briefcase' },
+                            { title: 'IT Support Assistant (Part-time)', organization: 'Dept. of Arabic Language and Literature, IU, Kushtia', duration: '23 Mar 2017 - 20 Oct 2021', iconClass: 'fas fa-headset' },
+                            { title: 'IT Executive (Part-time)', organization: 'Khondokar Telecom, Gazipur', duration: '7 Jul 2014 - 12 Dec 2015', iconClass: 'fas fa-desktop' }
+                        ]
+                    },
+                    lifestyle: {
+                        title: 'Personality & Lifestyle',
+                        items: [
+                            { label: 'Character', value: 'Humble, Religious, Trustworthy', iconClass: 'fas fa-user-shield' },
+                            { label: 'Future Goal', value: 'Build a family based on Deen and mutual respect', iconClass: 'fas fa-bullseye' },
+                            { label: 'Interests', value: 'Islamic lectures, reading, travelling, learning technology', iconClass: 'fas fa-book-open' },
+                            { label: 'Food Habit', value: 'Prefers home-made halal food', iconClass: 'fas fa-utensils' },
+                            { label: 'Additional', value: 'Punctual, reserved by nature, socially well-behaved', iconClass: 'fas fa-check-double' }
+                        ]
+                    },
+                    languages: {
+                        title: 'Language Proficiency',
+                        proficiencyAria: (title) => `${title} proficiency`,
+                        items: [
+                            { title: 'English', level: 'Good', percent: 66.66 },
+                            { title: 'Arabic', level: 'Good', percent: 66.66 },
+                            { title: 'Bangla', level: 'Excellent', percent: 100 }
+                        ]
+                    },
+                    education: {
+                        title: 'Educational Information',
+                        items: [
+                            { title: 'M.A. (Arabic Language & Literature)', institution: 'Islamic University, Kushtia', institutionHref: 'https://iu.ac.bd', scoreLabel: 'CGPA', score: '3.58/4', session: '2022' },
+                            { title: 'B.A. Honors (Arabic Language & Literature)', institution: 'Islamic University, Kushtia', institutionHref: 'https://iu.ac.bd', scoreLabel: 'CGPA', score: '3.58/4', session: '2020' },
+                            { title: 'Alim (HSC)', institution: 'Ta\'mirul Millat Kamil Madrasah, Tongi, Gazipur', institutionHref: 'https://www.tmt.edu.bd', scoreLabel: 'GPA', score: '5.00/5', session: '2014' },
+                            { title: 'Dakhil (SSC)', institution: 'Ta\'limul Millat Rahmatial Kamil Madrasah, Sonadanga, Khulna', scoreLabel: 'GPA', score: '5.00/5', session: '2012' }
+                        ]
+                    },
+                    training: {
+                        title: 'Training and Development',
+                        items: [
+                            { text: 'Corporate Management Bootcamp - 2023 (10 Days, BYLC, Bangladesh.)', href: 'https://bylc.org', linkLabel: 'Visit' },
+                            { text: 'Professional Digital Content Management (PDCM), (3 Months, SEIP, Finance Ministry of BD)', href: 'https://lms.seip-fd.gov.bd', linkLabel: 'Visit' },
+                            { text: 'Web Design & Development (200 Hours, LEDP, ICT Division of Bangladesh.)', href: 'https://ictd.gov.bd', linkLabel: 'Visit' },
+                            { text: 'Computer & Its Applications (1 Year, Islamic University, Kushtia)', href: 'https://iu.ac.bd', linkLabel: 'Visit' },
+                            { text: 'Troubleshooting in Computer Security (ICT Division, a2i).', href: 'https://a2i.gov.bd', linkLabel: 'Visit' },
+                            { text: 'Microsoft Word Basics (a2i, Muktapath).', href: 'https://a2i.gov.bd', linkLabel: 'Visit' },
+                            { text: 'Video Production (Human Development Media, a2i)', href: 'https://a2i.gov.bd', linkLabel: 'Visit' },
+                            { text: 'Digital Security Essentials (Digital Security Agency, a2i).', href: 'https://a2i.gov.bd', linkLabel: 'Visit' },
+                            { text: 'Idea Innovation Workshop for Mobile Games & Apps Development (ICT Division, Digital Bangladesh.)', href: 'https://a2i.gov.bd', linkLabel: 'Visit' }
+                        ]
+                    },
+                    activities: {
+                        title: 'Extra Curricular Activities',
+                        items: [
+                            {
+                                title: 'Volunteering',
+                                period: '7th July 2014 - 12th Dec 2015',
+                                items: [
+                                    { text: 'Former CR of the class for 2 years, Islamic University, Kushtia.', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'Visit' },
+                                    { text: 'Former Director of Betikrom Shahitya Shangskritik Jote, IU.', iconClass: 'fas fa-masks-theater', href: 'https://web.facebook.com/betikrom87', linkLabel: 'Visit' },
+                                    { text: 'Former Central Member of Bangladesh Islamic Chhatra Shibir', iconClass: 'fas fa-shield-halved', href: 'https://shibir.org.bd', linkLabel: 'Visit' }
+                                ]
+                            },
+                            { title: 'Singing', items: [{ text: 'Performed song on SATV, ETV, Channel 9', iconClass: 'fas fa-music' }] },
+                            { title: 'Acting', period: '2018', items: [{ text: 'Acted in a drama, was placed 2nd Nationally.', iconClass: 'fas fa-film' }] },
+                            { title: 'Award', period: '2012', items: [{ text: 'Awarded on Poetry Recitation Placed 2nd Nationally', iconClass: 'fas fa-award' }] }
+                        ]
+                    },
+                    hobbies: {
+                        title: 'Hobbies and Interests',
+                        items: [
+                            ['fas fa-masks-theater', 'Cultural Awareness (Singing, Acting, Lyrics etc.)'],
+                            ['fas fa-lightbulb', 'Optimizing Idea.'],
+                            ['fas fa-laptop-medical', 'Helping others as a tech savvy.']
+                        ]
+                    },
+                    expectation: {
+                        title: 'Expectation from Bride',
+                        items: [
+                            { iconClass: 'fas fa-mosque', title: 'Religious Practice', text: 'Practicing Muslimah with hijab and niqab, aware of maintaining mahram.' },
+                            { iconClass: 'fas fa-user-shield', title: 'Character', text: 'Educated and modest in behavior.' },
+                            { iconClass: 'fas fa-house', title: 'Family Role', text: 'Aware of family responsibilities.' },
+                            { iconClass: 'fas fa-heart', title: 'Lifestyle', text: 'Focused on family and Islamic lifestyle.' },
+                            { iconClass: 'fas fa-palette', title: 'Preferred Complexion', text: 'Medium/Fair (flexible).' },
+                            { iconClass: 'fas fa-briefcase', title: 'Profession', text: 'A profession is not mandatory; a family-oriented Islamic lifestyle is preferred.' }
+                        ]
+                    },
+                    contact: {
+                        title: 'Contact & Location',
+                        mapButton: 'View on Google Maps',
+                        permanentAddressValue: 'Uttar Sutalori, Jomaddar Para, Morrelganj, Bagerhat',
+                        blocks: [
+                            { iconClass: 'fas fa-user', label: 'Name', value: 'Md. Mahbubur Rahman' },
+                            { iconClass: 'fas fa-envelope', label: 'Email', value: 'bbdmahbub@gmail.com', href: 'mailto:bbdmahbub@gmail.com' },
+                            { iconClass: 'fab fa-whatsapp', label: 'WhatsApp', value: '+8801917267607', href: 'https://wa.me/8801917267607' },
+                            { iconClass: 'fas fa-home', label: 'Current Address', value: 'Hatir Jheel, Dhaka, Bangladesh' },
+                            { iconClass: 'fas fa-map-marker-alt', label: 'Permanent Address', value: 'Uttar Sutalori, Jomaddar Para, Morrelganj, Bagerhat', mapHref: permanentAddressMapHref }
+                        ]
+                    },
+                    dua: {
+                        title: 'Final Words & Dua',
+                        meanings: [
+                            '"Our Rabb (Allah), grant us from among our wives and offspring comfort to our eyes and make us an example for the righteous."',
+                            '"Ya Rabb (Allah)! Bestow upon me one of the righteous."',
+                            '"Our Rabb (Allah), grant us from Yourself mercy and prepare for us from our affair right guidance."'
+                        ],
+                        closing: 'Ameen ya Rabbal Alameen.'
+                    }
+                },
+                ar: {
+                    locale: 'ar',
+                    dir: 'rtl',
+                    meta: {
+                        title: 'السيرة الزوجية - Md. Mahbubur Rahman',
+                        description: 'السيرة الزوجية لـ Md. Mahbubur Rahman وتشمل المعلومات الشخصية والأسرية والتعليمية والمهنية ووسائل التواصل.'
+                    },
+                    navigation: {
+                        quickJump: 'انتقال سريع',
+                        sectionsAria: 'أقسام الصفحة',
+                        languageSwitcherLabel: 'إصدارات اللغة'
+                    },
+                    common: {
+                        visit: 'زيارة',
+                        lateBadge: 'المرحوم',
+                        latePrefix: 'المرحوم '
+                    },
+                    intro: {
+                        kicker: 'دعاء وتعليمات',
+                        title: 'يرجى القراءة قبل التصفح',
+                        duaMeaning: 'ربنا هب لنا من أزواجنا وذرياتنا قرة أعين واجعلنا للمتقين إماماً.',
+                        instructionsTitle: 'التعليمات',
+                        instructions: [
+                            'ابدأ القراءة باحترام وبنية صادقة.',
+                            'استخدم القائمة العلوية للانتقال السريع بين الأقسام.',
+                            'إذا وجدت هذه السيرة مناسبة فتواصل عبر البيانات المشتركة.',
+                            'يرجى الحفاظ على الخصوصية أثناء مراجعة هذا الملف.'
+                        ]
+                    },
+                    voice: {
+                        tapToStart: 'اضغط على الميكروفون مرة واحدة لبدء التحقق الصوتي بقول بسم الله.',
+                        browserNoSupport: 'هذا المتصفح لا يدعم التعرف الصوتي المباشر. استخدم زر المتابعة أدناه لفتح السيرة.',
+                        permissionBlocked: 'تم حظر إذن الميكروفون. فعّله من إعدادات المتصفح ثم اضغط على الميكروفون مرة أخرى.',
+                        permissionRequired: 'مطلوب إذن الميكروفون من المتصفح. اضغط سماح في النافذة المنبثقة.',
+                        permissionAllowed: 'تم السماح بالميكروفون. اضغط على الميكروفون مرة أخرى لبدء التحقق الصوتي.',
+                        permissionDenied: 'تم رفض إذن الميكروفون. فعّله من إعدادات المتصفح ثم حاول مرة أخرى.',
+                        noMicrophone: 'لم يتم العثور على ميكروفون. قم بتوصيله ثم حاول مرة أخرى.',
+                        permissionUnknown: 'تعذر تأكيد إذن الميكروفون حالياً. حاول مرة أخرى.',
+                        starting: 'يتم تشغيل الميكروفون الآن. إذا ظهرت نافذة من المتصفح فاضغط سماح.',
+                        listening: 'الميكروفون يعمل الآن. قل "بسم الله" مرة واحدة وانتظر التحقق.',
+                        detected: (transcript) => `تم التقاط: "${transcript}". يتم فتح السيرة الآن...`,
+                        heard: (transcript) => `تم سماع: "${transcript}". اضغط على الميكروفون وقل "بسم الله" مرة أخرى.`,
+                        errors: {
+                            'not-allowed': 'تم حظر الوصول إلى الميكروفون. يرجى السماح بالإذن ثم حاول مرة أخرى.',
+                            'service-not-allowed': 'خدمة التعرف الصوتي محظورة في هذا المتصفح. تحقق من الدعم والإذن ثم حاول مرة أخرى.',
+                            aborted: 'توقف التسجيل الصوتي قبل أن يبدأ. اضغط على الميكروفون مرة أخرى.',
+                            'audio-capture': 'لم يتم العثور على ميكروفون. قم بتوصيله ثم حاول مرة أخرى.',
+                            'no-speech': 'لم يتم اكتشاف أي كلام. اضغط على الميكروفون وقل "بسم الله".',
+                            'language-not-supported': 'هذا المتصفح لا يدعم لغة التعرف الصوتي المحددة.',
+                            network: 'تعذر على المتصفح الوصول إلى خدمة التعرف الصوتي. تحقق من الاتصال ثم حاول مرة أخرى.'
+                        },
+                        defaultError: 'لم يبدأ التعرف الصوتي بشكل صحيح. إذا ظهرت نافذة من المتصفح فاضغط سماح ثم حاول مرة أخرى.',
+                        timeout: 'انتهت مهلة الاستماع. اضغط على الميكروفون وقل "بسم الله" مرة أخرى.',
+                        notVerified: 'تعذر التحقق من "بسم الله". اضغط على الميكروفون وكررها مرة أخرى.',
+                        couldNotStart: 'تعذر تشغيل الميكروفون الآن. إذا طلب المتصفح الإذن فاسمح به ثم حاول مرة أخرى.',
+                        supportNoSupport: 'ميزة التعرف الصوتي المباشر غير متوفرة في هذا المتصفح، لذلك ستجد زر متابعة بدلاً منها أدناه.',
+                        supportPermission: 'يفترض أن تظهر نافذة منبثقة الآن. اضغط سماح للميكروفون ثم اضغط على الميكروفون مرة أخرى.',
+                        supportPreparing: 'يتم تشغيل الميكروفون الآن. يرجى الانتظار قليلاً.',
+                        supportErrorDenied: 'إذن الميكروفون محظور في إعدادات المتصفح. فعّله لهذا الموقع ثم اضغط على الميكروفون مرة أخرى.',
+                        supportErrorGeneral: 'إذا لم تظهر نافذة، فتحقق من إذن الميكروفون لهذا الموقع ومن دعم المتصفح للتعرف الصوتي. يمكنك أيضاً المتابعة بدون صوت أدناه.',
+                        supportListening: 'التسجيل يعمل الآن. تحدث مرة واحدة ثم انتظر لحظة للتحقق.',
+                        supportReady: 'إذن الميكروفون جاهز. اضغط على الميكروفون لبدء التحقق الصوتي.',
+                        supportIdle: 'اضغط على الميكروفون. إذا ظهرت نافذة من المتصفح فاضغط سماح.',
+                        micAriaPermission: 'يتم طلب إذن الميكروفون',
+                        micAriaRetry: 'إعادة محاولة التعرف الصوتي',
+                        micAriaStop: 'إيقاف التعرف الصوتي',
+                        micAriaStart: 'ابدأ التعرف الصوتي وقل بسم الله',
+                        continueWithoutVoice: 'المتابعة بدون صوت',
+                        continueInBrowser: 'المتابعة في هذا المتصفح'
+                    },
+                    menu: {
+                        profile: 'الملف الشخصي',
+                        gallery: 'المعرض',
+                        personal: 'الشخصية',
+                        family: 'الأسرة',
+                        work: 'العمل',
+                        lifestyle: 'نمط الحياة',
+                        language: 'اللغة',
+                        education: 'التعليم',
+                        training: 'التدريب',
+                        activities: 'الأنشطة',
+                        hobbies: 'الهوايات',
+                        expectation: 'التوقعات',
+                        contact: 'التواصل',
+                        dua: 'الدعاء'
+                    },
+                    profile: {
+                        name: 'Md Mahbubur Rahman',
+                        subtitle: 'محترف تقنية معلومات',
+                        tagline: 'مسلم ملتزم يبحث عن شريكة حياة صالحة ومحبّة',
+                        stats: {
+                            age: '27 عاماً',
+                            education: 'تعليم عالٍ',
+                            work: 'مستقر مهنياً',
+                            faith: 'ملتزم دينياً'
+                        }
+                    },
+                    gallery: {
+                        title: 'معرض الصور',
+                        photos: [
+                            { src: 'assets/images/mahbub-portrait-1.jpg', alt: 'الصورة الشخصية الأولى لـ Md Mahbubur Rahman', label: 'الصورة 01', featured: true },
+                            { src: 'assets/images/mahbub-portrait-2.jpg', alt: 'الصورة الشخصية الثانية لـ Md Mahbubur Rahman', label: 'الصورة 02', featured: false }
+                        ]
+                    },
+                    sectionHeaders: {
+                        personal: 'المعلومات الشخصية',
+                        family: 'المعلومات الأسرية',
+                        work: 'المعلومات المهنية'
+                    },
+                    personalDetails: [
+                        { label: 'الاسم الكامل', value: 'Md. Mahbubur Rahman', iconClass: 'fas fa-user' },
+                        { label: 'الاسم المختصر', value: 'Nasir Uddin', iconClass: 'fas fa-signature' },
+                        { label: 'تاريخ الميلاد', value: '20 ديسمبر 1997', iconClass: 'fas fa-calendar-days' },
+                        { label: 'العمر', value: '27 سنة', iconClass: 'fas fa-hourglass-half' },
+                        { label: 'الديانة', value: 'الإسلام (ملتزم)', iconClass: 'fas fa-mosque' },
+                        { label: 'الحالة الاجتماعية', value: 'أعزب', iconClass: 'fas fa-ring' },
+                        { label: 'لون البشرة', value: 'قمحي مائل للداكن', iconClass: 'fas fa-palette' },
+                        { label: 'الطول والوزن', value: 'حوالي 5\' 3" و72 كجم', iconClass: 'fas fa-ruler-combined' },
+                        { label: 'فصيلة الدم', value: 'A+', iconClass: 'fas fa-droplet' },
+                        { label: 'الحالة الصحية', value: 'بصحة جيدة، غير مدخن، بلا إدمان', iconClass: 'fas fa-heart-pulse' }
+                    ],
+                    familyDetails: [
+                        ['الأب', 'المرحوم Abdul Kader Howlader (طبيب قروي ومعلم ابتدائي)'],
+                        ['الأم', 'Farida Begum - ربة منزل'],
+                        ['الإخوة والأخوات', '4 إخوة و3 أخوات'],
+                        ['العنوان الدائم', 'Uttar Sutalori, Jomaddar Para, Morrelganj, Bagerhat'],
+                        ['المنطقة', 'Bagerhat']
+                    ],
+                    familySummary: {
+                        label: 'خلفية الأسرة',
+                        title: 'أسرة محترمة من الطبقة المتوسطة تقوم على التعليم والقيم الدينية.',
+                        tags: ['محترمة', 'متوسطة الحال', 'متعلمة', 'متدينة']
+                    },
+                    familySiblingsTitle: 'تفاصيل الإخوة والأخوات',
+                    familySiblings: [
+                        ['الأخت الأولى', 'Shahanaj Shanti، ربة منزل ولديها 4 أطفال. Morrelganj.'],
+                        ['الأخ الثاني', 'Alauddin، كان عاملاً في الإمارات ويعمل الآن في التجارة (Dhaka). لديه طفلان. Morrelganj.'],
+                        ['الأخ الثالث', 'Giash Uddin، سائق في Bananja PCL، Chattagram، البحرية البنغلاديشية. لديه طفلان. Morrelganj.'],
+                        ['الأخت الرابعة', 'Zerin Salma Beby، ربة منزل ولديها 3 أطفال. Morrelganj.'],
+                        ['الأخ الخامس', 'Mohiuddin، سائق لدى زوجين من الأطباء في Chattagram. لديه 4 أطفال. Chattagram.'],
+                        ['الأخت السادسة', 'Nazma Sultana، ربة منزل ولديها طفلان. Khulna.'],
+                        ['السابع', 'الابن الأصغر، أنا.']
+                    ],
+                    siblingStatusData: {
+                        'الأخت الأولى': { text: 'متزوجة', className: 'married' },
+                        'الأخ الثاني': { text: 'متزوج', className: 'married' },
+                        'الأخ الثالث': { text: 'متزوج', className: 'married' },
+                        'الأخت الرابعة': { text: 'متزوجة', className: 'married' },
+                        'الأخ الخامس': { text: 'متزوج', className: 'married' },
+                        'الأخت السادسة': { text: 'متزوجة', className: 'married' },
+                        'السابع': { text: 'غير متزوج', className: 'unmarried' }
+                    },
+                    workSection: {
+                        items: [
+                            { title: 'مسؤول المشتريات والخدمات', organization: 'Earthface IT, Dhaka', duration: '27 نوفمبر 2021 - حتى الآن', iconClass: 'fas fa-briefcase' },
+                            { title: 'مساعد دعم تقني (دوام جزئي)', organization: 'قسم اللغة العربية وآدابها، IU, Kushtia', duration: '23 مارس 2017 - 20 أكتوبر 2021', iconClass: 'fas fa-headset' },
+                            { title: 'تنفيذي تقنية معلومات (دوام جزئي)', organization: 'Khondokar Telecom, Gazipur', duration: '7 يوليو 2014 - 12 ديسمبر 2015', iconClass: 'fas fa-desktop' }
+                        ]
+                    },
+                    lifestyle: {
+                        title: 'الشخصية ونمط الحياة',
+                        items: [
+                            { label: 'الشخصية', value: 'متواضع، متدين، وجدير بالثقة', iconClass: 'fas fa-user-shield' },
+                            { label: 'الهدف المستقبلي', value: 'بناء أسرة قائمة على الدين والاحترام المتبادل', iconClass: 'fas fa-bullseye' },
+                            { label: 'الاهتمامات', value: 'الدروس الإسلامية، القراءة، السفر، وتعلم التقنية', iconClass: 'fas fa-book-open' },
+                            { label: 'العادات الغذائية', value: 'يفضل الطعام الحلال المنزلي', iconClass: 'fas fa-utensils' },
+                            { label: 'إضافي', value: 'منضبط في الوقت، هادئ الطبع، وحسن السلوك اجتماعياً', iconClass: 'fas fa-check-double' }
+                        ]
+                    },
+                    languages: {
+                        title: 'إجادة اللغات',
+                        proficiencyAria: (title) => `مستوى ${title}`,
+                        items: [
+                            { title: 'الإنجليزية', level: 'جيد', percent: 66.66 },
+                            { title: 'العربية', level: 'جيد', percent: 66.66 },
+                            { title: 'البنغالية', level: 'ممتاز', percent: 100 }
+                        ]
+                    },
+                    education: {
+                        title: 'المعلومات التعليمية',
+                        items: [
+                            { title: 'ماجستير في اللغة العربية وآدابها', institution: 'Islamic University, Kushtia', institutionHref: 'https://iu.ac.bd', scoreLabel: 'المعدل', score: '3.58/4', session: '2022' },
+                            { title: 'بكالوريوس شرف في اللغة العربية وآدابها', institution: 'Islamic University, Kushtia', institutionHref: 'https://iu.ac.bd', scoreLabel: 'المعدل', score: '3.58/4', session: '2020' },
+                            { title: 'Alim (الثانوية العليا)', institution: 'Ta\'mirul Millat Kamil Madrasah, Tongi, Gazipur', institutionHref: 'https://www.tmt.edu.bd', scoreLabel: 'الدرجة', score: '5.00/5', session: '2014' },
+                            { title: 'Dakhil (الثانوية)', institution: 'Ta\'limul Millat Rahmatial Kamil Madrasah, Sonadanga, Khulna', scoreLabel: 'الدرجة', score: '5.00/5', session: '2012' }
+                        ]
+                    },
+                    training: {
+                        title: 'التدريب والتطوير',
+                        items: [
+                            { text: 'معسكر إدارة الشركات - 2023 (10 أيام، BYLC، بنغلاديش)', href: 'https://bylc.org', linkLabel: 'زيارة' },
+                            { text: 'الإدارة الاحترافية للمحتوى الرقمي (PDCM) - 3 أشهر، SEIP، وزارة المالية', href: 'https://lms.seip-fd.gov.bd', linkLabel: 'زيارة' },
+                            { text: 'تصميم وتطوير الويب - 200 ساعة، LEDP، قسم ICT في بنغلاديش', href: 'https://ictd.gov.bd', linkLabel: 'زيارة' },
+                            { text: 'الحاسوب وتطبيقاته - سنة واحدة، Islamic University, Kushtia', href: 'https://iu.ac.bd', linkLabel: 'زيارة' },
+                            { text: 'استكشاف الأعطال في أمن الحاسوب (ICT Division, a2i)', href: 'https://a2i.gov.bd', linkLabel: 'زيارة' },
+                            { text: 'أساسيات Microsoft Word (a2i, Muktapath)', href: 'https://a2i.gov.bd', linkLabel: 'زيارة' },
+                            { text: 'إنتاج الفيديو (Human Development Media, a2i)', href: 'https://a2i.gov.bd', linkLabel: 'زيارة' },
+                            { text: 'أساسيات الأمن الرقمي (Digital Security Agency, a2i)', href: 'https://a2i.gov.bd', linkLabel: 'زيارة' },
+                            { text: 'ورشة ابتكار الأفكار لتطوير ألعاب وتطبيقات الجوال (ICT Division, Digital Bangladesh)', href: 'https://a2i.gov.bd', linkLabel: 'زيارة' }
+                        ]
+                    },
+                    activities: {
+                        title: 'الأنشطة اللامنهجية',
+                        items: [
+                            {
+                                title: 'العمل التطوعي',
+                                period: '7 يوليو 2014 - 12 ديسمبر 2015',
+                                items: [
+                                    { text: 'كان ممثل الصف لمدة عامين في Islamic University, Kushtia.', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'زيارة' },
+                                    { text: 'كان مديراً في Betikrom Shahitya Shangskritik Jote، IU.', iconClass: 'fas fa-masks-theater', href: 'https://web.facebook.com/betikrom87', linkLabel: 'زيارة' },
+                                    { text: 'عضو مركزي سابق في Bangladesh Islamic Chhatra Shibir', iconClass: 'fas fa-shield-halved', href: 'https://shibir.org.bd', linkLabel: 'زيارة' }
+                                ]
+                            },
+                            { title: 'الإنشاد', items: [{ text: 'قدم أناشيد أو أغاني في SATV وETV وChannel 9', iconClass: 'fas fa-music' }] },
+                            { title: 'التمثيل', period: '2018', items: [{ text: 'شارك في عمل درامي وحصل على المركز الثاني على المستوى الوطني.', iconClass: 'fas fa-film' }] },
+                            { title: 'الجوائز', period: '2012', items: [{ text: 'نال جائزة في إلقاء الشعر وحصل على المركز الثاني على المستوى الوطني.', iconClass: 'fas fa-award' }] }
+                        ]
+                    },
+                    hobbies: {
+                        title: 'الهوايات والاهتمامات',
+                        items: [
+                            ['fas fa-masks-theater', 'الوعي الثقافي (الإنشاد، التمثيل، كتابة الكلمات وغيرها).'],
+                            ['fas fa-lightbulb', 'تطوير الأفكار وتحسينها.'],
+                            ['fas fa-laptop-medical', 'مساعدة الآخرين من خلال الخبرة التقنية.']
+                        ]
+                    },
+                    expectation: {
+                        title: 'التوقعات من الزوجة',
+                        items: [
+                            { iconClass: 'fas fa-mosque', title: 'الالتزام الديني', text: 'مسلمة ملتزمة بالحجاب والنقاب، وتراعي أحكام المحارم.' },
+                            { iconClass: 'fas fa-user-shield', title: 'الخلق', text: 'متعلّمة ومتواضعة في السلوك.' },
+                            { iconClass: 'fas fa-house', title: 'الدور الأسري', text: 'مدركة لمسؤوليات الأسرة.' },
+                            { iconClass: 'fas fa-heart', title: 'نمط الحياة', text: 'تركز على الأسرة والحياة الإسلامية.' },
+                            { iconClass: 'fas fa-palette', title: 'لون البشرة المفضل', text: 'قمحي أو فاتح (بمرونة).' },
+                            { iconClass: 'fas fa-briefcase', title: 'المهنة', text: 'المهنة ليست شرطاً أساسياً؛ الأولوية لحياة أسرية ذات طابع إسلامي.' }
+                        ]
+                    },
+                    contact: {
+                        title: 'التواصل والموقع',
+                        mapButton: 'عرض على خرائط Google',
+                        permanentAddressValue: 'Uttar Sutalori, Jomaddar Para, Morrelganj, Bagerhat',
+                        blocks: [
+                            { iconClass: 'fas fa-user', label: 'الاسم', value: 'Md. Mahbubur Rahman' },
+                            { iconClass: 'fas fa-envelope', label: 'البريد الإلكتروني', value: 'bbdmahbub@gmail.com', href: 'mailto:bbdmahbub@gmail.com' },
+                            { iconClass: 'fab fa-whatsapp', label: 'واتساب', value: '+8801917267607', href: 'https://wa.me/8801917267607' },
+                            { iconClass: 'fas fa-home', label: 'العنوان الحالي', value: 'Hatir Jheel, Dhaka, Bangladesh' },
+                            { iconClass: 'fas fa-map-marker-alt', label: 'العنوان الدائم', value: 'Uttar Sutalori, Jomaddar Para, Morrelganj, Bagerhat', mapHref: permanentAddressMapHref }
+                        ]
+                    },
+                    dua: {
+                        title: 'كلمات ختامية ودعاء',
+                        meanings: [
+                            'ربنا هب لنا من أزواجنا وذرياتنا قرة أعين واجعلنا للمتقين إماماً.',
+                            'يا رب هب لي من الصالحين.',
+                            'ربنا آتنا من لدنك رحمة وهيئ لنا من أمرنا رشداً.'
+                        ],
+                        closing: 'آمين يا رب العالمين.'
+                    }
+                },
+                bn: {
+                    locale: 'bn',
+                    dir: 'ltr',
+                    meta: {
+                        title: 'বিয়ে বায়োডাটা - Md. Mahbubur Rahman',
+                        description: 'Md. Mahbubur Rahman-এর ব্যক্তিগত, পারিবারিক, শিক্ষাগত, পেশাগত ও যোগাযোগ তথ্যসহ বিয়ে বায়োডাটা।'
+                    },
+                    navigation: {
+                        quickJump: 'দ্রুত নেভিগেশন',
+                        sectionsAria: 'পেজ সেকশনসমূহ',
+                        languageSwitcherLabel: 'ভাষা সংস্করণ'
+                    },
+                    common: {
+                        visit: 'ভিজিট',
+                        lateBadge: 'মরহুম',
+                        latePrefix: 'মরহুম '
+                    },
+                    intro: {
+                        kicker: 'দোআ ও নির্দেশনা',
+                        title: 'দয়া করে দেখার আগে পড়ে নিন',
+                        duaMeaning: 'হে আমাদের রব, আমাদের স্ত্রী ও সন্তানদেরকে আমাদের চোখের শীতলতা দান করুন এবং আমাদেরকে মুত্তাকীদের জন্য আদর্শ বানান।',
+                        instructionsTitle: 'নির্দেশনা',
+                        instructions: [
+                            'সম্মান ও আন্তরিক নিয়ত নিয়ে পড়া শুরু করুন।',
+                            'প্রতিটি সেকশনে দ্রুত যেতে উপরের মেনু ব্যবহার করুন।',
+                            'এই বায়োডাটা উপযুক্ত মনে হলে শেয়ার করা তথ্যের মাধ্যমে যোগাযোগ করুন।',
+                            'দয়া করে এই প্রোফাইল দেখার সময় গোপনীয়তা বজায় রাখুন।'
+                        ]
+                    },
+                    voice: {
+                        tapToStart: 'বিসমিল্লাহ ভয়েস যাচাই শুরু করতে একবার মাইকে চাপ দিন।',
+                        browserNoSupport: 'এই ব্রাউজারে লাইভ স্পিচ রিকগনিশন নেই। নিচের বোতাম ব্যবহার করে বায়োডাটা খুলুন।',
+                        permissionBlocked: 'মাইক্রোফোন অনুমতি ব্লক করা আছে। ব্রাউজার সেটিংস থেকে অনুমতি দিয়ে আবার মাইকে চাপ দিন।',
+                        permissionRequired: 'ব্রাউজারের মাইক্রোফোন অনুমতি প্রয়োজন। পপআপ এলে Allow চাপুন।',
+                        permissionAllowed: 'মাইক্রোফোন অনুমতি পাওয়া গেছে। ভয়েস যাচাই শুরু করতে আবার মাইকে চাপ দিন।',
+                        permissionDenied: 'মাইক্রোফোন অনুমতি দেওয়া হয়নি। ব্রাউজার সেটিংস থেকে অনুমতি দিয়ে আবার চেষ্টা করুন।',
+                        noMicrophone: 'কোনো মাইক্রোফোন পাওয়া যায়নি। মাইক্রোফোন যুক্ত করে আবার চেষ্টা করুন।',
+                        permissionUnknown: 'মাইক্রোফোন অনুমতি নিশ্চিত করা যায়নি। আবার চেষ্টা করুন।',
+                        starting: 'মাইক্রোফোন চালু হচ্ছে। ব্রাউজার যদি অনুমতি চায় তাহলে Allow চাপুন।',
+                        listening: 'মাইক্রোফোন চালু আছে। একবার "বিসমিল্লাহ" বলুন এবং যাচাইয়ের জন্য অপেক্ষা করুন।',
+                        detected: (transcript) => `শোনা গেছে: "${transcript}"। বায়োডাটা খোলা হচ্ছে...`,
+                        heard: (transcript) => `শোনা গেছে: "${transcript}"। আবার মাইকে চাপ দিয়ে "বিসমিল্লাহ" বলুন।`,
+                        errors: {
+                            'not-allowed': 'মাইক্রোফোন ব্যবহারের অনুমতি ব্লক করা হয়েছে। অনুগ্রহ করে অনুমতি দিয়ে আবার চেষ্টা করুন।',
+                            'service-not-allowed': 'এই ব্রাউজারে স্পিচ রিকগনিশন সেবা ব্লক আছে। ব্রাউজার সাপোর্ট ও মাইক্রোফোন অনুমতি পরীক্ষা করুন।',
+                            aborted: 'ভয়েস রেকর্ডিং শুরুর আগেই বন্ধ হয়ে গেছে। আবার মাইকে চাপ দিন।',
+                            'audio-capture': 'কোনো মাইক্রোফোন পাওয়া যায়নি। মাইক্রোফোন যুক্ত করে আবার চেষ্টা করুন।',
+                            'no-speech': 'কোনো কথা ধরা পড়েনি। আবার মাইকে চাপ দিয়ে "বিসমিল্লাহ" বলুন।',
+                            'language-not-supported': 'এই ব্রাউজারে নির্বাচিত ভাষার স্পিচ রিকগনিশন সমর্থিত নয়।',
+                            network: 'ব্রাউজার স্পিচ সার্ভিসে পৌঁছাতে পারেনি। সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।'
+                        },
+                        defaultError: 'ভয়েস রিকগনিশন ঠিকভাবে শুরু হয়নি। পপআপ এলে Allow চাপুন এবং আবার চেষ্টা করুন।',
+                        timeout: 'শোনার সময় শেষ হয়েছে। আবার মাইকে চাপ দিয়ে "বিসমিল্লাহ" বলুন।',
+                        notVerified: '"বিসমিল্লাহ" যাচাই করা যায়নি। আবার মাইকে চাপ দিয়ে বলুন।',
+                        couldNotStart: 'এই মুহূর্তে মাইক্রোফোন চালু করা যায়নি। ব্রাউজার অনুমতি চাইলে Allow দিয়ে আবার চেষ্টা করুন।',
+                        supportNoSupport: 'এই ব্রাউজারে লাইভ স্পিচ রিকগনিশন নেই, তাই নিচে Continue বাটন দেখানো হচ্ছে।',
+                        supportPermission: 'এখন ব্রাউজারের একটি পপআপ দেখা উচিত। সেখানে মাইক্রোফোনের জন্য Allow চাপুন, তারপর আবার মাইকে চাপ দিন।',
+                        supportPreparing: 'মাইক্রোফোন চালু হচ্ছে। একটু অপেক্ষা করুন।',
+                        supportErrorDenied: 'ব্রাউজার সেটিংসে মাইক্রোফোন অনুমতি ব্লক আছে। এই সাইটের জন্য অনুমতি দিয়ে আবার মাইকে চাপ দিন।',
+                        supportErrorGeneral: 'যদি কোনো পপআপ না আসে, তাহলে সাইটের মাইক্রোফোন অনুমতি ও ব্রাউজারের স্পিচ রিকগনিশন সাপোর্ট পরীক্ষা করুন। চাইলে নিচের বোতাম দিয়ে ভয়েস ছাড়া এগোতে পারেন।',
+                        supportListening: 'রেকর্ডিং চলছে। একবার বলুন, তারপর যাচাইয়ের জন্য একটু অপেক্ষা করুন।',
+                        supportReady: 'মাইক্রোফোন অনুমতি প্রস্তুত। ভয়েস যাচাই শুরু করতে মাইকে চাপ দিন।',
+                        supportIdle: 'মাইকে চাপ দিন। ব্রাউজার পপআপ এলে Allow চাপুন।',
+                        micAriaPermission: 'মাইক্রোফোন অনুমতি চাওয়া হচ্ছে',
+                        micAriaRetry: 'ভয়েস রিকগনিশন আবার চেষ্টা করুন',
+                        micAriaStop: 'ভয়েস রিকগনিশন বন্ধ করুন',
+                        micAriaStart: 'ভয়েস রিকগনিশন শুরু করুন এবং বিসমিল্লাহ বলুন',
+                        continueWithoutVoice: 'ভয়েস ছাড়া এগিয়ে যান',
+                        continueInBrowser: 'এই ব্রাউজারেই এগিয়ে যান'
+                    },
+                    menu: {
+                        profile: 'প্রোফাইল',
+                        gallery: 'গ্যালারি',
+                        personal: 'ব্যক্তিগত',
+                        family: 'পরিবার',
+                        work: 'কাজ',
+                        lifestyle: 'জীবনধারা',
+                        language: 'ভাষা',
+                        education: 'শিক্ষা',
+                        training: 'প্রশিক্ষণ',
+                        activities: 'কার্যক্রম',
+                        hobbies: 'শখ',
+                        expectation: 'প্রত্যাশা',
+                        contact: 'যোগাযোগ',
+                        dua: 'দোআ'
+                    },
+                    profile: {
+                        name: 'Md Mahbubur Rahman',
+                        subtitle: 'আইটি পেশাজীবী',
+                        tagline: 'একজন দ্বীনদার মুসলিম, স্নেহশীল ও পরহেজগার জীবনসঙ্গী খুঁজছেন',
+                        stats: {
+                            age: '২৭ বছর',
+                            education: 'উচ্চশিক্ষিত',
+                            work: 'সুপ্রতিষ্ঠিত',
+                            faith: 'দ্বীনদার মুসলিম'
+                        }
+                    },
+                    gallery: {
+                        title: 'ছবি গ্যালারি',
+                        photos: [
+                            { src: 'assets/images/mahbub-portrait-1.jpg', alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ১', label: 'ছবি ০১', featured: true },
+                            { src: 'assets/images/mahbub-portrait-2.jpg', alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ২', label: 'ছবি ০২', featured: false }
+                        ]
+                    },
+                    sectionHeaders: {
+                        personal: 'ব্যক্তিগত তথ্য',
+                        family: 'পারিবারিক তথ্য',
+                        work: 'পেশাগত তথ্য'
+                    },
+                    personalDetails: [
+                        { label: 'পূর্ণ নাম', value: 'Md. Mahbubur Rahman', iconClass: 'fas fa-user' },
+                        { label: 'ডাকনাম', value: 'Nasir Uddin', iconClass: 'fas fa-signature' },
+                        { label: 'জন্ম তারিখ', value: '২০ ডিসেম্বর ১৯৯৭', iconClass: 'fas fa-calendar-days' },
+                        { label: 'বয়স', value: '২৭ বছর', iconClass: 'fas fa-hourglass-half' },
+                        { label: 'ধর্ম', value: 'ইসলাম (প্র্যাকটিসিং মুসলিম)', iconClass: 'fas fa-mosque' },
+                        { label: 'বৈবাহিক অবস্থা', value: 'অবিবাহিত', iconClass: 'fas fa-ring' },
+                        { label: 'গায়ের রং', value: 'মাঝারি শ্যামলা', iconClass: 'fas fa-palette' },
+                        { label: 'উচ্চতা ও ওজন', value: 'প্রায় ৫\' ৩" ও ৭২ কেজি', iconClass: 'fas fa-ruler-combined' },
+                        { label: 'রক্তের গ্রুপ', value: 'A+', iconClass: 'fas fa-droplet' },
+                        { label: 'স্বাস্থ্য অবস্থা', value: 'সুস্থ, ধূমপানমুক্ত, কোনো নেশা নেই', iconClass: 'fas fa-heart-pulse' }
+                    ],
+                    familyDetails: [
+                        ['পিতা', 'মরহুম Abdul Kader Howlader (গ্রাম্য ডাক্তার ও প্রাথমিক শিক্ষক)'],
+                        ['মাতা', 'Farida Begum - গৃহিণী'],
+                        ['ভাইবোন', '৪ ভাই ও ৩ বোন'],
+                        ['স্থায়ী ঠিকানা', 'Uttar Sutalori, Jomaddar Para, Morrelganj, Bagerhat'],
+                        ['জেলা', 'Bagerhat']
+                    ],
+                    familySummary: {
+                        label: 'পারিবারিক পটভূমি',
+                        title: 'শিক্ষা ও ধর্মীয় মূল্যবোধে গড়া একটি সম্মানিত মধ্যবিত্ত পরিবার।',
+                        tags: ['সম্মানিত', 'মধ্যবিত্ত', 'শিক্ষিত', 'ধর্মীয়']
+                    },
+                    familySiblingsTitle: 'ভাইবোনের বিস্তারিত',
+                    familySiblings: [
+                        ['১ম বোন', 'Shahanaj Shanti, ৪ সন্তানের জননী, গৃহিণী। Morrelganj।'],
+                        ['২য় ভাই', 'Alauddin, আগে UAE-তে কর্মরত ছিলেন, বর্তমানে ব্যবসা (Dhaka)। ২ সন্তান। Morrelganj।'],
+                        ['৩য় ভাই', 'Giash Uddin, Driver, Bananja PCL, Chattagram, BD Navy। ২ সন্তান। Morrelganj।'],
+                        ['৪র্থ বোন', 'Zerin Salma Beby, ৩ সন্তানের জননী, গৃহিণী। Morrelganj।'],
+                        ['৫ম ভাই', 'Mohiuddin, Driver, Doctor Couple\'s, Chattagram। ৪ সন্তান। Chattagram।'],
+                        ['৬ষ্ঠ বোন', 'Nazma Sultana, ২ সন্তানের জননী, গৃহিণী। Khulna।'],
+                        ['৭ম', 'সবার ছোট ছেলে, নিজে।']
+                    ],
+                    siblingStatusData: {
+                        '১ম বোন': { text: 'বিবাহিত', className: 'married' },
+                        '২য় ভাই': { text: 'বিবাহিত', className: 'married' },
+                        '৩য় ভাই': { text: 'বিবাহিত', className: 'married' },
+                        '৪র্থ বোন': { text: 'বিবাহিত', className: 'married' },
+                        '৫ম ভাই': { text: 'বিবাহিত', className: 'married' },
+                        '৬ষ্ঠ বোন': { text: 'বিবাহিত', className: 'married' },
+                        '৭ম': { text: 'অবিবাহিত', className: 'unmarried' }
+                    },
+                    workSection: {
+                        items: [
+                            { title: 'প্রকিউরমেন্ট ও সার্ভিসিং লিড', organization: 'Earthface IT, Dhaka', duration: '২৭ নভেম্বর ২০২১ - বর্তমান', iconClass: 'fas fa-briefcase' },
+                            { title: 'আইটি সাপোর্ট অ্যাসিস্ট্যান্ট (খণ্ডকালীন)', organization: 'Dept. of Arabic Language and Literature, IU, Kushtia', duration: '২৩ মার্চ ২০১৭ - ২০ অক্টোবর ২০২১', iconClass: 'fas fa-headset' },
+                            { title: 'আইটি এক্সিকিউটিভ (খণ্ডকালীন)', organization: 'Khondokar Telecom, Gazipur', duration: '৭ জুলাই ২০১৪ - ১২ ডিসেম্বর ২০১৫', iconClass: 'fas fa-desktop' }
+                        ]
+                    },
+                    lifestyle: {
+                        title: 'ব্যক্তিত্ব ও জীবনধারা',
+                        items: [
+                            { label: 'চরিত্র', value: 'নম্র, ধর্মপরায়ণ, বিশ্বস্ত', iconClass: 'fas fa-user-shield' },
+                            { label: 'ভবিষ্যৎ লক্ষ্য', value: 'দ্বীন ও পারস্পরিক সম্মানের ভিত্তিতে পরিবার গঠন', iconClass: 'fas fa-bullseye' },
+                            { label: 'আগ্রহ', value: 'ইসলামিক লেকচার, পড়াশোনা, ভ্রমণ, প্রযুক্তি শেখা', iconClass: 'fas fa-book-open' },
+                            { label: 'খাদ্যাভ্যাস', value: 'ঘরে তৈরি হালাল খাবার পছন্দ', iconClass: 'fas fa-utensils' },
+                            { label: 'অতিরিক্ত', value: 'সময়নিষ্ঠ, স্বভাবে সংযত, সামাজিকভাবে ভদ্র', iconClass: 'fas fa-check-double' }
+                        ]
+                    },
+                    languages: {
+                        title: 'ভাষাগত দক্ষতা',
+                        proficiencyAria: (title) => `${title} ভাষার দক্ষতা`,
+                        items: [
+                            { title: 'ইংরেজি', level: 'ভালো', percent: 66.66 },
+                            { title: 'আরবি', level: 'ভালো', percent: 66.66 },
+                            { title: 'বাংলা', level: 'চমৎকার', percent: 100 }
+                        ]
+                    },
+                    education: {
+                        title: 'শিক্ষাগত তথ্য',
+                        items: [
+                            { title: 'এম.এ. (আরবি ভাষা ও সাহিত্য)', institution: 'Islamic University, Kushtia', institutionHref: 'https://iu.ac.bd', scoreLabel: 'CGPA', score: '3.58/4', session: '2022' },
+                            { title: 'বি.এ. অনার্স (আরবি ভাষা ও সাহিত্য)', institution: 'Islamic University, Kushtia', institutionHref: 'https://iu.ac.bd', scoreLabel: 'CGPA', score: '3.58/4', session: '2020' },
+                            { title: 'আলিম (এইচএসসি)', institution: 'Ta\'mirul Millat Kamil Madrasah, Tongi, Gazipur', institutionHref: 'https://www.tmt.edu.bd', scoreLabel: 'GPA', score: '5.00/5', session: '2014' },
+                            { title: 'দাখিল (এসএসসি)', institution: 'Ta\'limul Millat Rahmatial Kamil Madrasah, Sonadanga, Khulna', scoreLabel: 'GPA', score: '5.00/5', session: '2012' }
+                        ]
+                    },
+                    training: {
+                        title: 'প্রশিক্ষণ ও উন্নয়ন',
+                        items: [
+                            { text: 'Corporate Management Bootcamp - 2023 (10 Days, BYLC, Bangladesh.)', href: 'https://bylc.org', linkLabel: 'ভিজিট' },
+                            { text: 'Professional Digital Content Management (PDCM), (3 Months, SEIP, Finance Ministry of BD)', href: 'https://lms.seip-fd.gov.bd', linkLabel: 'ভিজিট' },
+                            { text: 'Web Design & Development (200 Hours, LEDP, ICT Division of Bangladesh.)', href: 'https://ictd.gov.bd', linkLabel: 'ভিজিট' },
+                            { text: 'Computer & Its Applications (1 Year, Islamic University, Kushtia)', href: 'https://iu.ac.bd', linkLabel: 'ভিজিট' },
+                            { text: 'Troubleshooting in Computer Security (ICT Division, a2i).', href: 'https://a2i.gov.bd', linkLabel: 'ভিজিট' },
+                            { text: 'Microsoft Word Basics (a2i, Muktapath).', href: 'https://a2i.gov.bd', linkLabel: 'ভিজিট' },
+                            { text: 'Video Production (Human Development Media, a2i)', href: 'https://a2i.gov.bd', linkLabel: 'ভিজিট' },
+                            { text: 'Digital Security Essentials (Digital Security Agency, a2i).', href: 'https://a2i.gov.bd', linkLabel: 'ভিজিট' },
+                            { text: 'Idea Innovation Workshop for Mobile Games & Apps Development (ICT Division, Digital Bangladesh.)', href: 'https://a2i.gov.bd', linkLabel: 'ভিজিট' }
+                        ]
+                    },
+                    activities: {
+                        title: 'সহশিক্ষা কার্যক্রম',
+                        items: [
+                            {
+                                title: 'স্বেচ্ছাসেবামূলক কাজ',
+                                period: '৭ জুলাই ২০১৪ - ১২ ডিসেম্বর ২০১৫',
+                                items: [
+                                    { text: 'Islamic University, Kushtia-তে ২ বছর ক্লাস সিআর ছিলেন।', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'ভিজিট' },
+                                    { text: 'Betikrom Shahitya Shangskritik Jote, IU-এর সাবেক পরিচালক।', iconClass: 'fas fa-masks-theater', href: 'https://web.facebook.com/betikrom87', linkLabel: 'ভিজিট' },
+                                    { text: 'Bangladesh Islamic Chhatra Shibir-এর সাবেক কেন্দ্রীয় সদস্য।', iconClass: 'fas fa-shield-halved', href: 'https://shibir.org.bd', linkLabel: 'ভিজিট' }
+                                ]
+                            },
+                            { title: 'গান', items: [{ text: 'SATV, ETV, Channel 9-এ গান পরিবেশন করেছেন', iconClass: 'fas fa-music' }] },
+                            { title: 'অভিনয়', period: '2018', items: [{ text: 'একটি নাটকে অভিনয় করেছেন এবং জাতীয় পর্যায়ে ২য় হয়েছেন।', iconClass: 'fas fa-film' }] },
+                            { title: 'পুরস্কার', period: '2012', items: [{ text: 'কবিতা আবৃত্তিতে জাতীয় পর্যায়ে ২য় স্থান অর্জন করেছেন।', iconClass: 'fas fa-award' }] }
+                        ]
+                    },
+                    hobbies: {
+                        title: 'শখ ও আগ্রহ',
+                        items: [
+                            ['fas fa-masks-theater', 'সাংস্কৃতিক সচেতনতা (গান, অভিনয়, গীতরচনা ইত্যাদি)।'],
+                            ['fas fa-lightbulb', 'আইডিয়া উন্নয়ন ও অপ্টিমাইজেশন।'],
+                            ['fas fa-laptop-medical', 'প্রযুক্তিগত দক্ষতা দিয়ে অন্যকে সহায়তা করা।']
+                        ]
+                    },
+                    expectation: {
+                        title: 'পাত্রীর কাছে প্রত্যাশা',
+                        items: [
+                            { iconClass: 'fas fa-mosque', title: 'ধর্মীয় অনুশীলন', text: 'হিজাব ও নিকাব পালনকারী, মাহরাম-নন মাহরাম সম্পর্কে সচেতন একজন প্র্যাকটিসিং মুসলিমাহ।' },
+                            { iconClass: 'fas fa-user-shield', title: 'চরিত্র', text: 'শিক্ষিত ও আচার-আচরণে মার্জিত।' },
+                            { iconClass: 'fas fa-house', title: 'পারিবারিক ভূমিকা', text: 'পারিবারিক দায়িত্ব সম্পর্কে সচেতন।' },
+                            { iconClass: 'fas fa-heart', title: 'জীবনধারা', text: 'পরিবার ও ইসলামিক জীবনধারায় মনোযোগী।' },
+                            { iconClass: 'fas fa-palette', title: 'পছন্দের গায়ের রং', text: 'মাঝারি/ফর্সা (নমনীয়)।' },
+                            { iconClass: 'fas fa-briefcase', title: 'পেশা', text: 'পেশা বাধ্যতামূলক নয়; পরিবারমুখী ইসলামিক জীবনধারাকে অগ্রাধিকার দেওয়া হবে।' }
+                        ]
+                    },
+                    contact: {
+                        title: 'যোগাযোগ ও অবস্থান',
+                        mapButton: 'Google Maps-এ দেখুন',
+                        permanentAddressValue: 'Uttar Sutalori, Jomaddar Para, Morrelganj, Bagerhat',
+                        blocks: [
+                            { iconClass: 'fas fa-user', label: 'নাম', value: 'Md. Mahbubur Rahman' },
+                            { iconClass: 'fas fa-envelope', label: 'ইমেইল', value: 'bbdmahbub@gmail.com', href: 'mailto:bbdmahbub@gmail.com' },
+                            { iconClass: 'fab fa-whatsapp', label: 'হোয়াটসঅ্যাপ', value: '+8801917267607', href: 'https://wa.me/8801917267607' },
+                            { iconClass: 'fas fa-home', label: 'বর্তমান ঠিকানা', value: 'Hatir Jheel, Dhaka, Bangladesh' },
+                            { iconClass: 'fas fa-map-marker-alt', label: 'স্থায়ী ঠিকানা', value: 'Uttar Sutalori, Jomaddar Para, Morrelganj, Bagerhat', mapHref: permanentAddressMapHref }
+                        ]
+                    },
+                    dua: {
+                        title: 'শেষ কথা ও দোআ',
+                        meanings: [
+                            'হে আমাদের রব, আমাদের স্ত্রী ও সন্তানদেরকে আমাদের চোখের শীতলতা দান করুন এবং আমাদেরকে মুত্তাকীদের জন্য আদর্শ বানান।',
+                            'হে রব, আমাকে নেককারদের একজন দান করুন।',
+                            'হে আমাদের রব, আপনি আমাদেরকে আপনার পক্ষ থেকে রহমত দিন এবং আমাদের কাজের জন্য সঠিক পথ নির্ধারণ করে দিন।'
+                        ],
+                        closing: 'আমীন ইয়া রব্বাল আলামিন।'
+                    }
+                }
+            };
+            const hasSpeechRecognitionSupport = typeof window !== 'undefined'
+                && (typeof window.SpeechRecognition === 'function' || typeof window.webkitSpeechRecognition === 'function');
+            const getInitialLanguage = () => {
+                try {
+                    const storedLanguage = window.localStorage.getItem('bbdMahbubLanguage');
+                    if (storedLanguage && translations[storedLanguage]) {
+                        return storedLanguage;
+                    }
+                } catch (error) {
+                    // Ignore storage failures and fall back to browser language.
+                }
+
+                const browserLanguage = (navigator.language || '').toLowerCase();
+                if (browserLanguage.startsWith('ar')) return 'ar';
+                if (browserLanguage.startsWith('bn')) return 'bn';
+                return 'en';
+            };
+            const hasStoredVoiceVerification = () => {
+                try {
+                    return window.localStorage.getItem(voiceVerificationStorageKey) === 'true';
+                } catch (error) {
+                    return false;
+                }
+            };
+            const [language, setLanguage] = React.useState(getInitialLanguage);
+            const copy = translations[language] || translations.en;
+            const isRtl = copy.dir === 'rtl';
+            const introVoiceHint = hasSpeechRecognitionSupport
+                ? copy.voice.tapToStart
+                : copy.voice.browserNoSupport;
 
             const sectionIcons = {
                 personal: iconProfile,
@@ -54,27 +862,27 @@ const BioDataComponent = () => {
             };
 
             const menuItems = [
-                ["profile-top", "Profile"],
-                ["gallery-section", "Gallery"],
-                ["personal-section", "Personal"],
-                ["family-section", "Family"],
-                ["work-section", "Work"],
-                ["lifestyle-section", "Lifestyle"],
-                ["language-section", "Language"],
-                ["education-section", "Education"],
-                ["training-section", "Training"],
-                ["activities-section", "Activities"],
-                ["hobbies-section", "Hobbies"],
-                ["expectation-section", "Expectation"],
-                ["contact-section", "Contact"],
-                ["dua-section", "Dua"]
+                ['profile-top', copy.menu.profile],
+                ['gallery-section', copy.menu.gallery],
+                ['personal-section', copy.menu.personal],
+                ['family-section', copy.menu.family],
+                ['work-section', copy.menu.work],
+                ['lifestyle-section', copy.menu.lifestyle],
+                ['language-section', copy.menu.language],
+                ['education-section', copy.menu.education],
+                ['training-section', copy.menu.training],
+                ['activities-section', copy.menu.activities],
+                ['hobbies-section', copy.menu.hobbies],
+                ['expectation-section', copy.menu.expectation],
+                ['contact-section', copy.menu.contact],
+                ['dua-section', copy.menu.dua]
             ];
 
             const [activeSection, setActiveSection] = React.useState(() => {
                 const hashId = window.location.hash.replace('#', '');
                 return menuItems.some(([id]) => id === hashId) ? hashId : menuItems[0][0];
             });
-            const [isIntroPopupOpen, setIsIntroPopupOpen] = React.useState(true);
+            const [isIntroPopupOpen, setIsIntroPopupOpen] = React.useState(() => !hasStoredVoiceVerification());
             const [isVoiceListening, setIsVoiceListening] = React.useState(false);
             const [voiceUiState, setVoiceUiState] = React.useState('idle');
             const [microphonePermissionState, setMicrophonePermissionState] = React.useState('unknown');
@@ -95,239 +903,52 @@ const BioDataComponent = () => {
             });
             const suppressMenuClickRef = React.useRef(false);
             const menuClickResetTimeoutRef = React.useRef(null);
-            
+            const hasBootstrappedSavedVerificationRef = React.useRef(false);
+
             const detailGroups = {
-                personal: [
-                    { label: "Full Name", value: "Md. Mahbubur Rahman", iconClass: "fas fa-user" },
-                    { label: "Nickname", value: "Nasir Uddin", iconClass: "fas fa-signature" },
-                    { label: "Date of Birth", value: "20 December 1997", iconClass: "fas fa-calendar-days" },
-                    { label: "Age", value: "27 Years", iconClass: "fas fa-hourglass-half" },
-                    { label: "Religion", value: "Islam (Practicing Muslim)", iconClass: "fas fa-mosque" },
-                    { label: "Marital Status", value: "Unmarried", iconClass: "fas fa-ring" },
-                    { label: "Complexion", value: "Medium Dark", iconClass: "fas fa-palette" },
-                    { label: "Height & Weight", value: "About 5' 3\" & 72 KGs", iconClass: "fas fa-ruler-combined" },
-                    { label: "Blood Group", value: "A+", iconClass: "fas fa-droplet" },
-                    { label: "Health Status", value: "Healthy, non-smoker, no addiction", iconClass: "fas fa-heart-pulse" },
-                ],
-                family: [
-                    ["Father", "Late Abdul Kader Howlader (Village Doctor and Primary Teacher)"],
-                    ["Mother", "Farida Begum - Housewife"],
-                    ["Siblings", "4 Brothers and 3 Sisters"],
-                    ["Permanent Address", "Uttar Sutalori, Jomaddar Para, Morrelganj, Bagerhat"],
-                    ["District", "Bagerhat"],
-                ],
-                work: [
-                    ["Procurement & Servicing Lead", "Earthface IT, Dhaka | 27 Nov 2021 - Present"],
-                    ["IT Support Assistant (Part-time)", "Dept. of Arabic Language and Literature, IU, Kushtia | 23 Mar 2017 - 20 Oct 2021"],
-                    ["IT Executive (Part-time)", "Khondokar Telecom, Gazipur | 7 Jul 2014 - 12 Dec 2015"],
-                ]
+                personal: copy.personalDetails,
+                family: copy.familyDetails,
+                work: copy.workSection.items
             };
+            const workData = copy.workSection.items;
+            const galleryPhotos = copy.gallery.photos;
+            const languageData = copy.languages.items;
+            const educationData = copy.education.items;
+            const familySiblings = copy.familySiblings;
+            const siblingStatusData = copy.siblingStatusData;
+            const activityData = copy.activities.items;
+            const hobbiesData = copy.hobbies.items;
+            const lifestyleData = copy.lifestyle.items;
+            const trainingItems = copy.training.items;
+            const expectationItems = copy.expectation.items;
+            const contactBlocks = copy.contact.blocks;
+            const permanentAddressValue = copy.contact.permanentAddressValue;
+            const voiceCopy = copy.voice;
 
-            const workData = [
-                {
-                    title: "Procurement & Servicing Lead",
-                    organization: "Earthface IT, Dhaka",
-                    duration: "27 Nov 2021 - Present",
-                    iconClass: "fas fa-briefcase"
-                },
-                {
-                    title: "IT Support Assistant (Part-time)",
-                    organization: "Dept. of Arabic Language and Literature, IU, Kushtia",
-                    duration: "23 Mar 2017 - 20 Oct 2021",
-                    iconClass: "fas fa-headset"
-                },
-                {
-                    title: "IT Executive (Part-time)",
-                    organization: "Khondokar Telecom, Gazipur",
-                    duration: "7 Jul 2014 - 12 Dec 2015",
-                    iconClass: "fas fa-desktop"
-                }
-            ];
-
-            const galleryPhotos = [
-                {
-                    src: "assets/images/mahbub-portrait-1.jpg",
-                    alt: "Md Mahbubur Rahman portrait 1",
-                    label: "Portrait 01",
-                    featured: true
-                },
-                {
-                    src: "assets/images/mahbub-portrait-2.jpg",
-                    alt: "Md Mahbubur Rahman portrait 2",
-                    label: "Portrait 02",
-                    featured: false
-                }
-            ];
-
-            const languageData = [
-                {
-                    title: "English",
-                    level: "Good",
-                    percent: 66.66
-                },
-                {
-                    title: "Arabic",
-                    level: "Good",
-                    percent: 66.66
-                },
-                {
-                    title: "Bangla",
-                    level: "Excellent",
-                    percent: 100
-                }
-            ];
-
-            const educationData = [
-                {
-                    title: "M.A. (Arabic Language & Literature)",
-                    institution: "Islamic University, Kushtia",
-                    institutionHref: "https://iu.ac.bd",
-                    scoreLabel: "CGPA",
-                    score: "3.58/4",
-                    session: "2022"
-                },
-                {
-                    title: "B.A. Honors (Arabic Language & Literature)",
-                    institution: "Islamic University, Kushtia",
-                    institutionHref: "https://iu.ac.bd",
-                    scoreLabel: "CGPA",
-                    score: "3.58/4",
-                    session: "2020"
-                },
-                {
-                    title: "Alim (HSC)",
-                    institution: "Ta'mirul Millat Kamil Madrasah, Tongi, Gazipur",
-                    institutionHref: "https://www.tmt.edu.bd",
-                    scoreLabel: "GPA",
-                    score: "5.00/5",
-                    session: "2014"
-                },
-                {
-                    title: "Dakhil (SSC)",
-                    institution: "Ta'limul Millat Rahmatial Kamil Madrasah, Sonadanga, Khulna",
-                    scoreLabel: "GPA",
-                    score: "5.00/5",
-                    session: "2012"
-                },
-            ];
-
-            const familySiblings = [
-                ["1st Sister", "Shahanaj Shanti, Housewife with 4 Children. Morrelganj."],
-                ["2nd Brother", "Alauddin, was a worker in UAE, Business (Dhaka). 2 Children. Morrelganj."],
-                ["3rd Brother", "Giash Uddin, Driver, Bananja PCL, Chattagram, BD Navy. 2 Children, Morrelganj."],
-                ["4th Sister", "Zerin Salma Beby, Housewife with 3 children. Morrelganj."],
-                ["5th Brother", "Mohiuddin, Driver, Doctor Couple's, Chattagram. 4 Children, Chattagram."],
-                ["6th Sister", "Nazma Sultana, Housewife with 2 children. Khulna."],
-                ["7th", "Youngest son, self."]
-            ];
-
-            const siblingStatusData = {
-                "1st Sister": { text: "Married", className: "married" },
-                "2nd Brother": { text: "Married", className: "married" },
-                "3rd Brother": { text: "Married", className: "married" },
-                "4th Sister": { text: "Married", className: "married" },
-                "5th Brother": { text: "Married", className: "married" },
-                "6th Sister": { text: "Married", className: "married" },
-                "7th": { text: "Unmarried", className: "unmarried" }
-            };
-
-            const activityData = [
-                {
-                    title: "Volunteering",
-                    period: "7th July 2014 - 12th Dec 2015",
-                    items: [
-                        {
-                            text: "Former CR of the class for 2 years, Islamic University, Kushtia.",
-                            iconClass: "fas fa-users",
-                            href: "https://iu.ac.bd",
-                            linkLabel: "Visit"
-                        },
-                        {
-                            text: "Former Director of Betikrom Shahitya Shangskritik Jote, IU.",
-                            iconClass: "fas fa-masks-theater",
-                            href: "https://web.facebook.com/betikrom87",
-                            linkLabel: "Visit"
-                        },
-                        {
-                            text: "Former Central Member of Bangladesh Islamic Chhatra Shibir",
-                            iconClass: "fas fa-shield-halved",
-                            href: "https://shibir.org.bd",
-                            linkLabel: "Visit"
-                        }
-                    ]
-                },
-                {
-                    title: "Singing",
-                    items: [
-                        {
-                            text: "Performed song on SATV, ETV, Channel 9",
-                            iconClass: "fas fa-music"
-                        }
-                    ]
-                },
-                {
-                    title: "Acting",
-                    period: "2018",
-                    items: [
-                        {
-                            text: "Acted in a drama, was placed 2nd Nationally.",
-                            iconClass: "fas fa-film"
-                        }
-                    ]
-                },
-                {
-                    title: "Award",
-                    period: "2012",
-                    items: [
-                        {
-                            text: "Awarded on Poetry Recitation Placed 2nd Nationally",
-                            iconClass: "fas fa-award"
-                        }
-                    ]
-                }
-            ];
-
-            const hobbiesData = [
-                ["fas fa-masks-theater", "Cultural Awareness (Singing, Acting, Lyrics etc.)"],
-                ["fas fa-lightbulb", "Optimizing Idea."],
-                ["fas fa-laptop-medical", "Helping others as a tech savvy."]
-            ];
-
-            const lifestyleData = [
-                { label: "Character", value: "Humble, Religious, Trustworthy", iconClass: "fas fa-user-shield" },
-                { label: "Future Goal", value: "Build a family based on Deen and mutual respect", iconClass: "fas fa-bullseye" },
-                { label: "Interests", value: "Islamic lectures, reading, travelling, learning technology", iconClass: "fas fa-book-open" },
-                { label: "Food Habit", value: "Prefers home-made halal food", iconClass: "fas fa-utensils" },
-                { label: "Additional", value: "Punctual, reserved by nature, socially well-behaved", iconClass: "fas fa-check-double" }
-            ];
-
-            const permanentAddressValue = "Uttar Sutalori, Jomaddar Para, Morrelganj, Bagerhat";
-            const permanentAddressMapHref = "https://maps.app.goo.gl/hvcHqxMvhF9cGFbM6";
-
-            const renderDetailValue = (label, value) => {
-                if (label === 'Permanent Address' && typeof value === 'string' && value === permanentAddressValue) {
+            const renderDetailValue = (value) => {
+                if (typeof value === 'string' && value === permanentAddressValue) {
                     return (
                         <>
                             {value}
                             <div className="address-actions">
                                 <a className="map-link-button" href={permanentAddressMapHref} target="_blank" rel="noreferrer">
                                     <i className="fas fa-location-arrow" aria-hidden="true"></i>
-                                    View on Google Maps
+                                    {copy.contact.mapButton}
                                 </a>
                             </div>
                         </>
                     );
                 }
 
-                if (typeof value !== 'string' || !value.startsWith('Late ')) {
+                if (typeof value !== 'string' || !value.startsWith(copy.common.latePrefix)) {
                     return value;
                 }
 
                 return (
                     <>
-                        <span className="detail-inline-badge late-inline-badge">Late</span>
+                        <span className="detail-inline-badge late-inline-badge">{copy.common.lateBadge}</span>
                         {' '}
-                        {value.slice(5)}
+                        {value.slice(copy.common.latePrefix.length)}
                     </>
                 );
             };
@@ -349,13 +970,64 @@ const BioDataComponent = () => {
             React.useEffect(() => {
                 centerMenuLink(activeSection, hasCenteredMenuRef.current ? 'smooth' : 'auto');
                 hasCenteredMenuRef.current = true;
-            }, [activeSection]);
+            }, [activeSection, language]);
 
             React.useEffect(() => () => {
                 if (menuClickResetTimeoutRef.current) {
                     window.clearTimeout(menuClickResetTimeoutRef.current);
                 }
             }, []);
+
+            React.useEffect(() => {
+                if (hasBootstrappedSavedVerificationRef.current) return;
+
+                hasBootstrappedSavedVerificationRef.current = true;
+
+                if (!isIntroPopupOpen) {
+                    document.body.classList.add('has-entered-biodata');
+                    window.dispatchEvent(new Event('bbdMahbub:enter-biodata'));
+                }
+            }, [isIntroPopupOpen]);
+
+            React.useEffect(() => {
+                const selectedCopy = translations[language] || translations.en;
+
+                try {
+                    window.localStorage.setItem('bbdMahbubLanguage', language);
+                } catch (error) {
+                    // Ignore storage failures and keep language switching functional.
+                }
+
+                document.documentElement.lang = selectedCopy.locale;
+                document.documentElement.dir = selectedCopy.dir;
+                document.body.classList.toggle('is-rtl-language', isRtl);
+                document.title = selectedCopy.meta.title;
+
+                const updateMetaContent = (selector, value) => {
+                    const element = document.querySelector(selector);
+                    if (element) {
+                        element.setAttribute('content', value);
+                    }
+                };
+
+                updateMetaContent('meta[name="description"]', selectedCopy.meta.description);
+                updateMetaContent('meta[property="og:title"]', selectedCopy.meta.title);
+                updateMetaContent('meta[property="og:description"]', selectedCopy.meta.description);
+                updateMetaContent('meta[name="twitter:title"]', selectedCopy.meta.title);
+                updateMetaContent('meta[name="twitter:description"]', selectedCopy.meta.description);
+
+                window.dispatchEvent(new CustomEvent('bbdMahbub:languagechange', {
+                    detail: {
+                        language,
+                        dir: selectedCopy.dir
+                    }
+                }));
+            }, [isRtl, language]);
+
+            React.useEffect(() => {
+                if (isVoiceListening || speechRecognitionRef.current) return;
+                setVoicePrompt(introVoiceHint);
+            }, [introVoiceHint, isVoiceListening]);
 
             React.useEffect(() => {
                 let ticking = false;
@@ -573,6 +1245,11 @@ const BioDataComponent = () => {
                 voiceStopReasonRef.current = 'matched';
                 setIsVoiceListening(false);
                 setVoiceUiState('idle');
+                try {
+                    window.localStorage.setItem(voiceVerificationStorageKey, 'true');
+                } catch (error) {
+                    // Ignore storage failures and keep the access flow working.
+                }
                 document.body.classList.add('has-entered-biodata');
                 setIsIntroPopupOpen(false);
                 window.dispatchEvent(new Event('bbdMahbub:enter-biodata'));
@@ -664,29 +1341,29 @@ const BioDataComponent = () => {
 
                 if (microphonePermissionState === 'denied') {
                     setVoiceUiState('error');
-                    setVoicePrompt('Microphone permission is blocked. Allow it in your browser settings, then tap the mic again.');
+                    setVoicePrompt(voiceCopy.permissionBlocked);
                     return false;
                 }
 
                 setVoiceUiState('permission');
-                setVoicePrompt('Browser microphone permission is required. Tap Allow in the popup.');
+                setVoicePrompt(voiceCopy.permissionRequired);
 
                 try {
                     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
                     stream.getTracks().forEach((track) => track.stop());
                     setMicrophonePermissionState('granted');
                     setVoiceUiState('idle');
-                    setVoicePrompt('Microphone permission allowed. Tap the mic once more to start voice verification.');
+                    setVoicePrompt(voiceCopy.permissionAllowed);
                 } catch (error) {
                     setVoiceUiState('error');
 
                     if (error && (error.name === 'NotAllowedError' || error.name === 'SecurityError')) {
                         setMicrophonePermissionState('denied');
-                        setVoicePrompt('Microphone permission was denied. Allow it in browser settings, then tap the mic again.');
+                        setVoicePrompt(voiceCopy.permissionDenied);
                     } else if (error && error.name === 'NotFoundError') {
-                        setVoicePrompt('No microphone was found. Connect a microphone and try again.');
+                        setVoicePrompt(voiceCopy.noMicrophone);
                     } else {
-                        setVoicePrompt('Microphone permission could not be confirmed. Please try again.');
+                        setVoicePrompt(voiceCopy.permissionUnknown);
                     }
                 }
 
@@ -698,8 +1375,8 @@ const BioDataComponent = () => {
                 const SpeechRecognition = StandardSpeechRecognition || window.webkitSpeechRecognition;
 
                 if (!SpeechRecognition) {
-                    setVoiceUiState('error');
-                    setVoicePrompt('This browser does not provide web speech recognition for this site. Check browser support or use a supported browser/device.');
+                    setVoiceUiState('idle');
+                    setVoicePrompt(voiceCopy.browserNoSupport);
                     return;
                 }
 
@@ -707,7 +1384,7 @@ const BioDataComponent = () => {
 
                 isPreparingVoiceRef.current = true;
                 setVoiceUiState('preparing');
-                setVoicePrompt('Starting microphone. If your browser asks, tap Allow microphone permission.');
+                setVoicePrompt(voiceCopy.starting);
 
                 const recognition = new SpeechRecognition();
                 const recognitionLang = getPreferredRecognitionLangs()[0];
@@ -727,7 +1404,7 @@ const BioDataComponent = () => {
                     isPreparingVoiceRef.current = false;
                     setIsVoiceListening(true);
                     setVoiceUiState('listening');
-                    setVoicePrompt('Microphone is active. Say "Bismillah" once and wait for verification.');
+                    setVoicePrompt(voiceCopy.listening);
                     recognitionTimerRef.current = window.setTimeout(() => {
                         if (speechRecognitionRef.current !== recognition || voiceMatchedRef.current) {
                             return;
@@ -759,14 +1436,14 @@ const BioDataComponent = () => {
                     if (matchedBismillah) {
                         voiceMatchedRef.current = true;
                         voiceStopReasonRef.current = 'matched';
-                        setVoicePrompt(`Detected: "${transcript.trim()}". Opening biodata...`);
+                        setVoicePrompt(voiceCopy.detected(transcript.trim()));
                         window.setTimeout(() => {
                             handleEnterBiodata();
                         }, 320);
                         return;
                     }
 
-                    setVoicePrompt(`Heard: "${transcript.trim()}". Tap the mic and say "Bismillah" again.`);
+                    setVoicePrompt(voiceCopy.heard(transcript.trim()));
                 };
 
                 recognition.onerror = (event) => {
@@ -775,17 +1452,7 @@ const BioDataComponent = () => {
                     voiceStopReasonRef.current = 'error';
                     setIsVoiceListening(false);
                     setVoiceUiState('error');
-                    const errorMessages = {
-                        'not-allowed': 'Microphone access was blocked. Please allow microphone permission and try again.',
-                        'service-not-allowed': 'Speech recognition is blocked on this browser. Check browser support and microphone permission, then try again.',
-                        'aborted': 'Voice recording stopped before it could start. Tap the mic again.',
-                        'audio-capture': 'No microphone was found. Connect a microphone and try again.',
-                        'no-speech': 'No speech was detected. Tap the mic again and say "Bismillah".',
-                        'language-not-supported': 'This browser does not support the selected speech language for web speech recognition.',
-                        'network': 'Your browser could not reach its speech service. Please check your connection and browser settings, then try again.'
-                    };
-
-                    setVoicePrompt(errorMessages[event.error] || 'Voice recognition did not start properly. If a browser popup appears, tap Allow microphone permission and try again.');
+                    setVoicePrompt(voiceCopy.errors[event.error] || voiceCopy.defaultError);
                 };
 
                 recognition.onend = () => {
@@ -801,9 +1468,9 @@ const BioDataComponent = () => {
                     if (voiceStopReasonRef.current === 'cancelled' && !voiceMatchedRef.current) {
                         setVoicePrompt(introVoiceHint);
                     } else if (voiceStopReasonRef.current === 'timeout' && !voiceMatchedRef.current) {
-                        setVoicePrompt('Listening timed out. Tap the mic and say "Bismillah" again.');
+                        setVoicePrompt(voiceCopy.timeout);
                     } else if (voiceStopReasonRef.current === 'listening' && !voiceMatchedRef.current) {
-                        setVoicePrompt('I could not verify "Bismillah". Tap the mic and say it again.');
+                        setVoicePrompt(voiceCopy.notVerified);
                     }
 
                     if (voiceStopReasonRef.current !== 'matched') {
@@ -820,7 +1487,7 @@ const BioDataComponent = () => {
                     voiceStopReasonRef.current = 'error';
                     setIsVoiceListening(false);
                     setVoiceUiState('error');
-                    setVoicePrompt('Microphone could not start right now. If the browser asks, allow microphone permission, then tap the mic again.');
+                    setVoicePrompt(voiceCopy.couldNotStart);
                 }
             };
 
@@ -868,8 +1535,37 @@ const BioDataComponent = () => {
                 window.history.replaceState(null, '', `#${id}`);
             };
 
+            const isVoiceError = hasSpeechRecognitionSupport && voiceUiState === 'error';
+            const isVoicePreparing = hasSpeechRecognitionSupport && (voiceUiState === 'permission' || voiceUiState === 'preparing');
+            const showVoiceMicButton = hasSpeechRecognitionSupport;
+            const showVoiceFallbackAction = !hasSpeechRecognitionSupport || voiceUiState === 'error';
+            const voiceStatusIconClass = !hasSpeechRecognitionSupport
+                ? 'fa-circle-info'
+                : isVoiceError
+                    ? 'fa-triangle-exclamation'
+                    : isVoicePreparing
+                        ? 'fa-spinner fa-spin'
+                        : isVoiceListening
+                            ? 'fa-wave-square'
+                            : 'fa-microphone-lines';
+            const voiceSupportNote = !hasSpeechRecognitionSupport
+                ? voiceCopy.supportNoSupport
+                : voiceUiState === 'permission'
+                    ? voiceCopy.supportPermission
+                    : voiceUiState === 'preparing'
+                        ? voiceCopy.supportPreparing
+                        : voiceUiState === 'error'
+                            ? microphonePermissionState === 'denied'
+                                ? voiceCopy.supportErrorDenied
+                                : voiceCopy.supportErrorGeneral
+                            : isVoiceListening
+                                ? voiceCopy.supportListening
+                                : microphonePermissionState === 'granted'
+                                    ? voiceCopy.supportReady
+                                    : voiceCopy.supportIdle;
+
             return (
-                <>
+                <div className={`app-shell${isRtl ? ' is-rtl' : ''}`}>
                 {isIntroPopupOpen ? (
                     <div
                         className="intro-popup"
@@ -881,61 +1577,74 @@ const BioDataComponent = () => {
                             <div className="intro-popup-inner">
                                 <div className="intro-popup-bismillah">{popupBismillah}</div>
                                 <div className="intro-popup-darud">{popupDarud}</div>
-                                <div className="intro-popup-kicker">{iconPrayerHands} Dua & Instruction</div>
-                                <h2 className="intro-popup-title" id="intro-popup-title">Please Read Before Exploring</h2>
+                                <div className="intro-popup-kicker">{iconPrayerHands} {copy.intro.kicker}</div>
+                                <h2 className="intro-popup-title" id="intro-popup-title">{copy.intro.title}</h2>
 
                                 <div className="intro-popup-dua">
                                     <div className="intro-popup-dua-arabic">{duaArabicLines[0]}</div>
-                                    <div className="intro-popup-dua-meaning">{introDuaMeaning}</div>
+                                    <div className="intro-popup-dua-meaning">{copy.intro.duaMeaning}</div>
                                 </div>
 
                                 <div className="intro-popup-instruction">
-                                    <div className="intro-popup-section-title">Instruction</div>
+                                    <div className="intro-popup-section-title">{copy.intro.instructionsTitle}</div>
                                     <ul className="intro-popup-list">
-                                        {introInstructions.map((item) => (
+                                        {copy.intro.instructions.map((item) => (
                                             <li key={item}>{item}</li>
                                         ))}
                                     </ul>
                                 </div>
 
-                                <div className={`intro-popup-voice-status${voiceUiState === 'error' ? ' is-error' : voiceUiState === 'permission' || voiceUiState === 'preparing' ? ' is-preparing' : isVoiceListening ? ' is-listening' : ''}`}>
-                                    <i className={`fas ${voiceUiState === 'error' ? 'fa-triangle-exclamation' : voiceUiState === 'permission' || voiceUiState === 'preparing' ? 'fa-spinner fa-spin' : isVoiceListening ? 'fa-wave-square' : 'fa-microphone-lines'}`} aria-hidden="true"></i>
+                                <div className={`intro-popup-voice-status${isVoiceError ? ' is-error' : isVoicePreparing ? ' is-preparing' : isVoiceListening ? ' is-listening' : ''}`}>
+                                    <i className={`fas ${voiceStatusIconClass}`} aria-hidden="true"></i>
                                     <span>{voicePrompt}</span>
                                 </div>
 
                                 <div className="intro-popup-voice-gate">
-                                    <button
-                                        type="button"
-                                        className={`intro-popup-mic-button${voiceUiState === 'error' ? ' is-error' : voiceUiState === 'permission' || voiceUiState === 'preparing' ? ' is-preparing' : isVoiceListening ? ' is-listening' : ''}`}
-                                        onClick={handleVoiceButtonClick}
-                                        onContextMenu={(event) => event.preventDefault()}
-                                        aria-label={voiceUiState === 'permission' || voiceUiState === 'preparing' ? 'Microphone permission is being requested' : voiceUiState === 'error' ? 'Retry voice recognition' : isVoiceListening ? 'Stop voice recognition' : 'Start voice recognition and say Bismillah'}
-                                    >
-                                        <i className={`fas ${voiceUiState === 'error' ? 'fa-microphone-slash' : voiceUiState === 'permission' || voiceUiState === 'preparing' ? 'fa-spinner fa-spin' : isVoiceListening ? 'fa-microphone-lines' : 'fa-microphone'}`} aria-hidden="true"></i>
-                                    </button>
-                                    <div className="intro-popup-support-note">
-                                        {voiceUiState === 'permission'
-                                            ? 'A browser popup should appear now. Tap Allow microphone permission. After that, tap the mic again.'
-                                            : voiceUiState === 'preparing'
-                                                ? 'Microphone is starting now. Please wait a moment.'
-                                            : voiceUiState === 'error'
-                                                ? microphonePermissionState === 'denied'
-                                                    ? 'Microphone permission is blocked in browser settings. Allow it for this site, then tap the mic again.'
-                                                    : 'If no popup appears, check this site\'s microphone permission and whether your browser supports web speech recognition.'
-                                            : isVoiceListening
-                                                ? 'Recording is active now. Speak once, then wait a moment for verification.'
-                                                : microphonePermissionState === 'granted'
-                                                    ? 'Microphone permission is ready. Tap the mic to start voice verification.'
-                                                    : 'Tap the mic. If a browser popup appears, tap Allow microphone permission.'}
-                                    </div>
+                                    {showVoiceMicButton ? (
+                                        <button
+                                            type="button"
+                                            className={`intro-popup-mic-button${voiceUiState === 'error' ? ' is-error' : voiceUiState === 'permission' || voiceUiState === 'preparing' ? ' is-preparing' : isVoiceListening ? ' is-listening' : ''}`}
+                                            onClick={handleVoiceButtonClick}
+                                            onContextMenu={(event) => event.preventDefault()}
+                                            aria-label={voiceUiState === 'permission' || voiceUiState === 'preparing' ? voiceCopy.micAriaPermission : voiceUiState === 'error' ? voiceCopy.micAriaRetry : isVoiceListening ? voiceCopy.micAriaStop : voiceCopy.micAriaStart}
+                                        >
+                                            <i className={`fas ${voiceUiState === 'error' ? 'fa-microphone-slash' : voiceUiState === 'permission' || voiceUiState === 'preparing' ? 'fa-spinner fa-spin' : isVoiceListening ? 'fa-microphone-lines' : 'fa-microphone'}`} aria-hidden="true"></i>
+                                        </button>
+                                    ) : null}
+                                    <div className="intro-popup-support-note">{voiceSupportNote}</div>
+                                    {showVoiceFallbackAction ? (
+                                        <button
+                                            type="button"
+                                            className="intro-popup-action"
+                                            onClick={handleEnterBiodata}
+                                        >
+                                            {hasSpeechRecognitionSupport ? voiceCopy.continueWithoutVoice : voiceCopy.continueInBrowser}
+                                        </button>
+                                    ) : null}
                                 </div>
                             </div>
                         </div>
                     </div>
                 ) : null}
                 <div className="container">
-                    <nav className="top-menu" aria-label="Page sections">
-                        <div className="top-menu-label">Quick Jump</div>
+                    <nav className="top-menu" aria-label={copy.navigation.sectionsAria}>
+                        <div className="top-menu-head">
+                            <div className="top-menu-label">{copy.navigation.quickJump}</div>
+                            <div className="language-switcher" role="group" aria-label={copy.navigation.languageSwitcherLabel}>
+                                {languageOptions.map((option) => (
+                                    <button
+                                        type="button"
+                                        key={option.code}
+                                        className={`language-switcher-button${language === option.code ? ' is-active' : ''}`}
+                                        onClick={() => setLanguage(option.code)}
+                                        aria-pressed={language === option.code}
+                                    >
+                                        <span className="language-switcher-code">{option.shortLabel}</span>
+                                        <span className="language-switcher-label">{option.nativeLabel}</span>
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
                         <div
                             className={`top-menu-links${isMenuDragging ? ' is-dragging' : ''}`}
                             ref={menuLinksRef}
@@ -957,27 +1666,23 @@ const BioDataComponent = () => {
                     </nav>
 
                     <div className="header-banner section-anchor" id="profile-top">
-                        <h1>{iconHeartSparkle}Md Mahbubur Rahman{iconHeartSparkle}</h1>
-                        <div className="subtitle">IT Professional</div>
+                        <h1 className="profile-name">
+                            <span className="profile-name-icon" aria-hidden="true">{iconHeartSparkle}</span>
+                            <span className="profile-name-text">{copy.profile.name}</span>
+                            <span className="profile-name-icon" aria-hidden="true">{iconHeartSparkle}</span>
+                        </h1>
+                        <div className="subtitle">{copy.profile.subtitle}</div>
                     </div>
 
                     <div style={{marginBottom: '30px'}}>
                         <div className="stats">
                             <div className="stat-box">
-                                <div className="stat-value">27</div>
-                                <div className="stat-label">YEARS OLD</div>
-                            </div>
-                            <div className="stat-box">
                                 <div className="stat-value">{iconEducation}</div>
-                                <div className="stat-label">HIGHLY EDUCATED</div>
-                            </div>
-                            <div className="stat-box">
-                                <div className="stat-value">{iconWork}</div>
-                                <div className="stat-label">WELL ESTABLISHED</div>
+                                <div className="stat-label">{copy.profile.stats.education}</div>
                             </div>
                             <div className="stat-box">
                                 <div className="stat-value">{iconMosque}</div>
-                                <div className="stat-label">PRACTICING MUSLIM</div>
+                                <div className="stat-label">{copy.profile.stats.faith}</div>
                             </div>
                         </div>
                     </div>
@@ -985,7 +1690,7 @@ const BioDataComponent = () => {
                     <div className="card section-anchor" id="gallery-section">
                         <div className="section-header">
                             <span className="section-icon"><i className="fas fa-images" aria-hidden="true"></i></span>
-                            Photo Gallery
+                            {copy.gallery.title}
                         </div>
                         <div className="card-content">
                             <div className="photo-gallery-grid">
@@ -1008,17 +1713,17 @@ const BioDataComponent = () => {
                         <div className="card section-anchor" id={`${group}-section`} key={group}>
                             <div className="section-header">
                                 <span className="section-icon">{sectionIcons[group]}</span>
-                                {group.charAt(0).toUpperCase() + group.slice(1)} Information
+                                {copy.sectionHeaders[group]}
                             </div>
                             {group === 'family' && (
                                 <div className="family-summary">
                                     <div className="family-summary-label">
                                         <i className="fas fa-shield-halved" aria-hidden="true"></i>
-                                        Family Background
+                                        {copy.familySummary.label}
                                     </div>
-                                    <div className="family-summary-title">A respectable, middle-class family grounded in education and religious values.</div>
+                                    <div className="family-summary-title">{copy.familySummary.title}</div>
                                     <div className="family-summary-tags">
-                                        {['Respectable', 'Middle-Class', 'Educated', 'Religious'].map((tag) => (
+                                        {copy.familySummary.tags.map((tag) => (
                                             <span className="family-summary-tag" key={tag}>{tag}</span>
                                         ))}
                                     </div>
@@ -1057,14 +1762,14 @@ const BioDataComponent = () => {
                                                 ) : null}
                                                 <span>{label}</span>
                                             </div>
-                                            <div className="detail-value">{renderDetailValue(label, value)}</div>
+                                            <div className="detail-value">{renderDetailValue(value)}</div>
                                         </div>
                                         );
                                     })
                                 )}
                                 {group === 'family' && (
                                     <>
-                                        <div className="subsection-title">Sibling Details</div>
+                                        <div className="subsection-title">{copy.familySiblingsTitle}</div>
                                         {familySiblings.map(([label, value], idx) => (
                                             <div className="sub-detail-row" key={idx}>
                                                 <div className="detail-label sibling-label">
@@ -1085,7 +1790,7 @@ const BioDataComponent = () => {
                     <div className="card section-anchor" id="lifestyle-section">
                         <div className="section-header">
                             <i className="fas fa-seedling section-icon" aria-hidden="true"></i>
-                            Personality & Lifestyle
+                            {copy.lifestyle.title}
                         </div>
                         <div className="card-content">
                             {lifestyleData.map(({ label, value, iconClass }, idx) => (
@@ -1105,7 +1810,7 @@ const BioDataComponent = () => {
                     <div className="card section-anchor" id="language-section">
                         <div className="section-header">
                             <span className="section-icon">{iconLanguage}</span>
-                            Language Proficiency
+                            {copy.languages.title}
                         </div>
                         <div className="card-content">
                             {languageData.map(({ title, level, percent }, idx) => (
@@ -1117,7 +1822,7 @@ const BioDataComponent = () => {
                                     <div
                                         className="language-progress-track"
                                         role="progressbar"
-                                        aria-label={`${title} proficiency`}
+                                        aria-label={copy.languages.proficiencyAria(title)}
                                         aria-valuemin="0"
                                         aria-valuemax="100"
                                         aria-valuenow={percent}
@@ -1135,7 +1840,7 @@ const BioDataComponent = () => {
                     <div className="card section-anchor" id="education-section">
                         <div className="section-header">
                             <span className="section-icon">{iconBooks}</span>
-                            Educational Information
+                            {copy.education.title}
                         </div>
                         <div className="card-content">
                             {educationData.map(({ title, institution, institutionHref, scoreLabel, score, session }, idx) => (
@@ -1156,7 +1861,7 @@ const BioDataComponent = () => {
                                                 target="_blank"
                                                 rel="noreferrer"
                                             >
-                                                Visit
+                                                {copy.common.visit}
                                             </a>
                                         ) : null}
                                     </div>
@@ -1168,56 +1873,10 @@ const BioDataComponent = () => {
                     <div className="card section-anchor" id="training-section">
                         <div className="section-header">
                             <span className="section-icon">{iconEducation}</span>
-                            Training and Development
+                            {copy.training.title}
                         </div>
                         <div className="card-content">
-                            {[
-                                {
-                                    text: 'Corporate Management Bootcamp - 2023 (10 Days, BYLC, Bangladesh.)',
-                                    href: 'https://bylc.org',
-                                    linkLabel: 'Visit'
-                                },
-                                {
-                                    text: 'Professional Digital Content Management (PDCM), (3 Months, SEIP, Finance Ministry of BD)',
-                                    href: 'https://lms.seip-fd.gov.bd',
-                                    linkLabel: 'Visit'
-                                },
-                                {
-                                    text: 'Web Design & Development (200 Hours, LEDP, ICT Division of Bangladesh.)',
-                                    href: 'https://ictd.gov.bd',
-                                    linkLabel: 'Visit'
-                                },
-                                {
-                                    text: 'Computer & Its Applications (1 Year, Islamic University, Kushtia)',
-                                    href: 'https://iu.ac.bd',
-                                    linkLabel: 'Visit'
-                                },
-                                {
-                                    text: 'Troubleshooting in Computer Security (ICT Division, a2i).',
-                                    href: 'https://a2i.gov.bd',
-                                    linkLabel: 'Visit'
-                                },
-                                {
-                                    text: 'Microsoft Word Basics (a2i, Muktapath).',
-                                    href: 'https://a2i.gov.bd',
-                                    linkLabel: 'Visit'
-                                },
-                                {
-                                    text: 'Video Production (Human Development Media, a2i)',
-                                    href: 'https://a2i.gov.bd',
-                                    linkLabel: 'Visit'
-                                },
-                                {
-                                    text: 'Digital Security Essentials (Digital Security Agency, a2i).',
-                                    href: 'https://a2i.gov.bd',
-                                    linkLabel: 'Visit'
-                                },
-                                {
-                                    text: 'Idea Innovation Workshop for Mobile Games & Apps Development (ICT Division, Digital Bangladesh.)',
-                                    href: 'https://a2i.gov.bd',
-                                    linkLabel: 'Visit'
-                                }
-                            ].map((item, idx) => {
+                            {trainingItems.map((item, idx) => {
                                 const isLinkItem = typeof item === 'object' && item !== null;
 
                                 return (
@@ -1266,7 +1925,7 @@ const BioDataComponent = () => {
                     <div className="card section-anchor" id="activities-section">
                         <div className="section-header">
                             <span className="section-icon"><i className="fas fa-star" aria-hidden="true"></i></span>
-                            Extra Curricular Activities
+                            {copy.activities.title}
                         </div>
                         <div className="card-content">
                             <div className="activity-list">
@@ -1311,7 +1970,7 @@ const BioDataComponent = () => {
                     <div className="card section-anchor" id="hobbies-section">
                         <div className="section-header">
                             <i className="fas fa-heart section-icon" aria-hidden="true"></i>
-                            Hobbies and Interests
+                            {copy.hobbies.title}
                         </div>
                         <div className="card-content">
                             <div className="hobby-list">
@@ -1330,52 +1989,19 @@ const BioDataComponent = () => {
                     <div className="card section-anchor" id="expectation-section">
                         <div className="section-header">
                             <span className="section-icon"><i className="fas fa-ring" aria-hidden="true"></i></span>
-                            Expectation from Bride
+                            {copy.expectation.title}
                         </div>
                         <div className="card-content">
                             <div className="expectation-list">
-                                <div className="expectation-item">
-                                    <span className="expectation-item-icon"><i className="fas fa-mosque" aria-hidden="true"></i></span>
-                                    <div className="expectation-item-content">
-                                        <div className="expectation-item-title">Religious Practice</div>
-                                        <div className="expectation-item-text">Practicing Muslimah with hijab and niqab, aware of maintaining mahram.</div>
+                                {expectationItems.map(({ iconClass, title, text }) => (
+                                    <div className="expectation-item" key={title}>
+                                        <span className="expectation-item-icon"><i className={iconClass} aria-hidden="true"></i></span>
+                                        <div className="expectation-item-content">
+                                            <div className="expectation-item-title">{title}</div>
+                                            <div className="expectation-item-text">{text}</div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="expectation-item">
-                                    <span className="expectation-item-icon"><i className="fas fa-user-shield" aria-hidden="true"></i></span>
-                                    <div className="expectation-item-content">
-                                        <div className="expectation-item-title">Character</div>
-                                        <div className="expectation-item-text">Educated and modest in behavior.</div>
-                                    </div>
-                                </div>
-                                <div className="expectation-item">
-                                    <span className="expectation-item-icon"><i className="fas fa-house" aria-hidden="true"></i></span>
-                                    <div className="expectation-item-content">
-                                        <div className="expectation-item-title">Family Role</div>
-                                        <div className="expectation-item-text">Aware of family responsibilities.</div>
-                                    </div>
-                                </div>
-                                <div className="expectation-item">
-                                    <span className="expectation-item-icon"><i className="fas fa-heart" aria-hidden="true"></i></span>
-                                    <div className="expectation-item-content">
-                                        <div className="expectation-item-title">Lifestyle</div>
-                                        <div className="expectation-item-text">Focused on family and Islamic lifestyle.</div>
-                                    </div>
-                                </div>
-                                <div className="expectation-item">
-                                    <span className="expectation-item-icon"><i className="fas fa-palette" aria-hidden="true"></i></span>
-                                    <div className="expectation-item-content">
-                                        <div className="expectation-item-title">Preferred Complexion</div>
-                                        <div className="expectation-item-text">Medium/Fair (flexible).</div>
-                                    </div>
-                                </div>
-                                <div className="expectation-item">
-                                    <span className="expectation-item-icon"><i className="fas fa-briefcase" aria-hidden="true"></i></span>
-                                    <div className="expectation-item-content">
-                                        <div className="expectation-item-title">Profession</div>
-                                        <div className="expectation-item-text">A profession is not mandatory; a family-oriented Islamic lifestyle is preferred.</div>
-                                    </div>
-                                </div>
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -1383,70 +2009,38 @@ const BioDataComponent = () => {
                     <div className="card section-anchor" id="contact-section">
                         <div className="section-header">
                             <span className="section-icon">{iconMapPin}</span>
-                            Contact & Location
+                            {copy.contact.title}
                         </div>
                         <div className="card-content">
                             <div className="contact-section">
-                                <div style={{marginBottom: '20px'}}>
-                                    <div className="icon-text">
-                                        <i className="fas fa-user"></i>
-                                        Name
+                                {contactBlocks.map(({ iconClass, label, value, href, mapHref }, idx) => (
+                                    <div key={`${label}-${value}`} style={{marginBottom: idx === contactBlocks.length - 1 ? '0' : '20px'}}>
+                                        <div className="icon-text">
+                                            <i className={iconClass}></i>
+                                            {label}
+                                        </div>
+                                        <div className="address-box">
+                                            {href ? (
+                                                <a className="contact-action-link" href={href} target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noreferrer' : undefined}>{value}</a>
+                                            ) : (
+                                                value
+                                            )}
+                                        </div>
+                                        {mapHref ? (
+                                            <div className="address-actions">
+                                                <a
+                                                    className="map-link-button"
+                                                    href={mapHref}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                >
+                                                    <i className="fas fa-location-arrow" aria-hidden="true"></i>
+                                                    {copy.contact.mapButton}
+                                                </a>
+                                            </div>
+                                        ) : null}
                                     </div>
-                                    <div className="address-box">
-                                        Md. Mahbubur Rahman
-                                    </div>
-                                </div>
-
-                                <div style={{marginBottom: '20px'}}>
-                                    <div className="icon-text">
-                                        <i className="fas fa-envelope"></i>
-                                        Email
-                                    </div>
-                                    <div className="address-box">
-                                        <a className="contact-action-link" href="mailto:bbdmahbub@gmail.com">bbdmahbub@gmail.com</a>
-                                    </div>
-                                </div>
-
-                                <div style={{marginBottom: '20px'}}>
-                                    <div className="icon-text">
-                                        <i className="fab fa-whatsapp"></i>
-                                        WhatsApp
-                                    </div>
-                                    <div className="address-box">
-                                        <a className="contact-action-link" href="https://wa.me/8801917267607" target="_blank" rel="noreferrer">+8801917267607</a>
-                                    </div>
-                                </div>
-
-                                <div style={{marginBottom: '20px'}}>
-                                    <div className="icon-text">
-                                        <i className="fas fa-home"></i>
-                                        Current Address
-                                    </div>
-                                    <div className="address-box">
-                                        Hatir Jheel, Dhaka, Bangladesh
-                                    </div>
-                                </div>
-                                
-                                <div>
-                                    <div className="icon-text">
-                                        <i className="fas fa-map-marker-alt"></i>
-                                        Permanent Address
-                                    </div>
-                                    <div className="address-box">
-                                        Uttar Sutalori, Jomaddar Para, Morrelganj, Bagerhat
-                                    </div>
-                                    <div className="address-actions">
-                                        <a
-                                            className="map-link-button"
-                                            href="https://maps.app.goo.gl/hvcHqxMvhF9cGFbM6"
-                                            target="_blank"
-                                            rel="noreferrer"
-                                        >
-                                            <i className="fas fa-location-arrow" aria-hidden="true"></i>
-                                            View on Google Maps
-                                        </a>
-                                    </div>
-                                </div>
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -1454,7 +2048,7 @@ const BioDataComponent = () => {
                     <div className="card section-anchor" id="dua-section">
                         <div className="section-header">
                             <span className="section-icon">{iconKaaba}</span>
-                            Final Words & Dua
+                            {copy.dua.title}
                         </div>
                         <div className="card-content final-dua">
                             <div className="dua-entry">
@@ -1465,7 +2059,7 @@ const BioDataComponent = () => {
                                 </div>
                                 <div className="dua-block">
                                     <div className="dua-english">
-                                "Our Rabb (Allah), grant us from among our wives and offspring comfort to our eyes and make us an example for the righteous."
+                                {copy.dua.meanings[0]}
                                     </div>
                                 </div>
                             </div>
@@ -1477,7 +2071,7 @@ const BioDataComponent = () => {
                                 </div>
                                 <div className="dua-block">
                                     <div className="dua-english">
-                                "Ya Rabb (Allah)! Bestow upon me one of the righteous."
+                                {copy.dua.meanings[1]}
                                     </div>
                                 </div>
                             </div>
@@ -1489,55 +2083,28 @@ const BioDataComponent = () => {
                                 </div>
                                 <div className="dua-block">
                                     <div className="dua-english">
-                                "Our Rabb (Allah), grant us from Yourself mercy and prepare for us from our affair right guidance."
+                                {copy.dua.meanings[2]}
                                     </div>
                                 </div>
                             </div>
                             <div className="dua-closing">
                                 <span className="dua-closing-icon" aria-hidden="true">{iconPrayerHands}</span>
-                                <span>- Ameen ya Rabbal Alameen.</span>
+                                <span>- {copy.dua.closing}</span>
                             </div>
                         </div>
                     </div>
 
                     <div style={{textAlign: 'center', margin: '40px 0', color: '#0d7377', fontSize: '18px', fontWeight: '600'}}>
-                        {iconHeartSparkle} {iconMosque} A faithful Muslim seeking a loving and pious life partner {iconMosque} {iconHeartSparkle}
+                        {iconHeartSparkle} {iconMosque} {copy.profile.tagline} {iconMosque} {iconHeartSparkle}
                     </div>
                     
                     <div style={{textAlign: 'center', marginTop: '60px', paddingTop: '20px', borderTop: '2px solid rgba(13, 115, 119, 0.1)', color: '#0d7377', fontSize: '24px', letterSpacing: '8px'}}>
                         {dividerOrnament}
                     </div>
                 </div>
-                </>
+                </div>
             );
         };
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<BioDataComponent />);
-
-        const normalizeProfileHeading = () => {
-            document.querySelectorAll('#profile-top h1').forEach((heading) => {
-                if (heading.classList.contains('profile-name')) return;
-
-                heading.classList.add('profile-name');
-                heading.textContent = '';
-
-                const leftIcon = document.createElement('span');
-                leftIcon.className = 'profile-name-icon';
-                leftIcon.setAttribute('aria-hidden', 'true');
-                leftIcon.textContent = String.fromCodePoint(0x1F495);
-
-                const nameText = document.createElement('span');
-                nameText.className = 'profile-name-text';
-                nameText.textContent = 'Md Mahbubur Rahman';
-
-                const rightIcon = document.createElement('span');
-                rightIcon.className = 'profile-name-icon';
-                rightIcon.setAttribute('aria-hidden', 'true');
-                rightIcon.textContent = String.fromCodePoint(0x1F495);
-
-                heading.append(leftIcon, nameText, rightIcon);
-            });
-        };
-
-        requestAnimationFrame(normalizeProfileHeading);

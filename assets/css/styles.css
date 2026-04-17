@@ -390,13 +390,81 @@
             z-index: 100001;
         }
 
+        .top-menu-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
         .top-menu-label {
             color: #0d7377;
             font-size: 12px;
             font-weight: 700;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 0;
+        }
+
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .language-switcher-button {
+            border: 1px solid rgba(13, 115, 119, 0.14);
+            border-radius: 999px;
+            background: rgba(13, 115, 119, 0.05);
+            color: #0d7377;
+            padding: 7px 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .language-switcher-button:hover,
+        .language-switcher-button:focus-visible {
+            background: rgba(13, 115, 119, 0.12);
+            border-color: rgba(13, 115, 119, 0.26);
+            transform: translateY(-1px);
+            outline: none;
+        }
+
+        .language-switcher-button.is-active,
+        .language-switcher-button[aria-pressed="true"] {
+            background: linear-gradient(135deg, #0d7377 0%, #14919b 100%);
+            color: #fff;
+            border-color: rgba(13, 115, 119, 0.3);
+            box-shadow: 0 10px 20px rgba(13, 115, 119, 0.14);
+        }
+
+        .language-switcher-code {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 28px;
+            height: 28px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.2);
+            font-size: 11px;
+            letter-spacing: 0.08em;
+        }
+
+        .language-switcher-button:not(.is-active) .language-switcher-code {
+            background: rgba(13, 115, 119, 0.1);
+        }
+
+        .language-switcher-label {
+            white-space: nowrap;
         }
 
         .top-menu-links {
@@ -413,6 +481,61 @@
             user-select: none;
             -webkit-user-select: none;
             touch-action: pan-x;
+        }
+
+        .app-shell.is-rtl {
+            direction: rtl;
+        }
+
+        .app-shell.is-rtl .top-menu-head {
+            flex-direction: row-reverse;
+        }
+
+        .app-shell.is-rtl .top-menu-links {
+            direction: ltr;
+        }
+
+        .app-shell.is-rtl .intro-popup-list li {
+            padding-left: 0;
+            padding-right: 24px;
+            text-align: right;
+        }
+
+        .app-shell.is-rtl .intro-popup-list li::before {
+            left: auto;
+            right: 0;
+        }
+
+        .app-shell.is-rtl .detail-label,
+        .app-shell.is-rtl .icon-text,
+        .app-shell.is-rtl .work-title-wrap {
+            flex-direction: row-reverse;
+        }
+
+        .app-shell.is-rtl .family-summary,
+        .app-shell.is-rtl .family-summary-title,
+        .app-shell.is-rtl .detail-value,
+        .app-shell.is-rtl .hobby-text,
+        .app-shell.is-rtl .expectation-item-text,
+        .app-shell.is-rtl .expectation-item-title,
+        .app-shell.is-rtl .address-box,
+        .app-shell.is-rtl .intro-popup-support-note,
+        .app-shell.is-rtl .intro-popup-dua-meaning {
+            text-align: right;
+        }
+
+        .app-shell.is-rtl .detail-inline-badge {
+            margin-right: 0;
+            margin-left: 8px;
+        }
+
+        .app-shell.is-rtl .detail-row::before {
+            left: auto;
+            right: -20px;
+        }
+
+        .app-shell.is-rtl .sibling-status-cell {
+            justify-self: start;
         }
 
         .top-menu-links::-webkit-scrollbar {

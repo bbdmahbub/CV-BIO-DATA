@@ -6,7 +6,58 @@
         const MUSIC_VOLUME = 0.15;
         const AUTOPLAY_DELAY_MS = 10000;
         const MUSIC_PAUSED_STORAGE_KEY = 'bbdMahbubMusicPaused';
+        const LANGUAGE_STORAGE_KEY = 'bbdMahbubLanguage';
         const audioPlayer = new Audio();
+        const musicTranslations = {
+            en: {
+                musicLabel: 'Background Music',
+                preparingPlaylist: 'Preparing playlist...',
+                volume: 'Volume',
+                volumeAria: 'Music volume',
+                play: 'Play',
+                pause: 'Pause',
+                next: 'Next Song',
+                collapse: 'Collapse music controls',
+                expand: 'Expand music controls',
+                nowPlaying: (title, percent) => `Now playing: ${title} at ${percent}% volume`,
+                blocked: 'Autoplay was blocked. Tap Play to start the music.',
+                scheduled: (percent) => `Music will start automatically after 10 seconds at ${percent}% volume.`,
+                paused: (title) => `Paused: ${title}`,
+                pausedBeforeReload: 'Music was paused before reload. Press Play to start again.'
+            },
+            ar: {
+                musicLabel: 'الموسيقى الخلفية',
+                preparingPlaylist: 'يتم تجهيز قائمة التشغيل...',
+                volume: 'الصوت',
+                volumeAria: 'مستوى صوت الموسيقى',
+                play: 'تشغيل',
+                pause: 'إيقاف',
+                next: 'الأغنية التالية',
+                collapse: 'طي عناصر التحكم بالموسيقى',
+                expand: 'إظهار عناصر التحكم بالموسيقى',
+                nowPlaying: (title, percent) => `يعمل الآن: ${title} عند مستوى ${percent}%`,
+                blocked: 'تم حظر التشغيل التلقائي. اضغط تشغيل لبدء الموسيقى.',
+                scheduled: (percent) => `ستبدأ الموسيقى تلقائياً بعد 10 ثوانٍ عند مستوى ${percent}%.`,
+                paused: (title) => `متوقف: ${title}`,
+                pausedBeforeReload: 'تم إيقاف الموسيقى قبل إعادة التحميل. اضغط تشغيل للبدء من جديد.'
+            },
+            bn: {
+                musicLabel: 'ব্যাকগ্রাউন্ড মিউজিক',
+                preparingPlaylist: 'প্লেলিস্ট প্রস্তুত হচ্ছে...',
+                volume: 'ভলিউম',
+                volumeAria: 'মিউজিকের ভলিউম',
+                play: 'চালু',
+                pause: 'বিরতি',
+                next: 'পরের গান',
+                collapse: 'মিউজিক কন্ট্রোল লুকান',
+                expand: 'মিউজিক কন্ট্রোল দেখান',
+                nowPlaying: (title, percent) => `এখন চলছে: ${title} ${percent}% ভলিউমে`,
+                blocked: 'অটোপ্লে ব্লক করা হয়েছে। মিউজিক শুরু করতে চালু চাপুন।',
+                scheduled: (percent) => `১০ সেকেন্ড পরে ${percent}% ভলিউমে মিউজিক স্বয়ংক্রিয়ভাবে চালু হবে।`,
+                paused: (title) => `বিরতি: ${title}`,
+                pausedBeforeReload: 'রিফ্রেশের আগে মিউজিক বন্ধ ছিল। আবার শুরু করতে চালু চাপুন।'
+            }
+        };
         const iconBook = String.fromCodePoint(0x1F4D6);
         const iconMosque = String.fromCodePoint(0x1F54C);
         const iconPrayerHands = String.fromCodePoint(0x1F932);
@@ -43,6 +94,94 @@
         let isMusicPlayerInitialized = false;
         let isMusicPanelCollapsed = false;
         let hasAutoCollapsedMusicPanel = false;
+        let currentLanguage = getInitialLanguage();
+        let musicStatusMode = 'preparing';
+
+        function getInitialLanguage() {
+            try {
+                const storedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
+                if (storedLanguage && musicTranslations[storedLanguage]) {
+                    return storedLanguage;
+                }
+            } catch (error) {
+                // Ignore storage failures and fall back to browser language.
+            }
+
+            const browserLanguage = (navigator.language || '').toLowerCase();
+            if (browserLanguage.startsWith('ar')) return 'ar';
+            if (browserLanguage.startsWith('bn')) return 'bn';
+            return 'en';
+        }
+
+        function getMusicCopy() {
+            return musicTranslations[currentLanguage] || musicTranslations.en;
+        }
+
+        function formatLocalizedPercent(value) {
+            if (currentLanguage === 'bn') {
+                return new Intl.NumberFormat('bn-BD').format(value);
+            }
+
+            return String(value);
+        }
+
+        function getCurrentTrackTitle() {
+            return playlist[currentTrackIndex].title;
+        }
+
+        function getMusicStatusText() {
+            const copy = getMusicCopy();
+            const percent = formatLocalizedPercent(getVolumePercent());
+
+            switch (musicStatusMode) {
+                case 'playing':
+                    return copy.nowPlaying(getCurrentTrackTitle(), percent);
+                case 'blocked':
+                    return copy.blocked;
+                case 'scheduled':
+                    return copy.scheduled(percent);
+                case 'paused':
+                    return copy.paused(getCurrentTrackTitle());
+                case 'pausedBeforeReload':
+                    return copy.pausedBeforeReload;
+                default:
+                    return copy.preparingPlaylist;
+            }
+        }
+
+        function setMusicStatusMode(mode) {
+            musicStatusMode = mode;
+            updateMusicStatus(getMusicStatusText());
+        }
+
+        function applyMusicLanguage() {
+            const copy = getMusicCopy();
+            const labelElement = document.querySelector('.music-player-label');
+            const trackElement = document.getElementById('music-track-name');
+            const volumeLabelElement = document.querySelector('.music-player-volume-row span');
+            const nextButton = document.getElementById('music-next');
+
+            if (labelElement) {
+                labelElement.textContent = copy.musicLabel;
+            }
+
+            if (trackElement && !audioPlayer.src) {
+                trackElement.textContent = copy.preparingPlaylist;
+            }
+
+            if (volumeLabelElement) {
+                volumeLabelElement.textContent = copy.volume;
+            }
+
+            if (nextButton) {
+                nextButton.textContent = copy.next;
+            }
+
+            updateVolumeControl();
+            updateToggleLabel();
+            updateMusicPanelState();
+            updateMusicStatus(getMusicStatusText());
+        }
 
         function getVolumePercent() {
             return Math.round(audioPlayer.volume * 100);
@@ -51,7 +190,8 @@
         function updateVolumeControl() {
             const volumePercent = getVolumePercent();
             document.getElementById('music-volume').value = String(volumePercent);
-            document.getElementById('music-volume-value').textContent = `${volumePercent}%`;
+            document.getElementById('music-volume').setAttribute('aria-label', getMusicCopy().volumeAria);
+            document.getElementById('music-volume-value').textContent = `${formatLocalizedPercent(volumePercent)}%`;
         }
 
         function updateMenuOffset() {
@@ -67,7 +207,7 @@
         function loadTrack(index) {
             currentTrackIndex = index;
             audioPlayer.src = playlist[currentTrackIndex].src;
-            document.getElementById('music-track-name').textContent = playlist[currentTrackIndex].title;
+            document.getElementById('music-track-name').textContent = getCurrentTrackTitle();
         }
 
         function updateMusicStatus(message) {
@@ -75,7 +215,8 @@
         }
 
         function updateToggleLabel() {
-            document.getElementById('music-toggle').textContent = audioPlayer.paused ? 'Play' : 'Pause';
+            const copy = getMusicCopy();
+            document.getElementById('music-toggle').textContent = audioPlayer.paused ? copy.play : copy.pause;
         }
 
         function updateMusicPanelState() {
@@ -86,7 +227,7 @@
 
             player.classList.toggle('is-collapsed', isMusicPanelCollapsed);
             panelToggle.setAttribute('aria-expanded', String(!isMusicPanelCollapsed));
-            panelToggle.setAttribute('aria-label', isMusicPanelCollapsed ? 'Expand music controls' : 'Collapse music controls');
+            panelToggle.setAttribute('aria-label', isMusicPanelCollapsed ? getMusicCopy().expand : getMusicCopy().collapse);
             panelToggleIcon.classList.toggle('fa-chevron-right', !isMusicPanelCollapsed);
             panelToggleIcon.classList.toggle('fa-chevron-left', isMusicPanelCollapsed);
         }
@@ -138,11 +279,11 @@
             try {
                 await audioPlayer.play();
                 setStoredManualPause(false);
-                updateMusicStatus(`Now playing: ${playlist[currentTrackIndex].title} at ${getVolumePercent()}% volume`);
+                setMusicStatusMode('playing');
                 updateToggleLabel();
                 return true;
             } catch (error) {
-                updateMusicStatus('Autoplay was blocked. Tap Play to start the music.');
+                setMusicStatusMode('blocked');
                 updateToggleLabel();
                 return false;
             }
@@ -178,7 +319,7 @@
 
         function scheduleAutoplay() {
             clearScheduledAutoplay();
-            updateMusicStatus(`Music will start automatically after 10 seconds at ${getVolumePercent()}% volume.`);
+            setMusicStatusMode('scheduled');
 
             autoplayTimerId = window.setTimeout(() => {
                 autoplayTimerId = null;
@@ -196,8 +337,7 @@
             audioPlayer.volume = MUSIC_VOLUME;
             audioPlayer.preload = 'auto';
             loadTrack(0);
-            updateVolumeControl();
-            updateToggleLabel();
+            applyMusicLanguage();
 
             audioPlayer.addEventListener('ended', () => {
                 goToTrack((currentTrackIndex + 1) % playlist.length);
@@ -214,7 +354,7 @@
 
                 audioPlayer.pause();
                 setStoredManualPause(true);
-                updateMusicStatus(`Paused: ${playlist[currentTrackIndex].title}`);
+                setMusicStatusMode('paused');
                 updateToggleLabel();
             });
 
@@ -229,12 +369,12 @@
                 updateVolumeControl();
 
                 if (!audioPlayer.paused) {
-                    updateMusicStatus(`Now playing: ${playlist[currentTrackIndex].title} at ${getVolumePercent()}% volume`);
+                    setMusicStatusMode('playing');
                     return;
                 }
 
                 if (autoplayTimerId !== null) {
-                    updateMusicStatus(`Music will start automatically after 10 seconds at ${getVolumePercent()}% volume.`);
+                    setMusicStatusMode('scheduled');
                 }
             });
 
@@ -244,7 +384,7 @@
             });
 
             if (getStoredManualPause()) {
-                updateMusicStatus('Music was paused before reload. Press Play to start again.');
+                setMusicStatusMode('pausedBeforeReload');
                 updateToggleLabel();
                 return;
             }
@@ -339,7 +479,13 @@
             }
         }
 
+        window.addEventListener('bbdMahbub:languagechange', (event) => {
+            currentLanguage = event.detail && event.detail.language ? event.detail.language : getInitialLanguage();
+            applyMusicLanguage();
+        });
+
         document.addEventListener('DOMContentLoaded', () => {
+            applyMusicLanguage();
             updateMenuOffset();
             updateMusicPanelState();
             window.addEventListener('resize', () => {
