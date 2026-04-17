@@ -933,6 +933,7 @@
             const expectationItems = copy.expectation.items;
             const contactBlocks = copy.contact.blocks;
             const permanentAddressValue = copy.contact.permanentAddressValue;
+            const showDuaMeanings = language !== 'ar';
             const voiceCopy = copy.voice;
             const trainingIconClasses = [
                 'fas fa-medal',
@@ -2119,38 +2120,44 @@
                             <div className="dua-entry">
                                 <div className="dua-block">
                                     <div className="dua-arabic">
-                                {duaArabicLines[0]}
-                            </div>
-                                </div>
-                                <div className="dua-block">
-                                    <div className="dua-english">
-                                {copy.dua.meanings[0]}
+                                        {duaArabicLines[0]}
                                     </div>
                                 </div>
+                                {showDuaMeanings ? (
+                                    <div className="dua-block">
+                                        <div className="dua-english">
+                                            {copy.dua.meanings[0]}
+                                        </div>
+                                    </div>
+                                ) : null}
                             </div>
                             <div className="dua-entry">
                                 <div className="dua-block">
                                     <div className="dua-arabic">
-                                {duaArabicLines[1]}
-                            </div>
-                                </div>
-                                <div className="dua-block">
-                                    <div className="dua-english">
-                                {copy.dua.meanings[1]}
+                                        {duaArabicLines[1]}
                                     </div>
                                 </div>
+                                {showDuaMeanings ? (
+                                    <div className="dua-block">
+                                        <div className="dua-english">
+                                            {copy.dua.meanings[1]}
+                                        </div>
+                                    </div>
+                                ) : null}
                             </div>
                             <div className="dua-entry">
                                 <div className="dua-block">
                                     <div className="dua-arabic">
-                                {duaArabicLines[2]}
-                            </div>
-                                </div>
-                                <div className="dua-block">
-                                    <div className="dua-english">
-                                {copy.dua.meanings[2]}
+                                        {duaArabicLines[2]}
                                     </div>
                                 </div>
+                                {showDuaMeanings ? (
+                                    <div className="dua-block">
+                                        <div className="dua-english">
+                                            {copy.dua.meanings[2]}
+                                        </div>
+                                    </div>
+                                ) : null}
                             </div>
                             <div className="dua-closing">
                                 <span className="dua-closing-icon" aria-hidden="true">{iconPrayerHands}</span>
