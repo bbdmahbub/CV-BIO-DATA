@@ -1869,7 +1869,7 @@
 
         .language-panel-actions {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: 1fr;
             gap: 8px;
         }
 
@@ -2573,10 +2573,6 @@
 
             .language-panel-body {
                 padding: 10px 0;
-            }
-
-            .language-panel-actions {
-                grid-template-columns: 1fr;
             }
 
             .language-panel-button {

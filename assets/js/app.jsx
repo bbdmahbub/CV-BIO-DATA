@@ -41,8 +41,8 @@
             const voiceVerificationStorageKey = 'bbdMahbubVoiceVerified';
             const languageOptions = [
                 { code: 'en', shortLabel: 'EN', nativeLabel: 'English' },
-                { code: 'ar', shortLabel: 'AR', nativeLabel: 'العربية' },
-                { code: 'bn', shortLabel: 'BN', nativeLabel: 'বাংলা' }
+                { code: 'bn', shortLabel: 'BN', nativeLabel: 'বাংলা' },
+                { code: 'ar', shortLabel: 'AR', nativeLabel: 'العربية' }
             ];
             const translations = {
                 en: {
