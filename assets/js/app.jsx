@@ -77,6 +77,7 @@ const BioDataComponent = () => {
             const [isIntroPopupOpen, setIsIntroPopupOpen] = React.useState(true);
             const [isVoiceListening, setIsVoiceListening] = React.useState(false);
             const [voiceUiState, setVoiceUiState] = React.useState('idle');
+            const [microphonePermissionState, setMicrophonePermissionState] = React.useState('unknown');
             const [voicePrompt, setVoicePrompt] = React.useState(introVoiceHint);
             const [isMenuDragging, setIsMenuDragging] = React.useState(false);
             const menuLinksRef = React.useRef(null);
@@ -502,6 +503,47 @@ const BioDataComponent = () => {
                 clearSpeechRecognition();
             }, []);
 
+            React.useEffect(() => {
+                if (!navigator.permissions || typeof navigator.permissions.query !== 'function') {
+                    return undefined;
+                }
+
+                let permissionStatus = null;
+                let isDisposed = false;
+
+                const handlePermissionChange = () => {
+                    if (!permissionStatus || isDisposed) return;
+                    setMicrophonePermissionState(permissionStatus.state);
+                };
+
+                navigator.permissions.query({ name: 'microphone' }).then((status) => {
+                    if (isDisposed) return;
+
+                    permissionStatus = status;
+                    handlePermissionChange();
+
+                    if (typeof status.addEventListener === 'function') {
+                        status.addEventListener('change', handlePermissionChange);
+                    } else {
+                        status.onchange = handlePermissionChange;
+                    }
+                }).catch(() => {
+                    // Ignore browsers that do not expose microphone permission state.
+                });
+
+                return () => {
+                    isDisposed = true;
+
+                    if (!permissionStatus) return;
+
+                    if (typeof permissionStatus.removeEventListener === 'function') {
+                        permissionStatus.removeEventListener('change', handlePermissionChange);
+                    } else {
+                        permissionStatus.onchange = null;
+                    }
+                };
+            }, []);
+
             const clearRecognitionTimer = () => {
                 if (recognitionTimerRef.current !== null) {
                     window.clearTimeout(recognitionTimerRef.current);
@@ -611,12 +653,52 @@ const BioDataComponent = () => {
                 }
             };
 
+            const ensureMicrophonePermission = async () => {
+                if (!navigator.mediaDevices || typeof navigator.mediaDevices.getUserMedia !== 'function') {
+                    return true;
+                }
+
+                if (microphonePermissionState === 'granted') {
+                    return true;
+                }
+
+                if (microphonePermissionState === 'denied') {
+                    setVoiceUiState('error');
+                    setVoicePrompt('Microphone permission is blocked. Allow it in your browser settings, then tap the mic again.');
+                    return false;
+                }
+
+                setVoiceUiState('permission');
+                setVoicePrompt('Browser microphone permission is required. Tap Allow in the popup.');
+
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    stream.getTracks().forEach((track) => track.stop());
+                    setMicrophonePermissionState('granted');
+                    setVoiceUiState('idle');
+                    setVoicePrompt('Microphone permission allowed. Tap the mic once more to start voice verification.');
+                } catch (error) {
+                    setVoiceUiState('error');
+
+                    if (error && (error.name === 'NotAllowedError' || error.name === 'SecurityError')) {
+                        setMicrophonePermissionState('denied');
+                        setVoicePrompt('Microphone permission was denied. Allow it in browser settings, then tap the mic again.');
+                    } else if (error && error.name === 'NotFoundError') {
+                        setVoicePrompt('No microphone was found. Connect a microphone and try again.');
+                    } else {
+                        setVoicePrompt('Microphone permission could not be confirmed. Please try again.');
+                    }
+                }
+
+                return false;
+            };
+
             const startBismillahVoiceCheck = () => {
                 const StandardSpeechRecognition = window.SpeechRecognition;
                 const SpeechRecognition = StandardSpeechRecognition || window.webkitSpeechRecognition;
 
                 if (!SpeechRecognition) {
-                    setVoiceUiState('idle');
+                    setVoiceUiState('error');
                     setVoicePrompt('This browser does not support voice recognition. Use Chrome or Edge and allow microphone permission.');
                     return;
                 }
@@ -692,15 +774,18 @@ const BioDataComponent = () => {
                     isPreparingVoiceRef.current = false;
                     voiceStopReasonRef.current = 'error';
                     setIsVoiceListening(false);
-                    setVoiceUiState('idle');
+                    setVoiceUiState('error');
                     const errorMessages = {
                         'not-allowed': 'Microphone access was blocked. Please allow microphone permission and try again.',
+                        'service-not-allowed': 'Speech recognition is blocked on this browser. Use Chrome or Edge and allow microphone permission.',
+                        'aborted': 'Voice recording stopped before it could start. Tap the mic again.',
                         'audio-capture': 'No microphone was found. Connect a microphone and try again.',
                         'no-speech': 'No speech was detected. Tap the mic again and say "Bismillah".',
+                        'language-not-supported': 'This browser does not support the selected speech language. Use Chrome or Edge.',
                         'network': 'Your browser could not reach its speech service. Please try again in Chrome or Edge with microphone permission allowed.'
                     };
 
-                    setVoicePrompt(errorMessages[event.error] || 'Voice recognition did not start properly. Please try again.');
+                    setVoicePrompt(errorMessages[event.error] || 'Voice recognition did not start properly. If a browser popup appears, tap Allow microphone permission and try again.');
                 };
 
                 recognition.onend = () => {
@@ -711,7 +796,7 @@ const BioDataComponent = () => {
                     }
 
                     setIsVoiceListening(false);
-                    setVoiceUiState('idle');
+                    setVoiceUiState(voiceStopReasonRef.current === 'error' ? 'error' : 'idle');
 
                     if (voiceStopReasonRef.current === 'cancelled' && !voiceMatchedRef.current) {
                         setVoicePrompt(introVoiceHint);
@@ -734,18 +819,23 @@ const BioDataComponent = () => {
                     isPreparingVoiceRef.current = false;
                     voiceStopReasonRef.current = 'error';
                     setIsVoiceListening(false);
-                    setVoiceUiState('idle');
+                    setVoiceUiState('error');
                     setVoicePrompt('Microphone could not start right now. If the browser asks, allow microphone permission, then tap the mic again.');
                 }
             };
 
-            const handleVoiceButtonClick = () => {
-                if (isPreparingVoiceRef.current) {
+            const handleVoiceButtonClick = async () => {
+                if (isPreparingVoiceRef.current || voiceUiState === 'permission') {
                     return;
                 }
 
                 if (isVoiceListening || speechRecognitionRef.current) {
                     stopBismillahVoiceCheck();
+                    return;
+                }
+
+                const permissionReady = await ensureMicrophonePermission();
+                if (!permissionReady) {
                     return;
                 }
 
@@ -808,34 +898,35 @@ const BioDataComponent = () => {
                                     </ul>
                                 </div>
 
-                                <div className={`intro-popup-voice-status${voiceUiState === 'preparing' ? ' is-preparing' : isVoiceListening ? ' is-listening' : ''}`}>
-                                    <i className={`fas ${voiceUiState === 'preparing' ? 'fa-spinner fa-spin' : isVoiceListening ? 'fa-wave-square' : 'fa-microphone-lines'}`} aria-hidden="true"></i>
+                                <div className={`intro-popup-voice-status${voiceUiState === 'error' ? ' is-error' : voiceUiState === 'permission' || voiceUiState === 'preparing' ? ' is-preparing' : isVoiceListening ? ' is-listening' : ''}`}>
+                                    <i className={`fas ${voiceUiState === 'error' ? 'fa-triangle-exclamation' : voiceUiState === 'permission' || voiceUiState === 'preparing' ? 'fa-spinner fa-spin' : isVoiceListening ? 'fa-wave-square' : 'fa-microphone-lines'}`} aria-hidden="true"></i>
                                     <span>{voicePrompt}</span>
                                 </div>
 
                                 <div className="intro-popup-voice-gate">
                                     <button
                                         type="button"
-                                        className={`intro-popup-mic-button${voiceUiState === 'preparing' ? ' is-preparing' : isVoiceListening ? ' is-listening' : ''}`}
+                                        className={`intro-popup-mic-button${voiceUiState === 'error' ? ' is-error' : voiceUiState === 'permission' || voiceUiState === 'preparing' ? ' is-preparing' : isVoiceListening ? ' is-listening' : ''}`}
                                         onClick={handleVoiceButtonClick}
                                         onContextMenu={(event) => event.preventDefault()}
-                                        aria-label={voiceUiState === 'preparing' ? 'Microphone permission is being requested' : isVoiceListening ? 'Stop voice recognition' : 'Start voice recognition and say Bismillah'}
+                                        aria-label={voiceUiState === 'permission' || voiceUiState === 'preparing' ? 'Microphone permission is being requested' : voiceUiState === 'error' ? 'Retry voice recognition' : isVoiceListening ? 'Stop voice recognition' : 'Start voice recognition and say Bismillah'}
                                     >
-                                        <i className={`fas ${voiceUiState === 'preparing' ? 'fa-spinner fa-spin' : isVoiceListening ? 'fa-microphone-lines' : 'fa-microphone'}`} aria-hidden="true"></i>
+                                        <i className={`fas ${voiceUiState === 'error' ? 'fa-microphone-slash' : voiceUiState === 'permission' || voiceUiState === 'preparing' ? 'fa-spinner fa-spin' : isVoiceListening ? 'fa-microphone-lines' : 'fa-microphone'}`} aria-hidden="true"></i>
                                     </button>
-                                    <div className="intro-popup-mic-caption">
-                                        {voiceUiState === 'preparing'
-                                            ? 'Starting mic now. If a browser popup appears, tap Allow permission.'
-                                            : isVoiceListening
-                                            ? 'Mic is on now. Say "Bismillah" one time, then wait.'
-                                            : 'Mic is off now. Tap once to start voice verification.'}
-                                    </div>
                                     <div className="intro-popup-support-note">
-                                        {voiceUiState === 'preparing'
-                                            ? 'Permission may be needed here. Allow microphone access in Chrome or Edge to continue.'
+                                        {voiceUiState === 'permission'
+                                            ? 'A browser popup should appear now. Tap Allow microphone permission. After that, tap the mic again.'
+                                            : voiceUiState === 'preparing'
+                                                ? 'Microphone is starting now. Please wait a moment.'
+                                            : voiceUiState === 'error'
+                                                ? microphonePermissionState === 'denied'
+                                                    ? 'Microphone permission is blocked in browser settings. Allow it for this site, then tap the mic again.'
+                                                    : 'If no popup appears, use Chrome or Edge and make sure microphone permission is enabled for this site.'
                                             : isVoiceListening
                                                 ? 'Recording is active now. Speak once, then wait a moment for verification.'
-                                                : 'Voice-only mode. If needed, your browser will ask for microphone permission. Tap Allow to continue.'}
+                                                : microphonePermissionState === 'granted'
+                                                    ? 'Microphone permission is ready. Tap the mic to start voice verification.'
+                                                    : 'Tap the mic. If a browser popup appears, tap Allow microphone permission.'}
                                     </div>
                                 </div>
                             </div>

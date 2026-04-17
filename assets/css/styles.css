@@ -267,6 +267,12 @@
             color: #9a6700;
         }
 
+        .intro-popup-voice-status.is-error {
+            background: rgba(220, 38, 38, 0.1);
+            border-color: rgba(220, 38, 38, 0.18);
+            color: #b42318;
+        }
+
         .intro-popup-voice-gate {
             grid-area: voice;
             display: flex;
@@ -320,16 +326,15 @@
                 0 22px 44px rgba(183, 121, 31, 0.28);
         }
 
-        .intro-popup-mic-caption {
-            max-width: 270px;
-            color: rgba(13, 115, 119, 0.82);
-            font-size: 0.92rem;
-            line-height: 1.7;
-            text-align: center;
+        .intro-popup-mic-button.is-error {
+            background: linear-gradient(135deg, #b42318 0%, #ef4444 100%);
+            box-shadow:
+                0 0 0 10px rgba(239, 68, 68, 0.14),
+                0 22px 44px rgba(180, 35, 24, 0.24);
         }
 
         .intro-popup-support-note {
-            max-width: 320px;
+            max-width: 360px;
             color: rgba(71, 85, 105, 0.88);
             font-size: 0.84rem;
             line-height: 1.65;
