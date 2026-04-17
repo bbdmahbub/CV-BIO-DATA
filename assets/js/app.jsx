@@ -25,7 +25,7 @@ const BioDataComponent = () => {
                 "If this biodata feels suitable, contact through the shared details.",
                 "Please maintain privacy while reviewing this profile."
             ];
-            const introVoiceHint = 'Tap the mic, say "Bismillah", and the biodata will open automatically after verification.';
+            const introVoiceHint = 'Tap the mic once to start Bismillah voice verification.';
             const acceptedBismillahPhrases = [
                 'bismillah',
                 'bismillahirrahmanirrahim',
@@ -699,8 +699,8 @@ const BioDataComponent = () => {
                 setIsVoiceListening(true);
                 setVoicePrompt(
                     isLocalRecognition
-                        ? 'Offline speech is ready. Say "Bismillah". The biodata will open automatically after verification.'
-                        : 'Listening now. Say "Bismillah". If online speech is unavailable, type it below for verification.'
+                        ? 'Microphone is active. Say "Bismillah" once and wait for verification.'
+                        : 'Microphone is active. Say "Bismillah" once. If speech service fails, type it below for verification.'
                 );
                 isPreparingVoiceRef.current = false;
 
@@ -884,8 +884,8 @@ const BioDataComponent = () => {
                                     </button>
                                     <div className="intro-popup-mic-caption">
                                         {isVoiceListening
-                                            ? 'Listening now. Say "Bismillah" clearly.'
-                                            : 'Tap once, say "Bismillah", and the biodata will open automatically.'}
+                                            ? 'Mic is on now. Say "Bismillah" one time, then wait.'
+                                            : 'Mic is off now. Tap once to start voice verification.'}
                                     </div>
                                     <div className="intro-popup-support-note">
                                         Voice works best in Chrome or Edge with microphone permission allowed.
