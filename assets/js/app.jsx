@@ -75,8 +75,6 @@ const BioDataComponent = () => {
                 return menuItems.some(([id]) => id === hashId) ? hashId : menuItems[0][0];
             });
             const [isIntroPopupOpen, setIsIntroPopupOpen] = React.useState(true);
-            const [isManualEntryVisible, setIsManualEntryVisible] = React.useState(false);
-            const [manualBismillahValue, setManualBismillahValue] = React.useState('');
             const [isVoiceListening, setIsVoiceListening] = React.useState(false);
             const [voiceUiState, setVoiceUiState] = React.useState('idle');
             const [voicePrompt, setVoicePrompt] = React.useState(introVoiceHint);
@@ -634,18 +632,6 @@ const BioDataComponent = () => {
                 return { mode: 'remote', lang: langs[0] };
             };
 
-            const handleManualBismillahVerify = () => {
-                if (matchesBismillahPhrase(manualBismillahValue)) {
-                    setVoicePrompt('Verified from typed "Bismillah". Opening biodata...');
-                    window.setTimeout(() => {
-                        handleEnterBiodata();
-                    }, 180);
-                    return;
-                }
-
-                setVoicePrompt('Typed text did not match "Bismillah". Please type it again or use the mic once more.');
-            };
-
             const stopBismillahVoiceCheck = () => {
                 const recognition = speechRecognitionRef.current;
                 if (!recognition) return;
@@ -668,9 +654,8 @@ const BioDataComponent = () => {
                 const SpeechRecognition = StandardSpeechRecognition || window.webkitSpeechRecognition;
 
                 if (!SpeechRecognition) {
-                    setIsManualEntryVisible(true);
                     setVoiceUiState('idle');
-                    setVoicePrompt('This browser does not support voice recognition. Use Chrome or Edge, or type "Bismillah" below for verification.');
+                    setVoicePrompt('This browser does not support voice recognition. Use Chrome or Edge and allow microphone permission.');
                     return;
                 }
 
@@ -705,7 +690,7 @@ const BioDataComponent = () => {
                 setVoicePrompt(
                     isLocalRecognition
                         ? 'Microphone is active. Say "Bismillah" once and wait for verification.'
-                        : 'Microphone is active. Say "Bismillah" once. If speech service fails, type it below for verification.'
+                        : 'Microphone is active. Say "Bismillah" once and wait for verification.'
                 );
                 isPreparingVoiceRef.current = false;
 
@@ -733,15 +718,13 @@ const BioDataComponent = () => {
                         return;
                     }
 
-                    setIsManualEntryVisible(true);
-                    setVoicePrompt(`Heard: "${transcript.trim()}". Tap the mic and say "Bismillah" again, or type it below for verification.`);
+                    setVoicePrompt(`Heard: "${transcript.trim()}". Tap the mic and say "Bismillah" again.`);
                 };
 
                 recognition.onerror = (event) => {
                     clearRecognitionTimer();
                     isPreparingVoiceRef.current = false;
                     voiceStopReasonRef.current = 'error';
-                    setIsManualEntryVisible(true);
                     setIsVoiceListening(false);
                     setVoiceUiState('idle');
                     const errorMessages = {
@@ -749,11 +732,11 @@ const BioDataComponent = () => {
                         'audio-capture': 'No microphone was found. Connect a microphone and try again.',
                         'no-speech': 'No speech was detected. Tap the mic again and say "Bismillah".',
                         'network': isLocalRecognition
-                            ? 'Offline speech recognition could not start on this browser. Type "Bismillah" below for verification.'
-                            : 'Your browser could not reach its speech service. Please type "Bismillah" below for verification, or try Chrome/Edge with offline speech support.'
+                            ? 'Offline speech recognition could not start on this browser. Please try again in Chrome or Edge.'
+                            : 'Your browser could not reach its speech service. Please try again in Chrome or Edge with microphone permission allowed.'
                     };
 
-                    setVoicePrompt((errorMessages[event.error] || 'Voice recognition did not start properly. Please try again.') + ' You can also type "Bismillah" below for verification.');
+                    setVoicePrompt(errorMessages[event.error] || 'Voice recognition did not start properly. Please try again.');
                 };
 
                 recognition.onend = () => {
@@ -769,11 +752,9 @@ const BioDataComponent = () => {
                     if (voiceStopReasonRef.current === 'cancelled' && !voiceMatchedRef.current) {
                         setVoicePrompt(introVoiceHint);
                     } else if (voiceStopReasonRef.current === 'timeout' && !voiceMatchedRef.current) {
-                        setIsManualEntryVisible(true);
-                        setVoicePrompt('Listening timed out. Tap the mic and say "Bismillah" again, or type it below for verification.');
+                        setVoicePrompt('Listening timed out. Tap the mic and say "Bismillah" again.');
                     } else if (voiceStopReasonRef.current === 'listening' && !voiceMatchedRef.current) {
-                        setIsManualEntryVisible(true);
-                        setVoicePrompt('I could not verify "Bismillah". Tap the mic and say it again, or type it below for verification.');
+                        setVoicePrompt('I could not verify "Bismillah". Tap the mic and say it again.');
                     }
 
                     if (voiceStopReasonRef.current !== 'matched') {
@@ -800,10 +781,9 @@ const BioDataComponent = () => {
                     clearRecognitionTimer();
                     isPreparingVoiceRef.current = false;
                     voiceStopReasonRef.current = 'error';
-                    setIsManualEntryVisible(true);
                     setIsVoiceListening(false);
                     setVoiceUiState('idle');
-                    setVoicePrompt('Microphone could not start right now. If the browser asks, allow microphone permission, then tap the mic again. You can also type "Bismillah" below for verification.');
+                    setVoicePrompt('Microphone could not start right now. If the browser asks, allow microphone permission, then tap the mic again.');
                 }
             };
 
@@ -903,41 +883,9 @@ const BioDataComponent = () => {
                                             ? 'Permission may be needed here. Allow microphone access in Chrome or Edge to continue.'
                                             : isVoiceListening
                                                 ? 'Recording is active now. Speak once, then wait a moment for verification.'
-                                                : 'If needed, your browser will ask for microphone permission. Tap Allow to use voice.'}
+                                                : 'Voice-only mode. If needed, your browser will ask for microphone permission. Tap Allow to continue.'}
                                     </div>
                                 </div>
-
-                                {isManualEntryVisible ? (
-                                    <div className="intro-popup-manual-entry">
-                                        <label className="intro-popup-manual-label" htmlFor="bismillah-text-input">
-                                            If voice does not work, type "Bismillah" here for verification:
-                                        </label>
-                                        <div className="intro-popup-manual-row">
-                                            <input
-                                                id="bismillah-text-input"
-                                                type="text"
-                                                className="intro-popup-manual-input"
-                                                value={manualBismillahValue}
-                                                onChange={(event) => setManualBismillahValue(event.target.value)}
-                                                onKeyDown={(event) => {
-                                                    if (event.key === 'Enter') {
-                                                        event.preventDefault();
-                                                        handleManualBismillahVerify();
-                                                    }
-                                                }}
-                                                placeholder='Type "Bismillah"'
-                                                autoComplete="off"
-                                            />
-                                            <button
-                                                type="button"
-                                                className="intro-popup-verify-button"
-                                                onClick={handleManualBismillahVerify}
-                                            >
-                                                Verify
-                                            </button>
-                                        </div>
-                                    </div>
-                                ) : null}
                             </div>
                         </div>
                     </div>
