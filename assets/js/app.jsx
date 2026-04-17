@@ -1,4 +1,4 @@
-﻿const BioDataComponent = () => {
+const BioDataComponent = () => {
             const iconProfile = String.fromCodePoint(0x1F464);
             const iconFamily = String.fromCodePoint(0x1F46A);
             const iconEducation = String.fromCodePoint(0x1F393);
@@ -801,7 +801,7 @@
                                 {isManualEntryVisible ? (
                                     <div className="intro-popup-manual-entry">
                                         <label className="intro-popup-manual-label" htmlFor="bismillah-text-input">
-                                            If voice does not work, type "Bismillah" here:
+                                            If voice does not work, type "Bismillah" here for verification:
                                         </label>
                                         <div className="intro-popup-manual-row">
                                             <input
@@ -827,13 +827,6 @@
                                                 Verify
                                             </button>
                                         </div>
-                                        <button
-                                            type="button"
-                                            className="intro-popup-action"
-                                            onClick={handleEnterBiodata}
-                                        >
-                                            Open Biodata
-                                        </button>
                                     </div>
                                 ) : null}
                             </div>
