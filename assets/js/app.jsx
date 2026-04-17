@@ -594,44 +594,6 @@ const BioDataComponent = () => {
                 }
             };
 
-            const resolveRecognitionMode = async (SpeechRecognitionCtor) => {
-                const langs = getPreferredRecognitionLangs();
-
-                if (
-                    !SpeechRecognitionCtor ||
-                    typeof SpeechRecognitionCtor.available !== 'function' ||
-                    typeof SpeechRecognitionCtor.install !== 'function'
-                ) {
-                    return { mode: 'remote', lang: langs[0] };
-                }
-
-                for (const lang of langs) {
-                    try {
-                        const availability = await SpeechRecognitionCtor.available({
-                            langs: [lang],
-                            processLocally: true
-                        });
-
-                        if (availability === 'available') {
-                            return { mode: 'local', lang };
-                        }
-
-                        if (availability === 'downloadable' || availability === 'downloading') {
-                            setVoicePrompt(`${lang} offline speech pack is being prepared. Please wait...`);
-                            const installed = await SpeechRecognitionCtor.install({ langs: [lang] });
-
-                            if (installed) {
-                                return { mode: 'local', lang };
-                            }
-                        }
-                    } catch (error) {
-                        // Try the next language candidate if on-device setup fails.
-                    }
-                }
-
-                return { mode: 'remote', lang: langs[0] };
-            };
-
             const stopBismillahVoiceCheck = () => {
                 const recognition = speechRecognitionRef.current;
                 if (!recognition) return;
@@ -649,7 +611,7 @@ const BioDataComponent = () => {
                 }
             };
 
-            const startBismillahVoiceCheck = async () => {
+            const startBismillahVoiceCheck = () => {
                 const StandardSpeechRecognition = window.SpeechRecognition;
                 const SpeechRecognition = StandardSpeechRecognition || window.webkitSpeechRecognition;
 
@@ -665,34 +627,38 @@ const BioDataComponent = () => {
                 setVoiceUiState('preparing');
                 setVoicePrompt('Starting microphone. If your browser asks, tap Allow microphone permission.');
 
-                const recognitionMode = await resolveRecognitionMode(StandardSpeechRecognition);
                 const recognition = new SpeechRecognition();
-                const isLocalRecognition = recognitionMode.mode === 'local' && 'processLocally' in recognition;
+                const recognitionLang = getPreferredRecognitionLangs()[0];
 
                 speechRecognitionRef.current = recognition;
                 voiceMatchedRef.current = false;
                 voiceStopReasonRef.current = 'listening';
-                recognition.lang = recognitionMode.lang;
+                recognition.lang = recognitionLang;
                 recognition.interimResults = true;
                 recognition.maxAlternatives = 10;
                 recognition.continuous = false;
-                if (isLocalRecognition) {
-                    try {
-                        recognition.processLocally = true;
-                    } catch (error) {
-                        // Ignore browsers that expose the property but reject assignment.
-                    }
-                }
                 configureRecognitionBias(recognition);
 
-                setIsVoiceListening(true);
-                setVoiceUiState('listening');
-                setVoicePrompt(
-                    isLocalRecognition
-                        ? 'Microphone is active. Say "Bismillah" once and wait for verification.'
-                        : 'Microphone is active. Say "Bismillah" once and wait for verification.'
-                );
-                isPreparingVoiceRef.current = false;
+                recognition.onstart = () => {
+                    if (speechRecognitionRef.current !== recognition) return;
+
+                    isPreparingVoiceRef.current = false;
+                    setIsVoiceListening(true);
+                    setVoiceUiState('listening');
+                    setVoicePrompt('Microphone is active. Say "Bismillah" once and wait for verification.');
+                    recognitionTimerRef.current = window.setTimeout(() => {
+                        if (speechRecognitionRef.current !== recognition || voiceMatchedRef.current) {
+                            return;
+                        }
+
+                        voiceStopReasonRef.current = 'timeout';
+                        try {
+                            recognition.stop();
+                        } catch (error) {
+                            // Ignore shutdown races when the browser ends recognition itself.
+                        }
+                    }, 6500);
+                };
 
                 recognition.onresult = (event) => {
                     clearRecognitionTimer();
@@ -731,9 +697,7 @@ const BioDataComponent = () => {
                         'not-allowed': 'Microphone access was blocked. Please allow microphone permission and try again.',
                         'audio-capture': 'No microphone was found. Connect a microphone and try again.',
                         'no-speech': 'No speech was detected. Tap the mic again and say "Bismillah".',
-                        'network': isLocalRecognition
-                            ? 'Offline speech recognition could not start on this browser. Please try again in Chrome or Edge.'
-                            : 'Your browser could not reach its speech service. Please try again in Chrome or Edge with microphone permission allowed.'
+                        'network': 'Your browser could not reach its speech service. Please try again in Chrome or Edge with microphone permission allowed.'
                     };
 
                     setVoicePrompt(errorMessages[event.error] || 'Voice recognition did not start properly. Please try again.');
@@ -764,18 +728,6 @@ const BioDataComponent = () => {
 
                 try {
                     recognition.start();
-                    recognitionTimerRef.current = window.setTimeout(() => {
-                        if (speechRecognitionRef.current !== recognition || voiceMatchedRef.current) {
-                            return;
-                        }
-
-                        voiceStopReasonRef.current = 'timeout';
-                        try {
-                            recognition.stop();
-                        } catch (error) {
-                            // Ignore shutdown races when the browser ends recognition itself.
-                        }
-                    }, 6500);
                 } catch (error) {
                     speechRecognitionRef.current = null;
                     clearRecognitionTimer();
@@ -788,12 +740,12 @@ const BioDataComponent = () => {
             };
 
             const handleVoiceButtonClick = () => {
-                if (isVoiceListening || speechRecognitionRef.current) {
-                    stopBismillahVoiceCheck();
+                if (isPreparingVoiceRef.current) {
                     return;
                 }
 
-                if (isPreparingVoiceRef.current) {
+                if (isVoiceListening || speechRecognitionRef.current) {
+                    stopBismillahVoiceCheck();
                     return;
                 }
 
