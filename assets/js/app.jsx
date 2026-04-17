@@ -934,7 +934,6 @@
             const contactBlocks = copy.contact.blocks;
             const permanentAddressValue = copy.contact.permanentAddressValue;
             const voiceCopy = copy.voice;
-            const currentLanguageOption = languageOptions.find((option) => option.code === language) || languageOptions[0];
             const trainingIconClasses = [
                 'fas fa-medal',
                 'fas fa-briefcase',
@@ -1655,9 +1654,6 @@
                 ) : null}
                 <div className={`language-panel${isLanguagePanelCollapsed ? ' is-collapsed' : ''}`} aria-live="polite">
                     <div className="language-panel-body" id="language-panel-body">
-                        <div className="language-panel-label">{copy.navigation.languageSwitcherLabel}</div>
-                        <div className="language-panel-track">{currentLanguageOption.nativeLabel}</div>
-                        <div className="language-panel-meta">{copy.navigation.languagePanelHint}</div>
                         <div className="language-panel-actions" role="group" aria-label={copy.navigation.languageSwitcherLabel}>
                             {languageOptions.map((option) => (
                                 <button
