@@ -25,18 +25,24 @@
                 "If this biodata feels suitable, contact through the shared details.",
                 "Please maintain privacy while reviewing this profile."
             ];
-            const introVoiceHint = 'Tap and hold the mic, then say "Bismillah".';
+            const introVoiceHint = 'Tap the mic, say "Bismillah", and the biodata will open automatically after verification.';
             const acceptedBismillahPhrases = [
                 'bismillah',
                 'bismillahirrahmanirrahim',
                 'bismillahir rohmanir rohim',
                 'bismillahir rahmanir rahim',
+                'bismillahir rahmanir raheem',
+                'bismillah hir rahman nir rahim',
                 'bismillahirrahmanirrahim',
                 'বিসমিল্লাহ',
                 'বিসমিল্লাহিররহমানিররহিম',
                 'বিসমিল্লাহিররাহমানিররাহিম',
+                'বিসমিল্লাহির রহমানির রহিম',
+                'বিসমিল্লাহির রাহমানির রাহিম',
                 'بسمالله',
                 'بسماللَّه',
+                'بسم الله',
+                'بسم الله الرحمن الرحيم',
                 'بسماللهالرحمنالرحيم'
             ];
 
@@ -76,6 +82,7 @@
             const menuLinksRef = React.useRef(null);
             const hasCenteredMenuRef = React.useRef(false);
             const speechRecognitionRef = React.useRef(null);
+            const recognitionTimerRef = React.useRef(null);
             const voiceStopReasonRef = React.useRef('idle');
             const voiceMatchedRef = React.useRef(false);
             const menuDragStateRef = React.useRef({
@@ -491,20 +498,18 @@
             }, [isIntroPopupOpen]);
 
             React.useEffect(() => () => {
-                const recognition = speechRecognitionRef.current;
-                if (recognition) {
-                    recognition.onresult = null;
-                    recognition.onerror = null;
-                    recognition.onend = null;
-                    try {
-                        recognition.stop();
-                    } catch (error) {
-                        // Ignore shutdown race conditions from the browser recognizer.
-                    }
-                }
+                clearSpeechRecognition();
             }, []);
 
+            const clearRecognitionTimer = () => {
+                if (recognitionTimerRef.current !== null) {
+                    window.clearTimeout(recognitionTimerRef.current);
+                    recognitionTimerRef.current = null;
+                }
+            };
+
             const clearSpeechRecognition = () => {
+                clearRecognitionTimer();
                 const recognition = speechRecognitionRef.current;
                 if (recognition) {
                     recognition.onresult = null;
@@ -539,8 +544,10 @@
                 if (!recognition) return;
 
                 if (voiceStopReasonRef.current === 'listening') {
-                    voiceStopReasonRef.current = 'released';
+                    voiceStopReasonRef.current = 'cancelled';
                 }
+
+                clearRecognitionTimer();
 
                 try {
                     recognition.stop();
@@ -564,15 +571,16 @@
                 speechRecognitionRef.current = recognition;
                 voiceMatchedRef.current = false;
                 voiceStopReasonRef.current = 'listening';
-                recognition.lang = 'bn-BD';
+                recognition.lang = navigator.language || 'en-US';
                 recognition.interimResults = false;
-                recognition.maxAlternatives = 5;
+                recognition.maxAlternatives = 10;
                 recognition.continuous = false;
 
                 setIsVoiceListening(true);
-                setVoicePrompt('Holding mic now. Say "Bismillah", then release.');
+                setVoicePrompt('Listening now. Say "Bismillah". The biodata will open automatically after verification.');
 
                 recognition.onresult = (event) => {
+                    clearRecognitionTimer();
                     const transcriptParts = [];
 
                     Array.from(event.results).forEach((result) => {
@@ -599,16 +607,17 @@
                     }
 
                     setIsManualEntryVisible(true);
-                    setVoicePrompt(`Heard: "${transcript.trim()}". Hold the mic and say "Bismillah" again, or use Open Biodata below.`);
+                    setVoicePrompt(`Heard: "${transcript.trim()}". Tap the mic and say "Bismillah" again, or use Open Biodata below.`);
                 };
 
                 recognition.onerror = (event) => {
+                    clearRecognitionTimer();
                     voiceStopReasonRef.current = 'error';
                     setIsManualEntryVisible(true);
                     const errorMessages = {
                         'not-allowed': 'Microphone access was blocked. Please allow microphone permission and try again.',
                         'audio-capture': 'No microphone was found. Connect a microphone and try again.',
-                        'no-speech': 'No speech was detected. Hold the mic again and say "Bismillah".',
+                        'no-speech': 'No speech was detected. Tap the mic again and say "Bismillah".',
                         'network': 'Speech recognition needs network access. Please check your connection and try again.'
                     };
 
@@ -616,17 +625,21 @@
                 };
 
                 recognition.onend = () => {
+                    clearRecognitionTimer();
                     if (speechRecognitionRef.current === recognition) {
                         speechRecognitionRef.current = null;
                     }
 
                     setIsVoiceListening(false);
 
-                    if (voiceStopReasonRef.current === 'released' && !voiceMatchedRef.current) {
-                        setIsManualEntryVisible(true);
-                        setVoicePrompt('Voice stopped. Hold the mic and say "Bismillah", or use Open Biodata below.');
-                    } else if (voiceStopReasonRef.current === 'listening' && !voiceMatchedRef.current) {
+                    if (voiceStopReasonRef.current === 'cancelled' && !voiceMatchedRef.current) {
                         setVoicePrompt(introVoiceHint);
+                    } else if (voiceStopReasonRef.current === 'timeout' && !voiceMatchedRef.current) {
+                        setIsManualEntryVisible(true);
+                        setVoicePrompt('Listening timed out. Tap the mic and say "Bismillah" again, or use Open Biodata below.');
+                    } else if (voiceStopReasonRef.current === 'listening' && !voiceMatchedRef.current) {
+                        setIsManualEntryVisible(true);
+                        setVoicePrompt('I could not verify "Bismillah". Tap the mic and say it again, or use Open Biodata below.');
                     }
 
                     if (voiceStopReasonRef.current !== 'matched') {
@@ -636,41 +649,35 @@
 
                 try {
                     recognition.start();
+                    recognitionTimerRef.current = window.setTimeout(() => {
+                        if (speechRecognitionRef.current !== recognition || voiceMatchedRef.current) {
+                            return;
+                        }
+
+                        voiceStopReasonRef.current = 'timeout';
+                        try {
+                            recognition.stop();
+                        } catch (error) {
+                            // Ignore shutdown races when the browser ends recognition itself.
+                        }
+                    }, 6500);
                 } catch (error) {
                     speechRecognitionRef.current = null;
+                    clearRecognitionTimer();
                     voiceStopReasonRef.current = 'error';
                     setIsManualEntryVisible(true);
                     setIsVoiceListening(false);
-                    setVoicePrompt('Microphone could not start right now. Hold the mic again and allow access, or use Open Biodata below.');
+                    setVoicePrompt('Microphone could not start right now. Tap the mic again and allow access, or use Open Biodata below.');
                 }
             };
 
-            const handleVoicePressStart = (event) => {
-                if (event.pointerType === 'mouse' && event.button !== 0) return;
-
-                if (typeof event.currentTarget.setPointerCapture === 'function') {
-                    try {
-                        event.currentTarget.setPointerCapture(event.pointerId);
-                    } catch (error) {
-                        // Ignore capture issues on older browsers.
-                    }
+            const handleVoiceButtonClick = () => {
+                if (isVoiceListening || speechRecognitionRef.current) {
+                    stopBismillahVoiceCheck();
+                    return;
                 }
 
                 startBismillahVoiceCheck();
-            };
-
-            const handleVoicePressEnd = (event) => {
-                if (event && typeof event.currentTarget.releasePointerCapture === 'function') {
-                    try {
-                        if (!event.currentTarget.hasPointerCapture || event.currentTarget.hasPointerCapture(event.pointerId)) {
-                            event.currentTarget.releasePointerCapture(event.pointerId);
-                        }
-                    } catch (error) {
-                        // Ignore release issues when capture is already cleared.
-                    }
-                }
-
-                stopBismillahVoiceCheck();
             };
 
             const handleMenuClick = (event, id) => {
@@ -738,14 +745,17 @@
                                     <button
                                         type="button"
                                         className={`intro-popup-mic-button${isVoiceListening ? ' is-listening' : ''}`}
-                                        onPointerDown={handleVoicePressStart}
-                                        onPointerUp={handleVoicePressEnd}
-                                        onPointerCancel={handleVoicePressEnd}
+                                        onClick={handleVoiceButtonClick}
                                         onContextMenu={(event) => event.preventDefault()}
-                                        aria-label="Hold microphone and say Bismillah"
+                                        aria-label={isVoiceListening ? 'Stop voice recognition' : 'Start voice recognition and say Bismillah'}
                                     >
                                         <i className={`fas ${isVoiceListening ? 'fa-microphone-lines' : 'fa-microphone'}`} aria-hidden="true"></i>
                                     </button>
+                                    <div className="intro-popup-mic-caption">
+                                        {isVoiceListening
+                                            ? 'Listening now. Say "Bismillah" clearly.'
+                                            : 'Tap once, say "Bismillah", and the biodata will open automatically.'}
+                                    </div>
                                 </div>
 
                                 {isManualEntryVisible ? (
