@@ -561,25 +561,70 @@
         .app-shell.is-rtl .work-title-wrap,
         .app-shell.is-rtl .language-title-wrap,
         .app-shell.is-rtl .education-title-wrap,
-        .app-shell.is-rtl .activity-title-wrap {
+        .app-shell.is-rtl .activity-title-wrap,
+        .app-shell.is-rtl .section-header,
+        .app-shell.is-rtl .family-summary-label,
+        .app-shell.is-rtl .activity-points li,
+        .app-shell.is-rtl .expectation-item,
+        .app-shell.is-rtl .photo-gallery-caption,
+        .app-shell.is-rtl .map-link-button,
+        .app-shell.is-rtl .dua-closing {
             flex-direction: row-reverse;
         }
 
         .app-shell.is-rtl .family-summary,
         .app-shell.is-rtl .family-summary-title,
+        .app-shell.is-rtl .section-header,
+        .app-shell.is-rtl .subsection-title,
+        .app-shell.is-rtl .work-title,
+        .app-shell.is-rtl .work-org,
+        .app-shell.is-rtl .language-title,
+        .app-shell.is-rtl .education-subtitle,
+        .app-shell.is-rtl .education-meta,
+        .app-shell.is-rtl .activity-title,
+        .app-shell.is-rtl .activity-point-text,
         .app-shell.is-rtl .detail-value,
         .app-shell.is-rtl .hobby-text,
         .app-shell.is-rtl .expectation-item-text,
         .app-shell.is-rtl .expectation-item-title,
         .app-shell.is-rtl .address-box,
+        .app-shell.is-rtl .contact-action-link,
         .app-shell.is-rtl .intro-popup-support-note,
         .app-shell.is-rtl .intro-popup-dua-meaning {
             text-align: right;
         }
 
+        .app-shell.is-rtl .section-header {
+            justify-content: flex-end;
+        }
+
+        .app-shell.is-rtl .section-header::after {
+            right: auto;
+            left: 20px;
+        }
+
+        .app-shell.is-rtl .photo-gallery-caption {
+            left: auto;
+            right: 24px;
+        }
+
         .app-shell.is-rtl .detail-inline-badge {
             margin-right: 0;
             margin-left: 8px;
+        }
+
+        .app-shell.is-rtl .activity-link-button {
+            margin-left: 0;
+            margin-right: 10px;
+        }
+
+        .app-shell.is-rtl .family-summary-tags,
+        .app-shell.is-rtl .badge-group {
+            justify-content: flex-end;
+        }
+
+        .app-shell.is-rtl .address-actions {
+            text-align: right;
         }
 
         .app-shell.is-rtl .detail-row::before {
