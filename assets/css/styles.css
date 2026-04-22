@@ -2,11 +2,34 @@
 
         html {
             --menu-offset: 88px;
+            --font-english: 'Lato', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-bangla: 'SiyamRupali', 'Siyam Rupali', 'Lato', sans-serif;
+            --font-arabic: 'Reem Kufi Fun', 'Tahoma', sans-serif;
+            --font-body: var(--font-english);
             scroll-behavior: smooth;
         }
+
+        html:lang(ar) {
+            --font-body: var(--font-arabic);
+        }
+
+        html:lang(bn) {
+            --font-body: var(--font-bangla);
+        }
+
+        html:lang(en) {
+            --font-body: var(--font-english);
+        }
         
+        body,
+        button,
+        input,
+        textarea,
+        select {
+            font-family: var(--font-body);
+        }
+
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f5f7fa 100%);
             min-height: 100vh;
             padding: 0 0 30px;
@@ -129,7 +152,7 @@
         .intro-popup-bismillah {
             grid-area: bismillah;
             color: #0b5f63;
-            font-family: 'Noto Naskh Arabic', 'Amiri', 'Scheherazade', 'Traditional Arabic', Tahoma, serif;
+            font-family: var(--font-arabic);
             font-size: clamp(1.5rem, 3vw, 2.45rem);
             line-height: 1.8;
             direction: rtl;
@@ -142,7 +165,7 @@
         .intro-popup-darud {
             grid-area: darud;
             color: #14919b;
-            font-family: 'Noto Naskh Arabic', 'Amiri', 'Scheherazade', 'Traditional Arabic', Tahoma, serif;
+            font-family: var(--font-arabic);
             font-size: clamp(1.1rem, 2.3vw, 1.75rem);
             line-height: 1.75;
             direction: rtl;
@@ -180,7 +203,7 @@
         }
 
         .intro-popup-dua-arabic {
-            font-family: 'Noto Naskh Arabic', 'Amiri', 'Scheherazade', 'Traditional Arabic', Tahoma, serif;
+            font-family: var(--font-arabic);
             font-size: clamp(1.4rem, 2.6vw, 2.2rem);
             line-height: 1.9;
             direction: rtl;
@@ -812,7 +835,7 @@
             left: 20px;
             font-size: 18px;
             color: rgba(255, 255, 255, 0.15);
-            font-family: 'Noto Naskh Arabic', 'Amiri', 'Traditional Arabic', Arial, sans-serif;
+            font-family: var(--font-arabic);
             writing-mode: horizontal-tb;
         }
         
@@ -824,7 +847,7 @@
             font-size: 32px;
             color: rgba(255, 255, 255, 0.15);
             opacity: 0.2;
-            font-family: 'Noto Naskh Arabic', 'Amiri', 'Traditional Arabic', Arial, sans-serif;
+            font-family: var(--font-arabic);
             line-height: 1;
         }
         
@@ -993,7 +1016,7 @@
         }
 
         .dua-arabic {
-            font-family: 'Noto Naskh Arabic', 'Amiri', 'Scheherazade', 'Traditional Arabic', Tahoma, serif;
+            font-family: var(--font-arabic);
             font-size: 1.45rem;
             line-height: 1.7;
             direction: rtl;
