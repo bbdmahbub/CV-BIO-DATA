@@ -53,7 +53,7 @@
                         description: 'Marriage biodata of Md. Mahbubur Rahman with personal, family, education, work, and contact details.'
                     },
                     navigation: {
-                        quickJump: 'Quick Jump',
+                        // quickJump: 'Quick Jump',
                         sectionsAria: 'Page sections',
                         languageSwitcherLabel: 'Language versions',
                         languagePanelHint: 'Change the page language at any time.',
@@ -165,7 +165,7 @@
                         { label: 'Religion', value: 'Islam (Practicing Muslim)', iconClass: 'fas fa-mosque' },
                         { label: 'Marital Status', value: 'Unmarried', iconClass: 'fas fa-ring' },
                         { label: 'Complexion', value: 'Medium Dark', iconClass: 'fas fa-palette' },
-                        { label: 'Height & Weight', value: 'About 5\' 3" & 72 KGs', iconClass: 'fas fa-ruler-combined' },
+                        { label: 'Height & Weight', value: '5\' 3" & 72 KGs', iconClass: 'fas fa-ruler-combined' },
                         { label: 'Blood Group', value: 'A+', iconClass: 'fas fa-droplet' },
                         { label: 'Health Status', value: 'Healthy, non-smoker, no addiction', iconClass: 'fas fa-heart-pulse' }
                     ],
@@ -315,7 +315,7 @@
                         description: 'السيرة الزوجية لـ Md. Mahbubur Rahman وتشمل المعلومات الشخصية والأسرية والتعليمية والمهنية ووسائل التواصل.'
                     },
                     navigation: {
-                        quickJump: 'انتقال سريع',
+                        // quickJump: 'انتقال سريع'
                         sectionsAria: 'أقسام الصفحة',
                         languageSwitcherLabel: 'إصدارات اللغة',
                         languagePanelHint: 'يمكنك تغيير لغة الصفحة في أي وقت.',
@@ -420,14 +420,14 @@
                         work: 'المعلومات المهنية'
                     },
                     personalDetails: [
-                        { label: 'الاسم الكامل', value: 'Md. Mahbubur Rahman', iconClass: 'fas fa-user' },
-                        { label: 'الاسم المختصر', value: 'Nasir Uddin', iconClass: 'fas fa-signature' },
-                        { label: 'تاريخ الميلاد', value: '20 ديسمبر 1997', iconClass: 'fas fa-calendar-days' },
+                        { label: 'الاسم الكامل', value: 'محمد محبوب الرحمن', iconClass: 'fas fa-user' },
+                        { label: 'الاسم المختصر', value: 'ناصر الدين', iconClass: 'fas fa-signature' },
+                        { label: 'تاريخ الميلاد', value: 'ديسمبر 20 1997', iconClass: 'fas fa-calendar-days' },
                         { label: 'العمر', value: '27 سنة', iconClass: 'fas fa-hourglass-half' },
                         { label: 'الديانة', value: 'الإسلام (ملتزم)', iconClass: 'fas fa-mosque' },
                         { label: 'الحالة الاجتماعية', value: 'أعزب', iconClass: 'fas fa-ring' },
                         { label: 'لون البشرة', value: 'قمحي مائل للداكن', iconClass: 'fas fa-palette' },
-                        { label: 'الطول والوزن', value: 'حوالي 5\' 3" و72 كجم', iconClass: 'fas fa-ruler-combined' },
+                        { label: 'الطول والوزن', value: '5\' 3" و72 كجم', iconClass: 'fas fa-ruler-combined' },
                         { label: 'فصيلة الدم', value: 'A+', iconClass: 'fas fa-droplet' },
                         { label: 'الحالة الصحية', value: 'بصحة جيدة، غير مدخن، بلا إدمان', iconClass: 'fas fa-heart-pulse' }
                     ],
@@ -573,11 +573,11 @@
                     locale: 'bn',
                     dir: 'ltr',
                     meta: {
-                        title: 'বিয়ে বায়োডাটা - Md. Mahbubur Rahman',
-                        description: 'Md. Mahbubur Rahman-এর ব্যক্তিগত, পারিবারিক, শিক্ষাগত, পেশাগত ও যোগাযোগ তথ্যসহ বিয়ে বায়োডাটা।'
+                        title: 'বিয়ে বায়োডাটা - মো. মাহবুবুর রহমান',
+                        description: 'মো. মাহবুবুর রহমানের ব্যক্তিগত, পারিবারিক, শিক্ষাগত, পেশাগত ও যোগাযোগ তথ্যসহ বিয়ে বায়োডাটা।'
                     },
                     navigation: {
-                        quickJump: 'দ্রুত নেভিগেশন',
+                        // quickJump: 'দ্রুত নেভিগেশন',
                         sectionsAria: 'পেজ সেকশনসমূহ',
                         languageSwitcherLabel: 'ভাষা সংস্করণ',
                         languagePanelHint: 'যেকোনো সময় পেজের ভাষা বদলান।',
@@ -659,11 +659,11 @@
                         dua: 'দোআ'
                     },
                     profile: {
-                        name: 'Md Mahbubur Rahman',
-                        subtitle: 'আইটি পেশাজীবী',
-                        tagline: 'একজন দ্বীনদার মুসলিম, স্নেহশীল ও পরহেজগার জীবনসঙ্গী খুঁজছেন',
+                        name: 'মো. মাহবুবুর রহমান',
+                        subtitle: 'তথ্যপ্রযুক্তি পেশাজীবী',
+                        tagline: 'একজন দ্বীনদার মুসলিম, ভালোবাসাময়ী ও পরহেজগার জীবনসঙ্গী খুঁজছেন',
                         stats: {
-                            age: '২৭ বছর',
+                            age: '২৮ বছর',
                             education: 'উচ্চশিক্ষিত',
                             work: 'সুপ্রতিষ্ঠিত',
                             faith: 'দ্বীনদার মুসলিম'
@@ -682,37 +682,37 @@
                         work: 'পেশাগত তথ্য'
                     },
                     personalDetails: [
-                        { label: 'পূর্ণ নাম', value: 'Md. Mahbubur Rahman', iconClass: 'fas fa-user' },
-                        { label: 'ডাকনাম', value: 'Nasir Uddin', iconClass: 'fas fa-signature' },
+                        { label: 'পূর্ণ নাম', value: 'মো. মাহবুবুর রহমান', iconClass: 'fas fa-user' },
+                        { label: 'ডাকনাম', value: 'নাসির উদ্দিন', iconClass: 'fas fa-signature' },
                         { label: 'জন্ম তারিখ', value: '২০ ডিসেম্বর ১৯৯৭', iconClass: 'fas fa-calendar-days' },
-                        { label: 'বয়স', value: '২৭ বছর', iconClass: 'fas fa-hourglass-half' },
+                        { label: 'বয়স', value: '২৮ বছর', iconClass: 'fas fa-hourglass-half' },
                         { label: 'ধর্ম', value: 'ইসলাম (প্র্যাকটিসিং মুসলিম)', iconClass: 'fas fa-mosque' },
                         { label: 'বৈবাহিক অবস্থা', value: 'অবিবাহিত', iconClass: 'fas fa-ring' },
                         { label: 'গায়ের রং', value: 'মাঝারি শ্যামলা', iconClass: 'fas fa-palette' },
-                        { label: 'উচ্চতা ও ওজন', value: 'প্রায় ৫\' ৩" ও ৭২ কেজি', iconClass: 'fas fa-ruler-combined' },
+                        { label: 'উচ্চতা ও ওজন', value: '৫\' ৩" ও ৭০ কেজি', iconClass: 'fas fa-ruler-combined' },
                         { label: 'রক্তের গ্রুপ', value: 'A+', iconClass: 'fas fa-droplet' },
                         { label: 'স্বাস্থ্য অবস্থা', value: 'সুস্থ, ধূমপানমুক্ত, কোনো নেশা নেই', iconClass: 'fas fa-heart-pulse' }
                     ],
                     familyDetails: [
-                        ['পিতা', 'মরহুম Abdul Kader Howlader (গ্রাম্য ডাক্তার ও প্রাথমিক শিক্ষক)'],
-                        ['মাতা', 'Farida Begum - গৃহিণী'],
+                        ['পিতা', 'মরহুম আব্দুল কাদের হাওলাদার (গ্রাম্য ডাক্তার ও প্রাথমিক শিক্ষক ছিলেন)'],
+                        ['মাতা', 'ফরিদা বেগম - গৃহিণী'],
                         ['ভাইবোন', '৪ ভাই ও ৩ বোন'],
-                        ['স্থায়ী ঠিকানা', 'Uttar Sutalori, Jomaddar Para, Morrelganj, Bagerhat'],
-                        ['জেলা', 'Bagerhat']
+                        ['স্থায়ী ঠিকানা', 'উত্তর সুতালরি, জোমাদ্দার পাড়া, মোরেলগঞ্জ, বাগেরহাট'],
+                        ['জেলা', 'বাগেরহাট']
                     ],
                     familySummary: {
                         label: 'পারিবারিক পটভূমি',
                         title: 'শিক্ষা ও ধর্মীয় মূল্যবোধে গড়া একটি সম্মানিত মধ্যবিত্ত পরিবার।',
-                        tags: ['সম্মানিত', 'মধ্যবিত্ত', 'শিক্ষিত', 'ধর্মীয়']
+                        tags: ['সম্মানিত', 'মধ্যবিত্ত', 'শিক্ষিত', 'ধর্মীয় অনুশাসনে বিশ্বাসী']
                     },
                     familySiblingsTitle: 'ভাইবোনের বিস্তারিত',
                     familySiblings: [
-                        ['১ম বোন', 'Shahanaj Shanti, ৪ সন্তানের জননী, গৃহিণী। Morrelganj।'],
-                        ['২য় ভাই', 'Alauddin, আগে UAE-তে কর্মরত ছিলেন, বর্তমানে ব্যবসা (Dhaka)। ২ সন্তান। Morrelganj।'],
-                        ['৩য় ভাই', 'Giash Uddin, Driver, Bananja PCL, Chattagram, BD Navy। ২ সন্তান। Morrelganj।'],
-                        ['৪র্থ বোন', 'Zerin Salma Beby, ৩ সন্তানের জননী, গৃহিণী। Morrelganj।'],
-                        ['৫ম ভাই', 'Mohiuddin, Driver, Doctor Couple\'s, Chattagram। ৪ সন্তান। Chattagram।'],
-                        ['৬ষ্ঠ বোন', 'Nazma Sultana, ২ সন্তানের জননী, গৃহিণী। Khulna।'],
+                        ['১ম বোন', 'শাহনাজ শান্তি, ৪ সন্তানের জননী, গৃহিণী। Morrelganj।'],
+                        ['২য় ভাই', 'আলাউদ্দিন, আগে আবুধাবিতে কর্মরত ছিলেন, বর্তমানে ব্যবসা (ঢাকা)। ২ সন্তানের জনক। মোরেলগঞ্জ।'],
+                        ['৩য় ভাই', 'গিয়াস উদ্দিন, গাড়ি চালক, বানঞ্জা পিএলসি, চট্টগ্রাম, বাংলাদেশ নৌবাহীন সদর। ২ সন্তানের জনক। মোরেলগঞ্জ।'],
+                        ['৪র্থ বোন', 'জেরিন সালমা বেবি, ৩ সন্তানের জননী, গৃহিণী। মোরেলগঞ্জ।'],
+                        ['৫ম ভাই', 'মহিউদ্দিন, গাড়ি চালক, ডাক্তার দম্পত্তির , চট্টগ্রাম। ৪ সন্তানের জনক। ট্রাগ্রাম।'],
+                        ['৬ষ্ঠ বোন', 'নাজমা সুলতানা, ২ সন্তানের জননী, গৃহিণী। খুলনা।'],
                         ['৭ম', 'সবার ছোট ছেলে, নিজে।']
                     ],
                     siblingStatusData: {
@@ -726,9 +726,9 @@
                     },
                     workSection: {
                         items: [
-                            { title: 'প্রকিউরমেন্ট ও সার্ভিসিং লিড', organization: 'Earthface IT, Dhaka', duration: '২৭ নভেম্বর ২০২১ - বর্তমান', iconClass: 'fas fa-briefcase' },
-                            { title: 'আইটি সাপোর্ট অ্যাসিস্ট্যান্ট (খণ্ডকালীন)', organization: 'Dept. of Arabic Language and Literature, IU, Kushtia', duration: '২৩ মার্চ ২০১৭ - ২০ অক্টোবর ২০২১', iconClass: 'fas fa-headset' },
-                            { title: 'আইটি এক্সিকিউটিভ (খণ্ডকালীন)', organization: 'Khondokar Telecom, Gazipur', duration: '৭ জুলাই ২০১৪ - ১২ ডিসেম্বর ২০১৫', iconClass: 'fas fa-desktop' }
+                            { title: 'প্রকিউরমেন্ট ও সার্ভিসিং লিড', organization: 'আর্থফেস আইটি, ঢাকা', duration: '২৭ নভেম্বর ২০২১ - বর্তমান', iconClass: 'fas fa-briefcase' },
+                            { title: 'আইটি সাপোর্ট অ্যাসিস্ট্যান্ট (খণ্ডকালীন)', organization: 'আরবি ভাষা ও সাহিত্য বিভাগ, ইসলামী বিশ্ববিদ্যালয়, কুষ্টিয়া', duration: '২৩ মার্চ ২০১৭ - ২০ অক্টোবর ২০২১', iconClass: 'fas fa-headset' },
+                            { title: 'আইটি এক্সিকিউটিভ (খণ্ডকালীন)', organization: 'খন্দকার টেলিকম, টঙ্গি, গাজীপুর।', duration: '৭ জুলাই ২০১৪ - ১২ ডিসেম্বর ২০১৫', iconClass: 'fas fa-desktop' }
                         ]
                     },
                     lifestyle: {
@@ -738,7 +738,7 @@
                             { label: 'ভবিষ্যৎ লক্ষ্য', value: 'দ্বীন ও পারস্পরিক সম্মানের ভিত্তিতে পরিবার গঠন', iconClass: 'fas fa-bullseye' },
                             { label: 'আগ্রহ', value: 'ইসলামিক লেকচার, পড়াশোনা, ভ্রমণ, প্রযুক্তি শেখা', iconClass: 'fas fa-book-open' },
                             { label: 'খাদ্যাভ্যাস', value: 'ঘরে তৈরি হালাল খাবার পছন্দ', iconClass: 'fas fa-utensils' },
-                            { label: 'অতিরিক্ত', value: 'সময়নিষ্ঠ, স্বভাবে সংযত, সামাজিকভাবে ভদ্র', iconClass: 'fas fa-check-double' }
+                            { label: 'অতিরিক্ত', value: 'সময়নিষ্ঠ, স্বভাবে সংযত, সামাজিক, ভদ্র', iconClass: 'fas fa-check-double' }
                         ]
                     },
                     languages: {
@@ -753,18 +753,18 @@
                     education: {
                         title: 'শিক্ষাগত তথ্য',
                         items: [
-                            { title: 'এম.এ. (আরবি ভাষা ও সাহিত্য)', institution: 'Islamic University, Kushtia', institutionHref: 'https://iu.ac.bd', scoreLabel: 'CGPA', score: '3.58/4', session: '2022' },
-                            { title: 'বি.এ. অনার্স (আরবি ভাষা ও সাহিত্য)', institution: 'Islamic University, Kushtia', institutionHref: 'https://iu.ac.bd', scoreLabel: 'CGPA', score: '3.58/4', session: '2020' },
-                            { title: 'আলিম (এইচএসসি)', institution: 'Ta\'mirul Millat Kamil Madrasah, Tongi, Gazipur', institutionHref: 'https://www.tmt.edu.bd', scoreLabel: 'GPA', score: '5.00/5', session: '2014' },
-                            { title: 'দাখিল (এসএসসি)', institution: 'Ta\'limul Millat Rahmatial Kamil Madrasah, Sonadanga, Khulna', scoreLabel: 'GPA', score: '5.00/5', session: '2012' }
+                            { title: 'এম.এ. (আরবি ভাষা ও সাহিত্য)', institution: 'ইসলামী বিশ্ববিদ্যালয়, কুষ্টিয়া।', institutionHref: 'https://iu.ac.bd', scoreLabel: 'সিজিপিএ', score: '৩.৫৮/৪', session: '২০২২' },
+                            { title: 'বি.এ. অনার্স (আরবি ভাষা ও সাহিত্য)', institution: 'ইসলামী বিশ্ববিদ্যালয়, কুষ্টিয়া।', institutionHref: 'https://iu.ac.bd', scoreLabel: 'সিজিপিএ', score: '৩.৫৮/৪', session: '২০২০' },
+                            { title: 'আলিম (এইচএসসি)', institution: 'তামিরুল মিল্লাত কামিল মাদরাসা, টঙ্গি, গাজীপুর', institutionHref: 'https://www.tmt.edu.bd', scoreLabel: 'জিপিএ', score: '৫.০০/৫', session: '২০১৪' },
+                            { title: 'দাখিল (এসএসসি)', institution: 'তালিমুল মিল্লাত রহমতিয়া ফাযিল মাদরাসা, সোনাডঙ্গা, খুলনা', scoreLabel: 'জিপিএ', score: '৫.০০/৫', session: '২০১২' }
                         ]
                     },
                     training: {
-                        title: 'প্রশিক্ষণ ও উন্নয়ন',
+                        title: 'প্রশিক্ষণ ও উন্নয়ন',
                         items: [
-                            { text: 'Corporate Management Bootcamp - 2023 (10 Days, BYLC, Bangladesh.)', href: 'https://bylc.org', linkLabel: 'ভিজিট' },
-                            { text: 'Professional Digital Content Management (PDCM), (3 Months, SEIP, Finance Ministry of BD)', href: 'https://lms.seip-fd.gov.bd', linkLabel: 'ভিজিট' },
-                            { text: 'Web Design & Development (200 Hours, LEDP, ICT Division of Bangladesh.)', href: 'https://ictd.gov.bd', linkLabel: 'ভিজিট' },
+                            { text: 'করপোরেট ম্যানেজমেন্ট বুটক্যাম্প - ২০২৩ (১০ দিনব্যাপী, বিওয়াইএলসি, বাংলাদেশ.)', href: 'https://bylc.org', linkLabel: 'ভিজিট' },
+                            { text: 'প্রফেশনাল ডিজিটাল কন্টেন্ট ম্যানেজমেন্ট (পিডিসিএম), (৩ মাস, সেইপ, অর্থ মন্ত্রণালয়, বাংলাদেশ)', href: 'https://lms.seip-fd.gov.bd', linkLabel: 'ভিজিট' },
+                            { text: 'ওয়েব ডিজাইন এন্ড ডেভলপমেন্ট (২০০ ঘণ্টা, এলইডিপি, আইসিটি বিভাগ, বাংলাদেশ।)', href: 'https://ictd.gov.bd', linkLabel: 'ভিজিট' },
                             { text: 'Computer & Its Applications (1 Year, Islamic University, Kushtia)', href: 'https://iu.ac.bd', linkLabel: 'ভিজিট' },
                             { text: 'Troubleshooting in Computer Security (ICT Division, a2i).', href: 'https://a2i.gov.bd', linkLabel: 'ভিজিট' },
                             { text: 'Microsoft Word Basics (a2i, Muktapath).', href: 'https://a2i.gov.bd', linkLabel: 'ভিজিট' },
@@ -814,11 +814,11 @@
                         mapButton: 'Google Maps-এ দেখুন',
                         permanentAddressValue: 'Uttar Sutalori, Jomaddar Para, Morrelganj, Bagerhat',
                         blocks: [
-                            { iconClass: 'fas fa-user', label: 'নাম', value: 'Md. Mahbubur Rahman' },
+                            { iconClass: 'fas fa-user', label: 'নাম', value: 'মো মাহবুবুর রহমান' },
                             { iconClass: 'fas fa-envelope', label: 'ইমেইল', value: 'bbdmahbub@gmail.com', href: 'mailto:bbdmahbub@gmail.com' },
                             { iconClass: 'fab fa-whatsapp', label: 'হোয়াটসঅ্যাপ', value: '+8801917267607', href: 'https://wa.me/8801917267607' },
-                            { iconClass: 'fas fa-home', label: 'বর্তমান ঠিকানা', value: 'Hatir Jheel, Dhaka, Bangladesh' },
-                            { iconClass: 'fas fa-map-marker-alt', label: 'স্থায়ী ঠিকানা', value: 'Uttar Sutalori, Jomaddar Para, Morrelganj, Bagerhat', mapHref: permanentAddressMapHref }
+                            { iconClass: 'fas fa-home', label: 'বর্তমান ঠিকানা', value: 'হাতিরঝিল, ঢাকা, বাংলাদেশ' },
+                            { iconClass: 'fas fa-map-marker-alt', label: 'স্থায়ী ঠিকানা', value: 'উত্তর সুতালড়ী, জোমাদ্দারপাড়া, মোরেলগঞ্জ, বাগেরহাট', mapHref: permanentAddressMapHref }
                         ]
                     },
                     dua: {

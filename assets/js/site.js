@@ -3,7 +3,7 @@
             { title: 'Rasuler Simahin Valobasha', src: encodeURI('assets/audio/rasuler-simahin-valobasha.mp3') },
             { title: 'Khadijar Moto Jibon Goro', src: encodeURI('assets/audio/khadijar-moto-jibon-goro.mp3') }
         ];
-        const MUSIC_VOLUME = 0.15;
+        const MUSIC_VOLUME = 0.05;
         const AUTOPLAY_DELAY_MS = 10000;
         const MUSIC_PAUSED_STORAGE_KEY = 'bbdMahbubMusicPaused';
         const LANGUAGE_STORAGE_KEY = 'bbdMahbubLanguage';
@@ -399,7 +399,7 @@
             armMusicPanelAutoCollapse();
             setupMusicPlayer();
             createBubbleBurst();
-            bubbleIntervalId = window.setInterval(createBubbleBurst, 1800);
+            bubbleIntervalId = window.setInterval(createBubbleBurst, 9100);
         }
 
         function makeBubbleDraggable(bubble) {
@@ -455,27 +455,27 @@
                 bubble.classList.add('faith');
             }
 
-            const size = Math.floor(Math.random() * 16) + 42;
+            const size = Math.floor(Math.random() * 6) + 42;
             bubble.style.width = `${size}px`;
             bubble.style.height = `${size}px`;
             bubble.style.fontSize = `${Math.floor(size * 0.45)}px`;
 
             const xOffset = Math.random() * (window.innerWidth - size);
-            const yOffset = window.innerHeight - size - (Math.random() * 20 + 10);
+            const yOffset = window.innerHeight - size - (Math.random() * 15 + 10);
             bubble.style.left = `${xOffset}px`;
             bubble.style.top = `${yOffset}px`;
             bubble.style.zIndex = `${++bubbleZIndex}`;
-            bubble.style.animation = `bubble-fullscreen ${5.5 + Math.random() * 1.5}s ease-in-out forwards`;
+            bubble.style.animation = `bubble-fullscreen ${7.5 + Math.random() * 1.5}s ease-in-out forwards`;
 
             makeBubbleDraggable(bubble);
             document.body.appendChild(bubble);
-            setTimeout(() => bubble.remove(), 7200);
+            setTimeout(() => bubble.remove(), 19200);
         }
 
         function createBubbleBurst() {
-            const count = Math.floor(Math.random() * 3) + 2;
+            const count = Math.floor(Math.random() * 2) + 2;
             for (let i = 0; i < count; i += 1) {
-                setTimeout(() => createBubble(), Math.random() * 220);
+                setTimeout(() => createBubble(), Math.random() * 7220);
             }
         }
 
