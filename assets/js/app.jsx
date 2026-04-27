@@ -39,6 +39,7 @@
                 'بسماللهالرحمنالرحيم'
             ];
             const permanentAddressMapHref = 'https://maps.app.goo.gl/hvcHqxMvhF9cGFbM6';
+            const microphonePermissionStorageKey = 'bbdMahbubMicPermissionGranted';
             const voiceVerificationStorageKey = 'bbdMahbubVoiceVerifiedAt';
             const voiceVerificationGracePeriodMs = 30 * 60 * 1000;
             const languageOptions = [
@@ -844,6 +845,24 @@
                     && !/SamsungBrowser\//.test(userAgent);
             })();
             const chromeOnlyAlertMessage = 'শুধুমাত্র Chrome ব্রাউজার ব্যবহার করুন।';
+            const hasStoredMicrophonePermissionGrant = () => {
+                try {
+                    return window.localStorage.getItem(microphonePermissionStorageKey) === 'true';
+                } catch (error) {
+                    return false;
+                }
+            };
+            const setStoredMicrophonePermissionGrant = (isGranted) => {
+                try {
+                    if (isGranted) {
+                        window.localStorage.setItem(microphonePermissionStorageKey, 'true');
+                    } else {
+                        window.localStorage.removeItem(microphonePermissionStorageKey);
+                    }
+                } catch (error) {
+                    // Ignore storage failures and keep the access flow working.
+                }
+            };
             const touchVoiceVerificationTimestamp = () => {
                 try {
                     window.localStorage.setItem(voiceVerificationStorageKey, String(Date.now()));
@@ -983,7 +1002,6 @@
             const hasBootstrappedSavedVerificationRef = React.useRef(false);
             const hasShownLanguageRowHintRef = React.useRef(false);
             const languageRowHideTimeoutRef = React.useRef(null);
-            const voiceNotificationRef = React.useRef(null);
             const lastVoiceVerificationTouchRef = React.useRef(0);
 
             const detailGroups = {
@@ -1077,10 +1095,6 @@
                 }
                 if (languageRowHideTimeoutRef.current) {
                     window.clearTimeout(languageRowHideTimeoutRef.current);
-                }
-                if (voiceNotificationRef.current) {
-                    voiceNotificationRef.current.close();
-                    voiceNotificationRef.current = null;
                 }
             }, []);
 
@@ -1353,6 +1367,7 @@
                 const handlePermissionChange = () => {
                     if (!permissionStatus || isDisposed) return;
                     setMicrophonePermissionState(permissionStatus.state);
+                    setStoredMicrophonePermissionGrant(permissionStatus.state === 'granted');
                 };
 
                 navigator.permissions.query({ name: 'microphone' }).then((status) => {
@@ -1387,40 +1402,6 @@
                 if (recognitionTimerRef.current !== null) {
                     window.clearTimeout(recognitionTimerRef.current);
                     recognitionTimerRef.current = null;
-                }
-            };
-
-            const showVoiceNotification = (message) => {
-                if (!message || typeof window.Notification !== 'function') return;
-                if (window.Notification.permission !== 'granted') return;
-
-                if (voiceNotificationRef.current) {
-                    voiceNotificationRef.current.close();
-                }
-
-                const notification = new window.Notification(copy.intro.title, {
-                    body: message,
-                    tag: 'bbd-voice-verification',
-                    renotify: true
-                });
-
-                voiceNotificationRef.current = notification;
-                window.setTimeout(() => {
-                    if (voiceNotificationRef.current === notification) {
-                        notification.close();
-                        voiceNotificationRef.current = null;
-                    }
-                }, 3200);
-            };
-
-            const ensureVoiceNotificationPermission = async () => {
-                if (typeof window.Notification !== 'function') return;
-                if (window.Notification.permission !== 'default') return;
-
-                try {
-                    await window.Notification.requestPermission();
-                } catch (error) {
-                    // Ignore notification permission failures and keep voice verification working.
                 }
             };
 
@@ -1549,42 +1530,38 @@
                     return true;
                 }
 
-                if (microphonePermissionState === 'granted') {
+                if (microphonePermissionState === 'granted' || hasStoredMicrophonePermissionGrant()) {
                     return true;
                 }
 
                 if (microphonePermissionState === 'denied') {
                     setVoiceUiState('error');
                     setVoicePrompt(voiceCopy.permissionBlocked);
-                    showVoiceNotification(voiceCopy.permissionBlocked);
                     return false;
                 }
 
                 setVoiceUiState('permission');
                 setVoicePrompt(voiceCopy.permissionRequired);
-                showVoiceNotification(voiceCopy.permissionRequired);
 
                 try {
                     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
                     stream.getTracks().forEach((track) => track.stop());
                     setMicrophonePermissionState('granted');
+                    setStoredMicrophonePermissionGrant(true);
                     setVoiceUiState('idle');
                     setVoicePrompt(voiceCopy.permissionAllowed);
-                    showVoiceNotification(voiceCopy.permissionAllowed);
                     return true;
                 } catch (error) {
                     setVoiceUiState('error');
 
                     if (error && (error.name === 'NotAllowedError' || error.name === 'SecurityError')) {
                         setMicrophonePermissionState('denied');
+                        setStoredMicrophonePermissionGrant(false);
                         setVoicePrompt(voiceCopy.permissionDenied);
-                        showVoiceNotification(voiceCopy.permissionDenied);
                     } else if (error && error.name === 'NotFoundError') {
                         setVoicePrompt(voiceCopy.noMicrophone);
-                        showVoiceNotification(voiceCopy.noMicrophone);
                     } else {
                         setVoicePrompt(voiceCopy.permissionUnknown);
-                        showVoiceNotification(voiceCopy.permissionUnknown);
                     }
                 }
 
@@ -1598,7 +1575,6 @@
                 if (!SpeechRecognition) {
                     setVoiceUiState('idle');
                     setVoicePrompt(voiceCopy.browserNoSupport);
-                    showVoiceNotification(voiceCopy.browserNoSupport);
                     return;
                 }
 
@@ -1607,7 +1583,6 @@
                 isPreparingVoiceRef.current = true;
                 setVoiceUiState('preparing');
                 setVoicePrompt(voiceCopy.starting);
-                showVoiceNotification(voiceCopy.starting);
 
                 const recognition = new SpeechRecognition();
                 const recognitionLang = getPreferredRecognitionLangs()[0];
@@ -1628,7 +1603,6 @@
                     setIsVoiceListening(true);
                     setVoiceUiState('listening');
                     setVoicePrompt(voiceCopy.listening);
-                    showVoiceNotification(voiceCopy.listening);
                     recognitionTimerRef.current = window.setTimeout(() => {
                         if (speechRecognitionRef.current !== recognition || voiceMatchedRef.current) {
                             return;
@@ -1661,7 +1635,6 @@
                         voiceMatchedRef.current = true;
                         voiceStopReasonRef.current = 'matched';
                         setVoicePrompt(voiceCopy.detected(transcript.trim()));
-                        showVoiceNotification(voiceCopy.detected(transcript.trim()));
                         window.setTimeout(() => {
                             handleEnterBiodata();
                         }, 320);
@@ -1669,7 +1642,6 @@
                     }
 
                     setVoicePrompt(voiceCopy.heard(transcript.trim()));
-                    showVoiceNotification(voiceCopy.heard(transcript.trim()));
                 };
 
                 recognition.onerror = (event) => {
@@ -1679,7 +1651,6 @@
                     setIsVoiceListening(false);
                     setVoiceUiState('error');
                     setVoicePrompt(voiceCopy.errors[event.error] || voiceCopy.defaultError);
-                    showVoiceNotification(voiceCopy.errors[event.error] || voiceCopy.defaultError);
                 };
 
                 recognition.onend = () => {
@@ -1696,10 +1667,8 @@
                         setVoicePrompt(introVoiceHint);
                     } else if (voiceStopReasonRef.current === 'timeout' && !voiceMatchedRef.current) {
                         setVoicePrompt(voiceCopy.timeout);
-                        showVoiceNotification(voiceCopy.timeout);
                     } else if (voiceStopReasonRef.current === 'listening' && !voiceMatchedRef.current) {
                         setVoicePrompt(voiceCopy.notVerified);
-                        showVoiceNotification(voiceCopy.notVerified);
                     }
 
                     if (voiceStopReasonRef.current !== 'matched') {
@@ -1717,7 +1686,6 @@
                     setIsVoiceListening(false);
                     setVoiceUiState('error');
                     setVoicePrompt(voiceCopy.couldNotStart);
-                    showVoiceNotification(voiceCopy.couldNotStart);
                 }
             };
 
