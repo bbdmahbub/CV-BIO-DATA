@@ -39,6 +39,8 @@
                 'بسماللهالرحمنالرحيم'
             ];
             const permanentAddressMapHref = 'https://maps.app.goo.gl/hvcHqxMvhF9cGFbM6';
+            const voiceVerificationStorageKey = 'bbdMahbubVoiceVerifiedAt';
+            const voiceVerificationGracePeriodMs = 30 * 60 * 1000;
             const languageOptions = [
                 { code: 'ar', shortLabel: 'AR', nativeLabel: 'العربية' },
                 { code: 'en', shortLabel: 'EN', nativeLabel: 'English' },
@@ -842,6 +844,26 @@
                     && !/SamsungBrowser\//.test(userAgent);
             })();
             const chromeOnlyAlertMessage = 'শুধুমাত্র Chrome ব্রাউজার ব্যবহার করুন।';
+            const touchVoiceVerificationTimestamp = () => {
+                try {
+                    window.localStorage.setItem(voiceVerificationStorageKey, String(Date.now()));
+                } catch (error) {
+                    // Ignore storage failures and keep the access flow working.
+                }
+            };
+            const hasRecentVoiceVerification = () => {
+                try {
+                    const storedValue = window.localStorage.getItem(voiceVerificationStorageKey);
+                    if (!storedValue) return false;
+
+                    const verifiedAt = Number(storedValue);
+                    if (!Number.isFinite(verifiedAt) || verifiedAt <= 0) return false;
+
+                    return Date.now() - verifiedAt < voiceVerificationGracePeriodMs;
+                } catch (error) {
+                    return false;
+                }
+            };
             const getInitialLanguage = () => {
                 try {
                     const storedLanguage = window.localStorage.getItem('bbdMahbubLanguage');
@@ -852,10 +874,7 @@
                     // Ignore storage failures and fall back to browser language.
                 }
 
-                const browserLanguage = (navigator.language || '').toLowerCase();
-                if (browserLanguage.startsWith('ar')) return 'ar';
-                if (browserLanguage.startsWith('bn')) return 'bn';
-                return 'en';
+                return 'bn';
             };
             const arabicIndicDigits = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
             const arabicNumberSkipKeys = new Set([
@@ -939,7 +958,7 @@
                 const hashId = window.location.hash.replace('#', '');
                 return menuItems.some(([id]) => id === hashId) ? hashId : menuItems[0][0];
             });
-            const [isIntroPopupOpen, setIsIntroPopupOpen] = React.useState(true);
+            const [isIntroPopupOpen, setIsIntroPopupOpen] = React.useState(() => !hasRecentVoiceVerification());
             const [isVoiceListening, setIsVoiceListening] = React.useState(false);
             const [voiceUiState, setVoiceUiState] = React.useState('idle');
             const [microphonePermissionState, setMicrophonePermissionState] = React.useState('unknown');
@@ -965,6 +984,7 @@
             const hasShownLanguageRowHintRef = React.useRef(false);
             const languageRowHideTimeoutRef = React.useRef(null);
             const voiceNotificationRef = React.useRef(null);
+            const lastVoiceVerificationTouchRef = React.useRef(0);
 
             const detailGroups = {
                 personal: copy.personalDetails,
@@ -1074,6 +1094,30 @@
                     document.body.classList.add('has-entered-biodata');
                     window.dispatchEvent(new Event('bbdMahbub:enter-biodata'));
                 }
+            }, [isIntroPopupOpen]);
+
+            React.useEffect(() => {
+                if (isIntroPopupOpen) return undefined;
+                if (!hasRecentVoiceVerification()) return undefined;
+
+                const refreshVerificationActivity = () => {
+                    const now = Date.now();
+                    if (now - lastVoiceVerificationTouchRef.current < 60000) return;
+
+                    lastVoiceVerificationTouchRef.current = now;
+                    touchVoiceVerificationTimestamp();
+                };
+
+                const activityEvents = ['pointerdown', 'keydown', 'scroll', 'touchstart'];
+                activityEvents.forEach((eventName) => {
+                    window.addEventListener(eventName, refreshVerificationActivity, { passive: true });
+                });
+
+                return () => {
+                    activityEvents.forEach((eventName) => {
+                        window.removeEventListener(eventName, refreshVerificationActivity);
+                    });
+                };
             }, [isIntroPopupOpen]);
 
             React.useEffect(() => {
@@ -1402,6 +1446,8 @@
                 voiceStopReasonRef.current = 'matched';
                 setIsVoiceListening(false);
                 setVoiceUiState('idle');
+                lastVoiceVerificationTouchRef.current = Date.now();
+                touchVoiceVerificationTimestamp();
                 document.body.classList.add('has-entered-biodata');
                 setIsIntroPopupOpen(false);
                 window.dispatchEvent(new Event('bbdMahbub:enter-biodata'));
