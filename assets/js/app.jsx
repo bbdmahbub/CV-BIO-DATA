@@ -1736,7 +1736,6 @@
                     return;
                 }
 
-                ensureVoiceNotificationPermission();
                 startBismillahVoiceCheck();
             };
 
