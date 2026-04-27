@@ -235,7 +235,7 @@
                             { title: 'M.A. (Arabic Language & Literature)', institution: 'Islamic University, Kushtia', institutionHref: 'https://iu.ac.bd', scoreLabel: 'CGPA', score: '3.58/4', session: '2022' },
                             { title: 'B.A. Honors (Arabic Language & Literature)', institution: 'Islamic University, Kushtia', institutionHref: 'https://iu.ac.bd', scoreLabel: 'CGPA', score: '3.58/4', session: '2020' },
                             { title: 'Alim (HSC)', institution: 'Ta\'mirul Millat Kamil Madrasah, Tongi, Gazipur', institutionHref: 'https://www.tmt.edu.bd', scoreLabel: 'GPA', score: '5.00/5', session: '2014' },
-                            { title: 'Dakhil (SSC)', institution: 'Ta\'limul Millat Rahmatial Kamil Madrasah, Sonadanga, Khulna', scoreLabel: 'GPA', score: '5.00/5', session: '2012' }
+                            { title: 'Dakhil (SSC)', institution: 'Ta\'limul Millat Rahmatia Kamil Madrasah, Sonadanga, Khulna', scoreLabel: 'GPA', score: '5.00/5', session: '2012' }
                         ]
                     },
                     training: {
@@ -314,8 +314,8 @@
                     locale: 'ar',
                     dir: 'rtl',
                     meta: {
-                        title: 'السيرة الزوجية - Md. Mahbubur Rahman',
-                        description: 'السيرة الزوجية لـ Md. Mahbubur Rahman وتشمل المعلومات الشخصية والأسرية والتعليمية والمهنية ووسائل التواصل.'
+                        title: 'السيرة الزوجية - محمد محبوب الرحمن',
+                        description: 'السيرة الزوجية لـ محمد محبوب الرحمن وتشمل المعلومات الشخصية والأسرية والتعليمية والمهنية ووسائل التواصل.'
                     },
                     navigation: {
                         // quickJump: 'انتقال سريع'
@@ -438,8 +438,8 @@
                         ['الأب', 'عبد القادر هولادر (دكتور عبد القادر)- كان طبيب قروي ومعلم ابتدائي '],
                         ['الأم', 'فريدة بيغم - ربة منزل'],
                         ['الإخوة والأخوات', '4 إخوة و3 أخوات'],
-                        ['العنوان الدائم', 'Uttar Sutalori, Jomaddar Para, Morrelganj, Bagerhat'],
-                        ['المنطقة', 'Bagerhat']
+                        ['العنوان الدائم', 'أتار شوتالار, زمادر بارا, مورلفانز, باغرهات'],
+                        ['المنطقة', 'باغرهات']
                     ],
                     familySummary: {
                         label: 'خلفية الأسرة',
@@ -448,12 +448,12 @@
                     },
                     familySiblingsTitle: 'تفاصيل الإخوة والأخوات',
                     familySiblings: [
-                        ['الأخت الأولى', 'Shahanaj Shanti، ربة منزل ولديها 4 أطفال. Morrelganj.'],
-                        ['الأخ الثاني', 'Alauddin، كان عاملاً في الإمارات ويعمل الآن في التجارة (Dhaka). لديه طفلان. Morrelganj.'],
-                        ['الأخ الثالث', 'Giash Uddin، سائق في Bananja PCL، Chattagram، البحرية البنغلاديشية. لديه طفلان. Morrelganj.'],
-                        ['الأخت الرابعة', 'Zerin Salma Beby، ربة منزل ولديها 3 أطفال. Morrelganj.'],
-                        ['الأخ الخامس', 'Mohiuddin، سائق لدى زوجين من الأطباء في Chattagram. لديه 4 أطفال. Chattagram.'],
-                        ['الأخت السادسة', 'Nazma Sultana، ربة منزل ولديها طفلان. Khulna.'],
+                        ['الأخت الأولى', 'شاهاناز شانتي، ربة منزل ولديها 4 أطفال. مورلفانز.'],
+                        ['الأخ الثاني', 'علاء الدين، كان عاملاً في الإمارات ويعمل الآن في التجارة (داكا). لديه طفلان. مورلفانز.'],
+                        ['الأخ الثالث', 'غياثُ الدِّين، سائق في بانانجا بي سي إل، شاتّوغرام، البحرية البنغلاديشية. لديه طفلان. مورلفانز.'],
+                        ['الأخت الرابعة', 'زيرين سلمى بيبي، ربة منزل ولديها ٣ أطفال. مورلفانز.'],
+                        ['الأخ الخامس', 'محيي الدين، سائق لدى زوجين من الأطباء في شاتّوغرام. لديه 4 أطفال. شاتّوغرام.'],
+                        ['الأخت السادسة', 'نَظْمَة سُلْطَانَة، ربة منزل ولديها طفلان. خولنا.'],
                         ['السابع', 'الابن الأصغر، أنا.']
                     ],
                     siblingStatusData: {
@@ -467,9 +467,9 @@
                     },
                     workSection: {
                         items: [
-                            { title: 'مسؤول المشتريات والخدمات', organization: 'Earthface IT, Dhaka', duration: '27 نوفمبر 2021 - حتى الآن', iconClass: 'fas fa-briefcase' },
-                            { title: 'مساعد دعم تقني (دوام جزئي)', organization: 'قسم اللغة العربية وآدابها، IU, Kushtia', duration: '23 مارس 2017 - 20 أكتوبر 2021', iconClass: 'fas fa-headset' },
-                            { title: 'تنفيذي تقنية معلومات (دوام جزئي)', organization: 'Khondokar Telecom, Gazipur', duration: '7 يوليو 2014 - 12 ديسمبر 2015', iconClass: 'fas fa-desktop' }
+                            { title: 'مسؤول المشتريات والخدمات', organization: 'إيرثفيس آي تي، دكا', duration: '٢٧ نوفمبر ٢٠٢١ - حتى الآن', iconClass: 'fas fa-briefcase' },
+                            { title: 'مساعد دعم تقني (دوام جزئي)', organization: 'قسم اللغة العربية وآدابها، الجامعة الإسلامية، كوشتيا', duration: '٢٣ مارس ٢٠١٧ - ٢٠ أكتوبر ٢٠٢١', iconClass: 'fas fa-headset' },
+                            { title: 'تنفيذي تقنية معلومات (دوام جزئي)', organization: 'خُندُكار تِلِكوم, غازيبور', duration: '٧ يوليو ٢٠١٤ - ١٢ ديسمبر ٢٠١٥', iconClass: 'fas fa-desktop' }
                         ]
                     },
                     lifestyle: {
@@ -494,24 +494,24 @@
                     education: {
                         title: 'المعلومات التعليمية',
                         items: [
-                            { title: 'ماجستير في اللغة العربية وآدابها', institution: 'Islamic University, Kushtia', institutionHref: 'https://iu.ac.bd', scoreLabel: 'المعدل', score: '3.58/4', session: '2022' },
-                            { title: 'بكالوريوس شرف في اللغة العربية وآدابها', institution: 'Islamic University, Kushtia', institutionHref: 'https://iu.ac.bd', scoreLabel: 'المعدل', score: '3.58/4', session: '2020' },
-                            { title: 'Alim (الثانوية العليا)', institution: 'Ta\'mirul Millat Kamil Madrasah, Tongi, Gazipur', institutionHref: 'https://www.tmt.edu.bd', scoreLabel: 'الدرجة', score: '5.00/5', session: '2014' },
-                            { title: 'Dakhil (الثانوية)', institution: 'Ta\'limul Millat Rahmatial Kamil Madrasah, Sonadanga, Khulna', scoreLabel: 'الدرجة', score: '5.00/5', session: '2012' }
+                            { title: 'ماجستير في اللغة العربية وآدابها', institution: 'الجامعة الإسلامية، كوشتيا', institutionHref: 'https://iu.ac.bd', scoreLabel: 'المعدل', score: '3.58/4', session: '٢٠٢٢' },
+                            { title: 'بكالوريوس شرف في اللغة العربية وآدابها', institution: 'الجامعة الإسلامية، كوشتيا', institutionHref: 'https://iu.ac.bd', scoreLabel: 'المعدل', score: '3.58/4', session: '٢٠٢٠' },
+                            { title: 'Alim (الثانوية العليا)', institution: 'تعمير الملة كامل مدرسة، تونغي، غازيبور', institutionHref: 'https://www.tmt.edu.bd', scoreLabel: 'الدرجة', score: '٥.٠٠/٥', session: '٢٠١٤' },
+                            { title: 'Dakhil (الثانوية)', institution: 'تعليم الملة رحمتِية كامل مدرسة، سونادانغا، خولنا ', scoreLabel: 'الدرجة', score: '٥.٠٠/٥', session: '٢٠١٢' }
                         ]
                     },
                     training: {
                         title: 'التدريب والتطوير',
                         items: [
-                            { text: 'معسكر إدارة الشركات - 2023 (10 أيام، BYLC، بنغلاديش)', href: 'https://bylc.org', linkLabel: 'زيارة' },
-                            { text: 'الإدارة الاحترافية للمحتوى الرقمي (PDCM) - 3 أشهر، SEIP، وزارة المالية', href: 'https://lms.seip-fd.gov.bd', linkLabel: 'زيارة' },
-                            { text: 'تصميم وتطوير الويب - 200 ساعة، LEDP، قسم ICT في بنغلاديش', href: 'https://ictd.gov.bd', linkLabel: 'زيارة' },
-                            { text: 'الحاسوب وتطبيقاته - سنة واحدة، Islamic University, Kushtia', href: 'https://iu.ac.bd', linkLabel: 'زيارة' },
-                            { text: 'استكشاف الأعطال في أمن الحاسوب (ICT Division, a2i)', href: 'https://a2i.gov.bd', linkLabel: 'زيارة' },
-                            { text: 'أساسيات Microsoft Word (a2i, Muktapath)', href: 'https://a2i.gov.bd', linkLabel: 'زيارة' },
-                            { text: 'إنتاج الفيديو (Human Development Media, a2i)', href: 'https://a2i.gov.bd', linkLabel: 'زيارة' },
-                            { text: 'أساسيات الأمن الرقمي (Digital Security Agency, a2i)', href: 'https://a2i.gov.bd', linkLabel: 'زيارة' },
-                            { text: 'ورشة ابتكار الأفكار لتطوير ألعاب وتطبيقات الجوال (ICT Division, Digital Bangladesh)', href: 'https://a2i.gov.bd', linkLabel: 'زيارة' }
+                            { text: 'معسكر إدارة الشركات - 2023 (١٠ أيام، بي واي إل سي، بنغلاديش)', href: 'https://bylc.org', linkLabel: 'زيارة' },
+                            { text: 'الإدارة الاحترافية للمحتوى الرقمي (بي دي سي إم) - 3 أشهر، إس إي آي بي، وزارة المالية', href: 'https://lms.seip-fd.gov.bd', linkLabel: 'زيارة' },
+                            { text: 'تصميم وتطوير الويب -٢٠٠ ساعة، إل إي دي بي، قسم آي سي تي, في بنغلاديش', href: 'https://ictd.gov.bd', linkLabel: 'زيارة' },
+                            { text: 'الحاسوب وتطبيقاته - سنة واحدة، الجامعة الإسلامية، كوشتيا', href: 'https://iu.ac.bd', linkLabel: 'زيارة' },
+                            { text: 'استكشاف الأعطال في أمن الحاسوب (قسم تكنولوجيا المعلومات والاتصالات، إي تو آي)', href: 'https://a2i.gov.bd', linkLabel: 'زيارة' },
+                            { text: 'أساسيات مايكروسوفت وورد (إي تو آي، مُكتَباث)', href: 'https://a2i.gov.bd', linkLabel: 'زيارة' },
+                            { text: 'إنتاج الفيديو (وسائل الإعلام للتنمية البشرية، إي تو آي)', href: 'https://a2i.gov.bd', linkLabel: 'زيارة' },
+                            { text: 'أساسيات الأمن الرقمي (وكالة الأمن الرقمي، إي تو آي)', href: 'https://a2i.gov.bd', linkLabel: 'زيارة' },
+                            { text: 'ورشة ابتكار الأفكار لتطوير ألعاب وتطبيقات الجوال (قسم تكنولوجيا المعلومات والاتصالات، بنغلاديش الرقمية)', href: 'https://a2i.gov.bd', linkLabel: 'زيارة' }
                         ]
                     },
                     activities: {
@@ -519,16 +519,16 @@
                         items: [
                             {
                                 title: 'العمل التطوعي',
-                                period: '7 يوليو 2014 - 12 ديسمبر 2015',
+                                period: '٧ يوليو ٢٠١٤ - ١٢ ديسمبر ٢٠١٥',
                                 items: [
-                                    { text: 'كان ممثل الصف لمدة عامين في Islamic University, Kushtia.', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'زيارة' },
-                                    { text: 'كان مديراً في Betikrom Shahitya Shangskritik Jote، IU.', iconClass: 'fas fa-masks-theater', href: 'https://web.facebook.com/betikrom87', linkLabel: 'زيارة' },
-                                    { text: 'عضو مركزي سابق في Bangladesh Islamic Chhatra Shibir', iconClass: 'fas fa-shield-halved', href: 'https://shibir.org.bd', linkLabel: 'زيارة' }
+                                    { text: 'ممثل الصف المنتخب سابقًا لمدة سنتين، الجامعة الإسلامية', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'زيارة' },
+                                    { text: 'المدير السابق لـ بيتكرم شاهيتيا شانغسكريتيك جوتي، الجامعة الإسلامية', iconClass: 'fas fa-masks-theater', href: 'https://web.facebook.com/betikrom87', linkLabel: 'زيارة' },
+                                    { text: 'عضو مركزي سابق في شاترا شيبير الإسلامية في بنغلاديش', iconClass: 'fas fa-shield-halved', href: 'https://shibir.org.bd', linkLabel: 'زيارة' }
                                 ]
                             },
-                            { title: 'الإنشاد', items: [{ text: 'قدم أناشيد أو أغاني في SATV وETV وChannel 9', iconClass: 'fas fa-music' }] },
-                            { title: 'التمثيل', period: '2018', items: [{ text: 'شارك في عمل درامي وحصل على المركز الثاني على المستوى الوطني.', iconClass: 'fas fa-film' }] },
-                            { title: 'الجوائز', period: '2012', items: [{ text: 'نال جائزة في إلقاء الشعر وحصل على المركز الثاني على المستوى الوطني.', iconClass: 'fas fa-award' }] }
+                            { title: 'الإنشاد', items: [{ text: أدّى أغاني على ساتي في، إي تي في، وقناة ٩', iconClass: 'fas fa-music' }] },
+                            { title: 'التمثيل', period: '٢٠١٨', items: [{ text: 'شارك في عمل درامي وحصل على المركز الثاني على المستوى الوطني.', iconClass: 'fas fa-film' }] },
+                            { title: 'الجوائز', period: '٢٠١٢', items: [{ text: 'نال جائزة في إلقاء الشعر وحصل على المركز الثاني على المستوى الوطني.', iconClass: 'fas fa-award' }] }
                         ]
                     },
                     hobbies: {
@@ -552,14 +552,14 @@
                     },
                     contact: {
                         title: 'التواصل والموقع',
-                        mapButton: 'عرض على خرائط Google',
-                        permanentAddressValue: 'Uttar Sutalori, Jomaddar Para, Morrelganj, Bagerhat',
+                        mapButton: 'عرض على خرائط جوجل',
+                        permanentAddressValue: 'أوتار سوتالوري، جومعدار بارا، موريلغانج، باغرهات',
                         blocks: [
-                            { iconClass: 'fas fa-user', label: 'الاسم', value: 'Md. Mahbubur Rahman' },
+                            { iconClass: 'fas fa-user', label: 'الاسم', value: 'محمد محبوب الرحمن' },
                             { iconClass: 'fas fa-envelope', label: 'البريد الإلكتروني', value: 'bbdmahbub@gmail.com', href: 'mailto:bbdmahbub@gmail.com' },
-                            { iconClass: 'fab fa-whatsapp', label: 'واتساب', value: '+8801917267607', href: 'https://wa.me/8801917267607' },
+                            { iconClass: 'fab fa-whatsapp', label: 'واتساب', value: '+٨٨٠١٩١٧٢٦٧٦٠٧', href: 'https://wa.me/8801917267607' },
                             { iconClass: 'fas fa-home', label: 'العنوان الحالي', value: 'Hatir Jheel, Dhaka, Bangladesh' },
-                            { iconClass: 'fas fa-map-marker-alt', label: 'العنوان الدائم', value: 'Uttar Sutalori, Jomaddar Para, Morrelganj, Bagerhat', mapHref: permanentAddressMapHref }
+                            { iconClass: 'fas fa-map-marker-alt', label: 'العنوان الدائم', value: 'أوتار سوتالوري، جومعدار بارا، موريلغانج، باغرهات', mapHref: permanentAddressMapHref }
                         ]
                     },
                     dua: {
@@ -714,7 +714,7 @@
                         ['২য় ভাই', 'আলাউদ্দিন, আগে আবুধাবিতে কর্মরত ছিলেন, বর্তমানে ব্যবসা (ঢাকা)। ২ সন্তানের জনক। মোরেলগঞ্জ।'],
                         ['৩য় ভাই', 'গিয়াস উদ্দিন, গাড়ি চালক, বানঞ্জা পিএলসি, চট্টগ্রাম, বাংলাদেশ নৌবাহীন সদর। ২ সন্তানের জনক। মোরেলগঞ্জ।'],
                         ['৪র্থ বোন', 'জেরিন সালমা বেবি, ৩ সন্তানের জননী, গৃহিণী। মোরেলগঞ্জ।'],
-                        ['৫ম ভাই', 'মহিউদ্দিন, গাড়ি চালক, ডাক্তার দম্পত্তির , চট্টগ্রাম। ৪ সন্তানের জনক। চট্টগ্রাম'],
+                        ['৫ম ভাই', 'মহিউদ্দিন, গাড়ি চালক, (ডাক্তার দম্পত্তির) , চট্টগ্রাম। ৪ সন্তানের জনক। চট্টগ্রাম'],
                         ['৬ষ্ঠ বোন', 'নাজমা সুলতানা, ২ সন্তানের জননী, গৃহিণী। খুলনা।'],
                         ['৭ম', 'সবার ছোট ছেলে, নিজে।']
                     ],
@@ -783,7 +783,7 @@
                                 title: 'স্বেচ্ছাসেবামূলক কাজ',
                                 period: '৭ জুলাই ২০১৪ - ১২ ডিসেম্বর ২০১৫',
                                 items: [
-                                    { text: 'সাবেক নির্বাচিত ক্লাস সিআর, ২বছর, ইসলামী বিশ্ববিদ্যালয়, কুষ্টিয়া।', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'ভিজিট' },
+                                    { text: 'সাবেক নির্বাচিত সিআর, ২বছর, ইসলামী বিশ্ববিদ্যালয়, কুষ্টিয়া।', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'ভিজিট' },
                                     { text: 'সাবেক পরিচালক, ব্যতিক্রম সাহিত্য সাংস্কৃতিক জোট, ইবি।', iconClass: 'fas fa-masks-theater', href: 'https://web.facebook.com/betikrom87', linkLabel: 'ভিজিট' },
                                     { text: 'সাবেক কেন্দ্রীয় সদস্য, বাংলাদেশ ইসলামী ছাত্রশিবির, ঢাকা।', iconClass: 'fas fa-shield-halved', href: 'https://shibir.org.bd', linkLabel: 'ভিজিট' }
                                 ]
