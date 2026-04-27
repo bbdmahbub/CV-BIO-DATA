@@ -526,7 +526,7 @@
                                     { text: 'عضو مركزي سابق في شاترا شيبير الإسلامية في بنغلاديش', iconClass: 'fas fa-shield-halved', href: 'https://shibir.org.bd', linkLabel: 'زيارة' }
                                 ]
                             },
-                            { title: 'الإنشاد', items: [{ text: أدّى أغاني على ساتي في، إي تي في، وقناة ٩', iconClass: 'fas fa-music' }] },
+                            { title: 'الإنشاد', items: [{ text: 'أدّى أغاني على ساتي في، إي تي في، وقناة ٩', iconClass: 'fas fa-music' }] },
                             { title: 'التمثيل', period: '٢٠١٨', items: [{ text: 'شارك في عمل درامي وحصل على المركز الثاني على المستوى الوطني.', iconClass: 'fas fa-film' }] },
                             { title: 'الجوائز', period: '٢٠١٢', items: [{ text: 'نال جائزة في إلقاء الشعر وحصل على المركز الثاني على المستوى الوطني.', iconClass: 'fas fa-award' }] }
                         ]
