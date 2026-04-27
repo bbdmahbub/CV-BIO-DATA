@@ -38,11 +38,10 @@
                 'بسماللهالرحمنالرحيم'
             ];
             const permanentAddressMapHref = 'https://maps.app.goo.gl/hvcHqxMvhF9cGFbM6';
-            const voiceVerificationStorageKey = 'bbdMahbubVoiceVerified';
             const languageOptions = [
+                { code: 'ar', shortLabel: 'AR', nativeLabel: 'العربية' },
                 { code: 'en', shortLabel: 'EN', nativeLabel: 'English' },
-                { code: 'bn', shortLabel: 'BN', nativeLabel: 'বাংলা' },
-                { code: 'ar', shortLabel: 'AR', nativeLabel: 'العربية' }
+                { code: 'bn', shortLabel: 'BN', nativeLabel: 'বাংলা' }
             ];
             const translations = {
                 en: {
@@ -68,7 +67,7 @@
                     intro: {
                         kicker: 'Dua & Instruction',
                         title: 'Please Read Before Exploring',
-                        duaMeaning: 'Our Rabb (Allah), grant us from among our wives and offspring comfort to our eyes and make us an example for the righteous.',
+                        duaMeaning: 'Our Rabb, grant us mercy from Yourself and prepare for us right guidance in our affairs.',
                         instructionsTitle: 'Instruction',
                         instructions: [
                             'Begin reading with respect and a sincere intention.',
@@ -107,7 +106,7 @@
                         supportPermission: 'A browser popup should appear now. Tap Allow microphone permission. After that, tap the mic again.',
                         supportPreparing: 'Microphone is starting now. Please wait a moment.',
                         supportErrorDenied: 'Microphone permission is blocked in browser settings. Allow it for this site, then tap the mic again.',
-                        supportErrorGeneral: 'If no popup appears, check this site\'s microphone permission and whether your browser supports web speech recognition. You can also continue without voice below.',
+                        supportErrorGeneral: 'If no popup appears, check this site\'s microphone permission and whether your browser supports web speech recognition.',
                         supportListening: 'Recording is active now. Speak once, then wait a moment for verification.',
                         supportReady: 'Microphone permission is ready. Tap the mic to start voice verification.',
                         supportIdle: 'Tap the mic. If a browser popup appears, tap Allow microphone permission.',
@@ -256,7 +255,7 @@
                                 title: 'Volunteering',
                                 period: '7th July 2014 - 12th Dec 2015',
                                 items: [
-                                    { text: 'Former CR of the class for 2 years, Islamic University, Kushtia.', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'Visit' },
+                                    { text: 'Former Elected CR of the class for 2 years, Islamic University, Kushtia.', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'Visit' },
                                     { text: 'Former Director of Betikrom Shahitya Shangskritik Jote, IU.', iconClass: 'fas fa-masks-theater', href: 'https://web.facebook.com/betikrom87', linkLabel: 'Visit' },
                                     { text: 'Former Central Member of Bangladesh Islamic Chhatra Shibir', iconClass: 'fas fa-shield-halved', href: 'https://shibir.org.bd', linkLabel: 'Visit' }
                                 ]
@@ -330,7 +329,7 @@
                     intro: {
                         kicker: 'دعاء وتعليمات',
                         title: 'يرجى القراءة قبل التصفح',
-                        duaMeaning: 'ربنا هب لنا من أزواجنا وذرياتنا قرة أعين واجعلنا للمتقين إماماً.',
+                        duaMeaning: 'ربنا آتنا من لدنك رحمة وهيئ لنا من أمرنا رشداً.',
                         instructionsTitle: 'التعليمات',
                         instructions: [
                             'ابدأ القراءة باحترام وبنية صادقة.',
@@ -369,7 +368,7 @@
                         supportPermission: 'يفترض أن تظهر نافذة منبثقة الآن. اضغط سماح للميكروفون ثم اضغط على الميكروفون مرة أخرى.',
                         supportPreparing: 'يتم تشغيل الميكروفون الآن. يرجى الانتظار قليلاً.',
                         supportErrorDenied: 'إذن الميكروفون محظور في إعدادات المتصفح. فعّله لهذا الموقع ثم اضغط على الميكروفون مرة أخرى.',
-                        supportErrorGeneral: 'إذا لم تظهر نافذة، فتحقق من إذن الميكروفون لهذا الموقع ومن دعم المتصفح للتعرف الصوتي. يمكنك أيضاً المتابعة بدون صوت أدناه.',
+                        supportErrorGeneral: 'إذا لم تظهر نافذة، فتحقق من إذن الميكروفون لهذا الموقع ومن دعم المتصفح للتعرف الصوتي.',
                         supportListening: 'التسجيل يعمل الآن. تحدث مرة واحدة ثم انتظر لحظة للتحقق.',
                         supportReady: 'إذن الميكروفون جاهز. اضغط على الميكروفون لبدء التحقق الصوتي.',
                         supportIdle: 'اضغط على الميكروفون. إذا ظهرت نافذة من المتصفح فاضغط سماح.',
@@ -397,11 +396,11 @@
                         dua: 'الدعاء'
                     },
                     profile: {
-                        name: 'Md Mahbubur Rahman',
+                        name: 'محمد محبوب الرحمن',
                         subtitle: 'محترف تقنية معلومات',
                         tagline: 'مسلم ملتزم يبحث عن شريكة حياة صالحة ومحبّة',
                         stats: {
-                            age: '27 عاماً',
+                            age: '28 عاماً',
                             education: 'تعليم عالٍ',
                             work: 'مستقر مهنياً',
                             faith: 'ملتزم دينياً'
@@ -410,8 +409,8 @@
                     gallery: {
                         title: 'معرض الصور',
                         photos: [
-                            { src: 'assets/images/mahbub-portrait-1.jpg', alt: 'الصورة الشخصية الأولى لـ Md Mahbubur Rahman', label: 'الصورة 01', featured: true },
-                            { src: 'assets/images/mahbub-portrait-2.jpg', alt: 'الصورة الشخصية الثانية لـ Md Mahbubur Rahman', label: 'الصورة 02', featured: false }
+                            { src: 'assets/images/mahbub-portrait-1.jpg', alt: 'الصورة الشخصية الأولى لـ محمد محبوب الرحمن', label: 'الصورة 01', featured: true },
+                            { src: 'assets/images/mahbub-portrait-2.jpg', alt: 'الصورة الشخصية الثانية لـ محمد محبوب الرحمن', label: 'الصورة 02', featured: false }
                         ]
                     },
                     sectionHeaders: {
@@ -422,18 +421,18 @@
                     personalDetails: [
                         { label: 'الاسم الكامل', value: 'محمد محبوب الرحمن', iconClass: 'fas fa-user' },
                         { label: 'الاسم المختصر', value: 'ناصر الدين', iconClass: 'fas fa-signature' },
-                        { label: 'تاريخ الميلاد', value: 'ديسمبر 20 1997', iconClass: 'fas fa-calendar-days' },
-                        { label: 'العمر', value: '27 سنة', iconClass: 'fas fa-hourglass-half' },
+                        { label: 'تاريخ الميلاد', value: ' ٢٠ ديسمبر ١٩٩٧', iconClass: 'fas fa-calendar-days' },
+                        { label: 'العمر', value: '28 سنة', iconClass: 'fas fa-hourglass-half' },
                         { label: 'الديانة', value: 'الإسلام (ملتزم)', iconClass: 'fas fa-mosque' },
                         { label: 'الحالة الاجتماعية', value: 'أعزب', iconClass: 'fas fa-ring' },
                         { label: 'لون البشرة', value: 'قمحي مائل للداكن', iconClass: 'fas fa-palette' },
-                        { label: 'الطول والوزن', value: '5\' 3" و72 كجم', iconClass: 'fas fa-ruler-combined' },
+                        { label: 'الطول والوزن', value: '5\' 3" و٧٠ كجم', iconClass: 'fas fa-ruler-combined' },
                         { label: 'فصيلة الدم', value: 'A+', iconClass: 'fas fa-droplet' },
                         { label: 'الحالة الصحية', value: 'بصحة جيدة، غير مدخن، بلا إدمان', iconClass: 'fas fa-heart-pulse' }
                     ],
                     familyDetails: [
-                        ['الأب', 'المرحوم Abdul Kader Howlader (طبيب قروي ومعلم ابتدائي)'],
-                        ['الأم', 'Farida Begum - ربة منزل'],
+                        ['الأب', 'عبد القادر هولادر (دكتور عبد القادر)- كان طبيب قروي ومعلم ابتدائي '],
+                        ['الأم', 'فريدة بيغم - ربة منزل'],
                         ['الإخوة والأخوات', '4 إخوة و3 أخوات'],
                         ['العنوان الدائم', 'Uttar Sutalori, Jomaddar Para, Morrelganj, Bagerhat'],
                         ['المنطقة', 'Bagerhat']
@@ -592,7 +591,7 @@
                     intro: {
                         kicker: 'দোআ ও নির্দেশনা',
                         title: 'দয়া করে দেখার আগে পড়ে নিন',
-                        duaMeaning: 'হে আমাদের রব, আমাদের স্ত্রী ও সন্তানদেরকে আমাদের চোখের শীতলতা দান করুন এবং আমাদেরকে মুত্তাকীদের জন্য আদর্শ বানান।',
+                        duaMeaning: 'হে আমাদের রব, আপনার পক্ষ থেকে আমাদেরকে রহমত দান করুন এবং আমাদের কাজের জন্য সঠিক পথ নির্ধারণ করে দিন।',
                         instructionsTitle: 'নির্দেশনা',
                         instructions: [
                             'সম্মান ও আন্তরিক নিয়ত নিয়ে পড়া শুরু করুন।',
@@ -631,7 +630,7 @@
                         supportPermission: 'এখন ব্রাউজারের একটি পপআপ দেখা উচিত। সেখানে মাইক্রোফোনের জন্য Allow চাপুন, তারপর আবার মাইকে চাপ দিন।',
                         supportPreparing: 'মাইক্রোফোন চালু হচ্ছে। একটু অপেক্ষা করুন।',
                         supportErrorDenied: 'ব্রাউজার সেটিংসে মাইক্রোফোন অনুমতি ব্লক আছে। এই সাইটের জন্য অনুমতি দিয়ে আবার মাইকে চাপ দিন।',
-                        supportErrorGeneral: 'যদি কোনো পপআপ না আসে, তাহলে সাইটের মাইক্রোফোন অনুমতি ও ব্রাউজারের স্পিচ রিকগনিশন সাপোর্ট পরীক্ষা করুন। চাইলে নিচের বোতাম দিয়ে ভয়েস ছাড়া এগোতে পারেন।',
+                        supportErrorGeneral: 'যদি কোনো পপআপ না আসে, তাহলে সাইটের মাইক্রোফোন অনুমতি ও ব্রাউজারের স্পিচ রিকগনিশন সাপোর্ট পরীক্ষা করুন।',
                         supportListening: 'রেকর্ডিং চলছে। একবার বলুন, তারপর যাচাইয়ের জন্য একটু অপেক্ষা করুন।',
                         supportReady: 'মাইক্রোফোন অনুমতি প্রস্তুত। ভয়েস যাচাই শুরু করতে মাইকে চাপ দিন।',
                         supportIdle: 'মাইকে চাপ দিন। ব্রাউজার পপআপ এলে Allow চাপুন।',
@@ -690,7 +689,7 @@
                         { label: 'বৈবাহিক অবস্থা', value: 'অবিবাহিত', iconClass: 'fas fa-ring' },
                         { label: 'গায়ের রং', value: 'মাঝারি শ্যামলা', iconClass: 'fas fa-palette' },
                         { label: 'উচ্চতা ও ওজন', value: '৫\' ৩" ও ৭০ কেজি', iconClass: 'fas fa-ruler-combined' },
-                        { label: 'রক্তের গ্রুপ', value: 'A+', iconClass: 'fas fa-droplet' },
+                        { label: 'রক্তের গ্রুপ', value: 'এ+', iconClass: 'fas fa-droplet' },
                         { label: 'স্বাস্থ্য অবস্থা', value: 'সুস্থ, ধূমপানমুক্ত, কোনো নেশা নেই', iconClass: 'fas fa-heart-pulse' }
                     ],
                     familyDetails: [
@@ -707,11 +706,11 @@
                     },
                     familySiblingsTitle: 'ভাইবোনের বিস্তারিত',
                     familySiblings: [
-                        ['১ম বোন', 'শাহনাজ শান্তি, ৪ সন্তানের জননী, গৃহিণী। Morrelganj।'],
+                        ['১ম বোন', 'শাহনাজ শান্তি, ৪ সন্তানের জননী, গৃহিণী। মোরেলগঞ্জ।'],
                         ['২য় ভাই', 'আলাউদ্দিন, আগে আবুধাবিতে কর্মরত ছিলেন, বর্তমানে ব্যবসা (ঢাকা)। ২ সন্তানের জনক। মোরেলগঞ্জ।'],
                         ['৩য় ভাই', 'গিয়াস উদ্দিন, গাড়ি চালক, বানঞ্জা পিএলসি, চট্টগ্রাম, বাংলাদেশ নৌবাহীন সদর। ২ সন্তানের জনক। মোরেলগঞ্জ।'],
                         ['৪র্থ বোন', 'জেরিন সালমা বেবি, ৩ সন্তানের জননী, গৃহিণী। মোরেলগঞ্জ।'],
-                        ['৫ম ভাই', 'মহিউদ্দিন, গাড়ি চালক, ডাক্তার দম্পত্তির , চট্টগ্রাম। ৪ সন্তানের জনক। ট্রাগ্রাম।'],
+                        ['৫ম ভাই', 'মহিউদ্দিন, গাড়ি চালক, ডাক্তার দম্পত্তির , চট্টগ্রাম। ৪ সন্তানের জনক। চট্টগ্রাম'],
                         ['৬ষ্ঠ বোন', 'নাজমা সুলতানা, ২ সন্তানের জননী, গৃহিণী। খুলনা।'],
                         ['৭ম', 'সবার ছোট ছেলে, নিজে।']
                     ],
@@ -765,12 +764,12 @@
                             { text: 'করপোরেট ম্যানেজমেন্ট বুটক্যাম্প - ২০২৩ (১০ দিনব্যাপী, বিওয়াইএলসি, বাংলাদেশ.)', href: 'https://bylc.org', linkLabel: 'ভিজিট' },
                             { text: 'প্রফেশনাল ডিজিটাল কন্টেন্ট ম্যানেজমেন্ট (পিডিসিএম), (৩ মাস, সেইপ, অর্থ মন্ত্রণালয়, বাংলাদেশ)', href: 'https://lms.seip-fd.gov.bd', linkLabel: 'ভিজিট' },
                             { text: 'ওয়েব ডিজাইন এন্ড ডেভলপমেন্ট (২০০ ঘণ্টা, এলইডিপি, আইসিটি বিভাগ, বাংলাদেশ।)', href: 'https://ictd.gov.bd', linkLabel: 'ভিজিট' },
-                            { text: 'Computer & Its Applications (1 Year, Islamic University, Kushtia)', href: 'https://iu.ac.bd', linkLabel: 'ভিজিট' },
-                            { text: 'Troubleshooting in Computer Security (ICT Division, a2i).', href: 'https://a2i.gov.bd', linkLabel: 'ভিজিট' },
-                            { text: 'Microsoft Word Basics (a2i, Muktapath).', href: 'https://a2i.gov.bd', linkLabel: 'ভিজিট' },
-                            { text: 'Video Production (Human Development Media, a2i)', href: 'https://a2i.gov.bd', linkLabel: 'ভিজিট' },
-                            { text: 'Digital Security Essentials (Digital Security Agency, a2i).', href: 'https://a2i.gov.bd', linkLabel: 'ভিজিট' },
-                            { text: 'Idea Innovation Workshop for Mobile Games & Apps Development (ICT Division, Digital Bangladesh.)', href: 'https://a2i.gov.bd', linkLabel: 'ভিজিট' }
+                            { text: 'কম্পিউটার এন্ড ইটস্ অ্যাপ্লিকেশনস (১ বছর, ইসলামী বিশ্ববিদ্যালয়, কুষ্টিয়া।)', href: 'https://iu.ac.bd', linkLabel: 'ভিজিট' },
+                            { text: 'ট্রাবলশুটিং ইন কম্পিউটার সিকিউরিটি (আইসিটি বিভাগ, এটুআই)', href: 'https://a2i.gov.bd', linkLabel: 'ভিজিট' },
+                            { text: 'মাইক্রোসফট ওয়ার্ড ব্যাসিক ( মুক্তপাঠ, এটুআই)', href: 'https://a2i.gov.bd', linkLabel: 'ভিজিট' },
+                            { text: 'ভিডিও প্রোডাক্টশন (হিউম্যান ডেভলপমেন্ট মিডিয়া, এটুআই)', href: 'https://a2i.gov.bd', linkLabel: 'ভিজিট' },
+                            { text: 'ডিজিটাল সিকিউরিটি অ্যাসেনস্যাল ( ডিজিটাল সিকিউরিটি এজেন্সি, এটুআই)', href: 'https://a2i.gov.bd', linkLabel: 'ভিজিট' },
+                            { text: 'আইডিয়া ইনোভেশন ওয়ার্কশপ ফর মোবাইল গেমস অ্যান্ড অ্যাপস ডেভলপমেন্ট (আইসিটি বিভাগ, ডিজিটাল বাংলাদেশ)', href: 'https://a2i.gov.bd', linkLabel: 'ভিজিট' }
                         ]
                     },
                     activities: {
@@ -780,9 +779,9 @@
                                 title: 'স্বেচ্ছাসেবামূলক কাজ',
                                 period: '৭ জুলাই ২০১৪ - ১২ ডিসেম্বর ২০১৫',
                                 items: [
-                                    { text: 'Islamic University, Kushtia-তে ২ বছর ক্লাস সিআর ছিলেন।', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'ভিজিট' },
-                                    { text: 'Betikrom Shahitya Shangskritik Jote, IU-এর সাবেক পরিচালক।', iconClass: 'fas fa-masks-theater', href: 'https://web.facebook.com/betikrom87', linkLabel: 'ভিজিট' },
-                                    { text: 'Bangladesh Islamic Chhatra Shibir-এর সাবেক কেন্দ্রীয় সদস্য।', iconClass: 'fas fa-shield-halved', href: 'https://shibir.org.bd', linkLabel: 'ভিজিট' }
+                                    { text: 'সাবেক নির্বাচিত ক্লাস সিআর, ২বছর, ইসলামী বিশ্ববিদ্যালয়, কুষ্টিয়া।', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'ভিজিট' },
+                                    { text: 'সাবেক পরিচালক, ব্যতিক্রম সাহিত্য সাংস্কৃতিক জোট, ইবি।', iconClass: 'fas fa-masks-theater', href: 'https://web.facebook.com/betikrom87', linkLabel: 'ভিজিট' },
+                                    { text: 'সাবেক কেন্দ্রীয় সদস্য, বাংলাদেশ ইসলামী ছাত্রশিবির, ঢাকা।', iconClass: 'fas fa-shield-halved', href: 'https://shibir.org.bd', linkLabel: 'ভিজিট' }
                                 ]
                             },
                             { title: 'গান', items: [{ text: 'SATV, ETV, Channel 9-এ গান পরিবেশন করেছেন', iconClass: 'fas fa-music' }] },
@@ -834,6 +833,14 @@
             };
             const hasSpeechRecognitionSupport = typeof window !== 'undefined'
                 && (typeof window.SpeechRecognition === 'function' || typeof window.webkitSpeechRecognition === 'function');
+            const isChromeBrowser = typeof window !== 'undefined' && (() => {
+                const userAgent = window.navigator.userAgent || '';
+                return /Chrome\//.test(userAgent)
+                    && !/Edg\//.test(userAgent)
+                    && !/OPR\//.test(userAgent)
+                    && !/SamsungBrowser\//.test(userAgent);
+            })();
+            const chromeOnlyAlertMessage = 'শুধুমাত্র Chrome ব্রাউজার ব্যবহার করুন।';
             const getInitialLanguage = () => {
                 try {
                     const storedLanguage = window.localStorage.getItem('bbdMahbubLanguage');
@@ -849,16 +856,56 @@
                 if (browserLanguage.startsWith('bn')) return 'bn';
                 return 'en';
             };
-            const hasStoredVoiceVerification = () => {
-                try {
-                    return window.localStorage.getItem(voiceVerificationStorageKey) === 'true';
-                } catch (error) {
-                    return false;
+            const arabicIndicDigits = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+            const arabicNumberSkipKeys = new Set([
+                'src',
+                'href',
+                'institutionHref',
+                'mapHref',
+                'iconClass',
+                'className',
+                'code',
+                'shortLabel',
+                'locale',
+                'dir'
+            ]);
+            const localizeArabicDigits = (value) => value
+                .replace(/\d/g, (digit) => arabicIndicDigits[Number(digit)])
+                .replace(/(?<=\d)\.(?=\d)/g, '٫')
+                .replace(/(?<=\d),(?=\d)/g, '٬')
+                .replace(/%/g, '٪');
+            const localizeArabicDisplayValue = (value, key = '') => {
+                if (typeof value === 'string') {
+                    return arabicNumberSkipKeys.has(key) ? value : localizeArabicDigits(value);
                 }
+
+                if (typeof value === 'function') {
+                    return (...args) => {
+                        const result = value(...args);
+                        return typeof result === 'string' ? localizeArabicDigits(result) : result;
+                    };
+                }
+
+                if (Array.isArray(value)) {
+                    return value.map((item) => localizeArabicDisplayValue(item));
+                }
+
+                if (value && typeof value === 'object') {
+                    return Object.fromEntries(
+                        Object.entries(value).map(([entryKey, entryValue]) => (
+                            [entryKey, localizeArabicDisplayValue(entryValue, entryKey)]
+                        ))
+                    );
+                }
+
+                return value;
             };
             const [language, setLanguage] = React.useState(getInitialLanguage);
-            const copy = translations[language] || translations.en;
-            const isRtl = copy.dir === 'rtl';
+            const selectedTranslation = translations[language] || translations.en;
+            const copy = language === 'ar'
+                ? localizeArabicDisplayValue(selectedTranslation)
+                : selectedTranslation;
+            const isRtl = selectedTranslation.dir === 'rtl';
             const introVoiceHint = hasSpeechRecognitionSupport
                 ? copy.voice.tapToStart
                 : copy.voice.browserNoSupport;
@@ -891,13 +938,13 @@
                 const hashId = window.location.hash.replace('#', '');
                 return menuItems.some(([id]) => id === hashId) ? hashId : menuItems[0][0];
             });
-            const [isLanguageChooserOpen, setIsLanguageChooserOpen] = React.useState(true);
-            const [isIntroPopupOpen, setIsIntroPopupOpen] = React.useState(() => !hasStoredVoiceVerification());
+            const [isIntroPopupOpen, setIsIntroPopupOpen] = React.useState(true);
             const [isVoiceListening, setIsVoiceListening] = React.useState(false);
             const [voiceUiState, setVoiceUiState] = React.useState('idle');
             const [microphonePermissionState, setMicrophonePermissionState] = React.useState('unknown');
             const [voicePrompt, setVoicePrompt] = React.useState(introVoiceHint);
             const [isMenuDragging, setIsMenuDragging] = React.useState(false);
+            const [isLanguageRowCollapsed, setIsLanguageRowCollapsed] = React.useState(true);
             const menuLinksRef = React.useRef(null);
             const hasCenteredMenuRef = React.useRef(false);
             const speechRecognitionRef = React.useRef(null);
@@ -914,6 +961,9 @@
             const suppressMenuClickRef = React.useRef(false);
             const menuClickResetTimeoutRef = React.useRef(null);
             const hasBootstrappedSavedVerificationRef = React.useRef(false);
+            const hasShownLanguageRowHintRef = React.useRef(false);
+            const languageRowHideTimeoutRef = React.useRef(null);
+            const voiceNotificationRef = React.useRef(null);
 
             const detailGroups = {
                 personal: copy.personalDetails,
@@ -951,6 +1001,7 @@
             const languageDetailIconClass = 'fas fa-language';
             const educationDetailIconClass = 'fas fa-graduation-cap';
             const activityDetailIconClass = 'fas fa-star';
+            const availableLanguageOptions = languageOptions.filter(({ code }) => code !== language);
 
             const renderDetailValue = (value) => {
                 if (typeof value === 'string' && value === permanentAddressValue) {
@@ -987,10 +1038,10 @@
                 const targetLink = menuLinks.querySelector(`[data-menu-id="${id}"]`);
                 if (!targetLink) return;
 
-                const targetLeft = targetLink.offsetLeft - ((menuLinks.clientWidth - targetLink.offsetWidth) / 2);
-                menuLinks.scrollTo({
-                    left: Math.max(0, Math.round(targetLeft)),
-                    behavior
+                targetLink.scrollIntoView({
+                    behavior,
+                    block: 'nearest',
+                    inline: 'center'
                 });
             };
 
@@ -1003,11 +1054,18 @@
                 if (menuClickResetTimeoutRef.current) {
                     window.clearTimeout(menuClickResetTimeoutRef.current);
                 }
+                if (languageRowHideTimeoutRef.current) {
+                    window.clearTimeout(languageRowHideTimeoutRef.current);
+                }
+                if (voiceNotificationRef.current) {
+                    voiceNotificationRef.current.close();
+                    voiceNotificationRef.current = null;
+                }
             }, []);
 
             React.useEffect(() => {
                 if (hasBootstrappedSavedVerificationRef.current) return;
-                if (isLanguageChooserOpen || isIntroPopupOpen) return;
+                if (isIntroPopupOpen) return;
 
                 hasBootstrappedSavedVerificationRef.current = true;
 
@@ -1015,7 +1073,7 @@
                     document.body.classList.add('has-entered-biodata');
                     window.dispatchEvent(new Event('bbdMahbub:enter-biodata'));
                 }
-            }, [isIntroPopupOpen, isLanguageChooserOpen]);
+            }, [isIntroPopupOpen]);
 
             React.useEffect(() => {
                 const selectedCopy = translations[language] || translations.en;
@@ -1063,7 +1121,8 @@
                 const updateActiveSection = () => {
                     const menu = document.querySelector('.top-menu');
                     const menuHeight = menu ? menu.getBoundingClientRect().height : 0;
-                    const scrollReference = window.scrollY + menuHeight + 96;
+                    const menuTop = menu ? (parseFloat(window.getComputedStyle(menu).top) || 0) : 0;
+                    const scrollReference = window.scrollY + menuTop + menuHeight + 96;
                     let nextActiveSection = menuItems[0][0];
 
                     for (const [id] of menuItems) {
@@ -1106,6 +1165,41 @@
                 };
             }, []);
 
+            React.useEffect(() => {
+                const showLanguageRowHint = () => {
+                    if (hasShownLanguageRowHintRef.current) return;
+
+                    hasShownLanguageRowHintRef.current = true;
+                    setIsLanguageRowCollapsed(false);
+
+                    if (languageRowHideTimeoutRef.current) {
+                        window.clearTimeout(languageRowHideTimeoutRef.current);
+                    }
+
+                    languageRowHideTimeoutRef.current = window.setTimeout(() => {
+                        setIsLanguageRowCollapsed(true);
+                        languageRowHideTimeoutRef.current = null;
+                    }, 3000);
+                };
+
+                const handleFirstPointerDown = () => {
+                    showLanguageRowHint();
+                };
+
+                const handleFirstPointerMove = (event) => {
+                    if (event.pointerType !== 'mouse') return;
+                    showLanguageRowHint();
+                };
+
+                window.addEventListener('pointerdown', handleFirstPointerDown, { passive: true });
+                window.addEventListener('pointermove', handleFirstPointerMove, { passive: true });
+
+                return () => {
+                    window.removeEventListener('pointerdown', handleFirstPointerDown);
+                    window.removeEventListener('pointermove', handleFirstPointerMove);
+                };
+            }, []);
+
             const handleMenuPointerDown = (event) => {
                 if (event.pointerType === 'mouse' && event.button !== 0) return;
                 if (event.pointerType === 'touch') return;
@@ -1144,7 +1238,7 @@
                 if (!dragState.moved) return;
 
                 event.preventDefault();
-                menuLinks.scrollLeft = dragState.startScrollLeft - deltaX;
+                menuLinks.scrollLeft = dragState.startScrollLeft + (isRtl ? deltaX : -deltaX);
             };
 
             const finishMenuDrag = (event) => {
@@ -1192,12 +1286,12 @@
             }, [isMenuDragging]);
 
             React.useEffect(() => {
-                document.body.classList.toggle('is-popup-open', isLanguageChooserOpen || isIntroPopupOpen);
+                document.body.classList.toggle('is-popup-open', isIntroPopupOpen);
 
                 return () => {
                     document.body.classList.remove('is-popup-open');
                 };
-            }, [isIntroPopupOpen, isLanguageChooserOpen]);
+            }, [isIntroPopupOpen]);
 
             React.useEffect(() => () => {
                 clearSpeechRecognition();
@@ -1251,6 +1345,40 @@
                 }
             };
 
+            const showVoiceNotification = (message) => {
+                if (!message || typeof window.Notification !== 'function') return;
+                if (window.Notification.permission !== 'granted') return;
+
+                if (voiceNotificationRef.current) {
+                    voiceNotificationRef.current.close();
+                }
+
+                const notification = new window.Notification(copy.intro.title, {
+                    body: message,
+                    tag: 'bbd-voice-verification',
+                    renotify: true
+                });
+
+                voiceNotificationRef.current = notification;
+                window.setTimeout(() => {
+                    if (voiceNotificationRef.current === notification) {
+                        notification.close();
+                        voiceNotificationRef.current = null;
+                    }
+                }, 3200);
+            };
+
+            const ensureVoiceNotificationPermission = async () => {
+                if (typeof window.Notification !== 'function') return;
+                if (window.Notification.permission !== 'default') return;
+
+                try {
+                    await window.Notification.requestPermission();
+                } catch (error) {
+                    // Ignore notification permission failures and keep voice verification working.
+                }
+            };
+
             const clearSpeechRecognition = () => {
                 clearRecognitionTimer();
                 const recognition = speechRecognitionRef.current;
@@ -1273,11 +1401,6 @@
                 voiceStopReasonRef.current = 'matched';
                 setIsVoiceListening(false);
                 setVoiceUiState('idle');
-                try {
-                    window.localStorage.setItem(voiceVerificationStorageKey, 'true');
-                } catch (error) {
-                    // Ignore storage failures and keep the access flow working.
-                }
                 document.body.classList.add('has-entered-biodata');
                 setIsIntroPopupOpen(false);
                 window.dispatchEvent(new Event('bbdMahbub:enter-biodata'));
@@ -1285,7 +1408,18 @@
 
             const handleLanguageSelection = (nextLanguage) => {
                 setLanguage(nextLanguage);
-                setIsLanguageChooserOpen(false);
+                setIsLanguageRowCollapsed(true);
+            };
+
+            const handleLanguageRowToggle = () => {
+                hasShownLanguageRowHintRef.current = true;
+
+                if (languageRowHideTimeoutRef.current) {
+                    window.clearTimeout(languageRowHideTimeoutRef.current);
+                    languageRowHideTimeoutRef.current = null;
+                }
+
+                setIsLanguageRowCollapsed((currentState) => !currentState);
             };
 
             const normalizeVoiceTranscript = (value) => value
@@ -1375,11 +1509,13 @@
                 if (microphonePermissionState === 'denied') {
                     setVoiceUiState('error');
                     setVoicePrompt(voiceCopy.permissionBlocked);
+                    showVoiceNotification(voiceCopy.permissionBlocked);
                     return false;
                 }
 
                 setVoiceUiState('permission');
                 setVoicePrompt(voiceCopy.permissionRequired);
+                showVoiceNotification(voiceCopy.permissionRequired);
 
                 try {
                     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -1387,16 +1523,20 @@
                     setMicrophonePermissionState('granted');
                     setVoiceUiState('idle');
                     setVoicePrompt(voiceCopy.permissionAllowed);
+                    showVoiceNotification(voiceCopy.permissionAllowed);
                 } catch (error) {
                     setVoiceUiState('error');
 
                     if (error && (error.name === 'NotAllowedError' || error.name === 'SecurityError')) {
                         setMicrophonePermissionState('denied');
                         setVoicePrompt(voiceCopy.permissionDenied);
+                        showVoiceNotification(voiceCopy.permissionDenied);
                     } else if (error && error.name === 'NotFoundError') {
                         setVoicePrompt(voiceCopy.noMicrophone);
+                        showVoiceNotification(voiceCopy.noMicrophone);
                     } else {
                         setVoicePrompt(voiceCopy.permissionUnknown);
+                        showVoiceNotification(voiceCopy.permissionUnknown);
                     }
                 }
 
@@ -1410,6 +1550,7 @@
                 if (!SpeechRecognition) {
                     setVoiceUiState('idle');
                     setVoicePrompt(voiceCopy.browserNoSupport);
+                    showVoiceNotification(voiceCopy.browserNoSupport);
                     return;
                 }
 
@@ -1418,6 +1559,7 @@
                 isPreparingVoiceRef.current = true;
                 setVoiceUiState('preparing');
                 setVoicePrompt(voiceCopy.starting);
+                showVoiceNotification(voiceCopy.starting);
 
                 const recognition = new SpeechRecognition();
                 const recognitionLang = getPreferredRecognitionLangs()[0];
@@ -1438,6 +1580,7 @@
                     setIsVoiceListening(true);
                     setVoiceUiState('listening');
                     setVoicePrompt(voiceCopy.listening);
+                    showVoiceNotification(voiceCopy.listening);
                     recognitionTimerRef.current = window.setTimeout(() => {
                         if (speechRecognitionRef.current !== recognition || voiceMatchedRef.current) {
                             return;
@@ -1470,6 +1613,7 @@
                         voiceMatchedRef.current = true;
                         voiceStopReasonRef.current = 'matched';
                         setVoicePrompt(voiceCopy.detected(transcript.trim()));
+                        showVoiceNotification(voiceCopy.detected(transcript.trim()));
                         window.setTimeout(() => {
                             handleEnterBiodata();
                         }, 320);
@@ -1477,6 +1621,7 @@
                     }
 
                     setVoicePrompt(voiceCopy.heard(transcript.trim()));
+                    showVoiceNotification(voiceCopy.heard(transcript.trim()));
                 };
 
                 recognition.onerror = (event) => {
@@ -1486,6 +1631,7 @@
                     setIsVoiceListening(false);
                     setVoiceUiState('error');
                     setVoicePrompt(voiceCopy.errors[event.error] || voiceCopy.defaultError);
+                    showVoiceNotification(voiceCopy.errors[event.error] || voiceCopy.defaultError);
                 };
 
                 recognition.onend = () => {
@@ -1502,8 +1648,10 @@
                         setVoicePrompt(introVoiceHint);
                     } else if (voiceStopReasonRef.current === 'timeout' && !voiceMatchedRef.current) {
                         setVoicePrompt(voiceCopy.timeout);
+                        showVoiceNotification(voiceCopy.timeout);
                     } else if (voiceStopReasonRef.current === 'listening' && !voiceMatchedRef.current) {
                         setVoicePrompt(voiceCopy.notVerified);
+                        showVoiceNotification(voiceCopy.notVerified);
                     }
 
                     if (voiceStopReasonRef.current !== 'matched') {
@@ -1521,6 +1669,7 @@
                     setIsVoiceListening(false);
                     setVoiceUiState('error');
                     setVoicePrompt(voiceCopy.couldNotStart);
+                    showVoiceNotification(voiceCopy.couldNotStart);
                 }
             };
 
@@ -1534,6 +1683,7 @@
                     return;
                 }
 
+                await ensureVoiceNotificationPermission();
                 const permissionReady = await ensureMicrophonePermission();
                 if (!permissionReady) {
                     return;
@@ -1551,18 +1701,14 @@
                 event.preventDefault();
 
                 const target = document.getElementById(id);
-                const menu = document.querySelector('.top-menu');
-                if (!target || !menu) return;
-
-                const menuHeight = menu.getBoundingClientRect().height + 18;
-                const targetTop = target.getBoundingClientRect().top + window.scrollY - menuHeight;
+                if (!target) return;
 
                 setActiveSection(id);
                 centerMenuLink(id);
 
-                window.scrollTo({
-                    top: Math.max(0, Math.round(targetTop)),
-                    behavior: 'smooth'
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
                 });
 
                 window.history.replaceState(null, '', `#${id}`);
@@ -1571,7 +1717,6 @@
             const isVoiceError = hasSpeechRecognitionSupport && voiceUiState === 'error';
             const isVoicePreparing = hasSpeechRecognitionSupport && (voiceUiState === 'permission' || voiceUiState === 'preparing');
             const showVoiceMicButton = hasSpeechRecognitionSupport;
-            const showVoiceFallbackAction = !hasSpeechRecognitionSupport || voiceUiState === 'error';
             const voiceStatusIconClass = !hasSpeechRecognitionSupport
                 ? 'fa-circle-info'
                 : isVoiceError
@@ -1596,40 +1741,52 @@
                                 : microphonePermissionState === 'granted'
                                     ? voiceCopy.supportReady
                                     : voiceCopy.supportIdle;
+            const renderLanguageMenu = (rowId) => (
+                <div
+                    className={`top-menu-language-shell${isLanguageRowCollapsed ? ' is-collapsed' : ''}`}
+                >
+                    <div
+                        className="top-menu-language-row"
+                        id={rowId}
+                    >
+                        <div className="music-player-language" role="group" aria-label={copy.navigation.languageSwitcherLabel}>
+                            {availableLanguageOptions.map((option) => (
+                                <button
+                                    type="button"
+                                    key={option.code}
+                                    className="music-player-language-option"
+                                    onClick={() => handleLanguageSelection(option.code)}
+                                >
+                                    {option.nativeLabel}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                    <button
+                        type="button"
+                        className={`top-menu-language-toggle${isLanguageRowCollapsed ? ' is-collapsed' : ''}`}
+                        aria-controls={rowId}
+                        aria-expanded={isLanguageRowCollapsed ? 'false' : 'true'}
+                        aria-label={copy.navigation.languageSwitcherLabel}
+                        onClick={handleLanguageRowToggle}
+                    >
+                        <i className={`fas ${isLanguageRowCollapsed ? 'fa-chevron-down' : 'fa-chevron-up'}`} aria-hidden="true"></i>
+                    </button>
+                </div>
+            );
 
             return (
                 <div className={`app-shell${isRtl ? ' is-rtl' : ''}`}>
-                    {isLanguageChooserOpen ? (
-                        <div
-                            className="language-chooser"
-                            role="dialog"
-                            aria-modal="true"
-                            aria-label="Select language"
-                        >
-                            <div className="language-chooser-panel">
-                                <div className="language-chooser-actions" role="group" aria-label="Select language">
-                                    {languageOptions.map((option) => (
-                                        <button
-                                            type="button"
-                                            key={option.code}
-                                            className={`language-chooser-button${language === option.code ? ' is-active' : ''}`}
-                                            onClick={() => handleLanguageSelection(option.code)}
-                                            aria-pressed={language === option.code}
-                                        >
-                                            {option.nativeLabel}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    ) : null}
-                    {!isLanguageChooserOpen && isIntroPopupOpen ? (
+                    {isIntroPopupOpen ? (
                         <div
                             className="intro-popup"
                             role="dialog"
                             aria-modal="true"
                             aria-labelledby="intro-popup-title"
                         >
+                            <div className="intro-popup-top-language">
+                                {renderLanguageMenu('intro-popup-language-row')}
+                            </div>
                             <div className="intro-popup-panel">
                                 <div className="intro-popup-inner">
                                     <div className="intro-popup-bismillah">{popupBismillah}</div>
@@ -1638,8 +1795,10 @@
                                     <h2 className="intro-popup-title" id="intro-popup-title">{copy.intro.title}</h2>
 
                                     <div className="intro-popup-dua">
-                                        <div className="intro-popup-dua-arabic">{duaArabicLines[0]}</div>
-                                        <div className="intro-popup-dua-meaning">{copy.intro.duaMeaning}</div>
+                                        <div className="intro-popup-dua-arabic">{duaArabicLines[2]}</div>
+                                        {language !== 'ar' ? (
+                                            <div className="intro-popup-dua-meaning">{copy.intro.duaMeaning}</div>
+                                        ) : null}
                                     </div>
 
                                     <div className="intro-popup-instruction">
@@ -1650,6 +1809,13 @@
                                             ))}
                                         </ul>
                                     </div>
+
+                                    {!isChromeBrowser ? (
+                                        <div className="intro-popup-voice-status is-error">
+                                            <i className="fas fa-triangle-exclamation" aria-hidden="true"></i>
+                                            <span>{chromeOnlyAlertMessage}</span>
+                                        </div>
+                                    ) : null}
 
                                     <div className={`intro-popup-voice-status${isVoiceError ? ' is-error' : isVoicePreparing ? ' is-preparing' : isVoiceListening ? ' is-listening' : ''}`}>
                                         <i className={`fas ${voiceStatusIconClass}`} aria-hidden="true"></i>
@@ -1669,15 +1835,6 @@
                                             </button>
                                         ) : null}
                                         <div className="intro-popup-support-note">{voiceSupportNote}</div>
-                                        {showVoiceFallbackAction ? (
-                                            <button
-                                                type="button"
-                                                className="intro-popup-action"
-                                                onClick={handleEnterBiodata}
-                                            >
-                                                {hasSpeechRecognitionSupport ? voiceCopy.continueWithoutVoice : voiceCopy.continueInBrowser}
-                                            </button>
-                                        ) : null}
                                     </div>
                                 </div>
                             </div>
@@ -1685,6 +1842,9 @@
                     ) : null}
                     <div className="container">
                     <nav className="top-menu" aria-label={copy.navigation.sectionsAria}>
+                        <div className="top-menu-language-row">
+                            {renderLanguageMenu('top-menu-language-row')}
+                        </div>
                         <div className="top-menu-head">
                             <div className="top-menu-label">{copy.navigation.quickJump}</div>
                         </div>

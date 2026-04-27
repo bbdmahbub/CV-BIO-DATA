@@ -35,9 +35,9 @@
                 next: 'الأغنية التالية',
                 collapse: 'طي عناصر التحكم بالموسيقى',
                 expand: 'إظهار عناصر التحكم بالموسيقى',
-                nowPlaying: (title, percent) => `يعمل الآن: ${title} عند مستوى ${percent}%`,
+                nowPlaying: (title, percent) => `يعمل الآن: ${title} عند مستوى ${percent}٪`,
                 blocked: 'تم حظر التشغيل التلقائي. اضغط تشغيل لبدء الموسيقى.',
-                scheduled: (percent) => `ستبدأ الموسيقى تلقائياً بعد 10 ثوانٍ عند مستوى ${percent}%.`,
+                scheduled: (percent) => `ستبدأ الموسيقى تلقائياً بعد 10 ثوانٍ عند مستوى ${percent}٪.`,
                 paused: (title) => `متوقف: ${title}`,
                 pausedBeforeReload: 'تم إيقاف الموسيقى قبل إعادة التحميل. اضغط تشغيل للبدء من جديد.'
             },
@@ -118,6 +118,10 @@
         }
 
         function formatLocalizedPercent(value) {
+            if (currentLanguage === 'ar') {
+                return new Intl.NumberFormat('ar').format(value);
+            }
+
             if (currentLanguage === 'bn') {
                 return new Intl.NumberFormat('bn-BD').format(value);
             }
@@ -191,7 +195,7 @@
             const volumePercent = getVolumePercent();
             document.getElementById('music-volume').value = String(volumePercent);
             document.getElementById('music-volume').setAttribute('aria-label', getMusicCopy().volumeAria);
-            document.getElementById('music-volume-value').textContent = `${formatLocalizedPercent(volumePercent)}%`;
+            document.getElementById('music-volume-value').textContent = `${formatLocalizedPercent(volumePercent)}${currentLanguage === 'ar' ? '٪' : '%'}`;
         }
 
         function updateMenuOffset() {
@@ -201,7 +205,8 @@
                 return;
             }
 
-            document.documentElement.style.setProperty('--menu-offset', `${menu.offsetHeight}px`);
+            const stickyTop = parseFloat(window.getComputedStyle(menu).top) || 0;
+            document.documentElement.style.setProperty('--menu-offset', `${menu.offsetHeight + stickyTop}px`);
         }
 
         function loadTrack(index) {
@@ -225,11 +230,15 @@
             const panelToggleIcon = document.getElementById('music-panel-toggle-icon');
             if (!player || !panelToggle || !panelToggleIcon) return;
 
+            const isRtlLayout = document.body.classList.contains('is-rtl-language');
+            const expandedIconClass = isRtlLayout ? 'fa-chevron-left' : 'fa-chevron-right';
+            const collapsedIconClass = isRtlLayout ? 'fa-chevron-right' : 'fa-chevron-left';
+
             player.classList.toggle('is-collapsed', isMusicPanelCollapsed);
             panelToggle.setAttribute('aria-expanded', String(!isMusicPanelCollapsed));
             panelToggle.setAttribute('aria-label', isMusicPanelCollapsed ? getMusicCopy().expand : getMusicCopy().collapse);
-            panelToggleIcon.classList.toggle('fa-chevron-right', !isMusicPanelCollapsed);
-            panelToggleIcon.classList.toggle('fa-chevron-left', isMusicPanelCollapsed);
+            panelToggleIcon.classList.remove('fa-chevron-right', 'fa-chevron-left');
+            panelToggleIcon.classList.add(isMusicPanelCollapsed ? collapsedIconClass : expandedIconClass);
         }
 
         function autoCollapseMusicPanel() {
@@ -488,6 +497,15 @@
             applyMusicLanguage();
             updateMenuOffset();
             updateMusicPanelState();
+            if ('ResizeObserver' in window) {
+                const menu = document.querySelector('.top-menu');
+                if (menu) {
+                    const menuResizeObserver = new ResizeObserver(() => {
+                        updateMenuOffset();
+                    });
+                    menuResizeObserver.observe(menu);
+                }
+            }
             window.addEventListener('resize', () => {
                 updateMenuOffset();
                 updateMusicPanelState();
