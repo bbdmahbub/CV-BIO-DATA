@@ -84,7 +84,7 @@
                         browserNoSupport: 'This browser does not include live speech recognition. Use Continue below to open the biodata.',
                         permissionBlocked: 'Microphone permission is blocked. Allow it in your browser settings, then tap the mic again.',
                         permissionRequired: 'Browser microphone permission is required. Tap Allow in the popup.',
-                        permissionAllowed: 'Microphone permission allowed. Tap the mic once more to start voice verification.',
+                        permissionAllowed: 'Microphone permission allowed. Voice verification is starting.',
                         permissionDenied: 'Microphone permission was denied. Allow it in browser settings, then tap the mic again.',
                         noMicrophone: 'No microphone was found. Connect a microphone and try again.',
                         permissionUnknown: 'Microphone permission could not be confirmed. Please try again.',
@@ -346,7 +346,7 @@
                         browserNoSupport: 'هذا المتصفح لا يدعم التعرف الصوتي المباشر. استخدم زر المتابعة أدناه لفتح السيرة.',
                         permissionBlocked: 'تم حظر إذن الميكروفون. فعّله من إعدادات المتصفح ثم اضغط على الميكروفون مرة أخرى.',
                         permissionRequired: 'مطلوب إذن الميكروفون من المتصفح. اضغط سماح في النافذة المنبثقة.',
-                        permissionAllowed: 'تم السماح بالميكروفون. اضغط على الميكروفون مرة أخرى لبدء التحقق الصوتي.',
+                        permissionAllowed: 'تم السماح بالميكروفون. سيبدأ التحقق الصوتي الآن.',
                         permissionDenied: 'تم رفض إذن الميكروفون. فعّله من إعدادات المتصفح ثم حاول مرة أخرى.',
                         noMicrophone: 'لم يتم العثور على ميكروفون. قم بتوصيله ثم حاول مرة أخرى.',
                         permissionUnknown: 'تعذر تأكيد إذن الميكروفون حالياً. حاول مرة أخرى.',
@@ -608,7 +608,7 @@
                         browserNoSupport: 'এই ব্রাউজারে লাইভ স্পিচ রিকগনিশন নেই। নিচের বোতাম ব্যবহার করে বায়োডাটা খুলুন।',
                         permissionBlocked: 'মাইক্রোফোন অনুমতি ব্লক করা আছে। ব্রাউজার সেটিংস থেকে অনুমতি দিয়ে আবার মাইকে চাপ দিন।',
                         permissionRequired: 'ব্রাউজারের মাইক্রোফোন অনুমতি প্রয়োজন। পপআপ এলে Allow চাপুন।',
-                        permissionAllowed: 'মাইক্রোফোন অনুমতি পাওয়া গেছে। ভয়েস যাচাই শুরু করতে আবার মাইকে চাপ দিন।',
+                        permissionAllowed: 'মাইক্রোফোন অনুমতি পাওয়া গেছে। ভয়েস যাচাই এখন শুরু হচ্ছে।',
                         permissionDenied: 'মাইক্রোফোন অনুমতি দেওয়া হয়নি। ব্রাউজার সেটিংস থেকে অনুমতি দিয়ে আবার চেষ্টা করুন।',
                         noMicrophone: 'কোনো মাইক্রোফোন পাওয়া যায়নি। মাইক্রোফোন যুক্ত করে আবার চেষ্টা করুন।',
                         permissionUnknown: 'মাইক্রোফোন অনুমতি নিশ্চিত করা যায়নি। আবার চেষ্টা করুন।',
@@ -1571,6 +1571,7 @@
                     setVoiceUiState('idle');
                     setVoicePrompt(voiceCopy.permissionAllowed);
                     showVoiceNotification(voiceCopy.permissionAllowed);
+                    return true;
                 } catch (error) {
                     setVoiceUiState('error');
 
