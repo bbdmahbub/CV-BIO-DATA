@@ -70,7 +70,7 @@
                         duaMeaning: 'Our Rabb, grant us mercy from Yourself and prepare for us right guidance in our affairs.',
                         instructionsTitle: 'Instruction',
                         instructions: [
-                            'Begin reading with respect and a sincere intention.',
+                            'Begin  with the respect and a sincere intention.',
                             'Use the top menu to move quickly between each section.',
                             'If this biodata feels suitable, contact through the shared details.',
                             'Please maintain privacy while reviewing this profile.'
@@ -332,7 +332,7 @@
                         duaMeaning: 'ربنا آتنا من لدنك رحمة وهيئ لنا من أمرنا رشداً.',
                         instructionsTitle: 'التعليمات',
                         instructions: [
-                            'ابدأ القراءة باحترام وبنية صادقة.',
+                            'ابدأ باحترام وبنية صادقة.',
                             'استخدم القائمة العلوية للانتقال السريع بين الأقسام.',
                             'إذا وجدت هذه السيرة مناسبة فتواصل عبر البيانات المشتركة.',
                             'يرجى الحفاظ على الخصوصية أثناء مراجعة هذا الملف.'
@@ -594,7 +594,7 @@
                         duaMeaning: 'হে আমাদের রব, আপনার পক্ষ থেকে আমাদেরকে রহমত দান করুন এবং আমাদের কাজের জন্য সঠিক পথ নির্ধারণ করে দিন।',
                         instructionsTitle: 'নির্দেশনা',
                         instructions: [
-                            'সম্মান ও আন্তরিক নিয়ত নিয়ে পড়া শুরু করুন।',
+                            'সম্মান ও আন্তরিক সহীহ্ নিয়ত নিয়ে শুরু করুন।',
                             'প্রতিটি সেকশনে দ্রুত যেতে উপরের মেনু ব্যবহার করুন।',
                             'এই বায়োডাটা উপযুক্ত মনে হলে শেয়ার করা তথ্যের মাধ্যমে যোগাযোগ করুন।',
                             'দয়া করে এই প্রোফাইল দেখার সময় গোপনীয়তা বজায় রাখুন।'
