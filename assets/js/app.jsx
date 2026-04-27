@@ -558,7 +558,7 @@
                             { iconClass: 'fas fa-user', label: 'الاسم', value: 'محمد محبوب الرحمن' },
                             { iconClass: 'fas fa-envelope', label: 'البريد الإلكتروني', value: 'bbdmahbub@gmail.com', href: 'mailto:bbdmahbub@gmail.com' },
                             { iconClass: 'fab fa-whatsapp', label: 'واتساب', value: '+٨٨٠١٩١٧٢٦٧٦٠٧', href: 'https://wa.me/8801917267607' },
-                            { iconClass: 'fas fa-home', label: 'العنوان الحالي', value: 'Hatir Jheel, Dhaka, Bangladesh' },
+                            { iconClass: 'fas fa-home', label: 'العنوان الحالي', value: 'هاتير جيل، دكا، بنغلاديش' },
                             { iconClass: 'fas fa-map-marker-alt', label: 'العنوان الدائم', value: 'أوتار سوتالوري، جومعدار بارا، موريلغانج، باغرهات', mapHref: permanentAddressMapHref }
                         ]
                     },
@@ -819,9 +819,9 @@
                         blocks: [
                             { iconClass: 'fas fa-user', label: 'নাম', value: 'মো মাহবুবুর রহমান' },
                             { iconClass: 'fas fa-envelope', label: 'ইমেইল', value: 'bbdmahbub@gmail.com', href: 'mailto:bbdmahbub@gmail.com' },
-                            { iconClass: 'fab fa-whatsapp', label: 'হোয়াটসঅ্যাপ', value: '+8801917267607', href: 'https://wa.me/8801917267607' },
+                            { iconClass: 'fab fa-whatsapp', label: 'হোয়াটসঅ্যাপ', value: '+০১৯১৭২৬৭৬০৭', href: 'https://wa.me/8801917267607' },
                             { iconClass: 'fas fa-home', label: 'বর্তমান ঠিকানা', value: 'হাতিরঝিল, ঢাকা, বাংলাদেশ' },
-                            { iconClass: 'fas fa-map-marker-alt', label: 'স্থায়ী ঠিকানা', value: 'উত্তর সুতালড়ী, জোমাদ্দারপাড়া, মোরেলগঞ্জ, বাগেরহাট', mapHref: permanentAddressMapHref }
+                            { iconClass: 'fas fa-map-marker-alt', label: 'স্থায়ী ঠিকানা', value: 'উত্তর সুতালড়ী, জোমাদ্দারপাড়া, মোরেলগঞ্জ, বাগেরহাট', mapHref: permanentAddressMapHref }
                         ]
                     },
                     dua: {
