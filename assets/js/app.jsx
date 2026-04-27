@@ -1731,12 +1731,12 @@
                     return;
                 }
 
-                await ensureVoiceNotificationPermission();
                 const permissionReady = await ensureMicrophonePermission();
                 if (!permissionReady) {
                     return;
                 }
 
+                ensureVoiceNotificationPermission();
                 startBismillahVoiceCheck();
             };
 
