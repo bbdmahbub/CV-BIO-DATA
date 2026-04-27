@@ -72,7 +72,6 @@
                         instructions: [
                             'Begin  with the respect and a sincere intention.',
                             'Use the top menu to move quickly between each section.',
-                            'If this biodata feels suitable, contact through the shared details.',
                             'Please maintain privacy while reviewing this profile.'
                         ]
                     },
@@ -334,7 +333,6 @@
                         instructions: [
                             'ابدأ باحترام وبنية صادقة.',
                             'استخدم القائمة العلوية للانتقال السريع بين الأقسام.',
-                            'إذا وجدت هذه السيرة مناسبة فتواصل عبر البيانات المشتركة.',
                             'يرجى الحفاظ على الخصوصية أثناء مراجعة هذا الملف.'
                         ]
                     },
@@ -596,8 +594,7 @@
                         instructions: [
                             'সম্মান ও আন্তরিক সহীহ্ নিয়ত নিয়ে শুরু করুন।',
                             'প্রতিটি সেকশনে দ্রুত যেতে উপরের মেনু ব্যবহার করুন।',
-                            'এই বায়োডাটা উপযুক্ত মনে হলে শেয়ার করা তথ্যের মাধ্যমে যোগাযোগ করুন।',
-                            'দয়া করে এই প্রোফাইল দেখার সময় গোপনীয়তা বজায় রাখুন।'
+                            'দয়া করে এই প্রোফাইল দেখার সময় গোপনীয়তা বজায় রাখুন।'
                         ]
                     },
                     voice: {
