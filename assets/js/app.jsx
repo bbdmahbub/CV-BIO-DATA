@@ -13,6 +13,7 @@
             const dividerOrnament = '\u2726 \u25C6 \u2726';
             const popupBismillah = '\u0628\u0633\u0645\u0020\u0627\u0644\u0644\u0647\u0020\u0627\u0644\u0631\u062D\u0645\u0646\u0020\u0627\u0644\u0631\u062D\u064A\u0645';
             const popupDarud = '\u0627\u0644\u0644\u0647\u0645\u0020\u0635\u0644\u0020\u0648\u0633\u0644\u0645\u0020\u0639\u0644\u0649\u0020\u0633\u064A\u062F\u0646\u0627\u0020\u0645\u062D\u0645\u062F\u0020\ufdfa';
+            const popupTaawuz = '\u0623\u064e\u0639\u064f\u0648\u0630\u064f\u0020\u0628\u0650\u0627\u0644\u0644\u064e\u0651\u0647\u0650\u0020\u0645\u0650\u0646\u064e\u0020\u0627\u0644\u0634\u064e\u0651\u064a\u0652\u0637\u064e\u0627\u0646\u0650\u0020\u0627\u0644\u0631\u064e\u0651\u062c\u0650\u064a\u0645\u0650';
             const duaArabicLines = [
                 '\u0631\u064e\u0628\u064e\u0651\u0646\u064e\u0627 \u0647\u064e\u0628\u0652 \u0644\u064e\u0646\u064e\u0627 \u0645\u0650\u0646\u0652 \u0623\u064e\u0632\u0652\u0648\u064e\u0627\u062c\u0650\u0646\u064e\u0627 \u0648\u064e\u0630\u064f\u0631\u0650\u0651\u064a\u064e\u0651\u0627\u062a\u0650\u0646\u064e\u0627 \u0642\u064f\u0631\u064e\u0651\u0629\u064e \u0623\u064e\u0639\u0652\u064a\u064f\u0646\u064d \u0648\u064e\u0627\u062c\u0652\u0639\u064e\u0644\u0652\u0646\u064e\u0627 \u0644\u0650\u0644\u0652\u0645\u064f\u062a\u064e\u0651\u0642\u0650\u064a\u0646\u064e \u0625\u0650\u0645\u064e\u0627\u0645\u064b\u0627',
                 '\u0631\u064e\u0628\u0650\u0651 \u0647\u064e\u0628\u0652 \u0644\u0650\u064a \u0645\u0650\u0646\u064e \u0627\u0644\u0635\u064e\u0651\u0627\u0644\u0650\u062d\u0650\u064a\u0646\u064e',
@@ -68,9 +69,10 @@
                         kicker: 'Dua & Instruction',
                         title: 'Please Read Before Exploring',
                         duaMeaning: 'Our Rabb, grant us mercy from Yourself and prepare for us right guidance in our affairs.',
+                        duaReference: 'Sura Al-Kahf, Aya 10',
                         instructionsTitle: 'Instruction',
                         instructions: [
-                            'Begin  with the respect and a sincere intention.',
+                            'Begin with respect, sincerity, and trust in Allah.',
                             'Use the top menu to move quickly between each section.',
                             'Please maintain privacy while reviewing this profile.'
                         ]
@@ -329,9 +331,10 @@
                         kicker: 'دعاء وتعليمات',
                         title: 'يرجى القراءة قبل التصفح',
                         duaMeaning: 'ربنا آتنا من لدنك رحمة وهيئ لنا من أمرنا رشداً.',
+                        duaReference: 'سورة الكهف، آية ١٠',
                         instructionsTitle: 'التعليمات',
                         instructions: [
-                            'ابدأ باحترام وبنية صادقة.',
+                            'ابدأ باحترام وإخلاص مع التوكل على الله.',
                             'استخدم القائمة العلوية للانتقال السريع بين الأقسام.',
                             'يرجى الحفاظ على الخصوصية أثناء مراجعة هذا الملف.'
                         ]
@@ -590,9 +593,10 @@
                         kicker: 'দোআ ও নির্দেশনা',
                         title: 'দয়া করে দেখার আগে পড়ে নিন',
                         duaMeaning: 'হে আমাদের রব, আপনার পক্ষ থেকে আমাদেরকে রহমত দান করুন এবং আমাদের কাজের জন্য সঠিক পথ নির্ধারণ করে দিন।',
+                        duaReference: 'সূরা কাহফ্ : আয়াত - ১০',
                         instructionsTitle: 'নির্দেশনা',
                         instructions: [
-                            'সম্মান ও আন্তরিক সহীহ্ নিয়ত নিয়ে শুরু করুন।',
+                            'সম্মান ও আন্তরিকতার সাথে আল্লাহর উপর ভরসা করে শুরু করুন।',
                             'প্রতিটি সেকশনে দ্রুত যেতে উপরের মেনু ব্যবহার করুন।',
                             'দয়া করে এই প্রোফাইল দেখার সময় গোপনীয়তা বজায় রাখুন।'
                         ]
@@ -1792,7 +1796,13 @@
                                     <h2 className="intro-popup-title" id="intro-popup-title">{copy.intro.title}</h2>
 
                                     <div className="intro-popup-dua">
+                                        <div className="intro-popup-taawuz" dir="rtl">
+                                            <span className="intro-popup-taawuz-mark" aria-hidden="true">۞</span>
+                                            <span className="intro-popup-taawuz-text">{popupTaawuz}</span>
+                                            <span className="intro-popup-taawuz-mark" aria-hidden="true">۞</span>
+                                        </div>
                                         <div className="intro-popup-dua-arabic">{duaArabicLines[2]}</div>
+                                        <div className="intro-popup-dua-reference">{copy.intro.duaReference}</div>
                                         {language !== 'ar' ? (
                                             <div className="intro-popup-dua-meaning">{copy.intro.duaMeaning}</div>
                                         ) : null}
