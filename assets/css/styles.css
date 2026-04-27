@@ -102,13 +102,18 @@
         .intro-popup-top-language {
             position: absolute;
             top: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
+            right: 0;
             z-index: 2;
             display: flex;
             justify-content: center;
-            width: min(1160px, calc(100% - 24px));
+            width: 100%;
             padding-top: 0;
+        }
+
+        .intro-popup-top-language .top-menu-language-shell {
+            width: max-content;
+            margin: 0 auto;
         }
 
         .intro-popup-panel {
