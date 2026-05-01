@@ -268,6 +268,7 @@
             line-height: 1.9;
             text-align: center;
             max-width: 760px;
+            white-space: pre-line;
         }
 
         .intro-popup-dua-reference {
@@ -421,30 +422,232 @@
             text-align: center;
         }
 
-        .intro-popup-action {
-            align-self: center;
+        .intro-popup-puzzle {
+            width: min(430px, 100%);
+            display: grid;
+            gap: 10px;
+            padding: 12px;
+            border: 1px solid rgba(13, 115, 119, 0.14);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.74);
+            box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+        }
+
+        .intro-popup-puzzle.is-english {
+            font-family: var(--font-english);
+        }
+
+        .intro-popup-puzzle-title {
+            color: #0f3f42;
+            font-size: 0.9rem;
+            font-weight: 900;
+            text-align: center;
+        }
+
+        .intro-popup-puzzle-title-mark {
+            display: inline-block;
+            margin: 0 5px;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: rgba(13, 115, 119, 0.12);
+            color: #0d7377;
+            letter-spacing: 0.04em;
+        }
+
+        .intro-popup-puzzle-row {
+            display: block;
+        }
+
+        .intro-popup-puzzle-track {
+            min-height: 46px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 7px;
+            border-radius: 14px;
+            background: rgba(241, 245, 249, 0.86);
+            border: 1px dashed rgba(13, 115, 119, 0.2);
+        }
+
+        .intro-popup-puzzle-track.is-answer {
+            background: rgba(13, 115, 119, 0.07);
+            border-style: solid;
+        }
+
+        .intro-popup-puzzle-track.is-complete {
+            background: rgba(22, 163, 74, 0.1);
+            border-color: rgba(22, 163, 74, 0.28);
+        }
+
+        .intro-popup-puzzle-piece,
+        .intro-popup-puzzle-slot {
+            min-width: 36px;
+            height: 34px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 0.94rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .intro-popup-puzzle-piece {
+            border: 1px solid rgba(13, 115, 119, 0.18);
+            background: #ffffff;
+            color: #0d7377;
+            cursor: pointer;
+            box-shadow: 0 7px 16px rgba(13, 115, 119, 0.12);
+            transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .intro-popup-puzzle-piece:hover,
+        .intro-popup-puzzle-piece:focus-visible {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 18px rgba(13, 115, 119, 0.16);
+            outline: none;
+        }
+
+        .intro-popup-puzzle-piece.is-selected {
+            color: #ffffff;
+            background: linear-gradient(135deg, #0d7377 0%, #14919b 100%);
+            animation: puzzlePieceDrop 0.26s ease-out both;
+        }
+
+        .intro-popup-puzzle-piece:disabled {
+            cursor: default;
+            transform: none;
+        }
+
+        .intro-popup-puzzle-slot {
+            border: 1px dashed rgba(13, 115, 119, 0.24);
+            background: rgba(255, 255, 255, 0.56);
+        }
+
+        .intro-popup-puzzle-reset {
+            justify-self: center;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
             border: 0;
             border-radius: 999px;
-            padding: 14px 28px;
-            background: linear-gradient(135deg, #0d7377 0%, #14919b 100%);
-            color: #fff;
-            font-size: 0.98rem;
-            font-weight: 800;
+            padding: 8px 14px;
+            background: rgba(13, 115, 119, 0.1);
+            color: #0d7377;
+            font-size: 0.78rem;
+            font-weight: 900;
             cursor: pointer;
-            box-shadow: 0 16px 32px rgba(13, 115, 119, 0.2);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.16s ease, background 0.16s ease;
         }
 
-        .intro-popup-action:disabled {
-            cursor: wait;
-            opacity: 0.92;
-        }
-
-        .intro-popup-action:hover,
-        .intro-popup-action:focus-visible {
+        .intro-popup-puzzle-reset:hover,
+        .intro-popup-puzzle-reset:focus-visible {
             transform: translateY(-1px);
-            box-shadow: 0 20px 38px rgba(13, 115, 119, 0.24);
+            background: rgba(13, 115, 119, 0.16);
             outline: none;
+        }
+
+        .intro-popup-puzzle-reset:disabled {
+            cursor: default;
+            opacity: 0.46;
+            transform: none;
+        }
+
+        @media (min-width: 641px) {
+            .intro-popup-inner {
+                grid-template-columns: minmax(0, 1fr) minmax(360px, 0.86fr);
+                align-items: stretch;
+                padding: clamp(18px, 2vw, 30px);
+                gap: 12px clamp(18px, 2vw, 26px);
+            }
+
+            .intro-popup-bismillah {
+                font-size: clamp(1.12rem, 2.1vw, 1.72rem);
+                line-height: 1.45;
+            }
+
+            .intro-popup-darud {
+                font-size: clamp(0.95rem, 1.55vw, 1.25rem);
+                line-height: 1.42;
+                margin-top: -8px;
+            }
+
+            .intro-popup-title {
+                font-size: clamp(1.72rem, 3.1vw, 2.72rem);
+            }
+
+            .intro-popup-dua,
+            .intro-popup-instruction {
+                padding: 18px;
+                border-radius: 20px;
+            }
+
+            .intro-popup-dua-arabic {
+                font-size: clamp(1.05rem, 1.72vw, 1.42rem);
+                line-height: 1.55;
+            }
+
+            .intro-popup-dua-meaning,
+            .intro-popup-list li {
+                line-height: 1.55;
+            }
+
+            .intro-popup-voice-status {
+                align-self: stretch;
+                padding: 11px 14px;
+                line-height: 1.45;
+            }
+
+            .intro-popup-voice-gate {
+                align-self: start;
+                justify-content: flex-start;
+                width: 100%;
+                gap: 11px;
+                padding: 14px;
+                border: 1px solid rgba(13, 115, 119, 0.12);
+                border-radius: 24px;
+                background: rgba(255, 255, 255, 0.72);
+                box-shadow: 0 16px 36px rgba(13, 115, 119, 0.08);
+            }
+
+            .intro-popup-mic-button {
+                width: 78px;
+                height: 78px;
+            }
+
+            .intro-popup-mic-button i {
+                font-size: 27px;
+            }
+
+            .intro-popup-support-note {
+                max-width: 430px;
+                line-height: 1.45;
+            }
+
+            .intro-popup-puzzle {
+                width: 100%;
+                gap: 8px;
+                padding: 10px;
+            }
+        }
+
+        @keyframes puzzlePieceDrop {
+            0% {
+                opacity: 0;
+                transform: translateY(-18px) scale(0.94);
+            }
+            72% {
+                opacity: 1;
+                transform: translateY(3px) scale(1.03);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         .language-chooser {
@@ -2306,14 +2509,20 @@
 
             .intro-popup-panel {
                 width: 100%;
+                height: 100dvh;
                 min-height: 100dvh;
                 max-height: 100dvh;
                 border-radius: 0;
+                overflow: hidden;
+                background:
+                    radial-gradient(circle at top left, rgba(20, 145, 155, 0.18), transparent 34%),
+                    linear-gradient(180deg, rgba(248, 253, 252, 0.99) 0%, rgba(241, 250, 249, 0.99) 58%, rgba(255, 246, 248, 0.98) 100%);
             }
 
             .intro-popup-inner {
-                min-height: 100%;
-                padding: 32px 18px 22px;
+                height: 100dvh;
+                min-height: 0;
+                padding: 32px 14px 10px;
                 grid-template-columns: minmax(0, 1fr);
                 grid-template-areas:
                     "bismillah"
@@ -2324,49 +2533,512 @@
                     "instruction"
                     "status"
                     "voice";
+                grid-template-rows:
+                    auto
+                    auto
+                    auto
+                    auto
+                    minmax(0, 1.12fr)
+                    minmax(0, 0.82fr)
+                    auto
+                    minmax(0, 1.16fr);
+                align-content: stretch;
+                gap: 6px;
+                overflow: hidden;
+                text-align: center;
+            }
+
+            .intro-popup-inner > *,
+            .intro-popup-dua,
+            .intro-popup-instruction,
+            .intro-popup-voice-status,
+            .intro-popup-voice-gate,
+            .intro-popup-puzzle {
+                min-width: 0;
+                max-width: 100%;
+            }
+
+            .intro-popup-title,
+            .intro-popup-kicker,
+            .intro-popup-dua,
+            .intro-popup-instruction,
+            .intro-popup-voice-status,
+            .intro-popup-support-note,
+            .intro-popup-puzzle-title,
+            .intro-popup-puzzle-reset {
+                overflow-wrap: break-word;
+                word-break: normal;
+            }
+
+            .intro-popup-top-language {
+                transform: scale(0.88);
+                transform-origin: top center;
+            }
+
+            .intro-popup-kicker {
+                display: block;
+                font-size: 0.76rem;
+                line-height: 1.2;
+                letter-spacing: 0.06em;
+                opacity: 0.88;
+            }
+
+            .intro-popup-dua {
+                display: grid;
                 align-content: start;
-                gap: 14px;
+                min-height: 0;
+                padding: 8px 10px;
+                border-radius: 16px;
+                background: rgba(255, 255, 255, 0.82);
+                border: 1px solid rgba(13, 115, 119, 0.1);
+                box-shadow: 0 10px 24px rgba(13, 115, 119, 0.07);
+                overflow: hidden;
+            }
+
+            .intro-popup-taawuz {
+                display: flex;
+                gap: 8px;
+                margin-bottom: 5px;
+            }
+
+            .intro-popup-taawuz-text {
+                font-size: 0.94rem;
+                line-height: 1.3;
+            }
+
+            .intro-popup-taawuz-mark {
+                font-size: 0.94rem;
+            }
+
+            .intro-popup-dua-reference,
+            .intro-popup-dua-meaning {
+                display: block;
+            }
+
+            .intro-popup-dua-reference {
+                margin-top: 5px;
+                font-size: 0.84rem;
+                line-height: 1.24;
+                letter-spacing: 0.04em;
+            }
+
+            .intro-popup-dua-meaning {
+                margin-top: 5px;
+                font-size: 1rem;
+                line-height: 1.58;
+            }
+
+            .intro-popup-instruction {
+                display: grid;
+                align-content: start;
+                min-height: 0;
+                padding: 8px 10px;
+                border-radius: 16px;
+                background: rgba(255, 255, 255, 0.72);
+                border: 1px solid rgba(13, 115, 119, 0.08);
+                box-shadow: 0 10px 22px rgba(13, 115, 119, 0.05);
+                overflow: hidden;
+            }
+
+            .intro-popup-section-title {
+                font-size: 0.78rem;
+                margin-bottom: 5px;
+                letter-spacing: 0.05em;
+            }
+
+            .intro-popup-list {
+                display: grid;
+                gap: 5px;
             }
 
             .intro-popup-title {
-                font-size: clamp(1.6rem, 8vw, 2.3rem);
+                font-size: clamp(1.26rem, 5.9vw, 1.62rem);
+                line-height: 1.08;
             }
 
             .intro-popup-bismillah {
-                font-size: 1.5rem;
-                line-height: 1.75;
+                font-size: 1.16rem;
+                line-height: 1.28;
             }
 
             .intro-popup-darud {
-                font-size: 1.15rem;
-                margin-top: -8px;
-            }
-
-            .intro-popup-dua,
-            .intro-popup-instruction {
-                padding: 18px 16px;
-                border-radius: 18px;
+                font-size: 0.9rem;
+                line-height: 1.26;
+                margin-top: -4px;
             }
 
             .intro-popup-dua-arabic {
-                font-size: 1.28rem;
-                line-height: 1.85;
+                font-size: 1.34rem;
+                line-height: 1.44;
             }
 
             .intro-popup-dua-meaning,
             .intro-popup-list li,
             .intro-popup-voice-status {
-                font-size: 0.94rem;
-                line-height: 1.75;
+                font-size: 0.76rem;
+                line-height: 1.28;
+            }
+
+            .intro-popup-dua-meaning {
+                font-size: 1rem;
+            }
+
+            .intro-popup-list li {
+                font-size: 1rem;
+            }
+
+            .intro-popup-list li {
+                display: flex;
+                align-items: flex-start;
+                gap: 7px;
+                padding: 6px 8px;
+                border-radius: 10px;
+                background: rgba(255, 255, 255, 0.68);
+                border: 1px solid rgba(13, 115, 119, 0.08);
+                min-width: 0;
+                max-width: 100%;
+                overflow-wrap: break-word;
+                text-align: left;
+                box-shadow: 0 4px 10px rgba(13, 115, 119, 0.04);
+            }
+
+            .intro-popup-list li::before {
+                position: static;
+                flex: 0 0 auto;
+                width: 18px;
+                height: 18px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 999px;
+                background: rgba(13, 115, 119, 0.1);
+                font-size: 0.58rem;
+                line-height: 1;
+            }
+
+            .app-shell.is-rtl .intro-popup-list li {
+                text-align: right;
+            }
+
+            .intro-popup-voice-status {
+                gap: 6px;
+                padding: 7px 10px;
+                border-radius: 14px;
+                background: rgba(13, 115, 119, 0.07);
+                box-shadow: inset 0 0 0 1px rgba(13, 115, 119, 0.05);
+            }
+
+            .intro-popup-voice-gate {
+                min-height: 0;
+                display: grid;
+                grid-template-columns: minmax(0, 1fr);
+                align-content: start;
+                justify-items: center;
+                gap: 5px;
+                overflow: hidden;
+                padding: 7px 9px;
+                border: 1px solid rgba(13, 115, 119, 0.12);
+                border-radius: 18px;
+                background: rgba(255, 255, 255, 0.78);
+                box-shadow: 0 12px 28px rgba(13, 115, 119, 0.08);
             }
 
             .intro-popup-mic-button {
-                width: 76px;
-                height: 76px;
+                width: 52px;
+                height: 52px;
+                flex: 0 0 auto;
+                box-shadow: 0 10px 22px rgba(13, 115, 119, 0.22);
             }
 
             .intro-popup-mic-button i {
-                font-size: 26px;
+                font-size: 20px;
+            }
+
+            .intro-popup-support-note {
+                font-size: 1rem;
+                line-height: 1.26;
+                max-width: 260px;
+                text-align: center;
+                color: rgba(51, 65, 85, 0.84);
+                margin: 0;
+            }
+
+            .intro-popup-choice-separator {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                width: min(220px, 100%);
+                color: rgba(13, 115, 119, 0.78);
+                font-size: 0.66rem;
+                font-weight: 900;
+                letter-spacing: 0.12em;
+            }
+
+            .intro-popup-choice-separator::before,
+            .intro-popup-choice-separator::after {
+                content: "";
+                height: 1px;
+                flex: 1;
+                background: rgba(13, 115, 119, 0.18);
+            }
+
+            .app-shell.is-rtl .intro-popup-support-note {
+                text-align: center;
+            }
+
+            .intro-popup-puzzle {
+                display: grid;
+                align-content: start;
+                padding: 6px;
+                gap: 3px;
+                border-radius: 14px;
+                background: rgba(248, 250, 252, 0.9);
+                border: 1px solid rgba(13, 115, 119, 0.08);
+                box-shadow: none;
+            }
+
+            .intro-popup-puzzle-title {
+                font-size: 0.66rem;
+            }
+
+            .intro-popup-puzzle-title-mark {
+                margin: 0 3px;
+                padding: 1px 6px;
+                box-shadow: inset 0 0 0 1px rgba(13, 115, 119, 0.08);
+            }
+
+            .intro-popup-puzzle-track {
+                min-height: 26px;
+                max-width: 100%;
+                gap: 4px;
+                padding: 3px;
+                border-radius: 9px;
+                background: rgba(255, 255, 255, 0.76);
+                overflow: hidden;
+            }
+
+            .intro-popup-puzzle-piece,
+            .intro-popup-puzzle-slot {
+                min-width: 25px;
+                max-width: 100%;
+                height: 24px;
+                font-size: 0.66rem;
+                border-radius: 7px;
+                overflow: hidden;
+                overflow-wrap: break-word;
+            }
+
+            .intro-popup-puzzle-reset {
+                padding: 4px 8px;
+                font-size: 0.66rem;
+                align-self: center;
+            }
+
+            .app-shell.language-en .intro-popup-dua,
+            .app-shell.language-bn .intro-popup-dua {
+                min-height: 0;
+            }
+
+            .app-shell.language-en .intro-popup-instruction,
+            .app-shell.language-bn .intro-popup-instruction {
+                min-height: 0;
+            }
+
+            .app-shell.language-en .intro-popup-voice-status,
+            .app-shell.language-bn .intro-popup-voice-status {
+                min-height: 0;
+            }
+
+            .app-shell.language-en .intro-popup-voice-gate,
+            .app-shell.language-bn .intro-popup-voice-gate {
+                min-height: 0;
+            }
+
+            .app-shell.language-en .intro-popup-kicker,
+            .app-shell.language-bn .intro-popup-kicker {
+                font-size: 0.76rem;
+            }
+
+            .app-shell.language-en .intro-popup-title,
+            .app-shell.language-bn .intro-popup-title {
+                font-size: clamp(1.26rem, 5.9vw, 1.62rem);
+            }
+
+            .app-shell.language-en .intro-popup-list li,
+            .app-shell.language-bn .intro-popup-list li,
+            .app-shell.language-en .intro-popup-voice-status,
+            .app-shell.language-bn .intro-popup-voice-status {
+                font-size: 1rem;
+            }
+
+            .app-shell.language-en .intro-popup-list li,
+            .app-shell.language-bn .intro-popup-list li {
+                font-size: 1rem;
+            }
+
+            .app-shell.language-en .intro-popup-dua-meaning,
+            .app-shell.language-bn .intro-popup-dua-meaning {
+                font-size: 1rem;
+            }
+
+            .app-shell.language-en .intro-popup-support-note,
+            .app-shell.language-bn .intro-popup-support-note {
+                font-size: 1rem;
+            }
+
+            .app-shell.language-bn .intro-popup-kicker {
+                font-size: 0.7rem;
+            }
+
+            .app-shell.language-bn .intro-popup-title {
+                font-size: clamp(1.1rem, 5.2vw, 1.44rem);
+            }
+
+            .app-shell.language-bn .intro-popup-dua-meaning,
+            .app-shell.language-bn .intro-popup-list li,
+            .app-shell.language-bn .intro-popup-voice-status,
+            .app-shell.language-bn .intro-popup-support-note {
+                font-size: 0.88rem;
+            }
+
+            .app-shell.language-en .intro-popup-puzzle-title,
+            .app-shell.language-bn .intro-popup-puzzle-title {
+                font-size: 0.66rem;
+            }
+
+            .app-shell.language-en .intro-popup-puzzle-reset,
+            .app-shell.language-bn .intro-popup-puzzle-reset {
+                font-size: 0.66rem;
+            }
+
+            .app-shell.language-en .intro-popup-puzzle,
+            .app-shell.language-bn .intro-popup-puzzle,
+            .app-shell.language-ar .intro-popup-puzzle {
+                padding: 8px;
+                gap: 5px;
+            }
+
+            .app-shell.language-en .intro-popup-puzzle-title,
+            .app-shell.language-bn .intro-popup-puzzle-title,
+            .app-shell.language-ar .intro-popup-puzzle-title,
+            .app-shell.language-en .intro-popup-choice-separator,
+            .app-shell.language-bn .intro-popup-choice-separator,
+            .app-shell.language-ar .intro-popup-choice-separator,
+            .app-shell.language-en .intro-popup-puzzle-piece,
+            .app-shell.language-bn .intro-popup-puzzle-piece,
+            .app-shell.language-ar .intro-popup-puzzle-piece,
+            .app-shell.language-en .intro-popup-puzzle-slot,
+            .app-shell.language-bn .intro-popup-puzzle-slot,
+            .app-shell.language-ar .intro-popup-puzzle-slot,
+            .app-shell.language-en .intro-popup-puzzle-reset,
+            .app-shell.language-bn .intro-popup-puzzle-reset,
+            .app-shell.language-ar .intro-popup-puzzle-reset {
+                font-size: 0.76rem;
+            }
+
+            .app-shell.language-en .intro-popup-puzzle-track,
+            .app-shell.language-bn .intro-popup-puzzle-track,
+            .app-shell.language-ar .intro-popup-puzzle-track {
+                min-height: 34px;
+                gap: 6px;
+                padding: 5px;
+            }
+
+            .app-shell.language-en .intro-popup-puzzle-piece,
+            .app-shell.language-bn .intro-popup-puzzle-piece,
+            .app-shell.language-ar .intro-popup-puzzle-piece,
+            .app-shell.language-en .intro-popup-puzzle-slot,
+            .app-shell.language-bn .intro-popup-puzzle-slot,
+            .app-shell.language-ar .intro-popup-puzzle-slot {
+                min-width: 32px;
+                height: 30px;
+            }
+
+            .app-shell.language-ar .intro-popup-support-note {
+                font-size: 0.82rem;
+                line-height: 1.22;
+            }
+
+            .app-shell.language-en .intro-popup-bismillah,
+            .app-shell.language-bn .intro-popup-bismillah,
+            .app-shell.language-ar .intro-popup-bismillah {
+                font-size: 18.5px;
+            }
+
+            .app-shell.language-en .intro-popup-darud,
+            .app-shell.language-bn .intro-popup-darud,
+            .app-shell.language-ar .intro-popup-darud {
+                font-size: 14.4px;
+            }
+
+            .app-shell.language-en .intro-popup-kicker,
+            .app-shell.language-bn .intro-popup-kicker,
+            .app-shell.language-ar .intro-popup-kicker {
+                font-size: 12.2px;
+            }
+
+            .app-shell.language-en .intro-popup-title,
+            .app-shell.language-bn .intro-popup-title,
+            .app-shell.language-ar .intro-popup-title {
+                font-size: clamp(20px, 5.9vw, 26px);
+            }
+
+            .app-shell.language-en .intro-popup-taawuz-text,
+            .app-shell.language-bn .intro-popup-taawuz-text,
+            .app-shell.language-ar .intro-popup-taawuz-text,
+            .app-shell.language-en .intro-popup-taawuz-mark,
+            .app-shell.language-bn .intro-popup-taawuz-mark,
+            .app-shell.language-ar .intro-popup-taawuz-mark {
+                font-size: 15px;
+            }
+
+            .app-shell.language-en .intro-popup-dua-arabic,
+            .app-shell.language-bn .intro-popup-dua-arabic,
+            .app-shell.language-ar .intro-popup-dua-arabic {
+                font-size: 21.5px;
+            }
+
+            .app-shell.language-en .intro-popup-dua-meaning,
+            .app-shell.language-bn .intro-popup-dua-meaning,
+            .app-shell.language-ar .intro-popup-dua-meaning,
+            .app-shell.language-en .intro-popup-list li,
+            .app-shell.language-bn .intro-popup-list li,
+            .app-shell.language-ar .intro-popup-list li,
+            .app-shell.language-en .intro-popup-voice-status,
+            .app-shell.language-bn .intro-popup-voice-status,
+            .app-shell.language-ar .intro-popup-voice-status,
+            .app-shell.language-en .intro-popup-support-note,
+            .app-shell.language-bn .intro-popup-support-note,
+            .app-shell.language-ar .intro-popup-support-note {
+                font-size: 16px;
+            }
+
+            .app-shell.language-en .intro-popup-dua-reference,
+            .app-shell.language-bn .intro-popup-dua-reference,
+            .app-shell.language-ar .intro-popup-dua-reference,
+            .app-shell.language-en .intro-popup-section-title,
+            .app-shell.language-bn .intro-popup-section-title,
+            .app-shell.language-ar .intro-popup-section-title {
+                font-size: 13.4px;
+            }
+
+            .app-shell.language-en .intro-popup-puzzle-title,
+            .app-shell.language-bn .intro-popup-puzzle-title,
+            .app-shell.language-ar .intro-popup-puzzle-title,
+            .app-shell.language-en .intro-popup-choice-separator,
+            .app-shell.language-bn .intro-popup-choice-separator,
+            .app-shell.language-ar .intro-popup-choice-separator,
+            .app-shell.language-en .intro-popup-puzzle-piece,
+            .app-shell.language-bn .intro-popup-puzzle-piece,
+            .app-shell.language-ar .intro-popup-puzzle-piece,
+            .app-shell.language-en .intro-popup-puzzle-slot,
+            .app-shell.language-bn .intro-popup-puzzle-slot,
+            .app-shell.language-ar .intro-popup-puzzle-slot,
+            .app-shell.language-en .intro-popup-puzzle-reset,
+            .app-shell.language-bn .intro-popup-puzzle-reset,
+            .app-shell.language-ar .intro-popup-puzzle-reset {
+                font-size: 12.2px;
             }
 
             .container {
@@ -2767,41 +3439,266 @@
 
         @media (max-width: 420px) {
             .intro-popup-inner {
-                padding: 24px 14px 18px;
+                padding: 30px 10px 8px;
+                grid-template-rows:
+                    auto
+                    auto
+                    auto
+                    auto
+                    minmax(0, 1.06fr)
+                    minmax(0, 0.76fr)
+                    auto
+                    minmax(0, 1.08fr);
+                gap: 4px;
+            }
+
+            .intro-popup-dua,
+            .intro-popup-instruction {
+                align-content: start;
+                padding: 6px 7px;
+                border-radius: 14px;
+            }
+
+            .intro-popup-voice-gate {
+                align-content: start;
+                gap: 4px;
+                padding: 6px 8px;
+                border-radius: 16px;
             }
 
             .intro-popup-kicker {
-                font-size: 0.78rem;
+                font-size: 0.7rem;
             }
 
             .intro-popup-bismillah {
-                font-size: 1.24rem;
+                font-size: 1.06rem;
             }
 
             .intro-popup-darud {
-                font-size: 1rem;
-                margin-top: -6px;
+                font-size: 0.78rem;
+                margin-top: -4px;
             }
 
             .intro-popup-mic-button {
-                width: 70px;
-                height: 70px;
+                width: 48px;
+                height: 48px;
             }
 
             .intro-popup-mic-button i {
-                font-size: 24px;
+                font-size: 20px;
+            }
+
+            .intro-popup-puzzle-piece,
+            .intro-popup-puzzle-slot {
+                min-width: 23px;
+                height: 22px;
+                font-size: 0.66rem;
             }
 
             .intro-popup-title {
-                font-size: 1.45rem;
+                font-size: 1.2rem;
             }
 
             .intro-popup-dua-arabic {
-                font-size: 1.12rem;
+                font-size: 1.2rem;
+                line-height: 1.42;
             }
 
             .intro-popup-section-title {
-                font-size: 0.96rem;
+                font-size: 0.72rem;
+            }
+
+            .intro-popup-list {
+                gap: 4px;
+            }
+
+            .intro-popup-list li {
+                align-items: flex-start;
+                gap: 6px;
+                padding: 5px 7px;
+                border-radius: 9px;
+            }
+
+            .intro-popup-list li::before {
+                width: 16px;
+                height: 16px;
+                font-size: 0.52rem;
+            }
+
+            .intro-popup-dua-meaning,
+            .intro-popup-list li,
+            .intro-popup-voice-status,
+            .intro-popup-support-note {
+                font-size: 0.94rem;
+            }
+
+            .intro-popup-dua-meaning {
+                font-size: 0.94rem;
+            }
+
+            .intro-popup-list li {
+                font-size: 0.94rem;
+            }
+
+            .intro-popup-puzzle {
+                align-content: start;
+                padding: 5px;
+                gap: 3px;
+            }
+
+            .app-shell.language-en .intro-popup-dua,
+            .app-shell.language-bn .intro-popup-dua {
+                min-height: 0;
+            }
+
+            .app-shell.language-en .intro-popup-instruction,
+            .app-shell.language-bn .intro-popup-instruction {
+                min-height: 0;
+            }
+
+            .app-shell.language-en .intro-popup-voice-gate,
+            .app-shell.language-bn .intro-popup-voice-gate {
+                min-height: 0;
+            }
+
+            .app-shell.language-en .intro-popup-title,
+            .app-shell.language-bn .intro-popup-title {
+                font-size: 1.2rem;
+            }
+
+            .app-shell.language-en .intro-popup-list li,
+            .app-shell.language-bn .intro-popup-list li,
+            .app-shell.language-en .intro-popup-voice-status,
+            .app-shell.language-bn .intro-popup-voice-status {
+                font-size: 0.94rem;
+            }
+
+            .app-shell.language-en .intro-popup-list li,
+            .app-shell.language-bn .intro-popup-list li {
+                font-size: 0.94rem;
+            }
+
+            .app-shell.language-en .intro-popup-dua-meaning,
+            .app-shell.language-bn .intro-popup-dua-meaning {
+                font-size: 0.94rem;
+            }
+
+            .app-shell.language-en .intro-popup-support-note,
+            .app-shell.language-bn .intro-popup-support-note {
+                font-size: 0.94rem;
+            }
+
+            .app-shell.language-bn .intro-popup-title {
+                font-size: 1.04rem;
+            }
+
+            .app-shell.language-bn .intro-popup-dua-meaning,
+            .app-shell.language-bn .intro-popup-list li,
+            .app-shell.language-bn .intro-popup-voice-status,
+            .app-shell.language-bn .intro-popup-support-note {
+                font-size: 0.82rem;
+            }
+
+            .app-shell.language-en .intro-popup-puzzle,
+            .app-shell.language-bn .intro-popup-puzzle,
+            .app-shell.language-ar .intro-popup-puzzle {
+                padding: 7px;
+                gap: 4px;
+            }
+
+            .app-shell.language-en .intro-popup-puzzle-title,
+            .app-shell.language-bn .intro-popup-puzzle-title,
+            .app-shell.language-ar .intro-popup-puzzle-title,
+            .app-shell.language-en .intro-popup-choice-separator,
+            .app-shell.language-bn .intro-popup-choice-separator,
+            .app-shell.language-ar .intro-popup-choice-separator,
+            .app-shell.language-en .intro-popup-puzzle-piece,
+            .app-shell.language-bn .intro-popup-puzzle-piece,
+            .app-shell.language-ar .intro-popup-puzzle-piece,
+            .app-shell.language-en .intro-popup-puzzle-slot,
+            .app-shell.language-bn .intro-popup-puzzle-slot,
+            .app-shell.language-ar .intro-popup-puzzle-slot,
+            .app-shell.language-en .intro-popup-puzzle-reset,
+            .app-shell.language-bn .intro-popup-puzzle-reset,
+            .app-shell.language-ar .intro-popup-puzzle-reset {
+                font-size: 0.72rem;
+            }
+
+            .app-shell.language-en .intro-popup-puzzle-piece,
+            .app-shell.language-bn .intro-popup-puzzle-piece,
+            .app-shell.language-ar .intro-popup-puzzle-piece,
+            .app-shell.language-en .intro-popup-puzzle-slot,
+            .app-shell.language-bn .intro-popup-puzzle-slot,
+            .app-shell.language-ar .intro-popup-puzzle-slot {
+                min-width: 29px;
+                height: 27px;
+            }
+
+            .app-shell.language-ar .intro-popup-support-note {
+                font-size: 0.74rem;
+            }
+
+            .app-shell.language-en .intro-popup-bismillah,
+            .app-shell.language-bn .intro-popup-bismillah,
+            .app-shell.language-ar .intro-popup-bismillah {
+                font-size: 17px;
+            }
+
+            .app-shell.language-en .intro-popup-darud,
+            .app-shell.language-bn .intro-popup-darud,
+            .app-shell.language-ar .intro-popup-darud {
+                font-size: 12.5px;
+            }
+
+            .app-shell.language-en .intro-popup-kicker,
+            .app-shell.language-bn .intro-popup-kicker,
+            .app-shell.language-ar .intro-popup-kicker {
+                font-size: 11.2px;
+            }
+
+            .app-shell.language-en .intro-popup-title,
+            .app-shell.language-bn .intro-popup-title,
+            .app-shell.language-ar .intro-popup-title {
+                font-size: 19.2px;
+            }
+
+            .app-shell.language-en .intro-popup-dua-arabic,
+            .app-shell.language-bn .intro-popup-dua-arabic,
+            .app-shell.language-ar .intro-popup-dua-arabic {
+                font-size: 19.2px;
+            }
+
+            .app-shell.language-en .intro-popup-dua-meaning,
+            .app-shell.language-bn .intro-popup-dua-meaning,
+            .app-shell.language-ar .intro-popup-dua-meaning,
+            .app-shell.language-en .intro-popup-list li,
+            .app-shell.language-bn .intro-popup-list li,
+            .app-shell.language-ar .intro-popup-list li,
+            .app-shell.language-en .intro-popup-voice-status,
+            .app-shell.language-bn .intro-popup-voice-status,
+            .app-shell.language-ar .intro-popup-voice-status,
+            .app-shell.language-en .intro-popup-support-note,
+            .app-shell.language-bn .intro-popup-support-note,
+            .app-shell.language-ar .intro-popup-support-note {
+                font-size: 15px;
+            }
+
+            .app-shell.language-en .intro-popup-puzzle-title,
+            .app-shell.language-bn .intro-popup-puzzle-title,
+            .app-shell.language-ar .intro-popup-puzzle-title,
+            .app-shell.language-en .intro-popup-choice-separator,
+            .app-shell.language-bn .intro-popup-choice-separator,
+            .app-shell.language-ar .intro-popup-choice-separator,
+            .app-shell.language-en .intro-popup-puzzle-piece,
+            .app-shell.language-bn .intro-popup-puzzle-piece,
+            .app-shell.language-ar .intro-popup-puzzle-piece,
+            .app-shell.language-en .intro-popup-puzzle-slot,
+            .app-shell.language-bn .intro-popup-puzzle-slot,
+            .app-shell.language-ar .intro-popup-puzzle-slot,
+            .app-shell.language-en .intro-popup-puzzle-reset,
+            .app-shell.language-bn .intro-popup-puzzle-reset,
+            .app-shell.language-ar .intro-popup-puzzle-reset {
+                font-size: 11.5px;
             }
 
             .photo-gallery-image,

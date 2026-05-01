@@ -38,8 +38,42 @@
                 'بسم الله الرحمن الرحيم',
                 'بسماللهالرحمنالرحيم'
             ];
+            const bismillahPuzzleSets = {
+                en: {
+                    title: 'MATCH BISMILLAH CORRECTLY',
+                    sourceLabel: 'PUZZLE CHARACTERS',
+                    answerLabel: 'SELECTED CHARACTERS',
+                    success: 'BISMILLAH COMPLETE. OPENING BIODATA...',
+                    reset: 'RESET PUZZLE',
+                    pieces: ['H', 'B', 'MI', 'A', 'S', 'LL', 'I'],
+                    answer: ['B', 'I', 'S', 'MI', 'LL', 'A', 'H'],
+                    soundText: 'بسم الله',
+                    soundLang: 'ar-SA'
+                },
+                bn: {
+                    title: 'সঠিকভাবে বিসমিল্লাহ্ মিলান',
+                    sourceLabel: 'পাজলের অক্ষর',
+                    answerLabel: 'সাজানো অক্ষর',
+                    success: 'বিসমিল্লাহ সম্পূর্ণ হয়েছে। বায়োডাটা খোলা হচ্ছে...',
+                    reset: 'পাজল আবার শুরু করুন',
+                    pieces: ['হ্', 'বি', 'ল্লা', 'স', 'মি'],
+                    answer: ['বি', 'স', 'মি', 'ল্লা', 'হ্'],
+                    soundText: 'بسم الله',
+                    soundLang: 'ar-SA'
+                },
+                ar: {
+                    title: 'رَتِّبْ بِسْمِ اللَّهِ بِشَكْلٍ صَحِيحٍ',
+                    sourceLabel: 'أحرف اللغز',
+                    answerLabel: 'الأحرف المختارة',
+                    success: 'اكتمل بسم الله. يتم فتح السيرة...',
+                    reset: 'إعادة اللغز',
+                    pieces: ['ه', 'ب', 'ل', 'س', 'ال', 'م'],
+                    answer: ['ب', 'س', 'م', 'ال', 'ل', 'ه'],
+                    soundText: 'بسم الله',
+                    soundLang: 'ar-SA'
+                }
+            };
             const permanentAddressMapHref = 'https://maps.app.goo.gl/hvcHqxMvhF9cGFbM6';
-            const microphonePermissionStorageKey = 'bbdMahbubMicPermissionGranted';
             const voiceVerificationStorageKey = 'bbdMahbubVoiceVerifiedAt';
             const voiceVerificationGracePeriodMs = 30 * 60 * 1000;
             const languageOptions = [
@@ -71,7 +105,7 @@
                     intro: {
                         kicker: 'Dua & Instruction',
                         title: 'Please Read Before Exploring',
-                        duaMeaning: 'Our Rabb, grant us mercy from Yourself and prepare for us right guidance in our affairs.',
+                        duaMeaning: 'Our Rabb, grant us mercy from Yourself\nand prepare for us right guidance in our affairs.',
                         duaReference: 'Sura Al-Kahf, Aya 10',
                         instructionsTitle: 'Instruction',
                         instructions: [
@@ -83,12 +117,6 @@
                     voice: {
                         tapToStart: 'Tap the mic once to start Bismillah voice verification.',
                         browserNoSupport: 'This browser does not include live speech recognition. Use Continue below to open the biodata.',
-                        permissionBlocked: 'Microphone permission is blocked. Allow it in your browser settings, then tap the mic again.',
-                        permissionRequired: 'Browser microphone permission is required. Tap Allow in the popup.',
-                        permissionAllowed: 'Microphone permission allowed. Voice verification is starting.',
-                        permissionDenied: 'Microphone permission was denied. Allow it in browser settings, then tap the mic again.',
-                        noMicrophone: 'No microphone was found. Connect a microphone and try again.',
-                        permissionUnknown: 'Microphone permission could not be confirmed. Please try again.',
                         starting: 'Starting microphone. If your browser asks, tap Allow microphone permission.',
                         listening: 'Microphone is active. Say "Bismillah" once and wait for verification.',
                         detected: (transcript) => `Detected: "${transcript}". Opening biodata...`,
@@ -107,19 +135,13 @@
                         notVerified: 'I could not verify "Bismillah". Tap the mic and say it again.',
                         couldNotStart: 'Microphone could not start right now. If the browser asks, allow microphone permission, then tap the mic again.',
                         supportNoSupport: 'Live speech recognition is not built into this browser, so the page now falls back to the Continue button below.',
-                        supportPermission: 'A browser popup should appear now. Tap Allow microphone permission. After that, tap the mic again.',
                         supportPreparing: 'Microphone is starting now. Please wait a moment.',
-                        supportErrorDenied: 'Microphone permission is blocked in browser settings. Allow it for this site, then tap the mic again.',
                         supportErrorGeneral: 'If no popup appears, check this site\'s microphone permission and whether your browser supports web speech recognition.',
                         supportListening: 'Recording is active now. Speak once, then wait a moment for verification.',
-                        supportReady: 'Microphone permission is ready. Tap the mic to start voice verification.',
                         supportIdle: 'Tap the mic. If a browser popup appears, tap Allow microphone permission.',
-                        micAriaPermission: 'Microphone permission is being requested',
                         micAriaRetry: 'Retry voice recognition',
                         micAriaStop: 'Stop voice recognition',
-                        micAriaStart: 'Start voice recognition and say Bismillah',
-                        continueWithoutVoice: 'Continue Without Voice',
-                        continueInBrowser: 'Continue In This Browser'
+                        micAriaStart: 'Start voice recognition and say Bismillah'
                     },
                     menu: {
                         profile: 'Profile',
@@ -140,7 +162,7 @@
                     profile: {
                         name: 'Md Mahbubur Rahman',
                         subtitle: 'IT Professional',
-                        tagline: 'A faithful Muslim seeking a loving and pious life partner',
+                        tagline: 'A faithful Muslim seeking a responsible, caring, and pious life partner',
                         stats: {
                             age: 'YEARS OLD',
                             education: 'HIGHLY EDUCATED',
@@ -164,11 +186,11 @@
                         { label: 'Full Name', value: 'Md. Mahbubur Rahman', iconClass: 'fas fa-user' },
                         { label: 'Nickname', value: 'Nasir Uddin', iconClass: 'fas fa-signature' },
                         { label: 'Date of Birth', value: '20 December 1997', iconClass: 'fas fa-calendar-days' },
-                        { label: 'Age', value: '27 Years', iconClass: 'fas fa-hourglass-half' },
+                        { label: 'Age', value: '28 Years', iconClass: 'fas fa-hourglass-half' },
                         { label: 'Religion', value: 'Islam (Practicing Muslim)', iconClass: 'fas fa-mosque' },
                         { label: 'Marital Status', value: 'Unmarried', iconClass: 'fas fa-ring' },
                         { label: 'Complexion', value: 'Medium Dark', iconClass: 'fas fa-palette' },
-                        { label: 'Height & Weight', value: '5\' 3" & 72 KGs', iconClass: 'fas fa-ruler-combined' },
+                        { label: 'Height & Weight', value: '5\' 3" & 70 KGs', iconClass: 'fas fa-ruler-combined' },
                         { label: 'Blood Group', value: 'A+', iconClass: 'fas fa-droplet' },
                         { label: 'Health Status', value: 'Healthy, non-smoker, no addiction', iconClass: 'fas fa-heart-pulse' }
                     ],
@@ -345,12 +367,6 @@
                     voice: {
                         tapToStart: 'اضغط على الميكروفون مرة واحدة لبدء التحقق الصوتي بقول بسم الله.',
                         browserNoSupport: 'هذا المتصفح لا يدعم التعرف الصوتي المباشر. استخدم زر المتابعة أدناه لفتح السيرة.',
-                        permissionBlocked: 'تم حظر إذن الميكروفون. فعّله من إعدادات المتصفح ثم اضغط على الميكروفون مرة أخرى.',
-                        permissionRequired: 'مطلوب إذن الميكروفون من المتصفح. اضغط سماح في النافذة المنبثقة.',
-                        permissionAllowed: 'تم السماح بالميكروفون. سيبدأ التحقق الصوتي الآن.',
-                        permissionDenied: 'تم رفض إذن الميكروفون. فعّله من إعدادات المتصفح ثم حاول مرة أخرى.',
-                        noMicrophone: 'لم يتم العثور على ميكروفون. قم بتوصيله ثم حاول مرة أخرى.',
-                        permissionUnknown: 'تعذر تأكيد إذن الميكروفون حالياً. حاول مرة أخرى.',
                         starting: 'يتم تشغيل الميكروفون الآن. إذا ظهرت نافذة من المتصفح فاضغط سماح.',
                         listening: 'الميكروفون يعمل الآن. قل "بسم الله" مرة واحدة وانتظر التحقق.',
                         detected: (transcript) => `تم التقاط: "${transcript}". يتم فتح السيرة الآن...`,
@@ -369,19 +385,13 @@
                         notVerified: 'تعذر التحقق من "بسم الله". اضغط على الميكروفون وكررها مرة أخرى.',
                         couldNotStart: 'تعذر تشغيل الميكروفون الآن. إذا طلب المتصفح الإذن فاسمح به ثم حاول مرة أخرى.',
                         supportNoSupport: 'ميزة التعرف الصوتي المباشر غير متوفرة في هذا المتصفح، لذلك ستجد زر متابعة بدلاً منها أدناه.',
-                        supportPermission: 'يفترض أن تظهر نافذة منبثقة الآن. اضغط سماح للميكروفون ثم اضغط على الميكروفون مرة أخرى.',
                         supportPreparing: 'يتم تشغيل الميكروفون الآن. يرجى الانتظار قليلاً.',
-                        supportErrorDenied: 'إذن الميكروفون محظور في إعدادات المتصفح. فعّله لهذا الموقع ثم اضغط على الميكروفون مرة أخرى.',
                         supportErrorGeneral: 'إذا لم تظهر نافذة، فتحقق من إذن الميكروفون لهذا الموقع ومن دعم المتصفح للتعرف الصوتي.',
                         supportListening: 'التسجيل يعمل الآن. تحدث مرة واحدة ثم انتظر لحظة للتحقق.',
-                        supportReady: 'إذن الميكروفون جاهز. اضغط على الميكروفون لبدء التحقق الصوتي.',
                         supportIdle: 'اضغط على الميكروفون. إذا ظهرت نافذة من المتصفح فاضغط سماح.',
-                        micAriaPermission: 'يتم طلب إذن الميكروفون',
                         micAriaRetry: 'إعادة محاولة التعرف الصوتي',
                         micAriaStop: 'إيقاف التعرف الصوتي',
-                        micAriaStart: 'ابدأ التعرف الصوتي وقل بسم الله',
-                        continueWithoutVoice: 'المتابعة بدون صوت',
-                        continueInBrowser: 'المتابعة في هذا المتصفح'
+                        micAriaStart: 'ابدأ التعرف الصوتي وقل بسم الله'
                     },
                     menu: {
                         profile: 'الملف الشخصي',
@@ -402,7 +412,7 @@
                     profile: {
                         name: 'محمد محبوب الرحمن',
                         subtitle: 'محترف تقنية معلومات',
-                        tagline: 'مسلم ملتزم يبحث عن شريكة حياة صالحة ومحبّة',
+                        tagline: 'مسلم ملتزم يبحث عن شريكة حياة مسؤولة وحنونة وصالحة',
                         stats: {
                             age: '28 عاماً',
                             education: 'تعليم عالٍ',
@@ -595,7 +605,7 @@
                     intro: {
                         kicker: 'দোআ ও নির্দেশনা',
                         title: 'দয়া করে দেখার আগে পড়ে নিন',
-                        duaMeaning: 'হে আমাদের রব, আপনার পক্ষ থেকে আমাদেরকে রহমত দান করুন এবং আমাদের কাজের জন্য সঠিক পথ নির্ধারণ করে দিন।',
+                        duaMeaning: 'হে আমাদের রব, আপনার পক্ষ থেকে আমাদেরকে রহমত দান করুন\nএবং আমাদের কাজের জন্য সঠিক পথ নির্ধারণ করে দিন।',
                         duaReference: 'সূরা কাহফ্ : আয়াত - ১০',
                         instructionsTitle: 'নির্দেশনা',
                         instructions: [
@@ -607,12 +617,6 @@
                     voice: {
                         tapToStart: 'বিসমিল্লাহ ভয়েস যাচাই শুরু করতে একবার মাইকে চাপ দিন।',
                         browserNoSupport: 'এই ব্রাউজারে লাইভ স্পিচ রিকগনিশন নেই। নিচের বোতাম ব্যবহার করে বায়োডাটা খুলুন।',
-                        permissionBlocked: 'মাইক্রোফোন অনুমতি ব্লক করা আছে। ব্রাউজার সেটিংস থেকে অনুমতি দিয়ে আবার মাইকে চাপ দিন।',
-                        permissionRequired: 'ব্রাউজারের মাইক্রোফোন অনুমতি প্রয়োজন। পপআপ এলে Allow চাপুন।',
-                        permissionAllowed: 'মাইক্রোফোন অনুমতি পাওয়া গেছে। ভয়েস যাচাই এখন শুরু হচ্ছে।',
-                        permissionDenied: 'মাইক্রোফোন অনুমতি দেওয়া হয়নি। ব্রাউজার সেটিংস থেকে অনুমতি দিয়ে আবার চেষ্টা করুন।',
-                        noMicrophone: 'কোনো মাইক্রোফোন পাওয়া যায়নি। মাইক্রোফোন যুক্ত করে আবার চেষ্টা করুন।',
-                        permissionUnknown: 'মাইক্রোফোন অনুমতি নিশ্চিত করা যায়নি। আবার চেষ্টা করুন।',
                         starting: 'মাইক্রোফোন চালু হচ্ছে। ব্রাউজার যদি অনুমতি চায় তাহলে Allow চাপুন।',
                         listening: 'মাইক্রোফোন চালু আছে। একবার "বিসমিল্লাহ" বলুন এবং যাচাইয়ের জন্য অপেক্ষা করুন।',
                         detected: (transcript) => `শোনা গেছে: "${transcript}"। বায়োডাটা খোলা হচ্ছে...`,
@@ -631,19 +635,13 @@
                         notVerified: '"বিসমিল্লাহ" যাচাই করা যায়নি। আবার মাইকে চাপ দিয়ে বলুন।',
                         couldNotStart: 'এই মুহূর্তে মাইক্রোফোন চালু করা যায়নি। ব্রাউজার অনুমতি চাইলে Allow দিয়ে আবার চেষ্টা করুন।',
                         supportNoSupport: 'এই ব্রাউজারে লাইভ স্পিচ রিকগনিশন নেই, তাই নিচে Continue বাটন দেখানো হচ্ছে।',
-                        supportPermission: 'এখন ব্রাউজারের একটি পপআপ দেখা উচিত। সেখানে মাইক্রোফোনের জন্য Allow চাপুন, তারপর আবার মাইকে চাপ দিন।',
                         supportPreparing: 'মাইক্রোফোন চালু হচ্ছে। একটু অপেক্ষা করুন।',
-                        supportErrorDenied: 'ব্রাউজার সেটিংসে মাইক্রোফোন অনুমতি ব্লক আছে। এই সাইটের জন্য অনুমতি দিয়ে আবার মাইকে চাপ দিন।',
                         supportErrorGeneral: 'যদি কোনো পপআপ না আসে, তাহলে সাইটের মাইক্রোফোন অনুমতি ও ব্রাউজারের স্পিচ রিকগনিশন সাপোর্ট পরীক্ষা করুন।',
                         supportListening: 'রেকর্ডিং চলছে। একবার বলুন, তারপর যাচাইয়ের জন্য একটু অপেক্ষা করুন।',
-                        supportReady: 'মাইক্রোফোন অনুমতি প্রস্তুত। ভয়েস যাচাই শুরু করতে মাইকে চাপ দিন।',
                         supportIdle: 'মাইকে চাপ দিন। ব্রাউজার পপআপ এলে Allow চাপুন।',
-                        micAriaPermission: 'মাইক্রোফোন অনুমতি চাওয়া হচ্ছে',
                         micAriaRetry: 'ভয়েস রিকগনিশন আবার চেষ্টা করুন',
                         micAriaStop: 'ভয়েস রিকগনিশন বন্ধ করুন',
-                        micAriaStart: 'ভয়েস রিকগনিশন শুরু করুন এবং বিসমিল্লাহ বলুন',
-                        continueWithoutVoice: 'ভয়েস ছাড়া এগিয়ে যান',
-                        continueInBrowser: 'এই ব্রাউজারেই এগিয়ে যান'
+                        micAriaStart: 'ভয়েস রিকগনিশন শুরু করুন এবং বিসমিল্লাহ বলুন'
                     },
                     menu: {
                         profile: 'প্রোফাইল',
@@ -664,7 +662,7 @@
                     profile: {
                         name: 'মো. মাহবুবুর রহমান',
                         subtitle: 'তথ্যপ্রযুক্তি পেশাজীবী',
-                        tagline: 'একজন দ্বীনদার মুসলিম, ভালোবাসাময়ী ও পরহেজগার জীবনসঙ্গী খুঁজছেন',
+                        tagline: 'একজন দ্বীনদার মুসলিম, দায়িত্বশীলা, মমতাময়ী ও পরহেজগার জীবনসঙ্গী খুঁজছেন',
                         stats: {
                             age: '২৮ বছর',
                             education: 'উচ্চশিক্ষিত',
@@ -837,32 +835,6 @@
             };
             const hasSpeechRecognitionSupport = typeof window !== 'undefined'
                 && (typeof window.SpeechRecognition === 'function' || typeof window.webkitSpeechRecognition === 'function');
-            const isChromeBrowser = typeof window !== 'undefined' && (() => {
-                const userAgent = window.navigator.userAgent || '';
-                return /Chrome\//.test(userAgent)
-                    && !/Edg\//.test(userAgent)
-                    && !/OPR\//.test(userAgent)
-                    && !/SamsungBrowser\//.test(userAgent);
-            })();
-            const chromeOnlyAlertMessage = 'শুধুমাত্র Chrome ব্রাউজার ব্যবহার করুন।';
-            const hasStoredMicrophonePermissionGrant = () => {
-                try {
-                    return window.localStorage.getItem(microphonePermissionStorageKey) === 'true';
-                } catch (error) {
-                    return false;
-                }
-            };
-            const setStoredMicrophonePermissionGrant = (isGranted) => {
-                try {
-                    if (isGranted) {
-                        window.localStorage.setItem(microphonePermissionStorageKey, 'true');
-                    } else {
-                        window.localStorage.removeItem(microphonePermissionStorageKey);
-                    }
-                } catch (error) {
-                    // Ignore storage failures and keep the access flow working.
-                }
-            };
             const touchVoiceVerificationTimestamp = () => {
                 try {
                     window.localStorage.setItem(voiceVerificationStorageKey, String(Date.now()));
@@ -980,8 +952,9 @@
             const [isIntroPopupOpen, setIsIntroPopupOpen] = React.useState(() => !hasRecentVoiceVerification());
             const [isVoiceListening, setIsVoiceListening] = React.useState(false);
             const [voiceUiState, setVoiceUiState] = React.useState('idle');
-            const [microphonePermissionState, setMicrophonePermissionState] = React.useState('unknown');
             const [voicePrompt, setVoicePrompt] = React.useState(introVoiceHint);
+            const [selectedPuzzleIndexes, setSelectedPuzzleIndexes] = React.useState([]);
+            const [isPuzzleSolved, setIsPuzzleSolved] = React.useState(false);
             const [isMenuDragging, setIsMenuDragging] = React.useState(false);
             const [isLanguageRowCollapsed, setIsLanguageRowCollapsed] = React.useState(true);
             const menuLinksRef = React.useRef(null);
@@ -1024,6 +997,15 @@
             const permanentAddressValue = copy.contact.permanentAddressValue;
             const showDuaMeanings = language !== 'ar';
             const voiceCopy = copy.voice;
+            const activePuzzleSet = bismillahPuzzleSets[language] || bismillahPuzzleSets.en;
+            const voicePuzzleSeparatorText = language === 'bn' ? 'অথবা' : language === 'ar' ? 'أو' : 'OR';
+            const selectedPuzzlePieces = selectedPuzzleIndexes.map((pieceIndex) => ({
+                index: pieceIndex,
+                text: activePuzzleSet.pieces[pieceIndex]
+            }));
+            const availablePuzzlePieces = activePuzzleSet.pieces
+                .map((text, index) => ({ text, index }))
+                .filter(({ index }) => !selectedPuzzleIndexes.includes(index));
             const trainingIconClasses = [
                 'fas fa-medal',
                 'fas fa-briefcase',
@@ -1041,6 +1023,33 @@
             const educationDetailIconClass = 'fas fa-graduation-cap';
             const activityDetailIconClass = 'fas fa-star';
             const availableLanguageOptions = languageOptions.filter(({ code }) => code !== language);
+            const renderPuzzleTitle = () => {
+                if (language === 'en') {
+                    return (
+                        <>
+                            MATCH <span className="intro-popup-puzzle-title-mark">BISMILLAH</span> CORRECTLY
+                        </>
+                    );
+                }
+
+                if (language === 'bn') {
+                    return (
+                        <>
+                            সঠিকভাবে <span className="intro-popup-puzzle-title-mark">বিসমিল্লাহ্</span> মিলান
+                        </>
+                    );
+                }
+
+                if (language === 'ar') {
+                    return (
+                        <>
+                            رَتِّبْ <span className="intro-popup-puzzle-title-mark">بِسْمِ اللَّهِ</span> بِشَكْلٍ صَحِيحٍ
+                        </>
+                    );
+                }
+
+                return activePuzzleSet.title;
+            };
 
             const renderDetailValue = (value) => {
                 if (typeof value === 'string' && value === permanentAddressValue) {
@@ -1173,6 +1182,11 @@
                 if (isVoiceListening || speechRecognitionRef.current) return;
                 setVoicePrompt(introVoiceHint);
             }, [introVoiceHint, isVoiceListening]);
+
+            React.useEffect(() => {
+                setSelectedPuzzleIndexes([]);
+                setIsPuzzleSolved(false);
+            }, [language]);
 
             React.useEffect(() => {
                 let ticking = false;
@@ -1356,48 +1370,6 @@
                 clearSpeechRecognition();
             }, []);
 
-            React.useEffect(() => {
-                if (!navigator.permissions || typeof navigator.permissions.query !== 'function') {
-                    return undefined;
-                }
-
-                let permissionStatus = null;
-                let isDisposed = false;
-
-                const handlePermissionChange = () => {
-                    if (!permissionStatus || isDisposed) return;
-                    setMicrophonePermissionState(permissionStatus.state);
-                    setStoredMicrophonePermissionGrant(permissionStatus.state === 'granted');
-                };
-
-                navigator.permissions.query({ name: 'microphone' }).then((status) => {
-                    if (isDisposed) return;
-
-                    permissionStatus = status;
-                    handlePermissionChange();
-
-                    if (typeof status.addEventListener === 'function') {
-                        status.addEventListener('change', handlePermissionChange);
-                    } else {
-                        status.onchange = handlePermissionChange;
-                    }
-                }).catch(() => {
-                    // Ignore browsers that do not expose microphone permission state.
-                });
-
-                return () => {
-                    isDisposed = true;
-
-                    if (!permissionStatus) return;
-
-                    if (typeof permissionStatus.removeEventListener === 'function') {
-                        permissionStatus.removeEventListener('change', handlePermissionChange);
-                    } else {
-                        permissionStatus.onchange = null;
-                    }
-                };
-            }, []);
-
             const clearRecognitionTimer = () => {
                 if (recognitionTimerRef.current !== null) {
                     window.clearTimeout(recognitionTimerRef.current);
@@ -1478,36 +1450,6 @@
                 ));
             };
 
-            const getPreferredRecognitionLangs = () => {
-                const browserLang = (navigator.language || '').toLowerCase();
-                const orderedLangs = [];
-
-                if (browserLang.startsWith('bn')) {
-                    orderedLangs.push('bn-BD');
-                } else if (browserLang.startsWith('ar')) {
-                    orderedLangs.push('ar-SA');
-                } else {
-                    orderedLangs.push('en-US');
-                }
-
-                orderedLangs.push('en-US', 'ar-SA', 'bn-BD');
-                return [...new Set(orderedLangs)];
-            };
-
-            const configureRecognitionBias = (recognition) => {
-                if (!('phrases' in recognition) || typeof window.SpeechRecognitionPhrase !== 'function') {
-                    return;
-                }
-
-                try {
-                    recognition.phrases = acceptedBismillahPhrases
-                        .slice(0, 8)
-                        .map((phrase) => new window.SpeechRecognitionPhrase(phrase, 5.0));
-                } catch (error) {
-                    // Ignore unsupported contextual biasing implementations.
-                }
-            };
-
             const stopBismillahVoiceCheck = () => {
                 const recognition = speechRecognitionRef.current;
                 if (!recognition) return;
@@ -1523,49 +1465,6 @@
                 } catch (error) {
                     // Ignore duplicate stop calls from pointer interactions.
                 }
-            };
-
-            const ensureMicrophonePermission = async () => {
-                if (!navigator.mediaDevices || typeof navigator.mediaDevices.getUserMedia !== 'function') {
-                    return true;
-                }
-
-                if (microphonePermissionState === 'granted' || hasStoredMicrophonePermissionGrant()) {
-                    return true;
-                }
-
-                if (microphonePermissionState === 'denied') {
-                    setVoiceUiState('error');
-                    setVoicePrompt(voiceCopy.permissionBlocked);
-                    return false;
-                }
-
-                setVoiceUiState('permission');
-                setVoicePrompt(voiceCopy.permissionRequired);
-
-                try {
-                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                    stream.getTracks().forEach((track) => track.stop());
-                    setMicrophonePermissionState('granted');
-                    setStoredMicrophonePermissionGrant(true);
-                    setVoiceUiState('idle');
-                    setVoicePrompt(voiceCopy.permissionAllowed);
-                    return true;
-                } catch (error) {
-                    setVoiceUiState('error');
-
-                    if (error && (error.name === 'NotAllowedError' || error.name === 'SecurityError')) {
-                        setMicrophonePermissionState('denied');
-                        setStoredMicrophonePermissionGrant(false);
-                        setVoicePrompt(voiceCopy.permissionDenied);
-                    } else if (error && error.name === 'NotFoundError') {
-                        setVoicePrompt(voiceCopy.noMicrophone);
-                    } else {
-                        setVoicePrompt(voiceCopy.permissionUnknown);
-                    }
-                }
-
-                return false;
             };
 
             const startBismillahVoiceCheck = () => {
@@ -1585,16 +1484,14 @@
                 setVoicePrompt(voiceCopy.starting);
 
                 const recognition = new SpeechRecognition();
-                const recognitionLang = getPreferredRecognitionLangs()[0];
 
                 speechRecognitionRef.current = recognition;
                 voiceMatchedRef.current = false;
                 voiceStopReasonRef.current = 'listening';
-                recognition.lang = recognitionLang;
+                recognition.lang = 'en-US';
                 recognition.interimResults = true;
-                recognition.maxAlternatives = 10;
+                recognition.maxAlternatives = 5;
                 recognition.continuous = false;
-                configureRecognitionBias(recognition);
 
                 recognition.onstart = () => {
                     if (speechRecognitionRef.current !== recognition) return;
@@ -1689,8 +1586,8 @@
                 }
             };
 
-            const handleVoiceButtonClick = async () => {
-                if (isPreparingVoiceRef.current || voiceUiState === 'permission') {
+            const handleVoiceButtonClick = () => {
+                if (isPreparingVoiceRef.current) {
                     return;
                 }
 
@@ -1699,12 +1596,82 @@
                     return;
                 }
 
-                const permissionReady = await ensureMicrophonePermission();
-                if (!permissionReady) {
+                startBismillahVoiceCheck();
+            };
+
+            const playBismillahSound = () => {
+                if (typeof window === 'undefined' || !window.speechSynthesis || typeof window.SpeechSynthesisUtterance !== 'function') {
                     return;
                 }
 
-                startBismillahVoiceCheck();
+                try {
+                    window.speechSynthesis.cancel();
+                    const utterance = new window.SpeechSynthesisUtterance(activePuzzleSet.soundText);
+                    utterance.lang = activePuzzleSet.soundLang;
+                    const arabicVoice = window.speechSynthesis.getVoices()
+                        .find((voice) => voice.lang && voice.lang.toLowerCase().startsWith('ar'));
+                    if (arabicVoice) {
+                        utterance.voice = arabicVoice;
+                    }
+                    utterance.rate = 0.82;
+                    utterance.pitch = 0.96;
+                    utterance.volume = 1;
+                    window.speechSynthesis.speak(utterance);
+                } catch (error) {
+                    // Keep the puzzle flow working when speech synthesis is unavailable.
+                }
+            };
+
+            const completeBismillahPuzzle = () => {
+                if (isPuzzleSolved) return;
+
+                setIsPuzzleSolved(true);
+                setVoiceUiState('idle');
+                setVoicePrompt(activePuzzleSet.success);
+                playBismillahSound();
+                window.setTimeout(() => {
+                    handleEnterBiodata();
+                }, 1200);
+            };
+
+            const handlePuzzlePieceSelect = (pieceIndex) => {
+                if (isPuzzleSolved || selectedPuzzleIndexes.includes(pieceIndex)) return;
+
+                const nextIndexes = [...selectedPuzzleIndexes, pieceIndex];
+                setSelectedPuzzleIndexes(nextIndexes);
+
+                if (nextIndexes.length !== activePuzzleSet.answer.length) return;
+
+                const answerText = nextIndexes
+                    .map((index) => activePuzzleSet.pieces[index])
+                    .join('');
+                const targetText = activePuzzleSet.answer.join('');
+
+                if (answerText === targetText) {
+                    completeBismillahPuzzle();
+                    return;
+                }
+
+                setVoiceUiState('error');
+                setVoicePrompt(voiceCopy.notVerified);
+            };
+
+            const handlePuzzlePieceRemove = (pieceIndex) => {
+                if (isPuzzleSolved) return;
+
+                setSelectedPuzzleIndexes((currentIndexes) => (
+                    currentIndexes.filter((index) => index !== pieceIndex)
+                ));
+                setVoiceUiState('idle');
+                setVoicePrompt(introVoiceHint);
+            };
+
+            const handlePuzzleReset = () => {
+                if (isPuzzleSolved) return;
+
+                setSelectedPuzzleIndexes([]);
+                setVoiceUiState('idle');
+                setVoicePrompt(introVoiceHint);
             };
 
             const handleMenuClick = (event, id) => {
@@ -1730,7 +1697,7 @@
             };
 
             const isVoiceError = hasSpeechRecognitionSupport && voiceUiState === 'error';
-            const isVoicePreparing = hasSpeechRecognitionSupport && (voiceUiState === 'permission' || voiceUiState === 'preparing');
+            const isVoicePreparing = hasSpeechRecognitionSupport && voiceUiState === 'preparing';
             const showVoiceMicButton = hasSpeechRecognitionSupport;
             const voiceStatusIconClass = !hasSpeechRecognitionSupport
                 ? 'fa-circle-info'
@@ -1743,19 +1710,13 @@
                             : 'fa-microphone-lines';
             const voiceSupportNote = !hasSpeechRecognitionSupport
                 ? voiceCopy.supportNoSupport
-                : voiceUiState === 'permission'
-                    ? voiceCopy.supportPermission
-                    : voiceUiState === 'preparing'
-                        ? voiceCopy.supportPreparing
-                        : voiceUiState === 'error'
-                            ? microphonePermissionState === 'denied'
-                                ? voiceCopy.supportErrorDenied
-                                : voiceCopy.supportErrorGeneral
-                            : isVoiceListening
-                                ? voiceCopy.supportListening
-                                : microphonePermissionState === 'granted'
-                                    ? voiceCopy.supportReady
-                                    : voiceCopy.supportIdle;
+                : voiceUiState === 'preparing'
+                    ? voiceCopy.supportPreparing
+                    : voiceUiState === 'error'
+                        ? voiceCopy.supportErrorGeneral
+                        : isVoiceListening
+                            ? voiceCopy.supportListening
+                            : voiceCopy.supportIdle;
             const renderLanguageMenu = (rowId) => (
                 <div
                     className={`top-menu-language-shell${isLanguageRowCollapsed ? ' is-collapsed' : ''}`}
@@ -1791,7 +1752,7 @@
             );
 
             return (
-                <div className={`app-shell${isRtl ? ' is-rtl' : ''}`}>
+                <div className={`app-shell language-${language}${isRtl ? ' is-rtl' : ''}`}>
                     {isIntroPopupOpen ? (
                         <div
                             className="intro-popup"
@@ -1816,10 +1777,10 @@
                                             <span className="intro-popup-taawuz-mark" aria-hidden="true">۞</span>
                                         </div>
                                         <div className="intro-popup-dua-arabic">{duaArabicLines[2]}</div>
-                                        <div className="intro-popup-dua-reference">{copy.intro.duaReference}</div>
                                         {language !== 'ar' ? (
                                             <div className="intro-popup-dua-meaning">{copy.intro.duaMeaning}</div>
                                         ) : null}
+                                        <div className="intro-popup-dua-reference">{copy.intro.duaReference}</div>
                                     </div>
 
                                     <div className="intro-popup-instruction">
@@ -1831,13 +1792,6 @@
                                         </ul>
                                     </div>
 
-                                    {!isChromeBrowser ? (
-                                        <div className="intro-popup-voice-status is-error">
-                                            <i className="fas fa-triangle-exclamation" aria-hidden="true"></i>
-                                            <span>{chromeOnlyAlertMessage}</span>
-                                        </div>
-                                    ) : null}
-
                                     <div className={`intro-popup-voice-status${isVoiceError ? ' is-error' : isVoicePreparing ? ' is-preparing' : isVoiceListening ? ' is-listening' : ''}`}>
                                         <i className={`fas ${voiceStatusIconClass}`} aria-hidden="true"></i>
                                         <span>{voicePrompt}</span>
@@ -1847,15 +1801,65 @@
                                         {showVoiceMicButton ? (
                                             <button
                                                 type="button"
-                                                className={`intro-popup-mic-button${voiceUiState === 'error' ? ' is-error' : voiceUiState === 'permission' || voiceUiState === 'preparing' ? ' is-preparing' : isVoiceListening ? ' is-listening' : ''}`}
+                                                className={`intro-popup-mic-button${voiceUiState === 'error' ? ' is-error' : voiceUiState === 'preparing' ? ' is-preparing' : isVoiceListening ? ' is-listening' : ''}`}
                                                 onClick={handleVoiceButtonClick}
                                                 onContextMenu={(event) => event.preventDefault()}
-                                                aria-label={voiceUiState === 'permission' || voiceUiState === 'preparing' ? voiceCopy.micAriaPermission : voiceUiState === 'error' ? voiceCopy.micAriaRetry : isVoiceListening ? voiceCopy.micAriaStop : voiceCopy.micAriaStart}
+                                                aria-label={voiceUiState === 'error' ? voiceCopy.micAriaRetry : isVoiceListening ? voiceCopy.micAriaStop : voiceCopy.micAriaStart}
                                             >
-                                                <i className={`fas ${voiceUiState === 'error' ? 'fa-microphone-slash' : voiceUiState === 'permission' || voiceUiState === 'preparing' ? 'fa-spinner fa-spin' : isVoiceListening ? 'fa-microphone-lines' : 'fa-microphone'}`} aria-hidden="true"></i>
+                                                <i className={`fas ${voiceUiState === 'error' ? 'fa-microphone-slash' : voiceUiState === 'preparing' ? 'fa-spinner fa-spin' : isVoiceListening ? 'fa-microphone-lines' : 'fa-microphone'}`} aria-hidden="true"></i>
                                             </button>
                                         ) : null}
                                         <div className="intro-popup-support-note">{voiceSupportNote}</div>
+                                        <div className="intro-popup-choice-separator">{voicePuzzleSeparatorText}</div>
+                                        <div className={`intro-popup-puzzle${language === 'en' ? ' is-english' : ''}`} dir={language === 'ar' ? 'rtl' : 'ltr'}>
+                                            <div className="intro-popup-puzzle-title">{renderPuzzleTitle()}</div>
+                                            <div className="intro-popup-puzzle-row">
+                                                <div className="intro-popup-puzzle-track" aria-label={activePuzzleSet.sourceLabel}>
+                                                    {availablePuzzlePieces.map(({ text, index }) => (
+                                                        <button
+                                                            type="button"
+                                                            className="intro-popup-puzzle-piece"
+                                                            key={`source-${index}`}
+                                                            onClick={() => handlePuzzlePieceSelect(index)}
+                                                            disabled={isPuzzleSolved}
+                                                        >
+                                                            {text}
+                                                        </button>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                            <div className="intro-popup-puzzle-row">
+                                                <div className={`intro-popup-puzzle-track is-answer${isPuzzleSolved ? ' is-complete' : ''}`} aria-label={activePuzzleSet.answerLabel}>
+                                                    {selectedPuzzlePieces.map(({ text, index }) => (
+                                                        <button
+                                                            type="button"
+                                                            className="intro-popup-puzzle-piece is-selected"
+                                                            key={`answer-${index}`}
+                                                            onClick={() => handlePuzzlePieceRemove(index)}
+                                                            disabled={isPuzzleSolved}
+                                                        >
+                                                            {text}
+                                                        </button>
+                                                    ))}
+                                                    {Array.from({ length: activePuzzleSet.answer.length - selectedPuzzlePieces.length }).map((_, index) => (
+                                                        <span
+                                                            className="intro-popup-puzzle-slot"
+                                                            key={`slot-${index}`}
+                                                            aria-hidden="true"
+                                                        ></span>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                            <button
+                                                type="button"
+                                                className="intro-popup-puzzle-reset"
+                                                onClick={handlePuzzleReset}
+                                                disabled={isPuzzleSolved || selectedPuzzleIndexes.length === 0}
+                                            >
+                                                <i className="fas fa-rotate-right" aria-hidden="true"></i>
+                                                <span>{activePuzzleSet.reset}</span>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
