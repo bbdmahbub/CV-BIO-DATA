@@ -1539,7 +1539,7 @@
                         voiceStopReasonRef.current = 'matched';
                         setVoicePrompt(voiceCopy.detected(transcript.trim()));
                         clearSpeechRecognition();
-                        completeBismillahPuzzle();
+                        completeBismillahPuzzle({ shouldPlaySound: false });
                         return;
                     }
 
@@ -1645,14 +1645,15 @@
                 });
             };
 
-            const completeBismillahPuzzle = () => {
+            const completeBismillahPuzzle = ({ shouldPlaySound = true } = {}) => {
                 if (isPuzzleSolved || isBismillahSuccessInProgressRef.current) return;
 
                 isBismillahSuccessInProgressRef.current = true;
                 setIsPuzzleSolved(true);
                 setVoiceUiState('idle');
                 setVoicePrompt(activePuzzleSet.success);
-                playBismillahSound().then(() => {
+                const successSound = shouldPlaySound ? playBismillahSound() : Promise.resolve();
+                successSound.then(() => {
                     handleEnterBiodata();
                 });
             };

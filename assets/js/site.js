@@ -306,7 +306,7 @@
             filter.frequency.setValueAtTime(640, now);
 
             gain.gain.setValueAtTime(0.0001, now);
-            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.004);
+            gain.gain.exponentialRampToValueAtTime(0.004, now + 0.004);
             gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.045);
 
             oscillator.connect(filter);
