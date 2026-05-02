@@ -1771,16 +1771,22 @@
                                     <h2 className="intro-popup-title" id="intro-popup-title">{copy.intro.title}</h2>
 
                                     <div className="intro-popup-dua">
-                                        <div className="intro-popup-taawuz" dir="rtl">
-                                            <span className="intro-popup-taawuz-mark" aria-hidden="true">۞</span>
-                                            <span className="intro-popup-taawuz-text">{popupTaawuz}</span>
-                                            <span className="intro-popup-taawuz-mark" aria-hidden="true">۞</span>
+                                        <div className="intro-popup-dua-item intro-popup-dua-arabic-item">
+                                            <div className="intro-popup-taawuz" dir="rtl">
+                                                <span className="intro-popup-taawuz-mark" aria-hidden="true">۞</span>
+                                                <span className="intro-popup-taawuz-text">{popupTaawuz}</span>
+                                                <span className="intro-popup-taawuz-mark" aria-hidden="true">۞</span>
+                                            </div>
+                                            <div className="intro-popup-dua-arabic">{duaArabicLines[2]}</div>
                                         </div>
-                                        <div className="intro-popup-dua-arabic">{duaArabicLines[2]}</div>
                                         {language !== 'ar' ? (
-                                            <div className="intro-popup-dua-meaning">{copy.intro.duaMeaning}</div>
-                                        ) : null}
-                                        <div className="intro-popup-dua-reference">{copy.intro.duaReference}</div>
+                                            <div className="intro-popup-dua-item intro-popup-dua-meaning-item">
+                                                <div className="intro-popup-dua-meaning">{copy.intro.duaMeaning}</div>
+                                                <div className="intro-popup-dua-reference">{copy.intro.duaReference}</div>
+                                            </div>
+                                        ) : (
+                                            <div className="intro-popup-dua-reference">{copy.intro.duaReference}</div>
+                                        )}
                                     </div>
 
                                     <div className="intro-popup-instruction">
@@ -1792,24 +1798,25 @@
                                         </ul>
                                     </div>
 
-                                    <div className={`intro-popup-voice-status${isVoiceError ? ' is-error' : isVoicePreparing ? ' is-preparing' : isVoiceListening ? ' is-listening' : ''}`}>
-                                        <i className={`fas ${voiceStatusIconClass}`} aria-hidden="true"></i>
-                                        <span>{voicePrompt}</span>
-                                    </div>
-
                                     <div className="intro-popup-voice-gate">
-                                        {showVoiceMicButton ? (
-                                            <button
-                                                type="button"
-                                                className={`intro-popup-mic-button${voiceUiState === 'error' ? ' is-error' : voiceUiState === 'preparing' ? ' is-preparing' : isVoiceListening ? ' is-listening' : ''}`}
-                                                onClick={handleVoiceButtonClick}
-                                                onContextMenu={(event) => event.preventDefault()}
-                                                aria-label={voiceUiState === 'error' ? voiceCopy.micAriaRetry : isVoiceListening ? voiceCopy.micAriaStop : voiceCopy.micAriaStart}
-                                            >
-                                                <i className={`fas ${voiceUiState === 'error' ? 'fa-microphone-slash' : voiceUiState === 'preparing' ? 'fa-spinner fa-spin' : isVoiceListening ? 'fa-microphone-lines' : 'fa-microphone'}`} aria-hidden="true"></i>
-                                            </button>
-                                        ) : null}
-                                        <div className="intro-popup-support-note">{voiceSupportNote}</div>
+                                        <div className="intro-popup-voice-card">
+                                            <div className={`intro-popup-voice-status${isVoiceError ? ' is-error' : isVoicePreparing ? ' is-preparing' : isVoiceListening ? ' is-listening' : ''}`}>
+                                                <i className={`fas ${voiceStatusIconClass}`} aria-hidden="true"></i>
+                                                <span>{voicePrompt}</span>
+                                            </div>
+                                            {showVoiceMicButton ? (
+                                                <button
+                                                    type="button"
+                                                    className={`intro-popup-mic-button${voiceUiState === 'error' ? ' is-error' : voiceUiState === 'preparing' ? ' is-preparing' : isVoiceListening ? ' is-listening' : ''}`}
+                                                    onClick={handleVoiceButtonClick}
+                                                    onContextMenu={(event) => event.preventDefault()}
+                                                    aria-label={voiceUiState === 'error' ? voiceCopy.micAriaRetry : isVoiceListening ? voiceCopy.micAriaStop : voiceCopy.micAriaStart}
+                                                >
+                                                    <i className={`fas ${voiceUiState === 'error' ? 'fa-microphone-slash' : voiceUiState === 'preparing' ? 'fa-spinner fa-spin' : isVoiceListening ? 'fa-microphone-lines' : 'fa-microphone'}`} aria-hidden="true"></i>
+                                                </button>
+                                            ) : null}
+                                            <div className="intro-popup-support-note">{voiceSupportNote}</div>
+                                        </div>
                                         <div className="intro-popup-choice-separator">{voicePuzzleSeparatorText}</div>
                                         <div className={`intro-popup-puzzle${language === 'en' ? ' is-english' : ''}`} dir={language === 'ar' ? 'rtl' : 'ltr'}>
                                             <div className="intro-popup-puzzle-title">{renderPuzzleTitle()}</div>
