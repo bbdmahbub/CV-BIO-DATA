@@ -1728,7 +1728,7 @@
                 : isVoiceError
                     ? 'fa-triangle-exclamation'
                     : isVoicePreparing
-                        ? 'fa-spinner fa-spin'
+                        ? 'fa-microphone-lines'
                         : isVoiceListening
                             ? 'fa-wave-square'
                             : 'fa-microphone-lines';
