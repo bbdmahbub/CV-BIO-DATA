@@ -74,6 +74,7 @@
                 }
             };
             const permanentAddressMapHref = 'https://maps.app.goo.gl/hvcHqxMvhF9cGFbM6';
+            const bismillahToneSrc = 'assets/tone/Bismillah.mp3';
             const voiceVerificationStorageKey = 'bbdMahbubVoiceVerifiedAt';
             const voiceVerificationGracePeriodMs = 30 * 60 * 1000;
             const languageOptions = [
@@ -1600,25 +1601,23 @@
             };
 
             const playBismillahSound = () => {
-                if (typeof window === 'undefined' || !window.speechSynthesis || typeof window.SpeechSynthesisUtterance !== 'function') {
+                if (typeof window === 'undefined' || typeof window.Audio !== 'function') {
                     return;
                 }
 
                 try {
-                    window.speechSynthesis.cancel();
-                    const utterance = new window.SpeechSynthesisUtterance(activePuzzleSet.soundText);
-                    utterance.lang = activePuzzleSet.soundLang;
-                    const arabicVoice = window.speechSynthesis.getVoices()
-                        .find((voice) => voice.lang && voice.lang.toLowerCase().startsWith('ar'));
-                    if (arabicVoice) {
-                        utterance.voice = arabicVoice;
+                    const audio = new window.Audio(bismillahToneSrc);
+                    audio.volume = 1;
+                    audio.currentTime = 0;
+                    const playPromise = audio.play();
+
+                    if (playPromise && typeof playPromise.catch === 'function') {
+                        playPromise.catch(() => {
+                            // Keep the puzzle flow working when browser audio playback is blocked.
+                        });
                     }
-                    utterance.rate = 0.82;
-                    utterance.pitch = 0.96;
-                    utterance.volume = 1;
-                    window.speechSynthesis.speak(utterance);
                 } catch (error) {
-                    // Keep the puzzle flow working when speech synthesis is unavailable.
+                    // Keep the puzzle flow working when audio playback is unavailable.
                 }
             };
 
