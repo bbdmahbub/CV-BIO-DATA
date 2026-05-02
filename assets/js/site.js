@@ -96,6 +96,9 @@
         let hasAutoCollapsedMusicPanel = false;
         let currentLanguage = getInitialLanguage();
         let musicStatusMode = 'preparing';
+        let scrollTickAudioContext = null;
+        let lastScrollTickAt = 0;
+        let lastScrollTickY = window.scrollY || 0;
 
         function getInitialLanguage() {
             try {
@@ -268,6 +271,69 @@
             document.addEventListener('click', handleMusicPanelAutoCollapseByClick);
         }
 
+        function getScrollTickAudioContext() {
+            const AudioContextConstructor = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContextConstructor) return null;
+
+            if (!scrollTickAudioContext) {
+                scrollTickAudioContext = new AudioContextConstructor();
+            }
+
+            if (scrollTickAudioContext.state === 'suspended') {
+                scrollTickAudioContext.resume().catch(() => {
+                    // Browser audio policies can block the first tick; keep scrolling smooth.
+                });
+            }
+
+            return scrollTickAudioContext;
+        }
+
+        function playScrollTickSound(scrollDirection) {
+            const audioContext = getScrollTickAudioContext();
+            if (!audioContext) return;
+
+            const now = audioContext.currentTime;
+            const oscillator = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            const filter = audioContext.createBiquadFilter();
+            const baseFrequency = scrollDirection >= 0 ? 1180 : 940;
+
+            oscillator.type = 'square';
+            oscillator.frequency.setValueAtTime(baseFrequency, now);
+            oscillator.frequency.exponentialRampToValueAtTime(baseFrequency * 0.72, now + 0.035);
+
+            filter.type = 'highpass';
+            filter.frequency.setValueAtTime(640, now);
+
+            gain.gain.setValueAtTime(0.0001, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.004);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.045);
+
+            oscillator.connect(filter);
+            filter.connect(gain);
+            gain.connect(audioContext.destination);
+            oscillator.start(now);
+            oscillator.stop(now + 0.05);
+        }
+
+        function handleScrollTickSound() {
+            const currentY = window.scrollY || 0;
+            const distance = Math.abs(currentY - lastScrollTickY);
+            const now = Date.now();
+
+            if (distance < 28 || now - lastScrollTickAt < 85) return;
+
+            const direction = currentY >= lastScrollTickY ? 1 : -1;
+            lastScrollTickY = currentY;
+            lastScrollTickAt = now;
+            playScrollTickSound(direction);
+        }
+
+        function armScrollTickSound() {
+            lastScrollTickY = window.scrollY || 0;
+            window.addEventListener('scroll', handleScrollTickSound, { passive: true });
+        }
+
         function getStoredManualPause() {
             try {
                 return window.localStorage.getItem(MUSIC_PAUSED_STORAGE_KEY) === 'true';
@@ -406,9 +472,10 @@
             hasActivatedBiodataExperience = true;
 
             armMusicPanelAutoCollapse();
+            armScrollTickSound();
             setupMusicPlayer();
             createBubbleBurst();
-            bubbleIntervalId = window.setInterval(createBubbleBurst, 9100);
+            bubbleIntervalId = window.setInterval(createBubbleBurst, 22000);
         }
 
         function makeBubbleDraggable(bubble) {
@@ -464,27 +531,28 @@
                 bubble.classList.add('faith');
             }
 
-            const size = Math.floor(Math.random() * 6) + 42;
+            const size = Math.floor(Math.random() * 5) + 28;
             bubble.style.width = `${size}px`;
             bubble.style.height = `${size}px`;
-            bubble.style.fontSize = `${Math.floor(size * 0.45)}px`;
+            bubble.style.fontSize = `${Math.floor(size * 0.43)}px`;
 
             const xOffset = Math.random() * (window.innerWidth - size);
             const yOffset = window.innerHeight - size - (Math.random() * 15 + 10);
             bubble.style.left = `${xOffset}px`;
             bubble.style.top = `${yOffset}px`;
             bubble.style.zIndex = `${++bubbleZIndex}`;
-            bubble.style.animation = `bubble-fullscreen ${7.5 + Math.random() * 1.5}s ease-in-out forwards`;
+            const animationDuration = 14 + Math.random() * 4;
+            bubble.style.animation = `bubble-fullscreen ${animationDuration}s ease-in-out forwards`;
 
             makeBubbleDraggable(bubble);
             document.body.appendChild(bubble);
-            setTimeout(() => bubble.remove(), 19200);
+            setTimeout(() => bubble.remove(), (animationDuration * 1000) + 500);
         }
 
         function createBubbleBurst() {
-            const count = Math.floor(Math.random() * 2) + 2;
+            const count = Math.floor(Math.random() * 2) + 1;
             for (let i = 0; i < count; i += 1) {
-                setTimeout(() => createBubble(), Math.random() * 7220);
+                setTimeout(() => createBubble(), Math.random() * 14000);
             }
         }
 

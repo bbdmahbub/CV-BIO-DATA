@@ -780,7 +780,7 @@
                         items: [
                             {
                                 title: 'স্বেচ্ছাসেবামূলক কাজ',
-                                period: '৭ জুলাই ২০১৪ - ১২ ডিসেম্বর ২০১৫',
+                                period: '',
                                 items: [
                                     { text: 'সাবেক নির্বাচিত সিআর, ২বছর, ইসলামী বিশ্ববিদ্যালয়, কুষ্টিয়া।', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'ভিজিট' },
                                     { text: 'সাবেক পরিচালক, ব্যতিক্রম সাহিত্য সাংস্কৃতিক জোট, ইবি।', iconClass: 'fas fa-masks-theater', href: 'https://web.facebook.com/betikrom87', linkLabel: 'ভিজিট' },
@@ -818,7 +818,7 @@
                         blocks: [
                             { iconClass: 'fas fa-user', label: 'নাম', value: 'মো মাহবুবুর রহমান' },
                             { iconClass: 'fas fa-envelope', label: 'ইমেইল', value: 'bbdmahbub@gmail.com', href: 'mailto:bbdmahbub@gmail.com' },
-                            { iconClass: 'fab fa-whatsapp', label: 'হোয়াটসঅ্যাপ', value: '+০১৯১৭২৬৭৬০৭', href: 'https://wa.me/8801917267607' },
+                            { iconClass: 'fab fa-whatsapp', label: 'হোয়াটসঅ্যাপ', value: '+৮৮০১৯১৭২৬৭৬০৭', href: 'https://wa.me/8801917267607' },
                             { iconClass: 'fas fa-home', label: 'বর্তমান ঠিকানা', value: 'হাতিরঝিল, ঢাকা, বাংলাদেশ' },
                             { iconClass: 'fas fa-map-marker-alt', label: 'স্থায়ী ঠিকানা', value: 'উত্তর সুতালড়ী, জোমাদ্দারপাড়া, মোরেলগঞ্জ, বাগেরহাট', mapHref: permanentAddressMapHref }
                         ]
@@ -977,6 +977,8 @@
             const hasShownLanguageRowHintRef = React.useRef(false);
             const languageRowHideTimeoutRef = React.useRef(null);
             const lastVoiceVerificationTouchRef = React.useRef(0);
+            const isEnteringBiodataRef = React.useRef(false);
+            const isBismillahSuccessInProgressRef = React.useRef(false);
 
             const detailGroups = {
                 personal: copy.personalDetails,
@@ -1395,6 +1397,9 @@
             };
 
             const handleEnterBiodata = () => {
+                if (isEnteringBiodataRef.current) return;
+
+                isEnteringBiodataRef.current = true;
                 clearSpeechRecognition();
                 voiceMatchedRef.current = true;
                 voiceStopReasonRef.current = 'matched';
@@ -1533,9 +1538,8 @@
                         voiceMatchedRef.current = true;
                         voiceStopReasonRef.current = 'matched';
                         setVoicePrompt(voiceCopy.detected(transcript.trim()));
-                        window.setTimeout(() => {
-                            handleEnterBiodata();
-                        }, 320);
+                        clearSpeechRecognition();
+                        completeBismillahPuzzle();
                         return;
                     }
 
@@ -1602,35 +1606,55 @@
 
             const playBismillahSound = () => {
                 if (typeof window === 'undefined' || typeof window.Audio !== 'function') {
-                    return;
+                    return Promise.resolve();
                 }
 
-                try {
-                    const audio = new window.Audio(bismillahToneSrc);
-                    audio.volume = 1;
-                    audio.currentTime = 0;
-                    const playPromise = audio.play();
+                return new Promise((resolve) => {
+                    try {
+                        const audio = new window.Audio(bismillahToneSrc);
+                        let hasResolved = false;
+                        const fallbackTimer = window.setTimeout(finish, 6500);
 
-                    if (playPromise && typeof playPromise.catch === 'function') {
-                        playPromise.catch(() => {
-                            // Keep the puzzle flow working when browser audio playback is blocked.
-                        });
+                        function finish() {
+                            if (hasResolved) return;
+
+                            hasResolved = true;
+                            window.clearTimeout(fallbackTimer);
+                            audio.removeEventListener('ended', finish);
+                            audio.removeEventListener('error', finish);
+                            resolve();
+                        }
+
+                        audio.volume = 1;
+                        audio.currentTime = 0;
+                        audio.addEventListener('ended', finish, { once: true });
+                        audio.addEventListener('error', finish, { once: true });
+
+                        const playPromise = audio.play();
+
+                        if (playPromise && typeof playPromise.catch === 'function') {
+                            playPromise.catch(() => {
+                                // Keep the puzzle flow working when browser audio playback is blocked.
+                                finish();
+                            });
+                        }
+                    } catch (error) {
+                        // Keep the puzzle flow working when audio playback is unavailable.
+                        resolve();
                     }
-                } catch (error) {
-                    // Keep the puzzle flow working when audio playback is unavailable.
-                }
+                });
             };
 
             const completeBismillahPuzzle = () => {
-                if (isPuzzleSolved) return;
+                if (isPuzzleSolved || isBismillahSuccessInProgressRef.current) return;
 
+                isBismillahSuccessInProgressRef.current = true;
                 setIsPuzzleSolved(true);
                 setVoiceUiState('idle');
                 setVoicePrompt(activePuzzleSet.success);
-                playBismillahSound();
-                window.setTimeout(() => {
+                playBismillahSound().then(() => {
                     handleEnterBiodata();
-                }, 1200);
+                });
             };
 
             const handlePuzzlePieceSelect = (pieceIndex) => {
@@ -1901,9 +1925,7 @@
 
                     <div className="header-banner section-anchor" id="profile-top">
                         <h1 className="profile-name">
-                            <span className="profile-name-icon" aria-hidden="true">{iconHeartSparkle}</span>
                             <span className="profile-name-text">{copy.profile.name}</span>
-                            <span className="profile-name-icon" aria-hidden="true">{iconHeartSparkle}</span>
                         </h1>
                         <div className="subtitle">{copy.profile.subtitle}</div>
                     </div>
@@ -1975,7 +1997,7 @@
                                                     </span>
                                                     <div className="work-title">{title}</div>
                                                 </div>
-                                                <span className="badge work-duration">{duration}</span>
+                                                {duration ? <span className="badge work-duration">{duration}</span> : null}
                                             </div>
                                             <div className="work-org">{organization}</div>
                                         </div>
@@ -2357,7 +2379,7 @@
                         </div>
                     </div>
 
-                    <div style={{textAlign: 'center', margin: '40px 0', color: '#0d7377', fontSize: '18px', fontWeight: '600'}}>
+                    <div className="profile-tagline-note">
                         {iconHeartSparkle} {iconMosque} {copy.profile.tagline} {iconMosque} {iconHeartSparkle}
                     </div>
                     
