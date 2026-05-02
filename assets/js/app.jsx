@@ -728,7 +728,7 @@
                     },
                     workSection: {
                         items: [
-                            { title: 'প্রকিউরমেন্ট ও সার্ভিসিং লিড', organization: 'আর্থফেস আইটি, ঢাকা', duration: '২৭ নভেম্বর ২০২১ - বর্তমান', iconClass: 'fas fa-briefcase' },
+                            { title: 'প্রকিউরমেন্ট অ্যান্ড সার্ভিসিং লিড', organization: 'আর্থফেস আইটি, ঢাকা', duration: '২৭ নভেম্বর ২০২১ - বর্তমান', iconClass: 'fas fa-briefcase' },
                             { title: 'আইটি সাপোর্ট অ্যাসিস্ট্যান্ট (খণ্ডকালীন)', organization: 'আরবি ভাষা ও সাহিত্য বিভাগ, ইসলামী বিশ্ববিদ্যালয়, কুষ্টিয়া', duration: '২৩ মার্চ ২০১৭ - ২০ অক্টোবর ২০২১', iconClass: 'fas fa-headset' },
                             { title: 'আইটি এক্সিকিউটিভ (খণ্ডকালীন)', organization: 'খন্দকার টেলিকম, টঙ্গি, গাজীপুর।', duration: '৭ জুলাই ২০১৪ - ১২ ডিসেম্বর ২০১৫', iconClass: 'fas fa-desktop' }
                         ]
