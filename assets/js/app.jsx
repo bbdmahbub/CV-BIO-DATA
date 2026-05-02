@@ -1625,7 +1625,7 @@
                             resolve();
                         }
 
-                        audio.volume = 1;
+                        audio.volume = 0.2;
                         audio.currentTime = 0;
                         audio.addEventListener('ended', finish, { once: true });
                         audio.addEventListener('error', finish, { once: true });
