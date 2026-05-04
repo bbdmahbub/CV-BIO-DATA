@@ -1383,6 +1383,11 @@
             line-height: 1;
             font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
         }
+
+        .section-header i.section-icon {
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+        }
         
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
@@ -1735,6 +1740,8 @@
         .sibling-label {
             align-items: center;
             gap: 8px;
+            grid-column: 1;
+            grid-row: 1;
         }
 
         .sibling-status {
@@ -1746,6 +1753,8 @@
         }
 
         .sibling-status-cell {
+            grid-column: 2;
+            grid-row: 1;
             justify-self: end;
             align-self: start;
         }

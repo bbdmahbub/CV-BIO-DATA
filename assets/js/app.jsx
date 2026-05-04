@@ -10,6 +10,7 @@
             const iconKaaba = String.fromCodePoint(0x1F54B);
             const iconPrayerHands = String.fromCodePoint(0x1F932);
             const iconMapPin = String.fromCodePoint(0x1F4CD);
+            const iconIslamicBride = String.fromCodePoint(0x1F9D5);
             const dividerOrnament = '\u2726 \u25C6 \u2726';
             const popupBismillah = '\u0628\u0633\u0645\u0020\u0627\u0644\u0644\u0647\u0020\u0627\u0644\u0631\u062D\u0645\u0646\u0020\u0627\u0644\u0631\u062D\u064A\u0645';
             const popupDarud = '\u0627\u0644\u0644\u0647\u0645\u0020\u0635\u0644\u0020\u0648\u0633\u0644\u0645\u0020\u0639\u0644\u0649\u0020\u0633\u064A\u062F\u0646\u0627\u0020\u0645\u062D\u0645\u062F\u0020\ufdfa';
@@ -2054,7 +2055,7 @@
 
                     <div className="card section-anchor" id="lifestyle-section">
                         <div className="section-header">
-                            <i className="fas fa-seedling section-icon" aria-hidden="true"></i>
+                            <span className="section-icon"><i className="fas fa-seedling" aria-hidden="true"></i></span>
                             {copy.lifestyle.title}
                         </div>
                         <div className="card-content">
@@ -2247,7 +2248,7 @@
 
                     <div className="card section-anchor" id="hobbies-section">
                         <div className="section-header">
-                            <i className="fas fa-heart section-icon" aria-hidden="true"></i>
+                            <span className="section-icon"><i className="fas fa-heart" aria-hidden="true"></i></span>
                             {copy.hobbies.title}
                         </div>
                         <div className="card-content">
@@ -2266,7 +2267,7 @@
 
                     <div className="card section-anchor" id="expectation-section">
                         <div className="section-header">
-                            <span className="section-icon"><i className="fas fa-ring" aria-hidden="true"></i></span>
+                            <span className="section-icon">{iconIslamicBride}</span>
                             {copy.expectation.title}
                         </div>
                         <div className="card-content">
