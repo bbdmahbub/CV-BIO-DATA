@@ -581,4 +581,7 @@
             window.addEventListener('load', updateMenuOffset, { once: true });
 
             window.addEventListener('bbdMahbub:enter-biodata', startBiodataExperience, { once: true });
+            if (document.body.classList.contains('has-entered-biodata')) {
+                startBiodataExperience();
+            }
         });

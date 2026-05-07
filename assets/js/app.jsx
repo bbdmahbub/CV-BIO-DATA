@@ -76,6 +76,7 @@
             };
             const permanentAddressMapHref = 'https://maps.app.goo.gl/hvcHqxMvhF9cGFbM6';
             const bismillahToneSrc = 'assets/tone/Bismillah.mp3';
+            const bismillahIntroSeenStorageKey = 'bbdMahbubBismillahIntroSeen';
             const voiceVerificationStorageKey = 'bbdMahbubVoiceVerifiedAt';
             const voiceVerificationGracePeriodMs = 30 * 60 * 1000;
             const languageOptions = [
@@ -844,6 +845,20 @@
                     // Ignore storage failures and keep the access flow working.
                 }
             };
+            const markBismillahIntroSeen = () => {
+                try {
+                    window.localStorage.setItem(bismillahIntroSeenStorageKey, 'true');
+                } catch (error) {
+                    // Ignore storage failures and keep the access flow working.
+                }
+            };
+            const hasSeenBismillahIntro = () => {
+                try {
+                    return window.localStorage.getItem(bismillahIntroSeenStorageKey) === 'true';
+                } catch (error) {
+                    return false;
+                }
+            };
             const hasRecentVoiceVerification = () => {
                 try {
                     const storedValue = window.localStorage.getItem(voiceVerificationStorageKey);
@@ -951,7 +966,8 @@
                 const hashId = window.location.hash.replace('#', '');
                 return menuItems.some(([id]) => id === hashId) ? hashId : menuItems[0][0];
             });
-            const [isIntroPopupOpen, setIsIntroPopupOpen] = React.useState(() => !hasRecentVoiceVerification());
+            const [isIntroPopupOpen, setIsIntroPopupOpen] = React.useState(false);
+            const [isBismillahLoadingOpen, setIsBismillahLoadingOpen] = React.useState(() => !hasSeenBismillahIntro());
             const [isVoiceListening, setIsVoiceListening] = React.useState(false);
             const [voiceUiState, setVoiceUiState] = React.useState('idle');
             const [voicePrompt, setVoicePrompt] = React.useState(introVoiceHint);
@@ -980,6 +996,7 @@
             const lastVoiceVerificationTouchRef = React.useRef(0);
             const isEnteringBiodataRef = React.useRef(false);
             const isBismillahSuccessInProgressRef = React.useRef(false);
+            const isBismillahLoadingClickInProgressRef = React.useRef(false);
 
             const detailGroups = {
                 personal: copy.personalDetails,
@@ -1114,6 +1131,7 @@
             React.useEffect(() => {
                 if (hasBootstrappedSavedVerificationRef.current) return;
                 if (isIntroPopupOpen) return;
+                if (isBismillahLoadingOpen) return;
 
                 hasBootstrappedSavedVerificationRef.current = true;
 
@@ -1121,7 +1139,7 @@
                     document.body.classList.add('has-entered-biodata');
                     window.dispatchEvent(new Event('bbdMahbub:enter-biodata'));
                 }
-            }, [isIntroPopupOpen]);
+            }, [isIntroPopupOpen, isBismillahLoadingOpen]);
 
             React.useEffect(() => {
                 if (isIntroPopupOpen) return undefined;
@@ -1363,12 +1381,12 @@
             }, [isMenuDragging]);
 
             React.useEffect(() => {
-                document.body.classList.toggle('is-popup-open', isIntroPopupOpen);
+                document.body.classList.toggle('is-popup-open', isIntroPopupOpen || isBismillahLoadingOpen);
 
                 return () => {
                     document.body.classList.remove('is-popup-open');
                 };
-            }, [isIntroPopupOpen]);
+            }, [isIntroPopupOpen, isBismillahLoadingOpen]);
 
             React.useEffect(() => () => {
                 clearSpeechRecognition();
@@ -1407,6 +1425,7 @@
                 setIsVoiceListening(false);
                 setVoiceUiState('idle');
                 lastVoiceVerificationTouchRef.current = Date.now();
+                markBismillahIntroSeen();
                 touchVoiceVerificationTimestamp();
                 document.body.classList.add('has-entered-biodata');
                 setIsIntroPopupOpen(false);
@@ -1607,7 +1626,7 @@
 
             const playBismillahSound = () => {
                 if (typeof window === 'undefined' || typeof window.Audio !== 'function') {
-                    return Promise.resolve();
+                    return Promise.resolve(false);
                 }
 
                 return new Promise((resolve) => {
@@ -1623,10 +1642,10 @@
                             window.clearTimeout(fallbackTimer);
                             audio.removeEventListener('ended', finish);
                             audio.removeEventListener('error', finish);
-                            resolve();
+                            resolve(true);
                         }
 
-                        audio.volume = 0.2;
+                        audio.volume = 0.3;
                         audio.currentTime = 0;
                         audio.addEventListener('ended', finish, { once: true });
                         audio.addEventListener('error', finish, { once: true });
@@ -1635,13 +1654,17 @@
 
                         if (playPromise && typeof playPromise.catch === 'function') {
                             playPromise.catch(() => {
-                                // Keep the puzzle flow working when browser audio playback is blocked.
-                                finish();
+                                if (hasResolved) return;
+
+                                hasResolved = true;
+                                window.clearTimeout(fallbackTimer);
+                                audio.removeEventListener('ended', finish);
+                                audio.removeEventListener('error', finish);
+                                resolve(false);
                             });
                         }
                     } catch (error) {
-                        // Keep the puzzle flow working when audio playback is unavailable.
-                        resolve();
+                        resolve(false);
                     }
                 });
             };
@@ -1657,6 +1680,17 @@
                 successSound.then(() => {
                     handleEnterBiodata();
                 });
+            };
+
+            const handleBismillahLanguageOpen = (nextLanguage) => {
+                if (!isBismillahLoadingOpen) return;
+                if (isBismillahLoadingClickInProgressRef.current) return;
+
+                isBismillahLoadingClickInProgressRef.current = true;
+                setLanguage(nextLanguage);
+                setIsLanguageRowCollapsed(true);
+                handleEnterBiodata();
+                setIsBismillahLoadingOpen(false);
             };
 
             const handlePuzzlePieceSelect = (pieceIndex) => {
@@ -1778,6 +1812,40 @@
 
             return (
                 <div className={`app-shell language-${language}${isRtl ? ' is-rtl' : ''}`}>
+                    {isBismillahLoadingOpen ? (
+                        <div
+                            className="bismillah-loading-popup"
+                            role="status"
+                            aria-live="polite"
+                        >
+                            <div className="bismillah-loading-panel" dir="rtl">
+                                <div className="bismillah-loading-mark" data-text={popupBismillah}>{popupBismillah}</div>
+                                <div className="bismillah-loading-language-row" dir="ltr">
+                                    <button
+                                        type="button"
+                                        className="bismillah-loading-start is-bn"
+                                        onClick={() => handleBismillahLanguageOpen('bn')}
+                                    >
+                                        বাংলা
+                                    </button>
+                                    <button
+                                        type="button"
+                                        className="bismillah-loading-start is-en"
+                                        onClick={() => handleBismillahLanguageOpen('en')}
+                                    >
+                                        English
+                                    </button>
+                                    <button
+                                        type="button"
+                                        className="bismillah-loading-start is-ar"
+                                        onClick={() => handleBismillahLanguageOpen('ar')}
+                                    >
+                                        العربية
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    ) : null}
                     {isIntroPopupOpen ? (
                         <div
                             className="intro-popup"
@@ -2334,7 +2402,7 @@
                         <div className="card-content final-dua">
                             <div className="dua-entry">
                                 <div className="dua-block">
-                                    <div className="dua-arabic">
+                                    <div className="dua-arabic dua-arabic-green">
                                         {duaArabicLines[0]}
                                     </div>
                                 </div>
