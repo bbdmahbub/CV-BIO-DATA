@@ -1206,6 +1206,11 @@
             margin-bottom: 8px;
         }
 
+        .top-menu-language-slot {
+            display: block;
+            overflow: visible;
+        }
+
         .top-menu-language-row {
             width: 100%;
             display: flex;
@@ -1861,6 +1866,15 @@
             line-height: 1.8;
             text-align: left;
             white-space: normal;
+        }
+
+        .dua-reference {
+            color: #b9821f;
+            font-family: var(--font-arabic);
+            font-size: 0.98rem;
+            font-weight: 700;
+            line-height: 1.7;
+            text-align: left;
         }
 
         .dua-closing {
@@ -4574,9 +4588,16 @@
         }
 
         .section-header .section-icon,
-        .section-header i.section-icon {
-            color: #ffd875;
-            text-shadow: 0 1px 1px rgba(4, 61, 47, 0.42);
+        .section-header .section-icon i,
+        .section-header i.section-icon,
+        #language-section .section-header::before,
+        #contact-section .section-header::before {
+            background: linear-gradient(135deg, #ffd875 0%, #f97316 34%, #ec4899 66%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 1px 1px rgba(4, 61, 47, 0.34));
+            text-shadow: none;
         }
 
         .top-menu-link,
@@ -4651,6 +4672,7 @@
         }
 
         .dua-english,
+        .dua-reference,
         .detail-value,
         .activity-point-text,
         .expectation-item-text,

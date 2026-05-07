@@ -578,6 +578,7 @@
                 updateMenuOffset();
                 updateMusicPanelState();
             });
+            window.addEventListener('bbdMahbub:menu-resize', updateMenuOffset);
             window.addEventListener('load', updateMenuOffset, { once: true });
 
             window.addEventListener('bbdMahbub:enter-biodata', startBiodataExperience, { once: true });

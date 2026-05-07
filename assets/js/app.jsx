@@ -77,6 +77,7 @@
             const permanentAddressMapHref = 'https://maps.app.goo.gl/hvcHqxMvhF9cGFbM6';
             const bismillahToneSrc = 'assets/tone/Bismillah.mp3';
             const bismillahIntroSeenStorageKey = 'bbdMahbubBismillahIntroSeen';
+            const activeSectionStorageKey = 'bbdMahbubActiveSection';
             const voiceVerificationStorageKey = 'bbdMahbubVoiceVerifiedAt';
             const voiceVerificationGracePeriodMs = 30 * 60 * 1000;
             const languageOptions = [
@@ -332,6 +333,11 @@
                             '"Ya Rabb (Allah)! Bestow upon me one of the righteous."',
                             '"Our Rabb (Allah), grant us from Yourself mercy and prepare for us from our affair right guidance."'
                         ],
+                        references: [
+                            'Surah Al-Furqan, Ayah 74',
+                            'Surah As-Saffat, Ayah 100',
+                            'Surah Al-Kahf, Ayah 10'
+                        ],
                         closing: 'Ameen ya Rabbal Alameen.'
                     }
                 },
@@ -581,6 +587,11 @@
                             'ربنا هب لنا من أزواجنا وذرياتنا قرة أعين واجعلنا للمتقين إماماً.',
                             'يا رب هب لي من الصالحين.',
                             'ربنا آتنا من لدنك رحمة وهيئ لنا من أمرنا رشداً.'
+                        ],
+                        references: [
+                            'سورة الفرقان، آية ٧٤',
+                            'سورة الصافات، آية ١٠٠',
+                            'سورة الكهف، آية ١٠'
                         ],
                         closing: 'آمين يا رب العالمين.'
                     }
@@ -832,6 +843,11 @@
                             'হে রব, আমাকে নেককারদের একজন দান করুন।',
                             'হে আমাদের রব, আপনি আমাদেরকে আপনার পক্ষ থেকে রহমত দিন এবং আমাদের কাজের জন্য সঠিক পথ নির্ধারণ করে দিন।'
                         ],
+                        references: [
+                            'সূরা আল-ফুরকান : আয়াত - ৭৪',
+                            'সূরা আস-সাফফাত : আয়াত - ১০০',
+                            'সূরা কাহফ্ : আয়াত - ১০'
+                        ],
                         closing: 'আমীন ইয়া রব্বাল আলামিন।'
                     }
                 }
@@ -961,10 +977,23 @@
                 ['contact-section', copy.menu.contact],
                 ['dua-section', copy.menu.dua]
             ];
+            const isKnownSectionId = (sectionId) => menuItems.some(([id]) => id === sectionId);
+            const getSavedActiveSection = () => {
+                const hashId = window.location.hash.replace('#', '');
+                if (isKnownSectionId(hashId)) return hashId;
+
+                try {
+                    const storedSection = window.localStorage.getItem(activeSectionStorageKey);
+                    if (isKnownSectionId(storedSection)) return storedSection;
+                } catch (error) {
+                    // Ignore storage failures and start from the top section.
+                }
+
+                return menuItems[0][0];
+            };
 
             const [activeSection, setActiveSection] = React.useState(() => {
-                const hashId = window.location.hash.replace('#', '');
-                return menuItems.some(([id]) => id === hashId) ? hashId : menuItems[0][0];
+                return getSavedActiveSection();
             });
             const [isIntroPopupOpen, setIsIntroPopupOpen] = React.useState(false);
             const [isBismillahLoadingOpen, setIsBismillahLoadingOpen] = React.useState(() => !hasSeenBismillahIntro());
@@ -992,6 +1021,7 @@
             const menuClickResetTimeoutRef = React.useRef(null);
             const hasBootstrappedSavedVerificationRef = React.useRef(false);
             const hasShownLanguageRowHintRef = React.useRef(false);
+            const hasRestoredActiveSectionRef = React.useRef(false);
             const languageRowHideTimeoutRef = React.useRef(null);
             const lastVoiceVerificationTouchRef = React.useRef(0);
             const isEnteringBiodataRef = React.useRef(false);
@@ -1017,6 +1047,18 @@
             const contactBlocks = copy.contact.blocks;
             const permanentAddressValue = copy.contact.permanentAddressValue;
             const showDuaMeanings = language !== 'ar';
+            const renderDuaSupportText = (index) => {
+                const supportText = showDuaMeanings ? copy.dua.meanings[index] : copy.dua.references[index];
+                const supportClassName = showDuaMeanings ? 'dua-english' : 'dua-reference';
+
+                return (
+                    <div className="dua-block">
+                        <div className={supportClassName}>
+                            {supportText}
+                        </div>
+                    </div>
+                );
+            };
             const voiceCopy = copy.voice;
             const activePuzzleSet = bismillahPuzzleSets[language] || bismillahPuzzleSets.en;
             const voicePuzzleSeparatorText = language === 'bn' ? 'অথবা' : language === 'ar' ? 'أو' : 'OR';
@@ -1119,6 +1161,32 @@
                 hasCenteredMenuRef.current = true;
             }, [activeSection, language]);
 
+            React.useEffect(() => {
+                if (isIntroPopupOpen || isBismillahLoadingOpen) return;
+                if (hasRestoredActiveSectionRef.current) return;
+
+                window.requestAnimationFrame(() => {
+                    const target = document.getElementById(activeSection);
+                    hasRestoredActiveSectionRef.current = true;
+                    if (!target) return;
+
+                    target.scrollIntoView({
+                        behavior: 'auto',
+                        block: 'start'
+                    });
+                });
+            }, [activeSection, isIntroPopupOpen, isBismillahLoadingOpen]);
+
+            React.useEffect(() => {
+                if (!hasRestoredActiveSectionRef.current) return;
+
+                try {
+                    window.localStorage.setItem(activeSectionStorageKey, activeSection);
+                } catch (error) {
+                    // Ignore storage failures; section tracking remains in-memory.
+                }
+            }, [activeSection]);
+
             React.useEffect(() => () => {
                 if (menuClickResetTimeoutRef.current) {
                     window.clearTimeout(menuClickResetTimeoutRef.current);
@@ -1211,9 +1279,46 @@
             }, [language]);
 
             React.useEffect(() => {
+                const syncMenuLayout = () => {
+                    const menu = document.querySelector('.top-menu');
+                    if (menu) {
+                        const stickyTop = parseFloat(window.getComputedStyle(menu).top) || 0;
+                        document.documentElement.style.setProperty('--menu-offset', `${menu.offsetHeight + stickyTop}px`);
+                    }
+
+                    window.dispatchEvent(new Event('bbdMahbub:menu-resize'));
+
+                    if (isIntroPopupOpen || isBismillahLoadingOpen) return;
+                    if (!hasRestoredActiveSectionRef.current) return;
+
+                    const target = document.getElementById(activeSection);
+                    if (!target) return;
+
+                    target.scrollIntoView({
+                        behavior: 'auto',
+                        block: 'start'
+                    });
+                };
+
+                window.requestAnimationFrame(syncMenuLayout);
+                const midResizeTimer = window.setTimeout(syncMenuLayout, 80);
+                const finalResizeTimer = window.setTimeout(syncMenuLayout, 280);
+
+                return () => {
+                    window.clearTimeout(midResizeTimer);
+                    window.clearTimeout(finalResizeTimer);
+                };
+            }, [isBismillahLoadingOpen, isIntroPopupOpen, isLanguageRowCollapsed, language]);
+
+            React.useEffect(() => {
                 let ticking = false;
 
                 const updateActiveSection = () => {
+                    if (!hasRestoredActiveSectionRef.current) {
+                        ticking = false;
+                        return;
+                    }
+
                     const menu = document.querySelector('.top-menu');
                     const menuHeight = menu ? menu.getBoundingClientRect().height : 0;
                     const menuTop = menu ? (parseFloat(window.getComputedStyle(menu).top) || 0) : 0;
@@ -1744,6 +1849,7 @@
                 const target = document.getElementById(id);
                 if (!target) return;
 
+                hasRestoredActiveSectionRef.current = true;
                 setActiveSection(id);
                 centerMenuLink(id);
 
@@ -1967,7 +2073,7 @@
                     ) : null}
                     <div className="container">
                     <nav className="top-menu" aria-label={copy.navigation.sectionsAria}>
-                        <div className="top-menu-language-row">
+                        <div className="top-menu-language-slot">
                             {renderLanguageMenu('top-menu-language-row')}
                         </div>
                         <div className="top-menu-head">
@@ -2335,7 +2441,7 @@
 
                     <div className="card section-anchor" id="expectation-section">
                         <div className="section-header">
-                            <span className="section-icon">{iconIslamicBride}</span>
+                            <span className="section-icon"><i className="fas fa-heart-circle-check" aria-hidden="true"></i></span>
                             {copy.expectation.title}
                         </div>
                         <div className="card-content">
@@ -2396,7 +2502,7 @@
 
                     <div className="card section-anchor" id="dua-section">
                         <div className="section-header">
-                            <span className="section-icon">{iconKaaba}</span>
+                            <span className="section-icon"><i className="fas fa-mosque" aria-hidden="true"></i></span>
                             {copy.dua.title}
                         </div>
                         <div className="card-content final-dua">
@@ -2406,13 +2512,7 @@
                                         {duaArabicLines[0]}
                                     </div>
                                 </div>
-                                {showDuaMeanings ? (
-                                    <div className="dua-block">
-                                        <div className="dua-english">
-                                            {copy.dua.meanings[0]}
-                                        </div>
-                                    </div>
-                                ) : null}
+                                {renderDuaSupportText(0)}
                             </div>
                             <div className="dua-entry">
                                 <div className="dua-block">
@@ -2420,13 +2520,7 @@
                                         {duaArabicLines[1]}
                                     </div>
                                 </div>
-                                {showDuaMeanings ? (
-                                    <div className="dua-block">
-                                        <div className="dua-english">
-                                            {copy.dua.meanings[1]}
-                                        </div>
-                                    </div>
-                                ) : null}
+                                {renderDuaSupportText(1)}
                             </div>
                             <div className="dua-entry">
                                 <div className="dua-block">
@@ -2434,13 +2528,7 @@
                                         {duaArabicLines[2]}
                                     </div>
                                 </div>
-                                {showDuaMeanings ? (
-                                    <div className="dua-block">
-                                        <div className="dua-english">
-                                            {copy.dua.meanings[2]}
-                                        </div>
-                                    </div>
-                                ) : null}
+                                {renderDuaSupportText(2)}
                             </div>
                             <div className="dua-closing">
                                 <span className="dua-closing-icon" aria-hidden="true">{iconPrayerHands}</span>
