@@ -963,6 +963,7 @@
 
             const menuItems = [
                 ['profile-top', copy.menu.profile],
+                ['gallery-section', copy.menu.gallery],
                 ['personal-section', copy.menu.personal],
                 ['work-section', copy.menu.work],
                 ['language-section', copy.menu.language],
@@ -2093,6 +2094,38 @@
                             <div className="stat-box">
                                 <div className="stat-value">{iconMosque}</div>
                                 <div className="stat-label">{copy.profile.stats.faith}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="card section-anchor" id="gallery-section">
+                        <div className="section-header">
+                            <span className="section-icon"><i className="fas fa-images" aria-hidden="true"></i></span>
+                            {copy.gallery.title}
+                        </div>
+                        <div className="card-content">
+                            <div className="photo-gallery-grid">
+                                {copy.gallery.photos.map(({ src, alt, label, featured }, idx) => (
+                                    <figure
+                                        className={`photo-frame${featured ? ' photo-frame-featured' : ''}`}
+                                        key={`${src}-${idx}`}
+                                    >
+                                        <div className="photo-frame-inner">
+                                            <img
+                                                className="photo-gallery-image"
+                                                src={src}
+                                                alt={alt}
+                                                loading={featured ? 'eager' : 'lazy'}
+                                            />
+                                            <figcaption className="photo-gallery-caption">
+                                                <span className="photo-gallery-caption-icon">
+                                                    <i className="fas fa-camera" aria-hidden="true"></i>
+                                                </span>
+                                                {label}
+                                            </figcaption>
+                                        </div>
+                                    </figure>
+                                ))}
                             </div>
                         </div>
                     </div>
