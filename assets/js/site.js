@@ -99,6 +99,7 @@
         let scrollTickAudioContext = null;
         let lastScrollTickAt = 0;
         let lastScrollTickY = window.scrollY || 0;
+        const arabicIndicDigits = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
 
         function getInitialLanguage() {
             try {
@@ -122,7 +123,7 @@
 
         function formatLocalizedPercent(value) {
             if (currentLanguage === 'ar') {
-                return new Intl.NumberFormat('ar').format(value);
+                return String(value).replace(/\d/g, (digit) => arabicIndicDigits[Number(digit)]);
             }
 
             if (currentLanguage === 'bn') {

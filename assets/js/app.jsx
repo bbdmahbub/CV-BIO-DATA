@@ -90,8 +90,8 @@
                     locale: 'en',
                     dir: 'ltr',
                     meta: {
-                        title: 'Marriage Biodata - Md. Mahbubur Rahman',
-                        description: 'Marriage biodata of Md. Mahbubur Rahman with personal, family, education, work, and contact details.'
+                        title: 'CV - Md. Mahbubur Rahman',
+                        description: 'CV of Md. Mahbubur Rahman with personal, education, work, training, activities, and contact details.'
                     },
                     navigation: {
                         // quickJump: 'Quick Jump',
@@ -120,10 +120,10 @@
                     },
                     voice: {
                         tapToStart: 'Tap the mic once to start Bismillah voice verification.',
-                        browserNoSupport: 'This browser does not include live speech recognition. Use Continue below to open the biodata.',
+                        browserNoSupport: 'This browser does not include live speech recognition. Use Continue below to open the CV.',
                         starting: 'Starting microphone. If your browser asks, tap Allow microphone permission.',
                         listening: 'Microphone is active. Say "Bismillah" once and wait for verification.',
-                        detected: (transcript) => `Detected: "${transcript}". Opening biodata...`,
+                        detected: (transcript) => `Detected: "${transcript}". Opening CV...`,
                         heard: (transcript) => `Heard: "${transcript}". Tap the mic and say "Bismillah" again.`,
                         errors: {
                             'not-allowed': 'Microphone access was blocked. Please allow microphone permission and try again.',
@@ -166,7 +166,7 @@
                     profile: {
                         name: 'Md Mahbubur Rahman',
                         subtitle: 'IT Professional',
-                        tagline: 'A faithful Muslim seeking a responsible, caring, and pious life partner',
+                        tagline: 'IT professional focused on reliable systems, practical support, and continuous learning',
                         stats: {
                             age: 'YEARS OLD',
                             education: 'HIGHLY EDUCATED',
@@ -345,8 +345,8 @@
                     locale: 'ar',
                     dir: 'rtl',
                     meta: {
-                        title: 'السيرة الزوجية - محمد محبوب الرحمن',
-                        description: 'السيرة الزوجية لـ محمد محبوب الرحمن وتشمل المعلومات الشخصية والأسرية والتعليمية والمهنية ووسائل التواصل.'
+                        title: 'السيرة الذاتية - محمد محبوب الرحمن',
+                        description: 'السيرة الذاتية لـ محمد محبوب الرحمن وتشمل المعلومات الشخصية والتعليمية والمهنية والتدريبية والأنشطة ووسائل التواصل.'
                     },
                     navigation: {
                         // quickJump: 'انتقال سريع'
@@ -375,10 +375,10 @@
                     },
                     voice: {
                         tapToStart: 'اضغط على الميكروفون مرة واحدة لبدء التحقق الصوتي بقول بسم الله.',
-                        browserNoSupport: 'هذا المتصفح لا يدعم التعرف الصوتي المباشر. استخدم زر المتابعة أدناه لفتح السيرة.',
+                        browserNoSupport: 'هذا المتصفح لا يدعم التعرف الصوتي المباشر. استخدم زر المتابعة أدناه لفتح السيرة الذاتية.',
                         starting: 'يتم تشغيل الميكروفون الآن. إذا ظهرت نافذة من المتصفح فاضغط سماح.',
                         listening: 'الميكروفون يعمل الآن. قل "بسم الله" مرة واحدة وانتظر التحقق.',
-                        detected: (transcript) => `تم التقاط: "${transcript}". يتم فتح السيرة الآن...`,
+                        detected: (transcript) => `تم التقاط: "${transcript}". يتم فتح السيرة الذاتية الآن...`,
                         heard: (transcript) => `تم سماع: "${transcript}". اضغط على الميكروفون وقل "بسم الله" مرة أخرى.`,
                         errors: {
                             'not-allowed': 'تم حظر الوصول إلى الميكروفون. يرجى السماح بالإذن ثم حاول مرة أخرى.',
@@ -421,7 +421,7 @@
                     profile: {
                         name: 'محمد محبوب الرحمن',
                         subtitle: 'محترف تقنية معلومات',
-                        tagline: 'مسلم ملتزم يبحث عن شريكة حياة مسؤولة وحنونة وصالحة',
+                        tagline: 'محترف تقنية معلومات يركز على الأنظمة الموثوقة والدعم العملي والتعلم المستمر',
                         stats: {
                             age: '28 عاماً',
                             education: 'تعليم عالٍ',
@@ -600,8 +600,8 @@
                     locale: 'bn',
                     dir: 'ltr',
                     meta: {
-                        title: 'বিয়ে বায়োডাটা - মো. মাহবুবুর রহমান',
-                        description: 'মো. মাহবুবুর রহমানের ব্যক্তিগত, পারিবারিক, শিক্ষাগত, পেশাগত ও যোগাযোগ তথ্যসহ বিয়ে বায়োডাটা।'
+                        title: 'সিভি - মো. মাহবুবুর রহমান',
+                        description: 'মো. মাহবুবুর রহমানের ব্যক্তিগত, শিক্ষাগত, পেশাগত, প্রশিক্ষণ, কার্যক্রম ও যোগাযোগ তথ্যসহ সিভি।'
                     },
                     navigation: {
                         // quickJump: 'দ্রুত নেভিগেশন',
@@ -630,10 +630,10 @@
                     },
                     voice: {
                         tapToStart: 'বিসমিল্লাহ ভয়েস যাচাই শুরু করতে একবার মাইকে চাপ দিন।',
-                        browserNoSupport: 'এই ব্রাউজারে লাইভ স্পিচ রিকগনিশন নেই। নিচের বোতাম ব্যবহার করে বায়োডাটা খুলুন।',
+                        browserNoSupport: 'এই ব্রাউজারে লাইভ স্পিচ রিকগনিশন নেই। নিচের বোতাম ব্যবহার করে সিভি খুলুন।',
                         starting: 'মাইক্রোফোন চালু হচ্ছে। ব্রাউজার যদি অনুমতি চায় তাহলে Allow চাপুন।',
                         listening: 'মাইক্রোফোন চালু আছে। একবার "বিসমিল্লাহ" বলুন এবং যাচাইয়ের জন্য অপেক্ষা করুন।',
-                        detected: (transcript) => `শোনা গেছে: "${transcript}"। বায়োডাটা খোলা হচ্ছে...`,
+                        detected: (transcript) => `শোনা গেছে: "${transcript}"। সিভি খোলা হচ্ছে...`,
                         heard: (transcript) => `শোনা গেছে: "${transcript}"। আবার মাইকে চাপ দিয়ে "বিসমিল্লাহ" বলুন।`,
                         errors: {
                             'not-allowed': 'মাইক্রোফোন ব্যবহারের অনুমতি ব্লক করা হয়েছে। অনুগ্রহ করে অনুমতি দিয়ে আবার চেষ্টা করুন।',
@@ -676,7 +676,7 @@
                     profile: {
                         name: 'মো. মাহবুবুর রহমান',
                         subtitle: 'তথ্যপ্রযুক্তি পেশাজীবী',
-                        tagline: 'একজন দ্বীনদার মুসলিম, দায়িত্বশীলা, মমতাময়ী ও পরহেজগার জীবনসঙ্গী খুঁজছেন',
+                        tagline: 'নির্ভরযোগ্য সিস্টেম, কার্যকর সহায়তা ও ধারাবাহিক শেখায় মনোযোগী তথ্যপ্রযুক্তি পেশাজীবী',
                         stats: {
                             age: '২৮ বছর',
                             education: 'উচ্চশিক্ষিত',
@@ -963,19 +963,14 @@
 
             const menuItems = [
                 ['profile-top', copy.menu.profile],
-                ['gallery-section', copy.menu.gallery],
                 ['personal-section', copy.menu.personal],
-                ['family-section', copy.menu.family],
                 ['work-section', copy.menu.work],
-                ['lifestyle-section', copy.menu.lifestyle],
                 ['language-section', copy.menu.language],
                 ['education-section', copy.menu.education],
                 ['training-section', copy.menu.training],
                 ['activities-section', copy.menu.activities],
                 ['hobbies-section', copy.menu.hobbies],
-                ['expectation-section', copy.menu.expectation],
-                ['contact-section', copy.menu.contact],
-                ['dua-section', copy.menu.dua]
+                ['contact-section', copy.menu.contact]
             ];
             const isKnownSectionId = (sectionId) => menuItems.some(([id]) => id === sectionId);
             const getSavedActiveSection = () => {
@@ -1029,36 +1024,21 @@
             const isBismillahLoadingClickInProgressRef = React.useRef(false);
 
             const detailGroups = {
-                personal: copy.personalDetails,
-                family: copy.familyDetails,
+                personal: copy.personalDetails.filter(({ iconClass }) => ![
+                    'fas fa-ring',
+                    'fas fa-palette',
+                    'fas fa-ruler-combined'
+                ].includes(iconClass)),
                 work: copy.workSection.items
             };
             const workData = copy.workSection.items;
-            const galleryPhotos = copy.gallery.photos;
             const languageData = copy.languages.items;
             const educationData = copy.education.items;
-            const familySiblings = copy.familySiblings;
-            const siblingStatusData = copy.siblingStatusData;
             const activityData = copy.activities.items;
             const hobbiesData = copy.hobbies.items;
-            const lifestyleData = copy.lifestyle.items;
             const trainingItems = copy.training.items;
-            const expectationItems = copy.expectation.items;
             const contactBlocks = copy.contact.blocks;
             const permanentAddressValue = copy.contact.permanentAddressValue;
-            const showDuaMeanings = language !== 'ar';
-            const renderDuaSupportText = (index) => {
-                const supportText = showDuaMeanings ? copy.dua.meanings[index] : copy.dua.references[index];
-                const supportClassName = showDuaMeanings ? 'dua-english' : 'dua-reference';
-
-                return (
-                    <div className="dua-block">
-                        <div className={supportClassName}>
-                            {supportText}
-                        </div>
-                    </div>
-                );
-            };
             const voiceCopy = copy.voice;
             const activePuzzleSet = bismillahPuzzleSets[language] || bismillahPuzzleSets.en;
             const voicePuzzleSeparatorText = language === 'bn' ? 'অথবা' : language === 'ar' ? 'أو' : 'OR';
@@ -1080,8 +1060,6 @@
                 'fas fa-lock',
                 'fas fa-lightbulb'
             ];
-            const familyDetailIconClass = 'fas fa-people-roof';
-            const siblingDetailIconClass = 'fas fa-user-group';
             const languageDetailIconClass = 'fas fa-language';
             const educationDetailIconClass = 'fas fa-graduation-cap';
             const activityDetailIconClass = 'fas fa-star';
@@ -2119,48 +2097,12 @@
                         </div>
                     </div>
 
-                    <div className="card section-anchor" id="gallery-section">
-                        <div className="section-header">
-                            <span className="section-icon"><i className="fas fa-images" aria-hidden="true"></i></span>
-                            {copy.gallery.title}
-                        </div>
-                        <div className="card-content">
-                            <div className="photo-gallery-grid">
-                                {galleryPhotos.map(({ src, alt, label, featured }) => (
-                                    <figure className={`photo-frame${featured ? ' photo-frame-featured' : ''}`} key={src}>
-                                        <div className="photo-frame-inner">
-                                            <img className="photo-gallery-image" src={src} alt={alt} loading="lazy" />
-                                        </div>
-                                        <figcaption className="photo-gallery-caption">
-                                            <span>{label}</span>
-                                            <span className="photo-gallery-caption-icon">{String.fromCodePoint(0x1F495)}</span>
-                                        </figcaption>
-                                    </figure>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
                     {Object.entries(detailGroups).map(([group, details]) => (
                         <div className="card section-anchor" id={`${group}-section`} key={group}>
                             <div className="section-header">
                                 <span className="section-icon">{sectionIcons[group]}</span>
                                 {copy.sectionHeaders[group]}
                             </div>
-                            {group === 'family' && (
-                                <div className="family-summary">
-                                    <div className="family-summary-label">
-                                        <i className="fas fa-shield-halved" aria-hidden="true"></i>
-                                        {copy.familySummary.label}
-                                    </div>
-                                    <div className="family-summary-title">{copy.familySummary.title}</div>
-                                    <div className="family-summary-tags">
-                                        {copy.familySummary.tags.map((tag) => (
-                                            <span className="family-summary-tag" key={tag}>{tag}</span>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
                             <div className="card-content">
                                 <div className="section-item-list">
                                 {group === 'work' ? (
@@ -2184,7 +2126,7 @@
                                         const label = isObjectDetail ? detail.label : detail[0];
                                         const value = isObjectDetail ? detail.value : detail[1];
                                         const iconClass = isObjectDetail ? detail.iconClass : null;
-                                        const resolvedIconClass = iconClass || (group === 'family' ? familyDetailIconClass : null);
+                                        const resolvedIconClass = iconClass || null;
 
                                         return (
                                         <div className="detail-row section-card-item" key={idx}>
@@ -2202,52 +2144,9 @@
                                     })
                                 )}
                                 </div>
-                                {group === 'family' && (
-                                    <>
-                                        <div className="subsection-title">{copy.familySiblingsTitle}</div>
-                                        <div className="section-item-list section-item-list-compact">
-                                        {familySiblings.map(([label, value], idx) => (
-                                            <div className="sub-detail-row section-card-item" key={idx}>
-                                                <div className="detail-label sibling-label">
-                                                    <span className="detail-label-icon">
-                                                        <i className={siblingDetailIconClass} aria-hidden="true"></i>
-                                                    </span>
-                                                    <span>{label}</span>
-                                                </div>
-                                                <div className="detail-value">{value}</div>
-                                                <div className={`badge sibling-status sibling-status-cell ${siblingStatusData[label]?.className || ''}`}>
-                                                    {siblingStatusData[label]?.text || ''}
-                                                </div>
-                                            </div>
-                                        ))}
-                                        </div>
-                                    </>
-                                )}
                             </div>
                         </div>
                     ))}
-
-                    <div className="card section-anchor" id="lifestyle-section">
-                        <div className="section-header">
-                            <span className="section-icon"><i className="fas fa-seedling" aria-hidden="true"></i></span>
-                            {copy.lifestyle.title}
-                        </div>
-                        <div className="card-content">
-                            <div className="section-item-list">
-                            {lifestyleData.map(({ label, value, iconClass }, idx) => (
-                                <div className="detail-row section-card-item" key={idx}>
-                                    <div className="detail-label">
-                                        <span className="detail-label-icon">
-                                            <i className={iconClass} aria-hidden="true"></i>
-                                        </span>
-                                        <span>{label}</span>
-                                    </div>
-                                    <div className="detail-value">{value}</div>
-                                </div>
-                            ))}
-                            </div>
-                        </div>
-                    </div>
 
                     <div className="card section-anchor" id="language-section">
                         <div className="section-header">
@@ -2439,26 +2338,6 @@
                         </div>
                     </div>
 
-                    <div className="card section-anchor" id="expectation-section">
-                        <div className="section-header">
-                            <span className="section-icon"><i className="fas fa-heart-circle-check" aria-hidden="true"></i></span>
-                            {copy.expectation.title}
-                        </div>
-                        <div className="card-content">
-                            <div className="expectation-list">
-                                {expectationItems.map(({ iconClass, title, text }) => (
-                                    <div className="expectation-item section-card-item" key={title}>
-                                        <span className="expectation-item-icon"><i className={iconClass} aria-hidden="true"></i></span>
-                                        <div className="expectation-item-content">
-                                            <div className="expectation-item-title">{title}</div>
-                                            <div className="expectation-item-text">{text}</div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
                     <div className="card section-anchor" id="contact-section">
                         <div className="section-header">
                             <span className="section-icon">{iconMapPin}</span>
@@ -2500,45 +2379,8 @@
                         </div>
                     </div>
 
-                    <div className="card section-anchor" id="dua-section">
-                        <div className="section-header">
-                            <span className="section-icon"><i className="fas fa-mosque" aria-hidden="true"></i></span>
-                            {copy.dua.title}
-                        </div>
-                        <div className="card-content final-dua">
-                            <div className="dua-entry">
-                                <div className="dua-block">
-                                    <div className="dua-arabic dua-arabic-green">
-                                        {duaArabicLines[0]}
-                                    </div>
-                                </div>
-                                {renderDuaSupportText(0)}
-                            </div>
-                            <div className="dua-entry">
-                                <div className="dua-block">
-                                    <div className="dua-arabic">
-                                        {duaArabicLines[1]}
-                                    </div>
-                                </div>
-                                {renderDuaSupportText(1)}
-                            </div>
-                            <div className="dua-entry">
-                                <div className="dua-block">
-                                    <div className="dua-arabic">
-                                        {duaArabicLines[2]}
-                                    </div>
-                                </div>
-                                {renderDuaSupportText(2)}
-                            </div>
-                            <div className="dua-closing">
-                                <span className="dua-closing-icon" aria-hidden="true">{iconPrayerHands}</span>
-                                <span>- {copy.dua.closing}</span>
-                            </div>
-                        </div>
-                    </div>
-
                     <div className="profile-tagline-note">
-                        {iconHeartSparkle} {iconMosque} {copy.profile.tagline} {iconMosque} {iconHeartSparkle}
+                        {iconEducation} {copy.profile.tagline} {iconWork}
                     </div>
                     
                     <div style={{textAlign: 'center', marginTop: '60px', paddingTop: '20px', borderTop: '2px solid rgba(13, 115, 119, 0.1)', color: '#0d7377', fontSize: '24px', letterSpacing: '8px'}}>
