@@ -2486,11 +2486,12 @@
 
         .family-summary {
             margin: 0 30px 18px;
-            padding: 18px 20px;
-            border-radius: 18px;
-            border: 1px solid rgba(15, 95, 73, 0.14);
-            background: linear-gradient(135deg, rgba(15, 95, 73, 0.08) 0%, rgba(255, 255, 255, 0.96) 50%, rgba(212, 70, 79, 0.08) 100%);
-            box-shadow: 0 12px 28px rgba(15, 95, 73, 0.08);
+            padding: 0 0 18px;
+            border: 0;
+            border-bottom: 1px solid rgba(15, 95, 73, 0.1);
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
         }
 
         .family-summary-label {
@@ -2523,13 +2524,13 @@
             display: inline-flex;
             align-items: center;
             padding: 6px 12px;
-            border-radius: 999px;
+            border-radius: 8px;
             border: 1px solid rgba(15, 95, 73, 0.12);
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(15, 95, 73, 0.06);
             color: #0f5f49;
             font-size: 12px;
             font-weight: 700;
-            box-shadow: 0 6px 14px rgba(15, 95, 73, 0.08);
+            box-shadow: none;
         }
 
         .hobby-item.section-card-item {
@@ -3784,7 +3785,7 @@
 
             .family-summary {
                 margin: 0 0 16px;
-                padding: 16px;
+                padding: 0 0 16px;
             }
 
             .family-summary-title {
@@ -4510,7 +4511,6 @@
         .activity-point-icon,
         .hobby-icon,
         .contact-action-link,
-        .contact-title-icon,
         .section-icon {
             color: #b9821f;
         }
@@ -4536,7 +4536,6 @@
         .card,
         .profile-header,
         .photo-gallery-item,
-        .family-summary,
         .detail-row.section-card-item,
         .sub-detail-row.section-card-item,
         .activity-item,
@@ -4555,6 +4554,11 @@
         .section-header::after,
         .language-progress-fill {
             background: linear-gradient(135deg, #0f5f49 0%, #13785e 52%, #b9821f 100%);
+        }
+
+        .card::before {
+            content: none;
+            display: none;
         }
 
         .section-header {
@@ -4651,11 +4655,11 @@
         .activity-point-text,
         .expectation-item-text,
         .hobby-text,
-        .language-title,
         .address-box {
             color: #b9821f;
         }
 
+        .language-title,
         .activity-title,
         .expectation-item-title,
         .education-subtitle {
