@@ -1429,6 +1429,12 @@
             font-size: 1.05rem;
         }
 
+        .bidi-ltr-number {
+            direction: ltr;
+            unicode-bidi: isolate;
+            white-space: nowrap;
+        }
+
         .app-shell.is-rtl .section-header {
             justify-content: flex-start;
         }
@@ -1872,7 +1878,7 @@
             color: #b9821f;
             font-family: var(--font-arabic);
             font-size: 0.98rem;
-            font-weight: 700;
+            font-weight: 400;
             line-height: 1.7;
             text-align: left;
         }
@@ -2688,7 +2694,7 @@
 
         .contact-action-link {
             color: #b88713;
-            font-weight: 700;
+            font-weight: 400;
             text-decoration: none;
             word-break: break-word;
         }

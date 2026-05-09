@@ -334,9 +334,9 @@
                             '"Our Rabb (Allah), grant us from Yourself mercy and prepare for us from our affair right guidance."'
                         ],
                         references: [
-                            'Surah Al-Furqan, Ayah 74',
-                            'Surah As-Saffat, Ayah 100',
-                            'Surah Al-Kahf, Ayah 10'
+                            '-Surah Al-Furqan, Ayah 74',
+                            '-Surah As-Saffat, Ayah 100',
+                            '-Surah Al-Kahf, Ayah 10'
                         ],
                         closing: 'Ameen ya Rabbal Alameen.'
                     }
@@ -584,14 +584,14 @@
                     dua: {
                         title: 'كلمات ختامية ودعاء',
                         meanings: [
-                            'ربنا هب لنا من أزواجنا وذرياتنا قرة أعين واجعلنا للمتقين إماماً.',
-                            'يا رب هب لي من الصالحين.',
-                            'ربنا آتنا من لدنك رحمة وهيئ لنا من أمرنا رشداً.'
+                            '',
+                            '',
+                            ''
                         ],
                         references: [
-                            'سورة الفرقان، آية ٧٤',
-                            'سورة الصافات، آية ١٠٠',
-                            'سورة الكهف، آية ١٠'
+                            '-سورة الفرقان، آية ٧٤',
+                            '-سورة الصافات، آية ١٠٠',
+                            '-سورة الكهف، آية ١٠'
                         ],
                         closing: 'آمين يا رب العالمين.'
                     }
@@ -844,9 +844,9 @@
                             'হে আমাদের রব, আপনি আমাদেরকে আপনার পক্ষ থেকে রহমত দিন এবং আমাদের কাজের জন্য সঠিক পথ নির্ধারণ করে দিন।'
                         ],
                         references: [
-                            'সূরা আল-ফুরকান : আয়াত - ৭৪',
-                            'সূরা আস-সাফফাত : আয়াত - ১০০',
-                            'সূরা কাহফ্ : আয়াত - ১০'
+                            '-সূরা আল-ফুরকান : আয়াত - ৭৪',
+                            '-সূরা আস-সাফফাত : আয়াত - ১০০',
+                            '-সূরা কাহফ্ : আয়াত - ১০'
                         ],
                         closing: 'আমীন ইয়া রব্বাল আলামিন।'
                     }
@@ -914,9 +914,9 @@
                 'dir'
             ]);
             const localizeArabicDigits = (value) => value
+                .replace(/(\d)\.(\d)/g, '$1٫$2')
+                .replace(/(\d),(\d)/g, '$1٬$2')
                 .replace(/\d/g, (digit) => arabicIndicDigits[Number(digit)])
-                .replace(/(?<=\d)\.(?=\d)/g, '٫')
-                .replace(/(?<=\d),(?=\d)/g, '٬')
                 .replace(/%/g, '٪');
             const localizeArabicDisplayValue = (value, key = '') => {
                 if (typeof value === 'string') {
@@ -944,6 +944,7 @@
 
                 return value;
             };
+            const ltrNumberRunPattern = /[+\-]?[0-9٠-٩]+(?:[\s.,٫٬/:()'"%-]*[0-9٠-٩]+)*(?:\s*(?:٪|%|KGs?|kg|years?|Years?))?/g;
             const [language, setLanguage] = React.useState(getInitialLanguage);
             const selectedTranslation = translations[language] || translations.en;
             const copy = language === 'ar'
@@ -971,7 +972,8 @@
                 ['training-section', copy.menu.training],
                 ['activities-section', copy.menu.activities],
                 ['hobbies-section', copy.menu.hobbies],
-                ['contact-section', copy.menu.contact]
+                ['contact-section', copy.menu.contact],
+                ['dua-section', copy.menu.dua]
             ];
             const isKnownSectionId = (sectionId) => menuItems.some(([id]) => id === sectionId);
             const getSavedActiveSection = () => {
@@ -1093,11 +1095,38 @@
                 return activePuzzleSet.title;
             };
 
+            const renderTextWithLtrNumbers = (text) => {
+                if (!isRtl || typeof text !== 'string') return text;
+
+                const parts = [];
+                let lastIndex = 0;
+
+                text.replace(ltrNumberRunPattern, (match, offset) => {
+                    if (offset > lastIndex) {
+                        parts.push(text.slice(lastIndex, offset));
+                    }
+
+                    parts.push(
+                        <bdi className="bidi-ltr-number" dir="ltr" key={`${match}-${offset}`}>
+                            {match}
+                        </bdi>
+                    );
+                    lastIndex = offset + match.length;
+                    return match;
+                });
+
+                if (lastIndex < text.length) {
+                    parts.push(text.slice(lastIndex));
+                }
+
+                return parts.length ? parts : text;
+            };
+
             const renderDetailValue = (value) => {
                 if (typeof value === 'string' && value === permanentAddressValue) {
                     return (
                         <>
-                            {value}
+                            {renderTextWithLtrNumbers(value)}
                             <div className="address-actions">
                                 <a className="map-link-button" href={permanentAddressMapHref} target="_blank" rel="noreferrer">
                                     <i className="fas fa-location-arrow" aria-hidden="true"></i>
@@ -1108,15 +1137,19 @@
                     );
                 }
 
-                if (typeof value !== 'string' || !value.startsWith(copy.common.latePrefix)) {
+                if (typeof value !== 'string') {
                     return value;
+                }
+
+                if (!value.startsWith(copy.common.latePrefix)) {
+                    return renderTextWithLtrNumbers(value);
                 }
 
                 return (
                     <>
                         <span className="detail-inline-badge late-inline-badge">{copy.common.lateBadge}</span>
                         {' '}
-                        {value.slice(copy.common.latePrefix.length)}
+                        {renderTextWithLtrNumbers(value.slice(copy.common.latePrefix.length))}
                     </>
                 );
             };
@@ -2146,11 +2179,11 @@
                                                     <span className="work-title-icon">
                                                         <i className={iconClass} aria-hidden="true"></i>
                                                     </span>
-                                                    <div className="work-title">{title}</div>
+                                                    <div className="work-title">{renderTextWithLtrNumbers(title)}</div>
                                                 </div>
-                                                {duration ? <span className="badge work-duration">{duration}</span> : null}
+                                                {duration ? <span className="badge work-duration">{renderTextWithLtrNumbers(duration)}</span> : null}
                                             </div>
-                                            <div className="work-org">{organization}</div>
+                                            <div className="work-org">{renderTextWithLtrNumbers(organization)}</div>
                                         </div>
                                     ))
                                 ) : (
@@ -2169,7 +2202,7 @@
                                                         <i className={resolvedIconClass} aria-hidden="true"></i>
                                                     </span>
                                                 ) : null}
-                                                <span>{label}</span>
+                                                <span>{renderTextWithLtrNumbers(label)}</span>
                                             </div>
                                             <div className="detail-value">{renderDetailValue(value)}</div>
                                         </div>
@@ -2195,9 +2228,9 @@
                                             <span className="language-title-icon">
                                                 <i className={languageDetailIconClass} aria-hidden="true"></i>
                                             </span>
-                                            <div className="language-title">{title}</div>
+                                            <div className="language-title">{renderTextWithLtrNumbers(title)}</div>
                                         </div>
-                                        <span className="badge language-level-badge">{level}</span>
+                                        <span className="badge language-level-badge">{renderTextWithLtrNumbers(level)}</span>
                                     </div>
                                     <div
                                         className="language-progress-track"
@@ -2233,14 +2266,14 @@
                                                 <span className="education-title-icon">
                                                     <i className={educationDetailIconClass} aria-hidden="true"></i>
                                                 </span>
-                                                <div className="education-subtitle">{title}</div>
+                                                <div className="education-subtitle">{renderTextWithLtrNumbers(title)}</div>
                                             </div>
-                                            <span className="badge education-score-badge">{scoreLabel} {score}</span>
+                                            <span className="badge education-score-badge">{renderTextWithLtrNumbers(`${scoreLabel} ${score}`)}</span>
                                         </div>
-                                        <span className="badge education-year-badge">{session}</span>
+                                        <span className="badge education-year-badge">{renderTextWithLtrNumbers(session)}</span>
                                     </div>
                                     <div className="education-meta">
-                                        {institution}
+                                        {renderTextWithLtrNumbers(institution)}
                                         {institutionHref ? (
                                             <a
                                                 className="activity-link-button"
@@ -2279,9 +2312,9 @@
                                         </span>
                                     </div>
                                     <div className="detail-value">
-                                        {isLinkItem ? (
+                                                {isLinkItem ? (
                                             <>
-                                                {item.text}
+                                                {renderTextWithLtrNumbers(item.text)}
                                                 <a
                                                     className="activity-link-button"
                                                     href={item.href}
@@ -2292,7 +2325,7 @@
                                                 </a>
                                             </>
                                         ) : (
-                                            item
+                                            renderTextWithLtrNumbers(item)
                                         )}
                                     </div>
                                 </div>
@@ -2316,9 +2349,9 @@
                                                 <span className="activity-title-icon">
                                                     <i className={activityDetailIconClass} aria-hidden="true"></i>
                                                 </span>
-                                                <div className="activity-title">{title}</div>
+                                                <div className="activity-title">{renderTextWithLtrNumbers(title)}</div>
                                             </div>
-                                            {period ? <span className="badge activity-period">{period}</span> : null}
+                                            {period ? <span className="badge activity-period">{renderTextWithLtrNumbers(period)}</span> : null}
                                         </div>
                                         <ul className="activity-points">
                                             {items.map((item) => {
@@ -2330,7 +2363,7 @@
                                                             <i className={item.iconClass} aria-hidden="true"></i>
                                                         </span>
                                                         <span className="activity-point-text">
-                                                            {item.text}
+                                                            {renderTextWithLtrNumbers(item.text)}
                                                             {item.href ? (
                                                                 <a
                                                                     className="activity-link-button"
@@ -2364,7 +2397,7 @@
                                         <span className="hobby-icon">
                                             <i className={iconClass} aria-hidden="true"></i>
                                         </span>
-                                        <div className="hobby-text">{text}</div>
+                                        <div className="hobby-text">{renderTextWithLtrNumbers(text)}</div>
                                     </div>
                                 ))}
                             </div>
@@ -2384,13 +2417,13 @@
                                             <span className="contact-title-icon">
                                                 <i className={iconClass} aria-hidden="true"></i>
                                             </span>
-                                            <span>{label}</span>
+                                            <span>{renderTextWithLtrNumbers(label)}</span>
                                         </div>
                                         <div className="address-box">
                                             {href ? (
-                                                <a className="contact-action-link" href={href} target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noreferrer' : undefined}>{value}</a>
+                                                <a className="contact-action-link" href={href} target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noreferrer' : undefined}>{renderTextWithLtrNumbers(value)}</a>
                                             ) : (
-                                                value
+                                                renderTextWithLtrNumbers(value)
                                             )}
                                         </div>
                                         {mapHref ? (
@@ -2408,6 +2441,34 @@
                                         ) : null}
                                     </div>
                                 ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="card section-anchor" id="dua-section">
+                        <div className="section-header">
+                            <span className="section-icon">{iconPrayerHands}</span>
+                            {copy.dua.title}
+                        </div>
+                        <div className="card-content">
+                            <div className="final-dua">
+                                {duaArabicLines.map((arabicLine, idx) => (
+                                    <div className="dua-entry" key={arabicLine}>
+                                        <div className="dua-block">
+                                            <div className={`dua-arabic${idx === 2 ? ' dua-arabic-green' : ''}`}>
+                                                {arabicLine}
+                                            </div>
+                                            {copy.dua.meanings[idx] ? (
+                                                <div className="dua-english">{copy.dua.meanings[idx]}</div>
+                                            ) : null}
+                                            <div className="dua-reference">{copy.dua.references[idx]}</div>
+                                        </div>
+                                    </div>
+                                ))}
+                                <div className="dua-closing">
+                                    <span>{copy.dua.closing}</span>
+                                    <span className="dua-closing-icon" aria-hidden="true">{iconKaaba}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
