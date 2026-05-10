@@ -178,7 +178,7 @@
                         title: 'Photo Gallery',
                         photos: [
                             { src: 'assets/images/mahbub-portrait-1.jpg', alt: 'Md Mahbubur Rahman portrait 1', label: 'Portrait 01', featured: true },
-                            { src: 'assets/images/mahbub-portrait-2.jpg', alt: 'Md Mahbubur Rahman portrait 2', label: 'Portrait 02', featured: false }
+                            { src: 'assets/images/mahbub-portrait-2.jpg?v=20260510', alt: 'Md Mahbubur Rahman portrait 2', label: 'Portrait 02', featured: false }
                         ]
                     },
                     sectionHeaders: {
@@ -433,7 +433,7 @@
                         title: 'معرض الصور',
                         photos: [
                             { src: 'assets/images/mahbub-portrait-1.jpg', alt: 'الصورة الشخصية الأولى لـ محمد محبوب الرحمن', label: 'الصورة 01', featured: true },
-                            { src: 'assets/images/mahbub-portrait-2.jpg', alt: 'الصورة الشخصية الثانية لـ محمد محبوب الرحمن', label: 'الصورة 02', featured: false }
+                            { src: 'assets/images/mahbub-portrait-2.jpg?v=20260510', alt: 'الصورة الشخصية الثانية لـ محمد محبوب الرحمن', label: 'الصورة 02', featured: false }
                         ]
                     },
                     sectionHeaders: {
@@ -688,7 +688,7 @@
                         title: 'ছবি গ্যালারি',
                         photos: [
                             { src: 'assets/images/mahbub-portrait-1.jpg', alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ১', label: 'ছবি ০১', featured: true },
-                            { src: 'assets/images/mahbub-portrait-2.jpg', alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ২', label: 'ছবি ০২', featured: false }
+                            { src: 'assets/images/mahbub-portrait-2.jpg?v=20260510', alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ২', label: 'ছবি ০২', featured: false }
                         ]
                     },
                     sectionHeaders: {
