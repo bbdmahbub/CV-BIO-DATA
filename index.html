@@ -15,6 +15,28 @@
     <meta name="twitter:title" content="CV - Md. Mahbubur Rahman">
     <meta name="twitter:description" content="CV of Md. Mahbubur Rahman with personal, education, work, training, activities, and contact details.">
     <meta name="twitter:image" content="https://bbdmahbub.github.io/CV-BIO-DATA/assets/images/mahbub-portrait-1.jpg">
+    <script>
+        (function () {
+            var cacheWindowMs = 2 * 60 * 60 * 1000;
+            window.bbdMahbubCvCacheVersion = Math.floor(Date.now() / cacheWindowMs);
+            window.setTimeout(function () {
+                if (window.caches) {
+                    window.caches.keys()
+                        .then(function (cacheNames) {
+                            return Promise.all(cacheNames.map(function (cacheName) {
+                                return window.caches.delete(cacheName);
+                            }));
+                        })
+                        .finally(function () {
+                            window.location.reload();
+                        });
+                    return;
+                }
+
+                window.location.reload();
+            }, cacheWindowMs);
+        }());
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Aref+Ruqaa+Ink:wght@400;700&family=Lato:wght@300;400;700;900&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Parastoo:wght@400;500;700&display=swap" rel="stylesheet">
@@ -23,7 +45,9 @@
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css?v=20260509-bidi-ltr-numbers">
+    <script>
+        document.write('<link rel="stylesheet" href="assets/css/styles.css?v=' + window.bbdMahbubCvCacheVersion + '">');
+    </script>
 </head>
 <body>
     <div id="root"></div>
@@ -66,7 +90,9 @@
         </div>
     </div>
 
-    <script type="text/babel" src="assets/js/app.jsx?v=20260509-bidi-ltr-numbers"></script>
-    <script src="assets/js/site.js?v=20260509-music-script-fix"></script>
+    <script>
+        document.write('<script type="text/babel" src="assets/js/app.jsx?v=' + window.bbdMahbubCvCacheVersion + '"><\/script>');
+        document.write('<script src="assets/js/site.js?v=' + window.bbdMahbubCvCacheVersion + '"><\/script>');
+    </script>
 </body>
 </html>

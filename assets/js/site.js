@@ -1,7 +1,7 @@
 ﻿const playlist = [
-            { title: 'Jodi Kotha Dao Bondhu', src: encodeURI('assets/audio/jodi-kotha-dao-bondhu.mp3') },
-            { title: 'Rasuler Simahin Valobasha', src: encodeURI('assets/audio/rasuler-simahin-valobasha.mp3') },
-            { title: 'Khadijar Moto Jibon Goro', src: encodeURI('assets/audio/khadijar-moto-jibon-goro.mp3') }
+            { title: 'Jodi Kotha Dao Bondhu', src: encodeURI('assets/audio/jodi-kotha-dao-bondhu.mp3') + '?v=' + (window.bbdMahbubCvCacheVersion || Math.floor(Date.now() / (2 * 60 * 60 * 1000))) },
+            { title: 'Rasuler Simahin Valobasha', src: encodeURI('assets/audio/rasuler-simahin-valobasha.mp3') + '?v=' + (window.bbdMahbubCvCacheVersion || Math.floor(Date.now() / (2 * 60 * 60 * 1000))) },
+            { title: 'Khadijar Moto Jibon Goro', src: encodeURI('assets/audio/khadijar-moto-jibon-goro.mp3') + '?v=' + (window.bbdMahbubCvCacheVersion || Math.floor(Date.now() / (2 * 60 * 60 * 1000))) }
         ];
         const MUSIC_VOLUME = 0.05;
         const AUTOPLAY_DELAY_MS = 10000;
@@ -19,7 +19,7 @@
                 next: 'Next Song',
                 collapse: 'Collapse music controls',
                 expand: 'Expand music controls',
-                nowPlaying: (title, percent) => `Now playing: ${title} at ${percent}% volume`,
+                nowPlaying: (title) => `Now playing: ${title}`,
                 blocked: 'Autoplay was blocked. Tap Play to start the music.',
                 scheduled: (percent) => `Music will start automatically after 10 seconds at ${percent}% volume.`,
                 paused: (title) => `Paused: ${title}`,
@@ -35,7 +35,7 @@
                 next: 'الأغنية التالية',
                 collapse: 'طي عناصر التحكم بالموسيقى',
                 expand: 'إظهار عناصر التحكم بالموسيقى',
-                nowPlaying: (title, percent) => `يعمل الآن: ${title} عند مستوى ${percent}٪`,
+                nowPlaying: (title) => `يعمل الآن: ${title}`,
                 blocked: 'تم حظر التشغيل التلقائي. اضغط تشغيل لبدء الموسيقى.',
                 scheduled: (percent) => `ستبدأ الموسيقى تلقائياً بعد 10 ثوانٍ عند مستوى ${percent}٪.`,
                 paused: (title) => `متوقف: ${title}`,
@@ -51,7 +51,7 @@
                 next: 'পরের গান',
                 collapse: 'মিউজিক কন্ট্রোল লুকান',
                 expand: 'মিউজিক কন্ট্রোল দেখান',
-                nowPlaying: (title, percent) => `এখন চলছে: ${title} ${percent}% ভলিউমে`,
+                nowPlaying: (title) => `এখন চলছে: ${title}`,
                 blocked: 'অটোপ্লে ব্লক করা হয়েছে। মিউজিক শুরু করতে চালু চাপুন।',
                 scheduled: (percent) => `১০ সেকেন্ড পরে ${percent}% ভলিউমে মিউজিক স্বয়ংক্রিয়ভাবে চালু হবে।`,
                 paused: (title) => `বিরতি: ${title}`,
@@ -143,7 +143,7 @@
 
             switch (musicStatusMode) {
                 case 'playing':
-                    return copy.nowPlaying(getCurrentTrackTitle(), percent);
+                    return copy.nowPlaying(getCurrentTrackTitle());
                 case 'blocked':
                     return copy.blocked;
                 case 'scheduled':

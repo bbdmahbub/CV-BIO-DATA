@@ -1,4 +1,8 @@
 ﻿const BioDataComponent = () => {
+            const cvCacheVersion = (typeof window !== 'undefined' && window.bbdMahbubCvCacheVersion)
+                ? window.bbdMahbubCvCacheVersion
+                : Math.floor(Date.now() / (2 * 60 * 60 * 1000));
+            const withCvCacheVersion = (src) => `${src}${src.includes('?') ? '&' : '?'}v=${cvCacheVersion}`;
             const iconProfile = String.fromCodePoint(0x1F464);
             const iconFamily = String.fromCodePoint(0x1F46A);
             const iconEducation = String.fromCodePoint(0x1F393);
@@ -16,6 +20,7 @@
             const popupDarud = '\u0627\u0644\u0644\u0647\u0645\u0020\u0635\u0644\u0020\u0648\u0633\u0644\u0645\u0020\u0639\u0644\u0649\u0020\u0633\u064A\u062F\u0646\u0627\u0020\u0645\u062D\u0645\u062F\u0020\ufdfa';
             const popupTaawuz = '\u0623\u064e\u0639\u064f\u0648\u0630\u064f\u0020\u0628\u0650\u0627\u0644\u0644\u064e\u0651\u0647\u0650\u0020\u0645\u0650\u0646\u064e\u0020\u0627\u0644\u0634\u064e\u0651\u064a\u0652\u0637\u064e\u0627\u0646\u0650\u0020\u0627\u0644\u0631\u064e\u0651\u062c\u0650\u064a\u0645\u0650';
             const duaArabicLines = [
+                'وَأَنكِحُوا الْأَيَامَىٰ مِنكُمْ وَالصَّالِحِينَ مِنْ عِبَادِكُمْ وَإِمَائِكُمْ ۚ إِن يَكُونُوا فُقَرَاءَ يُغْنِهِمُ اللَّهُ مِن فَضْلِهِ ۗ وَاللَّهُ وَاسِعٌ عَلِيمٌ',
                 '\u0631\u064e\u0628\u064e\u0651\u0646\u064e\u0627 \u0647\u064e\u0628\u0652 \u0644\u064e\u0646\u064e\u0627 \u0645\u0650\u0646\u0652 \u0623\u064e\u0632\u0652\u0648\u064e\u0627\u062c\u0650\u0646\u064e\u0627 \u0648\u064e\u0630\u064f\u0631\u0650\u0651\u064a\u064e\u0651\u0627\u062a\u0650\u0646\u064e\u0627 \u0642\u064f\u0631\u064e\u0651\u0629\u064e \u0623\u064e\u0639\u0652\u064a\u064f\u0646\u064d \u0648\u064e\u0627\u062c\u0652\u0639\u064e\u0644\u0652\u0646\u064e\u0627 \u0644\u0650\u0644\u0652\u0645\u064f\u062a\u064e\u0651\u0642\u0650\u064a\u0646\u064e \u0625\u0650\u0645\u064e\u0627\u0645\u064b\u0627',
                 '\u0631\u064e\u0628\u0650\u0651 \u0647\u064e\u0628\u0652 \u0644\u0650\u064a \u0645\u0650\u0646\u064e \u0627\u0644\u0635\u064e\u0651\u0627\u0644\u0650\u062d\u0650\u064a\u0646\u064e',
                 '\u0631\u064e\u0628\u064e\u0651\u0646\u064e\u0627 \u0622\u062a\u0650\u0646\u064e\u0627 \u0645\u0650\u0646\u0652 \u0644\u064e\u062f\u064f\u0646\u0643\u064e \u0631\u064e\u062d\u0652\u0645\u064e\u0629\u064b \u0648\u064e\u0647\u064e\u064a\u0650\u0651\u0626\u0652 \u0644\u064e\u0646\u064e\u0627 \u0645\u0650\u0646\u0652 \u0623\u064e\u0645\u0652\u0631\u0650\u0646\u064e\u0627 \u0631\u064e\u0634\u064e\u062f\u064b\u0627'
@@ -75,7 +80,7 @@
                 }
             };
             const permanentAddressMapHref = 'https://maps.app.goo.gl/hvcHqxMvhF9cGFbM6';
-            const bismillahToneSrc = 'assets/tone/Bismillah.mp3';
+            const bismillahToneSrc = withCvCacheVersion('assets/tone/Bismillah.mp3');
             const bismillahIntroSeenStorageKey = 'bbdMahbubBismillahIntroSeen';
             const activeSectionStorageKey = 'bbdMahbubActiveSection';
             const voiceVerificationStorageKey = 'bbdMahbubVoiceVerifiedAt';
@@ -177,8 +182,8 @@
                     gallery: {
                         title: 'Photo Gallery',
                         photos: [
-                            { src: 'assets/images/mahbub-portrait-1.jpg', alt: 'Md Mahbubur Rahman portrait 1', label: 'Portrait 01', featured: true },
-                            { src: 'assets/images/mahbub-portrait-2.jpg?v=20260510', alt: 'Md Mahbubur Rahman portrait 2', label: 'Portrait 02', featured: false }
+                            { src: withCvCacheVersion('assets/images/mahbub-portrait-1.jpg'), alt: 'Md Mahbubur Rahman portrait 1', label: 'Portrait 01', featured: true },
+                            { src: withCvCacheVersion('assets/images/mahbub-portrait-2.jpg'), alt: 'Md Mahbubur Rahman portrait 2', label: 'Portrait 02', featured: false }
                         ]
                     },
                     sectionHeaders: {
@@ -283,7 +288,6 @@
                         items: [
                             {
                                 title: 'Volunteering',
-                                period: '7th July 2014 - 12th Dec 2015',
                                 items: [
                                     { text: 'Former Elected CR of the class for 2 years, Islamic University, Kushtia.', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'Visit' },
                                     { text: 'Former Director of Betikrom Shahitya Shangskritik Jote, IU.', iconClass: 'fas fa-masks-theater', href: 'https://web.facebook.com/betikrom87', linkLabel: 'Visit' },
@@ -329,11 +333,13 @@
                     dua: {
                         title: 'Final Words & Dua',
                         meanings: [
+                            '"And marry the unmarried among you and the righteous among your male servants and female servants. If they are poor, Allah will enrich them from His bounty, and Allah is All-Encompassing and Knowing."',
                             '"Our Rabb (Allah), grant us from among our wives and offspring comfort to our eyes and make us an example for the righteous."',
                             '"Ya Rabb (Allah)! Bestow upon me one of the righteous."',
                             '"Our Rabb (Allah), grant us from Yourself mercy and prepare for us from our affair right guidance."'
                         ],
                         references: [
+                            '-Surah An-Nur, Ayah 32',
                             '-Surah Al-Furqan, Ayah 74',
                             '-Surah As-Saffat, Ayah 100',
                             '-Surah Al-Kahf, Ayah 10'
@@ -432,8 +438,8 @@
                     gallery: {
                         title: 'معرض الصور',
                         photos: [
-                            { src: 'assets/images/mahbub-portrait-1.jpg', alt: 'الصورة الشخصية الأولى لـ محمد محبوب الرحمن', label: 'الصورة 01', featured: true },
-                            { src: 'assets/images/mahbub-portrait-2.jpg?v=20260510', alt: 'الصورة الشخصية الثانية لـ محمد محبوب الرحمن', label: 'الصورة 02', featured: false }
+                            { src: withCvCacheVersion('assets/images/mahbub-portrait-1.jpg'), alt: 'الصورة الشخصية الأولى لـ محمد محبوب الرحمن', label: 'الصورة 01', featured: true },
+                            { src: withCvCacheVersion('assets/images/mahbub-portrait-2.jpg'), alt: 'الصورة الشخصية الثانية لـ محمد محبوب الرحمن', label: 'الصورة 02', featured: false }
                         ]
                     },
                     sectionHeaders: {
@@ -586,9 +592,11 @@
                         meanings: [
                             '',
                             '',
+                            '',
                             ''
                         ],
                         references: [
+                            '-سورة النور، آية ٣٢',
                             '-سورة الفرقان، آية ٧٤',
                             '-سورة الصافات، آية ١٠٠',
                             '-سورة الكهف، آية ١٠'
@@ -687,8 +695,8 @@
                     gallery: {
                         title: 'ছবি গ্যালারি',
                         photos: [
-                            { src: 'assets/images/mahbub-portrait-1.jpg', alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ১', label: 'ছবি ০১', featured: true },
-                            { src: 'assets/images/mahbub-portrait-2.jpg?v=20260510', alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ২', label: 'ছবি ০২', featured: false }
+                            { src: withCvCacheVersion('assets/images/mahbub-portrait-1.jpg'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ১', label: 'ছবি ০১', featured: true },
+                            { src: withCvCacheVersion('assets/images/mahbub-portrait-2.jpg'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ২', label: 'ছবি ০২', featured: false }
                         ]
                     },
                     sectionHeaders: {
@@ -839,11 +847,13 @@
                     dua: {
                         title: 'শেষ কথা ও দোআ',
                         meanings: [
+                            'তোমাদের মধ্যে যারা অবিবাহিত এবং তোমাদের দাস-দাসীদের মধ্যে যারা সৎকর্মপরায়ণ, তাদের বিবাহ দাও। তারা অভাবী হলে আল্লাহ নিজ অনুগ্রহে তাদেরকে অভাবমুক্ত করবেন। আল্লাহ প্রাচুর্যময়, সর্বজ্ঞ।',
                             'হে আমাদের রব, আমাদের স্ত্রী ও সন্তানদেরকে আমাদের চোখের শীতলতা দান করুন এবং আমাদেরকে মুত্তাকীদের জন্য আদর্শ বানান।',
                             'হে রব, আমাকে নেককারদের একজন দান করুন।',
                             'হে আমাদের রব, আপনি আমাদেরকে আপনার পক্ষ থেকে রহমত দিন এবং আমাদের কাজের জন্য সঠিক পথ নির্ধারণ করে দিন।'
                         ],
                         references: [
+                            '-সূরা নূর : আয়াত - ৩২',
                             '-সূরা আল-ফুরকান : আয়াত - ৭৪',
                             '-সূরা আস-সাফফাত : আয়াত - ১০০',
                             '-সূরা কাহফ্ : আয়াত - ১০'
@@ -886,6 +896,56 @@
                     return Date.now() - verifiedAt < voiceVerificationGracePeriodMs;
                 } catch (error) {
                     return false;
+                }
+            };
+            const warmCvAssetCache = () => {
+                if (typeof document === 'undefined') return;
+
+                const photoAssets = Object.values(translations).flatMap((translation) => (
+                    translation.gallery.photos.map(({ src }) => src)
+                ));
+                const audioAssets = [
+                    bismillahToneSrc,
+                    withCvCacheVersion(encodeURI('assets/audio/jodi-kotha-dao-bondhu.mp3')),
+                    withCvCacheVersion(encodeURI('assets/audio/rasuler-simahin-valobasha.mp3')),
+                    withCvCacheVersion(encodeURI('assets/audio/khadijar-moto-jibon-goro.mp3'))
+                ];
+                const preloadAssets = [
+                    ...photoAssets.map((href) => ({ href, as: 'image' })),
+                    ...audioAssets.map((href) => ({ href, as: 'audio' }))
+                ];
+
+                preloadAssets.forEach(({ href, as }) => {
+                    if (document.querySelector(`link[data-cv-preload="${href}"]`)) return;
+
+                    const link = document.createElement('link');
+                    link.rel = 'preload';
+                    link.href = href;
+                    link.as = as;
+                    link.setAttribute('data-cv-preload', href);
+                    if (as === 'audio') {
+                        link.type = 'audio/mpeg';
+                    }
+                    document.head.appendChild(link);
+                });
+
+                Array.from(new Set(photoAssets)).forEach((src) => {
+                    const image = new Image();
+                    image.decoding = 'async';
+                    image.src = src;
+                });
+
+                if (typeof window !== 'undefined' && typeof window.Audio === 'function') {
+                    Array.from(new Set(audioAssets)).forEach((src) => {
+                        try {
+                            const audio = new window.Audio();
+                            audio.preload = 'auto';
+                            audio.src = src;
+                            audio.load();
+                        } catch (error) {
+                            // Ignore browser autoplay or preload restrictions.
+                        }
+                    });
                 }
             };
             const getInitialLanguage = () => {
@@ -1002,6 +1062,8 @@
             const [isPuzzleSolved, setIsPuzzleSolved] = React.useState(false);
             const [isMenuDragging, setIsMenuDragging] = React.useState(false);
             const [isLanguageRowCollapsed, setIsLanguageRowCollapsed] = React.useState(true);
+            const [zoomedPhoto, setZoomedPhoto] = React.useState(null);
+            const [photoViewerTransform, setPhotoViewerTransform] = React.useState({ scale: 1, x: 0, y: 0 });
             const menuLinksRef = React.useRef(null);
             const hasCenteredMenuRef = React.useRef(false);
             const speechRecognitionRef = React.useRef(null);
@@ -1025,6 +1087,9 @@
             const isEnteringBiodataRef = React.useRef(false);
             const isBismillahSuccessInProgressRef = React.useRef(false);
             const isBismillahLoadingClickInProgressRef = React.useRef(false);
+            const hasPreloadedCvAssetsRef = React.useRef(false);
+            const photoPointerCacheRef = React.useRef(new Map());
+            const photoGestureRef = React.useRef(null);
 
             const detailGroups = {
                 personal: copy.personalDetails.filter(({ iconClass }) => ![
@@ -1166,6 +1231,118 @@
                     block: 'nearest',
                     inline: 'center'
                 });
+            };
+            const clampPhotoScale = (scale) => Math.min(4, Math.max(1, scale));
+            const getPhotoPointerDistance = (firstPointer, secondPointer) => Math.hypot(
+                secondPointer.x - firstPointer.x,
+                secondPointer.y - firstPointer.y
+            );
+            const getPhotoPointerCenter = (firstPointer, secondPointer) => ({
+                x: (firstPointer.x + secondPointer.x) / 2,
+                y: (firstPointer.y + secondPointer.y) / 2
+            });
+            const openPhotoViewer = (photo) => {
+                setZoomedPhoto(photo);
+                setPhotoViewerTransform({ scale: 1, x: 0, y: 0 });
+                photoPointerCacheRef.current.clear();
+                photoGestureRef.current = null;
+            };
+            const closePhotoViewer = () => {
+                setZoomedPhoto(null);
+                setPhotoViewerTransform({ scale: 1, x: 0, y: 0 });
+                photoPointerCacheRef.current.clear();
+                photoGestureRef.current = null;
+            };
+            const handlePhotoBackdropClick = (event) => {
+                if (event.target === event.currentTarget) {
+                    closePhotoViewer();
+                }
+            };
+            const handlePhotoViewerDoubleClick = () => {
+                setPhotoViewerTransform((currentTransform) => (
+                    currentTransform.scale > 1
+                        ? { scale: 1, x: 0, y: 0 }
+                        : { scale: 2.4, x: 0, y: 0 }
+                ));
+            };
+            const handlePhotoPointerDown = (event) => {
+                event.preventDefault();
+
+                event.currentTarget.setPointerCapture(event.pointerId);
+                photoPointerCacheRef.current.set(event.pointerId, {
+                    x: event.clientX,
+                    y: event.clientY
+                });
+
+                const pointers = Array.from(photoPointerCacheRef.current.values());
+                if (pointers.length >= 2) {
+                    photoGestureRef.current = {
+                        type: 'pinch',
+                        startDistance: getPhotoPointerDistance(pointers[0], pointers[1]) || 1,
+                        startCenter: getPhotoPointerCenter(pointers[0], pointers[1]),
+                        startTransform: photoViewerTransform
+                    };
+                    return;
+                }
+
+                photoGestureRef.current = {
+                    type: 'pan',
+                    startPointer: { x: event.clientX, y: event.clientY },
+                    startTransform: photoViewerTransform
+                };
+            };
+            const handlePhotoPointerMove = (event) => {
+                if (!photoPointerCacheRef.current.has(event.pointerId)) return;
+
+                event.preventDefault();
+                photoPointerCacheRef.current.set(event.pointerId, {
+                    x: event.clientX,
+                    y: event.clientY
+                });
+
+                const pointers = Array.from(photoPointerCacheRef.current.values());
+                const gesture = photoGestureRef.current;
+                if (!gesture) return;
+
+                if (pointers.length >= 2 && gesture.type === 'pinch') {
+                    const distance = getPhotoPointerDistance(pointers[0], pointers[1]) || 1;
+                    const center = getPhotoPointerCenter(pointers[0], pointers[1]);
+                    const nextScale = clampPhotoScale(gesture.startTransform.scale * (distance / gesture.startDistance));
+
+                    setPhotoViewerTransform({
+                        scale: nextScale,
+                        x: gesture.startTransform.x + (center.x - gesture.startCenter.x),
+                        y: gesture.startTransform.y + (center.y - gesture.startCenter.y)
+                    });
+                    return;
+                }
+
+                if (pointers.length === 1 && gesture.type === 'pan') {
+                    if (gesture.startTransform.scale <= 1) return;
+
+                    setPhotoViewerTransform({
+                        scale: gesture.startTransform.scale,
+                        x: gesture.startTransform.x + (event.clientX - gesture.startPointer.x),
+                        y: gesture.startTransform.y + (event.clientY - gesture.startPointer.y)
+                    });
+                }
+            };
+            const finishPhotoPointer = (event) => {
+                if (photoPointerCacheRef.current.has(event.pointerId)) {
+                    photoPointerCacheRef.current.delete(event.pointerId);
+                }
+
+                const pointers = Array.from(photoPointerCacheRef.current.values());
+                if (pointers.length === 1) {
+                    photoGestureRef.current = {
+                        type: 'pan',
+                        startPointer: pointers[0],
+                        startTransform: photoViewerTransform
+                    };
+                    return;
+                }
+
+                photoGestureRef.current = null;
             };
 
             React.useEffect(() => {
@@ -1498,12 +1675,46 @@
             }, [isMenuDragging]);
 
             React.useEffect(() => {
-                document.body.classList.toggle('is-popup-open', isIntroPopupOpen || isBismillahLoadingOpen);
+                document.body.classList.toggle('is-popup-open', isIntroPopupOpen || isBismillahLoadingOpen || Boolean(zoomedPhoto));
 
                 return () => {
                     document.body.classList.remove('is-popup-open');
                 };
-            }, [isIntroPopupOpen, isBismillahLoadingOpen]);
+            }, [isIntroPopupOpen, isBismillahLoadingOpen, zoomedPhoto]);
+
+            React.useEffect(() => {
+                if (!zoomedPhoto) return undefined;
+
+                const handlePhotoViewerKeyDown = (event) => {
+                    if (event.key === 'Escape') {
+                        closePhotoViewer();
+                    }
+                };
+
+                window.addEventListener('keydown', handlePhotoViewerKeyDown);
+                return () => {
+                    window.removeEventListener('keydown', handlePhotoViewerKeyDown);
+                };
+            }, [zoomedPhoto]);
+
+            React.useEffect(() => {
+                if (!isBismillahLoadingOpen) return undefined;
+                if (hasPreloadedCvAssetsRef.current) return undefined;
+
+                hasPreloadedCvAssetsRef.current = true;
+
+                if (typeof window.requestIdleCallback === 'function') {
+                    const idleCallbackId = window.requestIdleCallback(warmCvAssetCache, { timeout: 1200 });
+                    return () => {
+                        window.cancelIdleCallback(idleCallbackId);
+                    };
+                }
+
+                const preloadTimerId = window.setTimeout(warmCvAssetCache, 250);
+                return () => {
+                    window.clearTimeout(preloadTimerId);
+                };
+            }, [isBismillahLoadingOpen]);
 
             React.useEffect(() => () => {
                 clearSpeechRecognition();
@@ -1988,7 +2199,7 @@
                                                 <span className="intro-popup-taawuz-text">{popupTaawuz}</span>
                                                 <span className="intro-popup-taawuz-mark" aria-hidden="true">۞</span>
                                             </div>
-                                            <div className="intro-popup-dua-arabic">{duaArabicLines[2]}</div>
+                                            <div className="intro-popup-dua-arabic">{duaArabicLines[3]}</div>
                                         </div>
                                         {language !== 'ar' ? (
                                             <div className="intro-popup-dua-item intro-popup-dua-meaning-item">
@@ -2083,6 +2294,48 @@
                             </div>
                         </div>
                     ) : null}
+                    {zoomedPhoto ? (
+                        <div
+                            className="photo-viewer"
+                            role="dialog"
+                            aria-modal="true"
+                            aria-label={zoomedPhoto.label}
+                            onClick={handlePhotoBackdropClick}
+                        >
+                            <button
+                                type="button"
+                                className="photo-viewer-close"
+                                aria-label="Close photo viewer"
+                                onClick={closePhotoViewer}
+                            >
+                                <i className="fas fa-xmark" aria-hidden="true"></i>
+                            </button>
+                            <div className="photo-viewer-stage">
+                                <div
+                                    className={`photo-viewer-gesture${photoViewerTransform.scale > 1 ? ' is-zoomed' : ''}`}
+                                    onPointerDown={handlePhotoPointerDown}
+                                    onPointerMove={handlePhotoPointerMove}
+                                    onPointerUp={finishPhotoPointer}
+                                    onPointerCancel={finishPhotoPointer}
+                                    onDoubleClick={handlePhotoViewerDoubleClick}
+                                >
+                                    <img
+                                        className="photo-viewer-image"
+                                        src={zoomedPhoto.src}
+                                        alt={zoomedPhoto.alt}
+                                        draggable="false"
+                                        style={{
+                                            transform: `translate3d(${photoViewerTransform.x}px, ${photoViewerTransform.y}px, 0) scale(${photoViewerTransform.scale})`
+                                        }}
+                                    />
+                                </div>
+                                <div className="photo-viewer-caption">
+                                    <i className="fas fa-magnifying-glass-plus" aria-hidden="true"></i>
+                                    <span>{zoomedPhoto.label}</span>
+                                </div>
+                            </div>
+                        </div>
+                    ) : null}
                     <div className="container">
                     <nav className="top-menu" aria-label={copy.navigation.sectionsAria}>
                         <div className="top-menu-language-slot">
@@ -2150,6 +2403,14 @@
                                                 alt={alt}
                                                 loading={featured ? 'eager' : 'lazy'}
                                             />
+                                            <button
+                                                type="button"
+                                                className="photo-zoom-trigger"
+                                                aria-label={`Open ${label}`}
+                                                onClick={() => openPhotoViewer({ src, alt, label })}
+                                            >
+                                                <i className="fas fa-magnifying-glass-plus" aria-hidden="true"></i>
+                                            </button>
                                             <figcaption className="photo-gallery-caption">
                                                 <span className="photo-gallery-caption-icon">
                                                     <i className="fas fa-camera" aria-hidden="true"></i>
@@ -2455,7 +2716,7 @@
                                 {duaArabicLines.map((arabicLine, idx) => (
                                     <div className="dua-entry" key={arabicLine}>
                                         <div className="dua-block">
-                                            <div className={`dua-arabic${idx === 2 ? ' dua-arabic-green' : ''}`}>
+                                            <div className={`dua-arabic${idx === 1 ? ' dua-arabic-furqan' : ''}${idx === 3 ? ' dua-arabic-green' : ''}`}>
                                                 {arabicLine}
                                             </div>
                                             {copy.dua.meanings[idx] ? (
