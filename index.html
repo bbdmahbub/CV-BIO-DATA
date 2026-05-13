@@ -18,7 +18,8 @@
     <script>
         (function () {
             var cacheWindowMs = 2 * 60 * 60 * 1000;
-            window.bbdMahbubCvCacheVersion = Math.floor(Date.now() / cacheWindowMs);
+            var buildVersion = '20260513-music-resume-delay';
+            window.bbdMahbubCvCacheVersion = buildVersion + '-' + Math.floor(Date.now() / cacheWindowMs);
             window.setTimeout(function () {
                 if (window.caches) {
                     window.caches.keys()

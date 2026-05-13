@@ -6,6 +6,8 @@
         const MUSIC_VOLUME = 0.05;
         const AUTOPLAY_DELAY_MS = 10000;
         const MUSIC_PAUSED_STORAGE_KEY = 'bbdMahbubMusicPaused';
+        const MUSIC_STATE_STORAGE_KEY = 'bbdMahbubMusicState';
+        const MUSIC_RESUME_STORAGE_KEY = 'bbdMahbubMusicResumeOnReload';
         const LANGUAGE_STORAGE_KEY = 'bbdMahbubLanguage';
         const audioPlayer = new Audio();
         const musicTranslations = {
@@ -20,7 +22,7 @@
                 collapse: 'Collapse music controls',
                 expand: 'Expand music controls',
                 nowPlaying: (title) => `Now playing: ${title}`,
-                blocked: 'Autoplay was blocked. Tap Play to start the music.',
+                blocked: 'Browser blocked automatic sound. Tap Play to resume the music.',
                 scheduled: (percent) => `Music will start automatically after 10 seconds at ${percent}% volume.`,
                 paused: (title) => `Paused: ${title}`,
                 pausedBeforeReload: 'Music was paused before reload. Press Play to start again.'
@@ -36,7 +38,7 @@
                 collapse: 'طي عناصر التحكم بالموسيقى',
                 expand: 'إظهار عناصر التحكم بالموسيقى',
                 nowPlaying: (title) => `يعمل الآن: ${title}`,
-                blocked: 'تم حظر التشغيل التلقائي. اضغط تشغيل لبدء الموسيقى.',
+                blocked: 'حظر المتصفح تشغيل الصوت تلقائياً. اضغط تشغيل لاستئناف الموسيقى.',
                 scheduled: (percent) => `ستبدأ الموسيقى تلقائياً بعد 10 ثوانٍ عند مستوى ${percent}٪.`,
                 paused: (title) => `متوقف: ${title}`,
                 pausedBeforeReload: 'تم إيقاف الموسيقى قبل إعادة التحميل. اضغط تشغيل للبدء من جديد.'
@@ -52,7 +54,7 @@
                 collapse: 'মিউজিক কন্ট্রোল লুকান',
                 expand: 'মিউজিক কন্ট্রোল দেখান',
                 nowPlaying: (title) => `এখন চলছে: ${title}`,
-                blocked: 'অটোপ্লে ব্লক করা হয়েছে। মিউজিক শুরু করতে চালু চাপুন।',
+                blocked: 'ব্রাউজার অটো সাউন্ড ব্লক করেছে। মিউজিক চালু করতে Play চাপুন।',
                 scheduled: (percent) => `১০ সেকেন্ড পরে ${percent}% ভলিউমে মিউজিক স্বয়ংক্রিয়ভাবে চালু হবে।`,
                 paused: (title) => `বিরতি: ${title}`,
                 pausedBeforeReload: 'রিফ্রেশের আগে মিউজিক বন্ধ ছিল। আবার শুরু করতে চালু চাপুন।'
@@ -99,6 +101,9 @@
         let scrollTickAudioContext = null;
         let lastScrollTickAt = 0;
         let lastScrollTickY = window.scrollY || 0;
+        let lastSavedMusicStateAt = 0;
+        let isPageUnloading = false;
+        let shouldResumeMusicAfterReload = false;
         const arabicIndicDigits = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
 
         function getInitialLanguage() {
@@ -213,10 +218,28 @@
             document.documentElement.style.setProperty('--menu-offset', `${menu.offsetHeight + stickyTop}px`);
         }
 
-        function loadTrack(index) {
+        function loadTrack(index, startTime = 0) {
             currentTrackIndex = index;
             audioPlayer.src = playlist[currentTrackIndex].src;
             document.getElementById('music-track-name').textContent = getCurrentTrackTitle();
+
+            if (startTime > 0) {
+                const applyStartTime = () => {
+                    const safeStartTime = Math.max(0, startTime);
+                    if (Number.isFinite(audioPlayer.duration) && audioPlayer.duration > 0) {
+                        audioPlayer.currentTime = Math.min(safeStartTime, Math.max(0, audioPlayer.duration - 1));
+                        return;
+                    }
+
+                    audioPlayer.currentTime = safeStartTime;
+                };
+
+                if (audioPlayer.readyState >= 1) {
+                    applyStartTime();
+                } else {
+                    audioPlayer.addEventListener('loadedmetadata', applyStartTime, { once: true });
+                }
+            }
         }
 
         function updateMusicStatus(message) {
@@ -351,22 +374,97 @@
             }
         }
 
-        async function playCurrentTrack() {
+        function getStoredResumeOnReload() {
             try {
+                return window.localStorage.getItem(MUSIC_RESUME_STORAGE_KEY) === 'true';
+            } catch (error) {
+                return false;
+            }
+        }
+
+        function setStoredResumeOnReload(shouldResume) {
+            try {
+                window.localStorage.setItem(MUSIC_RESUME_STORAGE_KEY, shouldResume ? 'true' : 'false');
+            } catch (error) {
+                // Ignore storage failures and keep playback working.
+            }
+        }
+
+        function getStoredMusicState() {
+            try {
+                const storedValue = window.localStorage.getItem(MUSIC_STATE_STORAGE_KEY);
+                if (!storedValue) return null;
+
+                const parsedState = JSON.parse(storedValue);
+                const trackIndex = Number(parsedState.trackIndex);
+                const currentTime = Number(parsedState.currentTime);
+
+                if (!Number.isInteger(trackIndex) || trackIndex < 0 || trackIndex >= playlist.length) {
+                    return null;
+                }
+
+                return {
+                    trackIndex,
+                    currentTime: Number.isFinite(currentTime) && currentTime > 0 ? currentTime : 0,
+                    isPaused: parsedState.isPaused === true,
+                    hasStarted: parsedState.hasStarted === true
+                };
+            } catch (error) {
+                return null;
+            }
+        }
+
+        function saveMusicState({ force = false, isPaused = audioPlayer.paused } = {}) {
+            const now = Date.now();
+            if (!force && now - lastSavedMusicStateAt < 1000) return;
+
+            lastSavedMusicStateAt = now;
+
+            try {
+                window.localStorage.setItem(MUSIC_STATE_STORAGE_KEY, JSON.stringify({
+                    trackIndex: currentTrackIndex,
+                    currentTime: Number.isFinite(audioPlayer.currentTime) ? audioPlayer.currentTime : 0,
+                    isPaused,
+                    hasStarted: Boolean(audioPlayer.src) && (audioPlayer.currentTime > 0 || !isPaused)
+                }));
+            } catch (error) {
+                // Ignore storage failures and keep playback working.
+            }
+        }
+
+        async function playCurrentTrack({ mutedBootstrap = false } = {}) {
+            const previousMuted = audioPlayer.muted;
+
+            try {
+                if (mutedBootstrap) {
+                    audioPlayer.muted = true;
+                }
+
                 await audioPlayer.play();
+
+                if (mutedBootstrap) {
+                    window.setTimeout(() => {
+                        audioPlayer.muted = previousMuted;
+                    }, 250);
+                }
+
                 setStoredManualPause(false);
+                setStoredResumeOnReload(true);
+                shouldResumeMusicAfterReload = true;
                 setMusicStatusMode('playing');
                 updateToggleLabel();
+                saveMusicState({ force: true, isPaused: false });
                 return true;
             } catch (error) {
+                audioPlayer.muted = previousMuted;
                 setMusicStatusMode('blocked');
                 updateToggleLabel();
                 return false;
             }
         }
 
-        function goToTrack(index) {
-            loadTrack(index);
+        function goToTrack(index, startTime = 0) {
+            loadTrack(index, startTime);
             return playCurrentTrack();
         }
 
@@ -385,12 +483,20 @@
                     window.removeEventListener('click', retryPlayback);
                     window.removeEventListener('keydown', retryPlayback);
                     window.removeEventListener('touchstart', retryPlayback);
+                    window.removeEventListener('pointermove', retryPlayback);
+                    window.removeEventListener('mousemove', retryPlayback);
+                    window.removeEventListener('touchmove', retryPlayback);
+                    window.removeEventListener('scroll', retryPlayback);
                 }
             };
 
             window.addEventListener('click', retryPlayback, { once: true });
             window.addEventListener('keydown', retryPlayback, { once: true });
             window.addEventListener('touchstart', retryPlayback, { once: true });
+            window.addEventListener('pointermove', retryPlayback, { once: true, passive: true });
+            window.addEventListener('mousemove', retryPlayback, { once: true, passive: true });
+            window.addEventListener('touchmove', retryPlayback, { once: true, passive: true });
+            window.addEventListener('scroll', retryPlayback, { once: true, passive: true });
         }
 
         function scheduleAutoplay() {
@@ -399,12 +505,34 @@
 
             autoplayTimerId = window.setTimeout(() => {
                 autoplayTimerId = null;
-                playCurrentTrack().then((started) => {
+                playCurrentTrack({ mutedBootstrap: true }).then((started) => {
                     if (!started) {
                         bindAutoplayRetry();
                     }
                 });
             }, AUTOPLAY_DELAY_MS);
+        }
+
+        function resumeStoredPlaybackNow() {
+            window.setTimeout(() => {
+                playCurrentTrack({ mutedBootstrap: true }).then((started) => {
+                    if (!started) {
+                        bindAutoplayRetry();
+                    }
+                });
+            }, 10);
+
+            audioPlayer.addEventListener('canplay', () => {
+                if (!audioPlayer.paused) return;
+
+                window.setTimeout(() => {
+                    playCurrentTrack({ mutedBootstrap: true }).then((started) => {
+                        if (!started) {
+                            bindAutoplayRetry();
+                        }
+                    });
+                }, 10);
+            }, { once: true });
         }
 
         function setupMusicPlayer() {
@@ -416,7 +544,53 @@
             applyMusicLanguage();
 
             audioPlayer.addEventListener('ended', () => {
+                saveMusicState({ force: true });
                 goToTrack((currentTrackIndex + 1) % playlist.length);
+            });
+
+            audioPlayer.addEventListener('timeupdate', () => {
+                saveMusicState();
+            });
+
+            audioPlayer.addEventListener('pause', () => {
+                if ((shouldResumeMusicAfterReload || getStoredResumeOnReload()) && !getStoredManualPause()) {
+                    setStoredManualPause(false);
+                    setStoredResumeOnReload(true);
+                    saveMusicState({ force: true, isPaused: false });
+                    return;
+                }
+
+                saveMusicState({ force: true, isPaused: true });
+            });
+
+            audioPlayer.addEventListener('play', () => {
+                shouldResumeMusicAfterReload = true;
+                setStoredResumeOnReload(true);
+                saveMusicState({ force: true, isPaused: false });
+            });
+
+            window.addEventListener('beforeunload', () => {
+                isPageUnloading = true;
+                if (shouldResumeMusicAfterReload || getStoredResumeOnReload()) {
+                    setStoredManualPause(false);
+                    setStoredResumeOnReload(true);
+                }
+                saveMusicState({
+                    force: true,
+                    isPaused: !(shouldResumeMusicAfterReload || getStoredResumeOnReload()) || getStoredManualPause()
+                });
+            });
+
+            window.addEventListener('pagehide', () => {
+                isPageUnloading = true;
+                if (shouldResumeMusicAfterReload || getStoredResumeOnReload()) {
+                    setStoredManualPause(false);
+                    setStoredResumeOnReload(true);
+                }
+                saveMusicState({
+                    force: true,
+                    isPaused: !(shouldResumeMusicAfterReload || getStoredResumeOnReload()) || getStoredManualPause()
+                });
             });
 
             document.getElementById('music-toggle').addEventListener('click', async () => {
@@ -429,13 +603,18 @@
                 }
 
                 audioPlayer.pause();
+                shouldResumeMusicAfterReload = false;
+                setStoredResumeOnReload(false);
                 setStoredManualPause(true);
                 setMusicStatusMode('paused');
                 updateToggleLabel();
+                saveMusicState({ force: true, isPaused: true });
             });
 
             document.getElementById('music-next').addEventListener('click', async () => {
                 clearScheduledAutoplay();
+                shouldResumeMusicAfterReload = true;
+                setStoredResumeOnReload(true);
                 setStoredManualPause(false);
                 await goToTrack((currentTrackIndex + 1) % playlist.length);
             });
@@ -459,7 +638,29 @@
                 updateMusicPanelState();
             });
 
+            const storedMusicState = getStoredMusicState();
+            if (storedMusicState && storedMusicState.hasStarted) {
+                loadTrack(storedMusicState.trackIndex, storedMusicState.currentTime);
+                const shouldForceResume = getStoredResumeOnReload();
+
+                if (storedMusicState.isPaused && !shouldForceResume) {
+                    shouldResumeMusicAfterReload = false;
+                    setStoredManualPause(true);
+                    setStoredResumeOnReload(false);
+                    setMusicStatusMode('pausedBeforeReload');
+                    updateToggleLabel();
+                    return;
+                }
+
+                shouldResumeMusicAfterReload = true;
+                setStoredResumeOnReload(true);
+                setStoredManualPause(false);
+                resumeStoredPlaybackNow();
+                return;
+            }
+
             if (getStoredManualPause()) {
+                shouldResumeMusicAfterReload = false;
                 setMusicStatusMode('pausedBeforeReload');
                 updateToggleLabel();
                 return;
