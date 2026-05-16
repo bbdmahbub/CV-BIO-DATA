@@ -351,8 +351,26 @@
         .bismillah-loading-view-button {
             min-width: min(260px, 100%);
             min-height: 52px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             padding-inline: 28px;
             font-size: 1rem;
+        }
+
+        .bismillah-loading-view-finger {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15em;
+            line-height: 1;
+            filter: drop-shadow(0 4px 7px rgba(4, 61, 47, 0.28));
+            animation: bismillahViewFingerPoint 0.86s ease-in-out infinite;
+        }
+
+        .bismillah-loading-view-button[dir="rtl"] .bismillah-loading-view-finger {
+            animation-name: bismillahViewFingerPointRtl;
         }
 
         .bismillah-loading-language-button.is-bn,
@@ -1189,7 +1207,8 @@
         @media (prefers-reduced-motion: reduce) {
             .bismillah-loading-mark,
             .bismillah-loading-mark::before,
-            .bismillah-loading-mark::after {
+            .bismillah-loading-mark::after,
+            .bismillah-loading-view-finger {
                 animation: none;
             }
         }
@@ -1197,6 +1216,28 @@
         @keyframes bismillahLoadingSpin {
             to {
                 transform: rotate(360deg);
+            }
+        }
+
+        @keyframes bismillahViewFingerPoint {
+            0%,
+            100% {
+                transform: translateX(0) scale(1);
+            }
+
+            45% {
+                transform: translateX(5px) scale(1.08);
+            }
+        }
+
+        @keyframes bismillahViewFingerPointRtl {
+            0%,
+            100% {
+                transform: translateX(0) scale(1);
+            }
+
+            45% {
+                transform: translateX(-5px) scale(1.08);
             }
         }
 

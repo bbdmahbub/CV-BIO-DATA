@@ -2200,8 +2200,12 @@
                                     type="button"
                                     className={`bismillah-loading-view-button is-${language}`}
                                     onClick={handleBismillahViewBiodata}
+                                    dir={selectedTranslation.dir}
                                 >
-                                    {copy.bismillahIntro.viewButton}
+                                    <span className="bismillah-loading-view-finger" aria-hidden="true">
+                                        <i className={`fas ${isRtl ? 'fa-hand-point-left' : 'fa-hand-point-right'}`}></i>
+                                    </span>
+                                    <span>{copy.bismillahIntro.viewButton}</span>
                                 </button>
                             </div>
                         </div>
