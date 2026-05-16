@@ -1,7 +1,7 @@
 ﻿const BioDataComponent = () => {
             const cvCacheVersion = (typeof window !== 'undefined' && window.bbdMahbubCvCacheVersion)
                 ? window.bbdMahbubCvCacheVersion
-                : Math.floor(Date.now() / (2 * 60 * 60 * 1000));
+                : Date.now();
             const withCvCacheVersion = (src) => `${src}${src.includes('?') ? '&' : '?'}v=${cvCacheVersion}`;
             const iconProfile = String.fromCodePoint(0x1F464);
             const iconFamily = String.fromCodePoint(0x1F46A);
@@ -90,6 +90,9 @@
                 { code: 'en', shortLabel: 'EN', nativeLabel: 'English' },
                 { code: 'bn', shortLabel: 'BN', nativeLabel: 'বাংলা' }
             ];
+            const bismillahLanguageOptions = ['bn', 'en', 'ar']
+                .map((code) => languageOptions.find((option) => option.code === code))
+                .filter(Boolean);
             const translations = {
                 en: {
                     locale: 'en',
@@ -122,6 +125,11 @@
                             'Use the top menu to move quickly between each section.',
                             'Please maintain privacy while reviewing this profile.'
                         ]
+                    },
+                    bismillahIntro: {
+                        ayahReference: 'Surah An-Nur, Ayah 32',
+                        ayahMeaning: 'And marry the unmarried among you and the righteous among your male servants and female servants. If they are poor, Allah will enrich them from His bounty. And Allah is All-Encompassing, All-Knowing.',
+                        viewButton: 'VIEW BIO-DATA'
                     },
                     voice: {
                         tapToStart: 'Tap the mic once to start Bismillah voice verification.',
@@ -379,6 +387,11 @@
                             'يرجى الحفاظ على الخصوصية أثناء مراجعة هذا الملف.'
                         ]
                     },
+                    bismillahIntro: {
+                        ayahReference: 'سورة النور، آية ٣٢',
+                        ayahMeaning: 'أي: زوّجوا غير المتزوجين منكم والصالحين من عبادكم وإمائكم، فإن كانوا فقراء أغناهم الله من فضله، والله واسع الفضل عليم بأحوال عباده.',
+                        viewButton: 'عرض السيرة الذاتية'
+                    },
                     voice: {
                         tapToStart: 'اضغط على الميكروفون مرة واحدة لبدء التحقق الصوتي بقول بسم الله.',
                         browserNoSupport: 'هذا المتصفح لا يدعم التعرف الصوتي المباشر. استخدم زر المتابعة أدناه لفتح السيرة الذاتية.',
@@ -635,6 +648,11 @@
                             'প্রতিটি সেকশনে দ্রুত যেতে উপরের মেনু ব্যবহার করুন।',
                             'দয়া করে এই প্রোফাইল দেখার সময় গোপনীয়তা বজায় রাখুন।'
                         ]
+                    },
+                    bismillahIntro: {
+                        ayahReference: 'সূরা নূর : আয়াত - ৩২',
+                        ayahMeaning: 'তোমাদের মধ্যে যারা অবিবাহিত এবং তোমাদের দাস-দাসীদের মধ্যে যারা সৎকর্মপরায়ণ, তাদের বিবাহ দাও। তারা অভাবী হলে আল্লাহ নিজ অনুগ্রহে তাদেরকে অভাবমুক্ত করবেন। আল্লাহ প্রাচুর্যময়, সর্বজ্ঞ।',
+                        viewButton: 'বায়োডাটা দেখুন'
                     },
                     voice: {
                         tapToStart: 'বিসমিল্লাহ ভয়েস যাচাই শুরু করতে একবার মাইকে চাপ দিন।',
@@ -1054,7 +1072,7 @@
                 return getSavedActiveSection();
             });
             const [isIntroPopupOpen, setIsIntroPopupOpen] = React.useState(false);
-            const [isBismillahLoadingOpen, setIsBismillahLoadingOpen] = React.useState(() => !hasSeenBismillahIntro());
+            const [isBismillahLoadingOpen, setIsBismillahLoadingOpen] = React.useState(true);
             const [isVoiceListening, setIsVoiceListening] = React.useState(false);
             const [voiceUiState, setVoiceUiState] = React.useState('idle');
             const [voicePrompt, setVoicePrompt] = React.useState(introVoiceHint);
@@ -2010,13 +2028,18 @@
                 });
             };
 
-            const handleBismillahLanguageOpen = (nextLanguage) => {
+            const handleBismillahLanguageSelect = (nextLanguage) => {
+                if (!isBismillahLoadingOpen) return;
+
+                setLanguage(nextLanguage);
+                setIsLanguageRowCollapsed(true);
+            };
+
+            const handleBismillahViewBiodata = () => {
                 if (!isBismillahLoadingOpen) return;
                 if (isBismillahLoadingClickInProgressRef.current) return;
 
                 isBismillahLoadingClickInProgressRef.current = true;
-                setLanguage(nextLanguage);
-                setIsLanguageRowCollapsed(true);
                 handleEnterBiodata();
                 setIsBismillahLoadingOpen(false);
             };
@@ -2144,34 +2167,42 @@
                     {isBismillahLoadingOpen ? (
                         <div
                             className="bismillah-loading-popup"
-                            role="status"
-                            aria-live="polite"
+                            role="dialog"
+                            aria-modal="true"
                         >
-                            <div className="bismillah-loading-panel" dir="rtl">
-                                <div className="bismillah-loading-mark" data-text={popupBismillah}>{popupBismillah}</div>
-                                <div className="bismillah-loading-language-row" dir="ltr">
-                                    <button
-                                        type="button"
-                                        className="bismillah-loading-start is-bn"
-                                        onClick={() => handleBismillahLanguageOpen('bn')}
-                                    >
-                                        বাংলা
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className="bismillah-loading-start is-en"
-                                        onClick={() => handleBismillahLanguageOpen('en')}
-                                    >
-                                        English
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className="bismillah-loading-start is-ar"
-                                        onClick={() => handleBismillahLanguageOpen('ar')}
-                                    >
-                                        العربية
-                                    </button>
+                            <div className="bismillah-loading-panel" dir={selectedTranslation.dir}>
+                                <div className="bismillah-loading-mark" data-text={popupBismillah} dir="rtl">{popupBismillah}</div>
+                                <div className="bismillah-loading-ayah">
+                                    <div className="bismillah-loading-ayah-text" dir="rtl">
+                                        {duaArabicLines[0]}
+                                    </div>
+                                    <div className="bismillah-loading-ayah-meaning">
+                                        {copy.bismillahIntro.ayahMeaning}
+                                    </div>
+                                    <div className="bismillah-loading-ayah-reference">
+                                        {copy.bismillahIntro.ayahReference}
+                                    </div>
                                 </div>
+                                <div className="bismillah-loading-language-row" dir="ltr">
+                                    {bismillahLanguageOptions.map(({ code, nativeLabel }) => (
+                                        <button
+                                            type="button"
+                                            className={`bismillah-loading-language-button is-${code}${language === code ? ' is-active' : ''}`}
+                                            onClick={() => handleBismillahLanguageSelect(code)}
+                                            aria-pressed={language === code ? 'true' : 'false'}
+                                            key={code}
+                                        >
+                                            {nativeLabel}
+                                        </button>
+                                    ))}
+                                </div>
+                                <button
+                                    type="button"
+                                    className={`bismillah-loading-view-button is-${language}`}
+                                    onClick={handleBismillahViewBiodata}
+                                >
+                                    {copy.bismillahIntro.viewButton}
+                                </button>
                             </div>
                         </div>
                     ) : null}
@@ -2336,6 +2367,7 @@
                             </div>
                         </div>
                     ) : null}
+                    {!isBismillahLoadingOpen && !isIntroPopupOpen ? (
                     <div className="container">
                     <nav className="top-menu" aria-label={copy.navigation.sectionsAria}>
                         <div className="top-menu-language-slot">
@@ -2742,6 +2774,7 @@
                         {dividerOrnament}
                     </div>
                 </div>
+                    ) : null}
                 </div>
             );
         };

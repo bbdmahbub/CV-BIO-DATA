@@ -17,25 +17,8 @@
     <meta name="twitter:image" content="https://bbdmahbub.github.io/CV-BIO-DATA/assets/images/mahbub-portrait-1.jpg">
     <script>
         (function () {
-            var cacheWindowMs = 2 * 60 * 60 * 1000;
-            var buildVersion = '20260513-music-resume-delay';
-            window.bbdMahbubCvCacheVersion = buildVersion + '-' + Math.floor(Date.now() / cacheWindowMs);
-            window.setTimeout(function () {
-                if (window.caches) {
-                    window.caches.keys()
-                        .then(function (cacheNames) {
-                            return Promise.all(cacheNames.map(function (cacheName) {
-                                return window.caches.delete(cacheName);
-                            }));
-                        })
-                        .finally(function () {
-                            window.location.reload();
-                        });
-                    return;
-                }
-
-                window.location.reload();
-            }, cacheWindowMs);
+            var buildVersion = '20260516-bismillah-gate';
+            window.bbdMahbubCvCacheVersion = buildVersion + '-' + Date.now();
         }());
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
