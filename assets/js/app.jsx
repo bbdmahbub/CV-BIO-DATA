@@ -179,7 +179,7 @@
                     profile: {
                         name: 'Md Mahbubur Rahman',
                         subtitle: 'IT Professional',
-                        tagline: 'A Muslim man is seeking a Muslimah companion who will be the coolness of his eyes!',
+                        tagline: 'A Muslim young man is seeking a Muslimah companion who will be the coolness of his eyes in this world and the Hereafter!',
                         stats: {
                             age: 'YEARS OLD',
                             education: 'HIGHLY EDUCATED',
@@ -440,7 +440,7 @@
                     profile: {
                         name: 'محمد محبوب الرحمن',
                         subtitle: 'محترف تقنية معلومات',
-                        tagline: 'مسلم يبحث عن رفيقة مسلمة تكون قرة عينه!',
+                        tagline: 'شاب مسلم يبحث عن رفيقة مسلمة تكون قرة عينه في الدنيا والآخرة!',
                         stats: {
                             age: '28 عاماً',
                             education: 'تعليم عالٍ',
@@ -702,7 +702,7 @@
                     profile: {
                         name: 'মো. মাহবুবুর রহমান',
                         subtitle: 'তথ্যপ্রযুক্তি পেশাজীবী',
-                        tagline: 'একজন মুসলিম, চক্ষুশীতলকারিনী মুসলিমাহ সঙ্গী খুজছে!',
+                        tagline: 'একজন মুসলিম যুবক, দুনিয়া ও আখেরাতের চক্ষুশীতলকারিনী মুসলিমাহ্,  সঙ্গী খুজছে!',
                         stats: {
                             age: '২৮ বছর',
                             education: 'উচ্চশিক্ষিত',
