@@ -1375,7 +1375,7 @@
       if (galleryPhotos.length <= 1 || zoomedPhoto) return void 0;
       const gallerySlideTimer = window.setInterval(() => {
         setActiveGalleryPhotoIndex((currentIndex) => (currentIndex + 1) % galleryPhotos.length);
-      }, 4500);
+      }, 7e3);
       return () => {
         window.clearInterval(gallerySlideTimer);
       };

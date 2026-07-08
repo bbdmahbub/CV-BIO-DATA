@@ -1507,7 +1507,7 @@
                     setActiveGalleryPhotoIndex((currentIndex) => (
                         (currentIndex + 1) % galleryPhotos.length
                     ));
-                }, 4500);
+                }, 7000);
 
                 return () => {
                     window.clearInterval(gallerySlideTimer);
