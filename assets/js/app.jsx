@@ -1282,6 +1282,20 @@
                 photoPointerCacheRef.current.clear();
                 photoGestureRef.current = null;
             };
+            const changePhotoViewerByOffset = (offset) => {
+                if (!zoomedPhoto || galleryPhotos.length <= 1) return;
+
+                const currentPhotoIndex = galleryPhotos.findIndex(({ src }) => src === zoomedPhoto.src);
+                const safeCurrentIndex = currentPhotoIndex >= 0 ? currentPhotoIndex : activeGalleryPhotoIndex;
+                const nextPhotoIndex = (safeCurrentIndex + offset + galleryPhotos.length) % galleryPhotos.length;
+                const nextPhoto = galleryPhotos[nextPhotoIndex];
+
+                setActiveGalleryPhotoIndex(nextPhotoIndex);
+                setZoomedPhoto(nextPhoto);
+                setPhotoViewerTransform({ scale: 1, x: 0, y: 0 });
+                photoPointerCacheRef.current.clear();
+                photoGestureRef.current = null;
+            };
             const handlePhotoBackdropClick = (event) => {
                 if (event.target === event.currentTarget) {
                     closePhotoViewer();
@@ -1721,6 +1735,10 @@
                 const handlePhotoViewerKeyDown = (event) => {
                     if (event.key === 'Escape') {
                         closePhotoViewer();
+                    } else if (event.key === 'ArrowLeft') {
+                        changePhotoViewerByOffset(-1);
+                    } else if (event.key === 'ArrowRight') {
+                        changePhotoViewerByOffset(1);
                     }
                 };
 
@@ -1728,7 +1746,7 @@
                 return () => {
                     window.removeEventListener('keydown', handlePhotoViewerKeyDown);
                 };
-            }, [zoomedPhoto]);
+            }, [zoomedPhoto, galleryPhotos.length, activeGalleryPhotoIndex]);
 
             React.useEffect(() => {
                 if (!isBismillahLoadingOpen) return undefined;
@@ -2360,6 +2378,32 @@
                             >
                                 <i className="fas fa-xmark" aria-hidden="true"></i>
                             </button>
+                            {galleryPhotos.length > 1 ? (
+                                <>
+                                    <button
+                                        type="button"
+                                        className="photo-viewer-nav photo-viewer-nav-prev"
+                                        aria-label="Previous photo"
+                                        onClick={(event) => {
+                                            event.stopPropagation();
+                                            changePhotoViewerByOffset(-1);
+                                        }}
+                                    >
+                                        <i className="fas fa-chevron-left" aria-hidden="true"></i>
+                                    </button>
+                                    <button
+                                        type="button"
+                                        className="photo-viewer-nav photo-viewer-nav-next"
+                                        aria-label="Next photo"
+                                        onClick={(event) => {
+                                            event.stopPropagation();
+                                            changePhotoViewerByOffset(1);
+                                        }}
+                                    >
+                                        <i className="fas fa-chevron-right" aria-hidden="true"></i>
+                                    </button>
+                                </>
+                            ) : null}
                             <div className="photo-viewer-stage">
                                 <div
                                     className={`photo-viewer-gesture${photoViewerTransform.scale > 1 ? ' is-zoomed' : ''}`}

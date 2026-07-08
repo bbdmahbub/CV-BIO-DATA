@@ -1195,6 +1195,18 @@
       photoPointerCacheRef.current.clear();
       photoGestureRef.current = null;
     };
+    const changePhotoViewerByOffset = (offset) => {
+      if (!zoomedPhoto || galleryPhotos.length <= 1) return;
+      const currentPhotoIndex = galleryPhotos.findIndex(({ src }) => src === zoomedPhoto.src);
+      const safeCurrentIndex = currentPhotoIndex >= 0 ? currentPhotoIndex : activeGalleryPhotoIndex;
+      const nextPhotoIndex = (safeCurrentIndex + offset + galleryPhotos.length) % galleryPhotos.length;
+      const nextPhoto = galleryPhotos[nextPhotoIndex];
+      setActiveGalleryPhotoIndex(nextPhotoIndex);
+      setZoomedPhoto(nextPhoto);
+      setPhotoViewerTransform({ scale: 1, x: 0, y: 0 });
+      photoPointerCacheRef.current.clear();
+      photoGestureRef.current = null;
+    };
     const handlePhotoBackdropClick = (event) => {
       if (event.target === event.currentTarget) {
         closePhotoViewer();
@@ -1541,13 +1553,17 @@
       const handlePhotoViewerKeyDown = (event) => {
         if (event.key === "Escape") {
           closePhotoViewer();
+        } else if (event.key === "ArrowLeft") {
+          changePhotoViewerByOffset(-1);
+        } else if (event.key === "ArrowRight") {
+          changePhotoViewerByOffset(1);
         }
       };
       window.addEventListener("keydown", handlePhotoViewerKeyDown);
       return () => {
         window.removeEventListener("keydown", handlePhotoViewerKeyDown);
       };
-    }, [zoomedPhoto]);
+    }, [zoomedPhoto, galleryPhotos.length, activeGalleryPhotoIndex]);
     React.useEffect(() => {
       if (!isBismillahLoadingOpen) return void 0;
       if (hasPreloadedCvAssetsRef.current) return void 0;
@@ -1996,6 +2012,31 @@
         },
         /* @__PURE__ */ React.createElement("i", { className: "fas fa-xmark", "aria-hidden": "true" })
       ),
+      galleryPhotos.length > 1 ? /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(
+        "button",
+        {
+          type: "button",
+          className: "photo-viewer-nav photo-viewer-nav-prev",
+          "aria-label": "Previous photo",
+          onClick: (event) => {
+            event.stopPropagation();
+            changePhotoViewerByOffset(-1);
+          }
+        },
+        /* @__PURE__ */ React.createElement("i", { className: "fas fa-chevron-left", "aria-hidden": "true" })
+      ), /* @__PURE__ */ React.createElement(
+        "button",
+        {
+          type: "button",
+          className: "photo-viewer-nav photo-viewer-nav-next",
+          "aria-label": "Next photo",
+          onClick: (event) => {
+            event.stopPropagation();
+            changePhotoViewerByOffset(1);
+          }
+        },
+        /* @__PURE__ */ React.createElement("i", { className: "fas fa-chevron-right", "aria-hidden": "true" })
+      )) : null,
       /* @__PURE__ */ React.createElement("div", { className: "photo-viewer-stage" }, /* @__PURE__ */ React.createElement(
         "div",
         {
