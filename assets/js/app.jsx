@@ -1501,20 +1501,6 @@
             }, [language]);
 
             React.useEffect(() => {
-                if (galleryPhotos.length <= 1 || zoomedPhoto) return undefined;
-
-                const gallerySlideTimer = window.setInterval(() => {
-                    setActiveGalleryPhotoIndex((currentIndex) => (
-                        (currentIndex + 1) % galleryPhotos.length
-                    ));
-                }, 7000);
-
-                return () => {
-                    window.clearInterval(gallerySlideTimer);
-                };
-            }, [galleryPhotos.length, zoomedPhoto]);
-
-            React.useEffect(() => {
                 const syncMenuLayout = () => {
                     const menu = document.querySelector('.top-menu');
                     if (menu) {
@@ -2477,7 +2463,6 @@
                                                         alt={photo.alt}
                                                         loading={idx === 0 ? 'eager' : 'lazy'}
                                                     />
-                                                    <span>{photo.label}</span>
                                                 </button>
                                             );
                                         })}

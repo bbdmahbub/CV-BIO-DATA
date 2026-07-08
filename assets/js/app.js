@@ -1372,15 +1372,6 @@
       setActiveGalleryPhotoIndex(0);
     }, [language]);
     React.useEffect(() => {
-      if (galleryPhotos.length <= 1 || zoomedPhoto) return void 0;
-      const gallerySlideTimer = window.setInterval(() => {
-        setActiveGalleryPhotoIndex((currentIndex) => (currentIndex + 1) % galleryPhotos.length);
-      }, 7e3);
-      return () => {
-        window.clearInterval(gallerySlideTimer);
-      };
-    }, [galleryPhotos.length, zoomedPhoto]);
-    React.useEffect(() => {
       const syncMenuLayout = () => {
         const menu = document.querySelector(".top-menu");
         if (menu) {
@@ -2068,8 +2059,7 @@
             alt: photo.alt,
             loading: idx === 0 ? "eager" : "lazy"
           }
-        ),
-        /* @__PURE__ */ React.createElement("span", null, photo.label)
+        )
       );
     }))), /* @__PURE__ */ React.createElement("figure", { className: "photo-frame photo-frame-featured", key: activeGalleryPhoto.src }, /* @__PURE__ */ React.createElement("div", { className: "photo-frame-inner" }, /* @__PURE__ */ React.createElement(
       "img",
