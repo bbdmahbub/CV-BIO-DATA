@@ -189,8 +189,6 @@
                     },
                     gallery: {
                         title: 'Photo Gallery',
-                        seeMore: 'See more',
-                        showLess: 'Show less',
                         photos: [
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-1.jpg'), alt: 'Md Mahbubur Rahman portrait 1', label: 'Portrait 01', featured: true },
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-2.jpg'), alt: 'Md Mahbubur Rahman portrait 2', label: 'Portrait 02', featured: false },
@@ -455,8 +453,6 @@
                     },
                     gallery: {
                         title: 'معرض الصور',
-                        seeMore: 'عرض المزيد',
-                        showLess: 'عرض أقل',
                         photos: [
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-1.jpg'), alt: 'الصورة الشخصية الأولى لـ محمد محبوب الرحمن', label: 'الصورة 01', featured: true },
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-2.jpg'), alt: 'الصورة الشخصية الثانية لـ محمد محبوب الرحمن', label: 'الصورة 02', featured: false },
@@ -722,8 +718,6 @@
                     },
                     gallery: {
                         title: 'ছবি গ্যালারি',
-                        seeMore: 'আরও দেখুন',
-                        showLess: 'কম দেখুন',
                         photos: [
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-1.jpg'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ১', label: 'ছবি ০১', featured: true },
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-2.jpg'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ২', label: 'ছবি ০২', featured: false },
@@ -1098,7 +1092,6 @@
             const [zoomedPhoto, setZoomedPhoto] = React.useState(null);
             const [photoViewerTransform, setPhotoViewerTransform] = React.useState({ scale: 1, x: 0, y: 0 });
             const [activeGalleryPhotoIndex, setActiveGalleryPhotoIndex] = React.useState(0);
-            const [isGalleryExpanded, setIsGalleryExpanded] = React.useState(false);
             const menuLinksRef = React.useRef(null);
             const hasCenteredMenuRef = React.useRef(false);
             const speechRecognitionRef = React.useRef(null);
@@ -1144,7 +1137,6 @@
             const voiceCopy = copy.voice;
             const galleryPhotos = copy.gallery.photos;
             const activeGalleryPhoto = galleryPhotos[activeGalleryPhotoIndex] || galleryPhotos[0];
-            const visibleGalleryThumbs = isGalleryExpanded ? galleryPhotos : galleryPhotos.slice(0, 3);
             const activePuzzleSet = bismillahPuzzleSets[language] || bismillahPuzzleSets.en;
             const voicePuzzleSeparatorText = language === 'bn' ? 'অথবা' : language === 'ar' ? 'أو' : 'OR';
             const selectedPuzzlePieces = selectedPuzzleIndexes.map((pieceIndex) => ({
@@ -1506,7 +1498,6 @@
 
             React.useEffect(() => {
                 setActiveGalleryPhotoIndex(0);
-                setIsGalleryExpanded(false);
             }, [language]);
 
             React.useEffect(() => {
@@ -2491,7 +2482,7 @@
                                 </figure>
                                 <div className="photo-gallery-thumbs-wrap">
                                     <div className="photo-gallery-thumbs">
-                                        {visibleGalleryThumbs.map((photo, idx) => {
+                                        {galleryPhotos.map((photo, idx) => {
                                             const photoIndex = galleryPhotos.findIndex(({ src }) => src === photo.src);
                                             const resolvedPhotoIndex = photoIndex >= 0 ? photoIndex : idx;
                                             const isActivePhoto = resolvedPhotoIndex === activeGalleryPhotoIndex;
@@ -2515,16 +2506,6 @@
                                             );
                                         })}
                                     </div>
-                                    {galleryPhotos.length > 3 ? (
-                                        <button
-                                            type="button"
-                                            className="photo-gallery-more"
-                                            onClick={() => setIsGalleryExpanded((currentState) => !currentState)}
-                                        >
-                                            <i className={`fas ${isGalleryExpanded ? 'fa-chevron-up' : 'fa-chevron-down'}`} aria-hidden="true"></i>
-                                            {isGalleryExpanded ? copy.gallery.showLess : copy.gallery.seeMore}
-                                        </button>
-                                    ) : null}
                                 </div>
                             </div>
                         </div>
