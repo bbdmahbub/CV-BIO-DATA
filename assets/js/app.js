@@ -190,7 +190,7 @@
             { src: withCvCacheVersion("assets/images/mahbub-portrait-1.jpg"), alt: "Md Mahbubur Rahman portrait 1", label: "Portrait 01", featured: true },
             { src: withCvCacheVersion("assets/images/mahbub-portrait-2.jpg"), alt: "Md Mahbubur Rahman portrait 2", label: "Portrait 02", featured: false },
             { src: withCvCacheVersion("assets/images/mahbub-potrait-3.jpg"), alt: "Md Mahbubur Rahman portrait 3", label: "Portrait 03", featured: false },
-            { src: withCvCacheVersion("assets/images/mahbub-potrail-4.jpg"), alt: "Md Mahbubur Rahman portrait 4", label: "Portrait 04", featured: false },
+            { src: withCvCacheVersion("assets/images/mahbub-potrait-4.jpg"), alt: "Md Mahbubur Rahman portrait 4", label: "Portrait 04", featured: false },
             { src: withCvCacheVersion("assets/images/mahbub-potrait-5.jpg"), alt: "Md Mahbubur Rahman portrait 5", label: "Portrait 05", featured: false }
           ]
         },
@@ -454,7 +454,7 @@
             { src: withCvCacheVersion("assets/images/mahbub-portrait-1.jpg"), alt: "\u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0634\u062E\u0635\u064A\u0629 \u0627\u0644\u0623\u0648\u0644\u0649 \u0644\u0640 \u0645\u062D\u0645\u062F \u0645\u062D\u0628\u0648\u0628 \u0627\u0644\u0631\u062D\u0645\u0646", label: "\u0627\u0644\u0635\u0648\u0631\u0629 01", featured: true },
             { src: withCvCacheVersion("assets/images/mahbub-portrait-2.jpg"), alt: "\u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0634\u062E\u0635\u064A\u0629 \u0627\u0644\u062B\u0627\u0646\u064A\u0629 \u0644\u0640 \u0645\u062D\u0645\u062F \u0645\u062D\u0628\u0648\u0628 \u0627\u0644\u0631\u062D\u0645\u0646", label: "\u0627\u0644\u0635\u0648\u0631\u0629 02", featured: false },
             { src: withCvCacheVersion("assets/images/mahbub-potrait-3.jpg"), alt: "\u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0634\u062E\u0635\u064A\u0629 \u0627\u0644\u062B\u0627\u0644\u062B\u0629 \u0644\u0640 \u0645\u062D\u0645\u062F \u0645\u062D\u0628\u0648\u0628 \u0627\u0644\u0631\u062D\u0645\u0646", label: "\u0627\u0644\u0635\u0648\u0631\u0629 03", featured: false },
-            { src: withCvCacheVersion("assets/images/mahbub-potrail-4.jpg"), alt: "\u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0634\u062E\u0635\u064A\u0629 \u0627\u0644\u0631\u0627\u0628\u0639\u0629 \u0644\u0640 \u0645\u062D\u0645\u062F \u0645\u062D\u0628\u0648\u0628 \u0627\u0644\u0631\u062D\u0645\u0646", label: "\u0627\u0644\u0635\u0648\u0631\u0629 04", featured: false },
+            { src: withCvCacheVersion("assets/images/mahbub-potrait-4.jpg"), alt: "\u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0634\u062E\u0635\u064A\u0629 \u0627\u0644\u0631\u0627\u0628\u0639\u0629 \u0644\u0640 \u0645\u062D\u0645\u062F \u0645\u062D\u0628\u0648\u0628 \u0627\u0644\u0631\u062D\u0645\u0646", label: "\u0627\u0644\u0635\u0648\u0631\u0629 04", featured: false },
             { src: withCvCacheVersion("assets/images/mahbub-potrait-5.jpg"), alt: "\u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0634\u062E\u0635\u064A\u0629 \u0627\u0644\u062E\u0627\u0645\u0633\u0629 \u0644\u0640 \u0645\u062D\u0645\u062F \u0645\u062D\u0628\u0648\u0628 \u0627\u0644\u0631\u062D\u0645\u0646", label: "\u0627\u0644\u0635\u0648\u0631\u0629 05", featured: false }
           ]
         },
@@ -719,7 +719,7 @@
             { src: withCvCacheVersion("assets/images/mahbub-portrait-1.jpg"), alt: "Md Mahbubur Rahman-\u098F\u09B0 \u09AA\u09CB\u09B0\u09CD\u099F\u09CD\u09B0\u09C7\u099F \u09E7", label: "\u099B\u09AC\u09BF \u09E6\u09E7", featured: true },
             { src: withCvCacheVersion("assets/images/mahbub-portrait-2.jpg"), alt: "Md Mahbubur Rahman-\u098F\u09B0 \u09AA\u09CB\u09B0\u09CD\u099F\u09CD\u09B0\u09C7\u099F \u09E8", label: "\u099B\u09AC\u09BF \u09E6\u09E8", featured: false },
             { src: withCvCacheVersion("assets/images/mahbub-potrait-3.jpg"), alt: "Md Mahbubur Rahman-\u098F\u09B0 \u09AA\u09CB\u09B0\u09CD\u099F\u09CD\u09B0\u09C7\u099F \u09E9", label: "\u099B\u09AC\u09BF \u09E6\u09E9", featured: false },
-            { src: withCvCacheVersion("assets/images/mahbub-potrail-4.jpg"), alt: "Md Mahbubur Rahman-\u098F\u09B0 \u09AA\u09CB\u09B0\u09CD\u099F\u09CD\u09B0\u09C7\u099F \u09EA", label: "\u099B\u09AC\u09BF \u09E6\u09EA", featured: false },
+            { src: withCvCacheVersion("assets/images/mahbub-potrait-4.jpg"), alt: "Md Mahbubur Rahman-\u098F\u09B0 \u09AA\u09CB\u09B0\u09CD\u099F\u09CD\u09B0\u09C7\u099F \u09EA", label: "\u099B\u09AC\u09BF \u09E6\u09EA", featured: false },
             { src: withCvCacheVersion("assets/images/mahbub-potrait-5.jpg"), alt: "Md Mahbubur Rahman-\u098F\u09B0 \u09AA\u09CB\u09B0\u09CD\u099F\u09CD\u09B0\u09C7\u099F \u09EB", label: "\u099B\u09AC\u09BF \u09E6\u09EB", featured: false }
           ]
         },

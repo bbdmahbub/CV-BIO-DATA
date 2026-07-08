@@ -193,7 +193,7 @@
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-1.jpg'), alt: 'Md Mahbubur Rahman portrait 1', label: 'Portrait 01', featured: true },
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-2.jpg'), alt: 'Md Mahbubur Rahman portrait 2', label: 'Portrait 02', featured: false },
                             { src: withCvCacheVersion('assets/images/mahbub-potrait-3.jpg'), alt: 'Md Mahbubur Rahman portrait 3', label: 'Portrait 03', featured: false },
-                            { src: withCvCacheVersion('assets/images/mahbub-potrail-4.jpg'), alt: 'Md Mahbubur Rahman portrait 4', label: 'Portrait 04', featured: false },
+                            { src: withCvCacheVersion('assets/images/mahbub-potrait-4.jpg'), alt: 'Md Mahbubur Rahman portrait 4', label: 'Portrait 04', featured: false },
                             { src: withCvCacheVersion('assets/images/mahbub-potrait-5.jpg'), alt: 'Md Mahbubur Rahman portrait 5', label: 'Portrait 05', featured: false }
                         ]
                     },
@@ -457,7 +457,7 @@
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-1.jpg'), alt: 'الصورة الشخصية الأولى لـ محمد محبوب الرحمن', label: 'الصورة 01', featured: true },
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-2.jpg'), alt: 'الصورة الشخصية الثانية لـ محمد محبوب الرحمن', label: 'الصورة 02', featured: false },
                             { src: withCvCacheVersion('assets/images/mahbub-potrait-3.jpg'), alt: 'الصورة الشخصية الثالثة لـ محمد محبوب الرحمن', label: 'الصورة 03', featured: false },
-                            { src: withCvCacheVersion('assets/images/mahbub-potrail-4.jpg'), alt: 'الصورة الشخصية الرابعة لـ محمد محبوب الرحمن', label: 'الصورة 04', featured: false },
+                            { src: withCvCacheVersion('assets/images/mahbub-potrait-4.jpg'), alt: 'الصورة الشخصية الرابعة لـ محمد محبوب الرحمن', label: 'الصورة 04', featured: false },
                             { src: withCvCacheVersion('assets/images/mahbub-potrait-5.jpg'), alt: 'الصورة الشخصية الخامسة لـ محمد محبوب الرحمن', label: 'الصورة 05', featured: false }
                         ]
                     },
@@ -722,7 +722,7 @@
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-1.jpg'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ১', label: 'ছবি ০১', featured: true },
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-2.jpg'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ২', label: 'ছবি ০২', featured: false },
                             { src: withCvCacheVersion('assets/images/mahbub-potrait-3.jpg'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ৩', label: 'ছবি ০৩', featured: false },
-                            { src: withCvCacheVersion('assets/images/mahbub-potrail-4.jpg'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ৪', label: 'ছবি ০৪', featured: false },
+                            { src: withCvCacheVersion('assets/images/mahbub-potrait-4.jpg'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ৪', label: 'ছবি ০৪', featured: false },
                             { src: withCvCacheVersion('assets/images/mahbub-potrait-5.jpg'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ৫', label: 'ছবি ০৫', featured: false }
                         ]
                     },
