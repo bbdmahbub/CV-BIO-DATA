@@ -186,9 +186,14 @@
         },
         gallery: {
           title: "Photo Gallery",
+          seeMore: "See more",
+          showLess: "Show less",
           photos: [
             { src: withCvCacheVersion("assets/images/mahbub-portrait-1.jpg"), alt: "Md Mahbubur Rahman portrait 1", label: "Portrait 01", featured: true },
-            { src: withCvCacheVersion("assets/images/mahbub-portrait-2.jpg"), alt: "Md Mahbubur Rahman portrait 2", label: "Portrait 02", featured: false }
+            { src: withCvCacheVersion("assets/images/mahbub-portrait-2.jpg"), alt: "Md Mahbubur Rahman portrait 2", label: "Portrait 02", featured: false },
+            { src: withCvCacheVersion("assets/images/mahbub-potrait-3.jpg"), alt: "Md Mahbubur Rahman portrait 3", label: "Portrait 03", featured: false },
+            { src: withCvCacheVersion("assets/images/mahbub-potrail-4.jpg"), alt: "Md Mahbubur Rahman portrait 4", label: "Portrait 04", featured: false },
+            { src: withCvCacheVersion("assets/images/mahbub-potrait-5.jpg"), alt: "Md Mahbubur Rahman portrait 5", label: "Portrait 05", featured: false }
           ]
         },
         sectionHeaders: {
@@ -447,9 +452,14 @@
         },
         gallery: {
           title: "\u0645\u0639\u0631\u0636 \u0627\u0644\u0635\u0648\u0631",
+          seeMore: "\u0639\u0631\u0636 \u0627\u0644\u0645\u0632\u064A\u062F",
+          showLess: "\u0639\u0631\u0636 \u0623\u0642\u0644",
           photos: [
             { src: withCvCacheVersion("assets/images/mahbub-portrait-1.jpg"), alt: "\u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0634\u062E\u0635\u064A\u0629 \u0627\u0644\u0623\u0648\u0644\u0649 \u0644\u0640 \u0645\u062D\u0645\u062F \u0645\u062D\u0628\u0648\u0628 \u0627\u0644\u0631\u062D\u0645\u0646", label: "\u0627\u0644\u0635\u0648\u0631\u0629 01", featured: true },
-            { src: withCvCacheVersion("assets/images/mahbub-portrait-2.jpg"), alt: "\u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0634\u062E\u0635\u064A\u0629 \u0627\u0644\u062B\u0627\u0646\u064A\u0629 \u0644\u0640 \u0645\u062D\u0645\u062F \u0645\u062D\u0628\u0648\u0628 \u0627\u0644\u0631\u062D\u0645\u0646", label: "\u0627\u0644\u0635\u0648\u0631\u0629 02", featured: false }
+            { src: withCvCacheVersion("assets/images/mahbub-portrait-2.jpg"), alt: "\u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0634\u062E\u0635\u064A\u0629 \u0627\u0644\u062B\u0627\u0646\u064A\u0629 \u0644\u0640 \u0645\u062D\u0645\u062F \u0645\u062D\u0628\u0648\u0628 \u0627\u0644\u0631\u062D\u0645\u0646", label: "\u0627\u0644\u0635\u0648\u0631\u0629 02", featured: false },
+            { src: withCvCacheVersion("assets/images/mahbub-potrait-3.jpg"), alt: "\u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0634\u062E\u0635\u064A\u0629 \u0627\u0644\u062B\u0627\u0644\u062B\u0629 \u0644\u0640 \u0645\u062D\u0645\u062F \u0645\u062D\u0628\u0648\u0628 \u0627\u0644\u0631\u062D\u0645\u0646", label: "\u0627\u0644\u0635\u0648\u0631\u0629 03", featured: false },
+            { src: withCvCacheVersion("assets/images/mahbub-potrail-4.jpg"), alt: "\u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0634\u062E\u0635\u064A\u0629 \u0627\u0644\u0631\u0627\u0628\u0639\u0629 \u0644\u0640 \u0645\u062D\u0645\u062F \u0645\u062D\u0628\u0648\u0628 \u0627\u0644\u0631\u062D\u0645\u0646", label: "\u0627\u0644\u0635\u0648\u0631\u0629 04", featured: false },
+            { src: withCvCacheVersion("assets/images/mahbub-potrait-5.jpg"), alt: "\u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0634\u062E\u0635\u064A\u0629 \u0627\u0644\u062E\u0627\u0645\u0633\u0629 \u0644\u0640 \u0645\u062D\u0645\u062F \u0645\u062D\u0628\u0648\u0628 \u0627\u0644\u0631\u062D\u0645\u0646", label: "\u0627\u0644\u0635\u0648\u0631\u0629 05", featured: false }
           ]
         },
         sectionHeaders: {
@@ -709,9 +719,14 @@
         },
         gallery: {
           title: "\u099B\u09AC\u09BF \u0997\u09CD\u09AF\u09BE\u09B2\u09BE\u09B0\u09BF",
+          seeMore: "\u0986\u09B0\u0993 \u09A6\u09C7\u0996\u09C1\u09A8",
+          showLess: "\u0995\u09AE \u09A6\u09C7\u0996\u09C1\u09A8",
           photos: [
             { src: withCvCacheVersion("assets/images/mahbub-portrait-1.jpg"), alt: "Md Mahbubur Rahman-\u098F\u09B0 \u09AA\u09CB\u09B0\u09CD\u099F\u09CD\u09B0\u09C7\u099F \u09E7", label: "\u099B\u09AC\u09BF \u09E6\u09E7", featured: true },
-            { src: withCvCacheVersion("assets/images/mahbub-portrait-2.jpg"), alt: "Md Mahbubur Rahman-\u098F\u09B0 \u09AA\u09CB\u09B0\u09CD\u099F\u09CD\u09B0\u09C7\u099F \u09E8", label: "\u099B\u09AC\u09BF \u09E6\u09E8", featured: false }
+            { src: withCvCacheVersion("assets/images/mahbub-portrait-2.jpg"), alt: "Md Mahbubur Rahman-\u098F\u09B0 \u09AA\u09CB\u09B0\u09CD\u099F\u09CD\u09B0\u09C7\u099F \u09E8", label: "\u099B\u09AC\u09BF \u09E6\u09E8", featured: false },
+            { src: withCvCacheVersion("assets/images/mahbub-potrait-3.jpg"), alt: "Md Mahbubur Rahman-\u098F\u09B0 \u09AA\u09CB\u09B0\u09CD\u099F\u09CD\u09B0\u09C7\u099F \u09E9", label: "\u099B\u09AC\u09BF \u09E6\u09E9", featured: false },
+            { src: withCvCacheVersion("assets/images/mahbub-potrail-4.jpg"), alt: "Md Mahbubur Rahman-\u098F\u09B0 \u09AA\u09CB\u09B0\u09CD\u099F\u09CD\u09B0\u09C7\u099F \u09EA", label: "\u099B\u09AC\u09BF \u09E6\u09EA", featured: false },
+            { src: withCvCacheVersion("assets/images/mahbub-potrait-5.jpg"), alt: "Md Mahbubur Rahman-\u098F\u09B0 \u09AA\u09CB\u09B0\u09CD\u099F\u09CD\u09B0\u09C7\u099F \u09EB", label: "\u099B\u09AC\u09BF \u09E6\u09EB", featured: false }
           ]
         },
         sectionHeaders: {
@@ -1044,6 +1059,8 @@
     const [isLanguageRowCollapsed, setIsLanguageRowCollapsed] = React.useState(true);
     const [zoomedPhoto, setZoomedPhoto] = React.useState(null);
     const [photoViewerTransform, setPhotoViewerTransform] = React.useState({ scale: 1, x: 0, y: 0 });
+    const [activeGalleryPhotoIndex, setActiveGalleryPhotoIndex] = React.useState(0);
+    const [isGalleryExpanded, setIsGalleryExpanded] = React.useState(false);
     const menuLinksRef = React.useRef(null);
     const hasCenteredMenuRef = React.useRef(false);
     const speechRecognitionRef = React.useRef(null);
@@ -1086,6 +1103,9 @@
     const contactBlocks = copy.contact.blocks;
     const permanentAddressValue = copy.contact.permanentAddressValue;
     const voiceCopy = copy.voice;
+    const galleryPhotos = copy.gallery.photos;
+    const activeGalleryPhoto = galleryPhotos[activeGalleryPhotoIndex] || galleryPhotos[0];
+    const visibleGalleryThumbs = isGalleryExpanded ? galleryPhotos : galleryPhotos.slice(0, 3);
     const activePuzzleSet = bismillahPuzzleSets[language] || bismillahPuzzleSets.en;
     const voicePuzzleSeparatorText = language === "bn" ? "\u0985\u09A5\u09AC\u09BE" : language === "ar" ? "\u0623\u0648" : "OR";
     const selectedPuzzlePieces = selectedPuzzleIndexes.map((pieceIndex) => ({
@@ -1356,6 +1376,19 @@
       setSelectedPuzzleIndexes([]);
       setIsPuzzleSolved(false);
     }, [language]);
+    React.useEffect(() => {
+      setActiveGalleryPhotoIndex(0);
+      setIsGalleryExpanded(false);
+    }, [language]);
+    React.useEffect(() => {
+      if (galleryPhotos.length <= 1 || zoomedPhoto) return void 0;
+      const gallerySlideTimer = window.setInterval(() => {
+        setActiveGalleryPhotoIndex((currentIndex) => (currentIndex + 1) % galleryPhotos.length);
+      }, 4500);
+      return () => {
+        window.clearInterval(gallerySlideTimer);
+      };
+    }, [galleryPhotos.length, zoomedPhoto]);
     React.useEffect(() => {
       const syncMenuLayout = () => {
         const menu = document.querySelector(".top-menu");
@@ -2023,31 +2056,57 @@
         },
         label
       ))
-    )), /* @__PURE__ */ React.createElement("div", { className: "header-banner section-anchor", id: "profile-top" }, /* @__PURE__ */ React.createElement("h1", { className: "profile-name" }, /* @__PURE__ */ React.createElement("span", { className: "profile-name-text" }, copy.profile.name)), /* @__PURE__ */ React.createElement("div", { className: "subtitle" }, copy.profile.subtitle)), /* @__PURE__ */ React.createElement("div", { style: { marginBottom: "30px" } }, /* @__PURE__ */ React.createElement("div", { className: "stats" }, /* @__PURE__ */ React.createElement("div", { className: "stat-box" }, /* @__PURE__ */ React.createElement("div", { className: "stat-value" }, iconEducation), /* @__PURE__ */ React.createElement("div", { className: "stat-label" }, copy.profile.stats.education)), /* @__PURE__ */ React.createElement("div", { className: "stat-box" }, /* @__PURE__ */ React.createElement("div", { className: "stat-value" }, iconMosque), /* @__PURE__ */ React.createElement("div", { className: "stat-label" }, copy.profile.stats.faith)))), /* @__PURE__ */ React.createElement("div", { className: "card section-anchor", id: "gallery-section" }, /* @__PURE__ */ React.createElement("div", { className: "section-header" }, /* @__PURE__ */ React.createElement("span", { className: "section-icon" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-images", "aria-hidden": "true" })), copy.gallery.title), /* @__PURE__ */ React.createElement("div", { className: "card-content" }, /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-grid" }, copy.gallery.photos.map(({ src, alt, label, featured }, idx) => /* @__PURE__ */ React.createElement(
-      "figure",
+    )), /* @__PURE__ */ React.createElement("div", { className: "header-banner section-anchor", id: "profile-top" }, /* @__PURE__ */ React.createElement("h1", { className: "profile-name" }, /* @__PURE__ */ React.createElement("span", { className: "profile-name-text" }, copy.profile.name)), /* @__PURE__ */ React.createElement("div", { className: "subtitle" }, copy.profile.subtitle)), /* @__PURE__ */ React.createElement("div", { style: { marginBottom: "30px" } }, /* @__PURE__ */ React.createElement("div", { className: "stats" }, /* @__PURE__ */ React.createElement("div", { className: "stat-box" }, /* @__PURE__ */ React.createElement("div", { className: "stat-value" }, iconEducation), /* @__PURE__ */ React.createElement("div", { className: "stat-label" }, copy.profile.stats.education)), /* @__PURE__ */ React.createElement("div", { className: "stat-box" }, /* @__PURE__ */ React.createElement("div", { className: "stat-value" }, iconMosque), /* @__PURE__ */ React.createElement("div", { className: "stat-label" }, copy.profile.stats.faith)))), /* @__PURE__ */ React.createElement("div", { className: "card section-anchor", id: "gallery-section" }, /* @__PURE__ */ React.createElement("div", { className: "section-header" }, /* @__PURE__ */ React.createElement("span", { className: "section-icon" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-images", "aria-hidden": "true" })), copy.gallery.title), /* @__PURE__ */ React.createElement("div", { className: "card-content" }, /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-showcase" }, /* @__PURE__ */ React.createElement("figure", { className: "photo-frame photo-frame-featured", key: activeGalleryPhoto.src }, /* @__PURE__ */ React.createElement("div", { className: "photo-frame-inner" }, /* @__PURE__ */ React.createElement(
+      "img",
       {
-        className: `photo-frame${featured ? " photo-frame-featured" : ""}`,
-        key: `${src}-${idx}`
+        className: "photo-gallery-image",
+        src: activeGalleryPhoto.src,
+        alt: activeGalleryPhoto.alt,
+        loading: "eager"
+      }
+    ), /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        type: "button",
+        className: "photo-zoom-trigger",
+        "aria-label": `Open ${activeGalleryPhoto.label}`,
+        onClick: () => openPhotoViewer(activeGalleryPhoto)
       },
-      /* @__PURE__ */ React.createElement("div", { className: "photo-frame-inner" }, /* @__PURE__ */ React.createElement(
-        "img",
-        {
-          className: "photo-gallery-image",
-          src,
-          alt,
-          loading: featured ? "eager" : "lazy"
-        }
-      ), /* @__PURE__ */ React.createElement(
+      /* @__PURE__ */ React.createElement("i", { className: "fas fa-magnifying-glass-plus", "aria-hidden": "true" })
+    ), /* @__PURE__ */ React.createElement("figcaption", { className: "photo-gallery-caption" }, /* @__PURE__ */ React.createElement("span", { className: "photo-gallery-caption-icon" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-camera", "aria-hidden": "true" })), activeGalleryPhoto.label))), /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-thumbs-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-thumbs" }, visibleGalleryThumbs.map((photo, idx) => {
+      const photoIndex = galleryPhotos.findIndex(({ src }) => src === photo.src);
+      const resolvedPhotoIndex = photoIndex >= 0 ? photoIndex : idx;
+      const isActivePhoto = resolvedPhotoIndex === activeGalleryPhotoIndex;
+      return /* @__PURE__ */ React.createElement(
         "button",
         {
           type: "button",
-          className: "photo-zoom-trigger",
-          "aria-label": `Open ${label}`,
-          onClick: () => openPhotoViewer({ src, alt, label })
+          className: `photo-gallery-thumb${isActivePhoto ? " is-active" : ""}`,
+          key: photo.src,
+          onClick: () => setActiveGalleryPhotoIndex(resolvedPhotoIndex),
+          "aria-label": `Show ${photo.label}`,
+          "aria-pressed": isActivePhoto ? "true" : "false"
         },
-        /* @__PURE__ */ React.createElement("i", { className: "fas fa-magnifying-glass-plus", "aria-hidden": "true" })
-      ), /* @__PURE__ */ React.createElement("figcaption", { className: "photo-gallery-caption" }, /* @__PURE__ */ React.createElement("span", { className: "photo-gallery-caption-icon" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-camera", "aria-hidden": "true" })), label))
-    ))))), Object.entries(detailGroups).map(([group, details]) => /* @__PURE__ */ React.createElement("div", { className: "card section-anchor", id: `${group}-section`, key: group }, /* @__PURE__ */ React.createElement("div", { className: "section-header" }, /* @__PURE__ */ React.createElement("span", { className: "section-icon" }, sectionIcons[group]), copy.sectionHeaders[group]), /* @__PURE__ */ React.createElement("div", { className: "card-content" }, /* @__PURE__ */ React.createElement("div", { className: "section-item-list" }, group === "work" ? workData.map(({ title, organization, duration, iconClass }, idx) => /* @__PURE__ */ React.createElement("div", { className: "detail-row work-row section-card-item", key: idx }, /* @__PURE__ */ React.createElement("div", { className: "work-header" }, /* @__PURE__ */ React.createElement("div", { className: "work-title-wrap" }, /* @__PURE__ */ React.createElement("span", { className: "work-title-icon" }, /* @__PURE__ */ React.createElement("i", { className: iconClass, "aria-hidden": "true" })), /* @__PURE__ */ React.createElement("div", { className: "work-title" }, renderTextWithLtrNumbers(title))), duration ? /* @__PURE__ */ React.createElement("span", { className: "badge work-duration" }, renderTextWithLtrNumbers(duration)) : null), /* @__PURE__ */ React.createElement("div", { className: "work-org" }, renderTextWithLtrNumbers(organization)))) : details.map((detail, idx) => {
+        /* @__PURE__ */ React.createElement(
+          "img",
+          {
+            src: photo.src,
+            alt: photo.alt,
+            loading: idx === 0 ? "eager" : "lazy"
+          }
+        ),
+        /* @__PURE__ */ React.createElement("span", null, photo.label)
+      );
+    })), galleryPhotos.length > 3 ? /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        type: "button",
+        className: "photo-gallery-more",
+        onClick: () => setIsGalleryExpanded((currentState) => !currentState)
+      },
+      /* @__PURE__ */ React.createElement("i", { className: `fas ${isGalleryExpanded ? "fa-chevron-up" : "fa-chevron-down"}`, "aria-hidden": "true" }),
+      isGalleryExpanded ? copy.gallery.showLess : copy.gallery.seeMore
+    ) : null)))), Object.entries(detailGroups).map(([group, details]) => /* @__PURE__ */ React.createElement("div", { className: "card section-anchor", id: `${group}-section`, key: group }, /* @__PURE__ */ React.createElement("div", { className: "section-header" }, /* @__PURE__ */ React.createElement("span", { className: "section-icon" }, sectionIcons[group]), copy.sectionHeaders[group]), /* @__PURE__ */ React.createElement("div", { className: "card-content" }, /* @__PURE__ */ React.createElement("div", { className: "section-item-list" }, group === "work" ? workData.map(({ title, organization, duration, iconClass }, idx) => /* @__PURE__ */ React.createElement("div", { className: "detail-row work-row section-card-item", key: idx }, /* @__PURE__ */ React.createElement("div", { className: "work-header" }, /* @__PURE__ */ React.createElement("div", { className: "work-title-wrap" }, /* @__PURE__ */ React.createElement("span", { className: "work-title-icon" }, /* @__PURE__ */ React.createElement("i", { className: iconClass, "aria-hidden": "true" })), /* @__PURE__ */ React.createElement("div", { className: "work-title" }, renderTextWithLtrNumbers(title))), duration ? /* @__PURE__ */ React.createElement("span", { className: "badge work-duration" }, renderTextWithLtrNumbers(duration)) : null), /* @__PURE__ */ React.createElement("div", { className: "work-org" }, renderTextWithLtrNumbers(organization)))) : details.map((detail, idx) => {
       const isObjectDetail = !Array.isArray(detail);
       const label = isObjectDetail ? detail.label : detail[0];
       const value = isObjectDetail ? detail.value : detail[1];

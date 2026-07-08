@@ -189,9 +189,14 @@
                     },
                     gallery: {
                         title: 'Photo Gallery',
+                        seeMore: 'See more',
+                        showLess: 'Show less',
                         photos: [
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-1.jpg'), alt: 'Md Mahbubur Rahman portrait 1', label: 'Portrait 01', featured: true },
-                            { src: withCvCacheVersion('assets/images/mahbub-portrait-2.jpg'), alt: 'Md Mahbubur Rahman portrait 2', label: 'Portrait 02', featured: false }
+                            { src: withCvCacheVersion('assets/images/mahbub-portrait-2.jpg'), alt: 'Md Mahbubur Rahman portrait 2', label: 'Portrait 02', featured: false },
+                            { src: withCvCacheVersion('assets/images/mahbub-potrait-3.jpg'), alt: 'Md Mahbubur Rahman portrait 3', label: 'Portrait 03', featured: false },
+                            { src: withCvCacheVersion('assets/images/mahbub-potrail-4.jpg'), alt: 'Md Mahbubur Rahman portrait 4', label: 'Portrait 04', featured: false },
+                            { src: withCvCacheVersion('assets/images/mahbub-potrait-5.jpg'), alt: 'Md Mahbubur Rahman portrait 5', label: 'Portrait 05', featured: false }
                         ]
                     },
                     sectionHeaders: {
@@ -450,9 +455,14 @@
                     },
                     gallery: {
                         title: 'معرض الصور',
+                        seeMore: 'عرض المزيد',
+                        showLess: 'عرض أقل',
                         photos: [
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-1.jpg'), alt: 'الصورة الشخصية الأولى لـ محمد محبوب الرحمن', label: 'الصورة 01', featured: true },
-                            { src: withCvCacheVersion('assets/images/mahbub-portrait-2.jpg'), alt: 'الصورة الشخصية الثانية لـ محمد محبوب الرحمن', label: 'الصورة 02', featured: false }
+                            { src: withCvCacheVersion('assets/images/mahbub-portrait-2.jpg'), alt: 'الصورة الشخصية الثانية لـ محمد محبوب الرحمن', label: 'الصورة 02', featured: false },
+                            { src: withCvCacheVersion('assets/images/mahbub-potrait-3.jpg'), alt: 'الصورة الشخصية الثالثة لـ محمد محبوب الرحمن', label: 'الصورة 03', featured: false },
+                            { src: withCvCacheVersion('assets/images/mahbub-potrail-4.jpg'), alt: 'الصورة الشخصية الرابعة لـ محمد محبوب الرحمن', label: 'الصورة 04', featured: false },
+                            { src: withCvCacheVersion('assets/images/mahbub-potrait-5.jpg'), alt: 'الصورة الشخصية الخامسة لـ محمد محبوب الرحمن', label: 'الصورة 05', featured: false }
                         ]
                     },
                     sectionHeaders: {
@@ -712,9 +722,14 @@
                     },
                     gallery: {
                         title: 'ছবি গ্যালারি',
+                        seeMore: 'আরও দেখুন',
+                        showLess: 'কম দেখুন',
                         photos: [
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-1.jpg'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ১', label: 'ছবি ০১', featured: true },
-                            { src: withCvCacheVersion('assets/images/mahbub-portrait-2.jpg'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ২', label: 'ছবি ০২', featured: false }
+                            { src: withCvCacheVersion('assets/images/mahbub-portrait-2.jpg'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ২', label: 'ছবি ০২', featured: false },
+                            { src: withCvCacheVersion('assets/images/mahbub-potrait-3.jpg'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ৩', label: 'ছবি ০৩', featured: false },
+                            { src: withCvCacheVersion('assets/images/mahbub-potrail-4.jpg'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ৪', label: 'ছবি ০৪', featured: false },
+                            { src: withCvCacheVersion('assets/images/mahbub-potrait-5.jpg'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ৫', label: 'ছবি ০৫', featured: false }
                         ]
                     },
                     sectionHeaders: {
@@ -1082,6 +1097,8 @@
             const [isLanguageRowCollapsed, setIsLanguageRowCollapsed] = React.useState(true);
             const [zoomedPhoto, setZoomedPhoto] = React.useState(null);
             const [photoViewerTransform, setPhotoViewerTransform] = React.useState({ scale: 1, x: 0, y: 0 });
+            const [activeGalleryPhotoIndex, setActiveGalleryPhotoIndex] = React.useState(0);
+            const [isGalleryExpanded, setIsGalleryExpanded] = React.useState(false);
             const menuLinksRef = React.useRef(null);
             const hasCenteredMenuRef = React.useRef(false);
             const speechRecognitionRef = React.useRef(null);
@@ -1125,6 +1142,9 @@
             const contactBlocks = copy.contact.blocks;
             const permanentAddressValue = copy.contact.permanentAddressValue;
             const voiceCopy = copy.voice;
+            const galleryPhotos = copy.gallery.photos;
+            const activeGalleryPhoto = galleryPhotos[activeGalleryPhotoIndex] || galleryPhotos[0];
+            const visibleGalleryThumbs = isGalleryExpanded ? galleryPhotos : galleryPhotos.slice(0, 3);
             const activePuzzleSet = bismillahPuzzleSets[language] || bismillahPuzzleSets.en;
             const voicePuzzleSeparatorText = language === 'bn' ? 'অথবা' : language === 'ar' ? 'أو' : 'OR';
             const selectedPuzzlePieces = selectedPuzzleIndexes.map((pieceIndex) => ({
@@ -1483,6 +1503,25 @@
                 setSelectedPuzzleIndexes([]);
                 setIsPuzzleSolved(false);
             }, [language]);
+
+            React.useEffect(() => {
+                setActiveGalleryPhotoIndex(0);
+                setIsGalleryExpanded(false);
+            }, [language]);
+
+            React.useEffect(() => {
+                if (galleryPhotos.length <= 1 || zoomedPhoto) return undefined;
+
+                const gallerySlideTimer = window.setInterval(() => {
+                    setActiveGalleryPhotoIndex((currentIndex) => (
+                        (currentIndex + 1) % galleryPhotos.length
+                    ));
+                }, 4500);
+
+                return () => {
+                    window.clearInterval(gallerySlideTimer);
+                };
+            }, [galleryPhotos.length, zoomedPhoto]);
 
             React.useEffect(() => {
                 const syncMenuLayout = () => {
@@ -2425,36 +2464,68 @@
                             {copy.gallery.title}
                         </div>
                         <div className="card-content">
-                            <div className="photo-gallery-grid">
-                                {copy.gallery.photos.map(({ src, alt, label, featured }, idx) => (
-                                    <figure
-                                        className={`photo-frame${featured ? ' photo-frame-featured' : ''}`}
-                                        key={`${src}-${idx}`}
-                                    >
-                                        <div className="photo-frame-inner">
-                                            <img
-                                                className="photo-gallery-image"
-                                                src={src}
-                                                alt={alt}
-                                                loading={featured ? 'eager' : 'lazy'}
-                                            />
-                                            <button
-                                                type="button"
-                                                className="photo-zoom-trigger"
-                                                aria-label={`Open ${label}`}
-                                                onClick={() => openPhotoViewer({ src, alt, label })}
-                                            >
-                                                <i className="fas fa-magnifying-glass-plus" aria-hidden="true"></i>
-                                            </button>
-                                            <figcaption className="photo-gallery-caption">
-                                                <span className="photo-gallery-caption-icon">
-                                                    <i className="fas fa-camera" aria-hidden="true"></i>
-                                                </span>
-                                                {label}
-                                            </figcaption>
-                                        </div>
-                                    </figure>
-                                ))}
+                            <div className="photo-gallery-showcase">
+                                <figure className="photo-frame photo-frame-featured" key={activeGalleryPhoto.src}>
+                                    <div className="photo-frame-inner">
+                                        <img
+                                            className="photo-gallery-image"
+                                            src={activeGalleryPhoto.src}
+                                            alt={activeGalleryPhoto.alt}
+                                            loading="eager"
+                                        />
+                                        <button
+                                            type="button"
+                                            className="photo-zoom-trigger"
+                                            aria-label={`Open ${activeGalleryPhoto.label}`}
+                                            onClick={() => openPhotoViewer(activeGalleryPhoto)}
+                                        >
+                                            <i className="fas fa-magnifying-glass-plus" aria-hidden="true"></i>
+                                        </button>
+                                        <figcaption className="photo-gallery-caption">
+                                            <span className="photo-gallery-caption-icon">
+                                                <i className="fas fa-camera" aria-hidden="true"></i>
+                                            </span>
+                                            {activeGalleryPhoto.label}
+                                        </figcaption>
+                                    </div>
+                                </figure>
+                                <div className="photo-gallery-thumbs-wrap">
+                                    <div className="photo-gallery-thumbs">
+                                        {visibleGalleryThumbs.map((photo, idx) => {
+                                            const photoIndex = galleryPhotos.findIndex(({ src }) => src === photo.src);
+                                            const resolvedPhotoIndex = photoIndex >= 0 ? photoIndex : idx;
+                                            const isActivePhoto = resolvedPhotoIndex === activeGalleryPhotoIndex;
+
+                                            return (
+                                                <button
+                                                    type="button"
+                                                    className={`photo-gallery-thumb${isActivePhoto ? ' is-active' : ''}`}
+                                                    key={photo.src}
+                                                    onClick={() => setActiveGalleryPhotoIndex(resolvedPhotoIndex)}
+                                                    aria-label={`Show ${photo.label}`}
+                                                    aria-pressed={isActivePhoto ? 'true' : 'false'}
+                                                >
+                                                    <img
+                                                        src={photo.src}
+                                                        alt={photo.alt}
+                                                        loading={idx === 0 ? 'eager' : 'lazy'}
+                                                    />
+                                                    <span>{photo.label}</span>
+                                                </button>
+                                            );
+                                        })}
+                                    </div>
+                                    {galleryPhotos.length > 3 ? (
+                                        <button
+                                            type="button"
+                                            className="photo-gallery-more"
+                                            onClick={() => setIsGalleryExpanded((currentState) => !currentState)}
+                                        >
+                                            <i className={`fas ${isGalleryExpanded ? 'fa-chevron-up' : 'fa-chevron-down'}`} aria-hidden="true"></i>
+                                            {isGalleryExpanded ? copy.gallery.showLess : copy.gallery.seeMore}
+                                        </button>
+                                    ) : null}
+                                </div>
                             </div>
                         </div>
                     </div>
