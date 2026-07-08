@@ -2480,6 +2480,21 @@
                                         </figcaption>
                                     </div>
                                 </figure>
+                                <div className="photo-gallery-info">
+                                    <div className="photo-gallery-info-kicker">{copy.gallery.title}</div>
+                                    <div className="photo-gallery-info-title">{activeGalleryPhoto.label}</div>
+                                    <div className="photo-gallery-info-count">
+                                        {renderTextWithLtrNumbers(`${activeGalleryPhotoIndex + 1} / ${galleryPhotos.length}`)}
+                                    </div>
+                                    <button
+                                        type="button"
+                                        className="photo-gallery-info-button"
+                                        onClick={() => openPhotoViewer(activeGalleryPhoto)}
+                                    >
+                                        <i className="fas fa-magnifying-glass-plus" aria-hidden="true"></i>
+                                        {copy.common.visit}
+                                    </button>
+                                </div>
                                 <div className="photo-gallery-thumbs-wrap">
                                     <div className="photo-gallery-thumbs">
                                         {galleryPhotos.map((photo, idx) => {

@@ -2064,7 +2064,16 @@
         onClick: () => openPhotoViewer(activeGalleryPhoto)
       },
       /* @__PURE__ */ React.createElement("i", { className: "fas fa-magnifying-glass-plus", "aria-hidden": "true" })
-    ), /* @__PURE__ */ React.createElement("figcaption", { className: "photo-gallery-caption" }, /* @__PURE__ */ React.createElement("span", { className: "photo-gallery-caption-icon" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-camera", "aria-hidden": "true" })), activeGalleryPhoto.label))), /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-thumbs-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-thumbs" }, galleryPhotos.map((photo, idx) => {
+    ), /* @__PURE__ */ React.createElement("figcaption", { className: "photo-gallery-caption" }, /* @__PURE__ */ React.createElement("span", { className: "photo-gallery-caption-icon" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-camera", "aria-hidden": "true" })), activeGalleryPhoto.label))), /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-info" }, /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-info-kicker" }, copy.gallery.title), /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-info-title" }, activeGalleryPhoto.label), /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-info-count" }, renderTextWithLtrNumbers(`${activeGalleryPhotoIndex + 1} / ${galleryPhotos.length}`)), /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        type: "button",
+        className: "photo-gallery-info-button",
+        onClick: () => openPhotoViewer(activeGalleryPhoto)
+      },
+      /* @__PURE__ */ React.createElement("i", { className: "fas fa-magnifying-glass-plus", "aria-hidden": "true" }),
+      copy.common.visit
+    )), /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-thumbs-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-thumbs" }, galleryPhotos.map((photo, idx) => {
       const photoIndex = galleryPhotos.findIndex(({ src }) => src === photo.src);
       const resolvedPhotoIndex = photoIndex >= 0 ? photoIndex : idx;
       const isActivePhoto = resolvedPhotoIndex === activeGalleryPhotoIndex;
