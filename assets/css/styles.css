@@ -2384,7 +2384,9 @@
         }
 
         .photo-frame-featured {
-            min-height: 440px;
+            aspect-ratio: 4 / 5;
+            height: clamp(420px, 58vw, 640px);
+            min-height: 0;
             animation: photoSlideUp 0.42s ease both;
         }
 
@@ -2411,6 +2413,7 @@
         .photo-frame-inner {
             position: relative;
             height: 100%;
+            min-height: 0;
             overflow: hidden;
             border-radius: 20px;
             background: rgba(255, 255, 255, 0.95);
@@ -2421,7 +2424,7 @@
             display: block;
             width: 100%;
             height: 100%;
-            min-height: 336px;
+            min-height: 0;
             object-fit: cover;
             border-radius: 18px;
             filter: saturate(1.05);
@@ -2429,7 +2432,7 @@
         }
 
         .photo-frame-featured .photo-gallery-image {
-            min-height: 416px;
+            min-height: 0;
         }
 
         .photo-frame:hover .photo-gallery-image {
@@ -3995,6 +3998,11 @@
                 border-radius: 22px;
             }
 
+            .photo-frame-featured {
+                aspect-ratio: 4 / 5;
+                height: min(520px, calc((100vw - 72px) * 1.25));
+            }
+
             .photo-frame::before {
                 inset: 8px;
                 border-radius: 16px;
@@ -4002,7 +4010,7 @@
 
             .photo-gallery-image,
             .photo-frame-featured .photo-gallery-image {
-                min-height: 280px;
+                min-height: 0;
             }
 
             .photo-gallery-caption {
@@ -4853,7 +4861,11 @@
 
             .photo-gallery-image,
             .photo-frame-featured .photo-gallery-image {
-                min-height: 238px;
+                min-height: 0;
+            }
+
+            .photo-frame-featured {
+                height: min(420px, calc((100vw - 52px) * 1.25));
             }
 
             .photo-gallery-thumbs {
