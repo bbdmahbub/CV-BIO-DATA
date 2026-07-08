@@ -1073,8 +1073,7 @@
     const detailGroups = {
       personal: copy.personalDetails.filter(({ iconClass }) => ![
         "fas fa-ring",
-        "fas fa-palette",
-        "fas fa-ruler-combined"
+        "fas fa-palette"
       ].includes(iconClass)),
       work: copy.workSection.items
     };
