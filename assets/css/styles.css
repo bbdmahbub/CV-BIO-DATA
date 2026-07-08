@@ -2522,6 +2522,7 @@
         .photo-gallery-thumbs {
             display: flex;
             flex-direction: column;
+            justify-content: center;
             gap: 8px;
             height: 100%;
         }
@@ -2530,7 +2531,7 @@
             position: relative;
             display: block;
             box-sizing: border-box;
-            flex: 1 1 0;
+            flex: 0 0 calc((100% - 32px) / 5);
             min-height: 0;
             padding: 5px;
             border: 1px solid rgba(15, 95, 73, 0.16);
@@ -4062,11 +4063,13 @@
             .photo-gallery-thumbs {
                 display: flex;
                 flex-direction: column;
+                justify-content: center;
                 height: 100%;
                 gap: 6px;
             }
 
             .photo-gallery-thumb {
+                flex-basis: calc((100% - 24px) / 5);
                 min-height: 0;
                 padding: 4px;
                 border-radius: 12px;
@@ -4920,6 +4923,7 @@
             .photo-gallery-thumbs {
                 display: flex;
                 flex-direction: column;
+                justify-content: center;
             }
 
             .music-player {
