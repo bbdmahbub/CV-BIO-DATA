@@ -2047,33 +2047,7 @@
         },
         label
       ))
-    )), /* @__PURE__ */ React.createElement("div", { className: "header-banner section-anchor", id: "profile-top" }, /* @__PURE__ */ React.createElement("h1", { className: "profile-name" }, /* @__PURE__ */ React.createElement("span", { className: "profile-name-text" }, copy.profile.name)), /* @__PURE__ */ React.createElement("div", { className: "subtitle" }, copy.profile.subtitle)), /* @__PURE__ */ React.createElement("div", { style: { marginBottom: "30px" } }, /* @__PURE__ */ React.createElement("div", { className: "stats" }, /* @__PURE__ */ React.createElement("div", { className: "stat-box" }, /* @__PURE__ */ React.createElement("div", { className: "stat-value" }, iconEducation), /* @__PURE__ */ React.createElement("div", { className: "stat-label" }, copy.profile.stats.education)), /* @__PURE__ */ React.createElement("div", { className: "stat-box" }, /* @__PURE__ */ React.createElement("div", { className: "stat-value" }, iconMosque), /* @__PURE__ */ React.createElement("div", { className: "stat-label" }, copy.profile.stats.faith)))), /* @__PURE__ */ React.createElement("div", { className: "card section-anchor", id: "gallery-section" }, /* @__PURE__ */ React.createElement("div", { className: "section-header" }, /* @__PURE__ */ React.createElement("span", { className: "section-icon" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-images", "aria-hidden": "true" })), copy.gallery.title), /* @__PURE__ */ React.createElement("div", { className: "card-content" }, /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-showcase" }, /* @__PURE__ */ React.createElement("figure", { className: "photo-frame photo-frame-featured", key: activeGalleryPhoto.src }, /* @__PURE__ */ React.createElement("div", { className: "photo-frame-inner" }, /* @__PURE__ */ React.createElement(
-      "img",
-      {
-        className: "photo-gallery-image",
-        src: activeGalleryPhoto.src,
-        alt: activeGalleryPhoto.alt,
-        loading: "eager"
-      }
-    ), /* @__PURE__ */ React.createElement(
-      "button",
-      {
-        type: "button",
-        className: "photo-zoom-trigger",
-        "aria-label": `Open ${activeGalleryPhoto.label}`,
-        onClick: () => openPhotoViewer(activeGalleryPhoto)
-      },
-      /* @__PURE__ */ React.createElement("i", { className: "fas fa-magnifying-glass-plus", "aria-hidden": "true" })
-    ), /* @__PURE__ */ React.createElement("figcaption", { className: "photo-gallery-caption" }, /* @__PURE__ */ React.createElement("span", { className: "photo-gallery-caption-icon" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-camera", "aria-hidden": "true" })), activeGalleryPhoto.label))), /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-info" }, /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-info-kicker" }, copy.gallery.title), /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-info-title" }, activeGalleryPhoto.label), /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-info-count" }, renderTextWithLtrNumbers(`${activeGalleryPhotoIndex + 1} / ${galleryPhotos.length}`)), /* @__PURE__ */ React.createElement(
-      "button",
-      {
-        type: "button",
-        className: "photo-gallery-info-button",
-        onClick: () => openPhotoViewer(activeGalleryPhoto)
-      },
-      /* @__PURE__ */ React.createElement("i", { className: "fas fa-magnifying-glass-plus", "aria-hidden": "true" }),
-      copy.common.visit
-    )), /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-thumbs-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-thumbs" }, galleryPhotos.map((photo, idx) => {
+    )), /* @__PURE__ */ React.createElement("div", { className: "header-banner section-anchor", id: "profile-top" }, /* @__PURE__ */ React.createElement("h1", { className: "profile-name" }, /* @__PURE__ */ React.createElement("span", { className: "profile-name-text" }, copy.profile.name)), /* @__PURE__ */ React.createElement("div", { className: "subtitle" }, copy.profile.subtitle)), /* @__PURE__ */ React.createElement("div", { style: { marginBottom: "30px" } }, /* @__PURE__ */ React.createElement("div", { className: "stats" }, /* @__PURE__ */ React.createElement("div", { className: "stat-box" }, /* @__PURE__ */ React.createElement("div", { className: "stat-value" }, iconEducation), /* @__PURE__ */ React.createElement("div", { className: "stat-label" }, copy.profile.stats.education)), /* @__PURE__ */ React.createElement("div", { className: "stat-box" }, /* @__PURE__ */ React.createElement("div", { className: "stat-value" }, iconMosque), /* @__PURE__ */ React.createElement("div", { className: "stat-label" }, copy.profile.stats.faith)))), /* @__PURE__ */ React.createElement("div", { className: "card section-anchor", id: "gallery-section" }, /* @__PURE__ */ React.createElement("div", { className: "section-header" }, /* @__PURE__ */ React.createElement("span", { className: "section-icon" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-images", "aria-hidden": "true" })), copy.gallery.title), /* @__PURE__ */ React.createElement("div", { className: "card-content" }, /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-showcase" }, /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-thumbs-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-thumbs" }, galleryPhotos.map((photo, idx) => {
       const photoIndex = galleryPhotos.findIndex(({ src }) => src === photo.src);
       const resolvedPhotoIndex = photoIndex >= 0 ? photoIndex : idx;
       const isActivePhoto = resolvedPhotoIndex === activeGalleryPhotoIndex;
@@ -2097,7 +2071,24 @@
         ),
         /* @__PURE__ */ React.createElement("span", null, photo.label)
       );
-    })))))), Object.entries(detailGroups).map(([group, details]) => /* @__PURE__ */ React.createElement("div", { className: "card section-anchor", id: `${group}-section`, key: group }, /* @__PURE__ */ React.createElement("div", { className: "section-header" }, /* @__PURE__ */ React.createElement("span", { className: "section-icon" }, sectionIcons[group]), copy.sectionHeaders[group]), /* @__PURE__ */ React.createElement("div", { className: "card-content" }, /* @__PURE__ */ React.createElement("div", { className: "section-item-list" }, group === "work" ? workData.map(({ title, organization, duration, iconClass }, idx) => /* @__PURE__ */ React.createElement("div", { className: "detail-row work-row section-card-item", key: idx }, /* @__PURE__ */ React.createElement("div", { className: "work-header" }, /* @__PURE__ */ React.createElement("div", { className: "work-title-wrap" }, /* @__PURE__ */ React.createElement("span", { className: "work-title-icon" }, /* @__PURE__ */ React.createElement("i", { className: iconClass, "aria-hidden": "true" })), /* @__PURE__ */ React.createElement("div", { className: "work-title" }, renderTextWithLtrNumbers(title))), duration ? /* @__PURE__ */ React.createElement("span", { className: "badge work-duration" }, renderTextWithLtrNumbers(duration)) : null), /* @__PURE__ */ React.createElement("div", { className: "work-org" }, renderTextWithLtrNumbers(organization)))) : details.map((detail, idx) => {
+    }))), /* @__PURE__ */ React.createElement("figure", { className: "photo-frame photo-frame-featured", key: activeGalleryPhoto.src }, /* @__PURE__ */ React.createElement("div", { className: "photo-frame-inner" }, /* @__PURE__ */ React.createElement(
+      "img",
+      {
+        className: "photo-gallery-image",
+        src: activeGalleryPhoto.src,
+        alt: activeGalleryPhoto.alt,
+        loading: "eager"
+      }
+    ), /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        type: "button",
+        className: "photo-zoom-trigger",
+        "aria-label": `Open ${activeGalleryPhoto.label}`,
+        onClick: () => openPhotoViewer(activeGalleryPhoto)
+      },
+      /* @__PURE__ */ React.createElement("i", { className: "fas fa-magnifying-glass-plus", "aria-hidden": "true" })
+    ), /* @__PURE__ */ React.createElement("figcaption", { className: "photo-gallery-caption" }, /* @__PURE__ */ React.createElement("span", { className: "photo-gallery-caption-icon" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-camera", "aria-hidden": "true" })), activeGalleryPhoto.label)))))), Object.entries(detailGroups).map(([group, details]) => /* @__PURE__ */ React.createElement("div", { className: "card section-anchor", id: `${group}-section`, key: group }, /* @__PURE__ */ React.createElement("div", { className: "section-header" }, /* @__PURE__ */ React.createElement("span", { className: "section-icon" }, sectionIcons[group]), copy.sectionHeaders[group]), /* @__PURE__ */ React.createElement("div", { className: "card-content" }, /* @__PURE__ */ React.createElement("div", { className: "section-item-list" }, group === "work" ? workData.map(({ title, organization, duration, iconClass }, idx) => /* @__PURE__ */ React.createElement("div", { className: "detail-row work-row section-card-item", key: idx }, /* @__PURE__ */ React.createElement("div", { className: "work-header" }, /* @__PURE__ */ React.createElement("div", { className: "work-title-wrap" }, /* @__PURE__ */ React.createElement("span", { className: "work-title-icon" }, /* @__PURE__ */ React.createElement("i", { className: iconClass, "aria-hidden": "true" })), /* @__PURE__ */ React.createElement("div", { className: "work-title" }, renderTextWithLtrNumbers(title))), duration ? /* @__PURE__ */ React.createElement("span", { className: "badge work-duration" }, renderTextWithLtrNumbers(duration)) : null), /* @__PURE__ */ React.createElement("div", { className: "work-org" }, renderTextWithLtrNumbers(organization)))) : details.map((detail, idx) => {
       const isObjectDetail = !Array.isArray(detail);
       const label = isObjectDetail ? detail.label : detail[0];
       const value = isObjectDetail ? detail.value : detail[1];

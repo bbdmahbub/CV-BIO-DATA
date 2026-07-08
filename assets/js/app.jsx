@@ -2456,45 +2456,6 @@
                         </div>
                         <div className="card-content">
                             <div className="photo-gallery-showcase">
-                                <figure className="photo-frame photo-frame-featured" key={activeGalleryPhoto.src}>
-                                    <div className="photo-frame-inner">
-                                        <img
-                                            className="photo-gallery-image"
-                                            src={activeGalleryPhoto.src}
-                                            alt={activeGalleryPhoto.alt}
-                                            loading="eager"
-                                        />
-                                        <button
-                                            type="button"
-                                            className="photo-zoom-trigger"
-                                            aria-label={`Open ${activeGalleryPhoto.label}`}
-                                            onClick={() => openPhotoViewer(activeGalleryPhoto)}
-                                        >
-                                            <i className="fas fa-magnifying-glass-plus" aria-hidden="true"></i>
-                                        </button>
-                                        <figcaption className="photo-gallery-caption">
-                                            <span className="photo-gallery-caption-icon">
-                                                <i className="fas fa-camera" aria-hidden="true"></i>
-                                            </span>
-                                            {activeGalleryPhoto.label}
-                                        </figcaption>
-                                    </div>
-                                </figure>
-                                <div className="photo-gallery-info">
-                                    <div className="photo-gallery-info-kicker">{copy.gallery.title}</div>
-                                    <div className="photo-gallery-info-title">{activeGalleryPhoto.label}</div>
-                                    <div className="photo-gallery-info-count">
-                                        {renderTextWithLtrNumbers(`${activeGalleryPhotoIndex + 1} / ${galleryPhotos.length}`)}
-                                    </div>
-                                    <button
-                                        type="button"
-                                        className="photo-gallery-info-button"
-                                        onClick={() => openPhotoViewer(activeGalleryPhoto)}
-                                    >
-                                        <i className="fas fa-magnifying-glass-plus" aria-hidden="true"></i>
-                                        {copy.common.visit}
-                                    </button>
-                                </div>
                                 <div className="photo-gallery-thumbs-wrap">
                                     <div className="photo-gallery-thumbs">
                                         {galleryPhotos.map((photo, idx) => {
@@ -2522,6 +2483,30 @@
                                         })}
                                     </div>
                                 </div>
+                                <figure className="photo-frame photo-frame-featured" key={activeGalleryPhoto.src}>
+                                    <div className="photo-frame-inner">
+                                        <img
+                                            className="photo-gallery-image"
+                                            src={activeGalleryPhoto.src}
+                                            alt={activeGalleryPhoto.alt}
+                                            loading="eager"
+                                        />
+                                        <button
+                                            type="button"
+                                            className="photo-zoom-trigger"
+                                            aria-label={`Open ${activeGalleryPhoto.label}`}
+                                            onClick={() => openPhotoViewer(activeGalleryPhoto)}
+                                        >
+                                            <i className="fas fa-magnifying-glass-plus" aria-hidden="true"></i>
+                                        </button>
+                                        <figcaption className="photo-gallery-caption">
+                                            <span className="photo-gallery-caption-icon">
+                                                <i className="fas fa-camera" aria-hidden="true"></i>
+                                            </span>
+                                            {activeGalleryPhoto.label}
+                                        </figcaption>
+                                    </div>
+                                </figure>
                             </div>
                         </div>
                     </div>

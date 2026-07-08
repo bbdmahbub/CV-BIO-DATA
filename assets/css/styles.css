@@ -2369,8 +2369,8 @@
 
         .photo-gallery-showcase {
             display: grid;
-            grid-template-columns: minmax(0, 0.64fr) minmax(240px, 0.36fr);
-            gap: 8px;
+            grid-template-columns: 118px minmax(0, 1fr);
+            gap: 10px;
             align-items: stretch;
         }
 
@@ -2502,132 +2502,27 @@
             opacity: 0.72;
         }
 
-        .photo-gallery-info {
-            position: relative;
-            display: grid;
-            align-content: center;
-            justify-items: start;
-            gap: 14px;
-            min-height: 0;
-            padding: 24px;
-            border: 1px solid rgba(200, 148, 50, 0.26);
-            border-radius: 24px;
-            background:
-                radial-gradient(circle at 12% 15%, rgba(255, 216, 117, 0.28), transparent 28%),
-                radial-gradient(circle at 92% 12%, rgba(255, 255, 255, 0.28), transparent 22%),
-                linear-gradient(145deg, rgba(15, 95, 73, 0.96) 0%, rgba(19, 120, 94, 0.92) 54%, rgba(9, 74, 66, 0.96) 100%);
-            box-shadow:
-                inset 0 1px 0 rgba(255, 255, 255, 0.22),
-                inset 0 -18px 32px rgba(4, 61, 47, 0.2),
-                0 16px 34px rgba(15, 95, 73, 0.16);
-            overflow: hidden;
-        }
-
-        .photo-gallery-info::before {
-            content: "\2726";
-            position: absolute;
-            top: 14px;
-            right: 18px;
-            color: rgba(255, 216, 117, 0.46);
-            font-size: 42px;
-            line-height: 1;
-            pointer-events: none;
-        }
-
-        .photo-gallery-info::after {
-            content: "\01F54C";
-            position: absolute;
-            right: 22px;
-            bottom: 18px;
-            color: rgba(255, 255, 255, 0.14);
-            font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
-            font-size: 58px;
-            line-height: 1;
-            pointer-events: none;
-        }
-
-        .photo-gallery-info-kicker {
-            position: relative;
-            z-index: 1;
-            color: #ffd875;
-            font-size: 12px;
-            font-weight: 900;
-            line-height: 1.2;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .photo-gallery-info-title {
-            position: relative;
-            z-index: 1;
-            color: #fff7d6;
-            font-size: clamp(1.65rem, 3vw, 2.4rem);
-            font-weight: 900;
-            line-height: 1.05;
-            text-shadow: 0 10px 24px rgba(4, 61, 47, 0.28);
-        }
-
-        .photo-gallery-info-count {
-            position: relative;
-            z-index: 1;
-            display: inline-flex;
-            align-items: center;
-            min-height: 36px;
-            padding: 8px 14px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.14);
-            color: #ffd875;
-            font-size: 14px;
-            font-weight: 900;
-            line-height: 1.2;
-            box-shadow: inset 0 0 0 1px rgba(255, 216, 117, 0.22);
-        }
-
-        .photo-gallery-info-button {
-            position: relative;
-            z-index: 1;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 9px;
-            min-height: 42px;
-            padding: 10px 16px;
-            border: 0;
-            border-radius: 999px;
-            background: linear-gradient(135deg, #ffd875 0%, #f3bd4f 100%);
-            color: #0f5f49;
-            font-size: 13px;
-            font-weight: 900;
-            line-height: 1.2;
-            cursor: zoom-in;
-            box-shadow: 0 14px 28px rgba(15, 95, 73, 0.18);
-            transition: transform 0.18s ease, box-shadow 0.18s ease;
-        }
-
-        .photo-gallery-info-button:hover,
-        .photo-gallery-info-button:focus-visible {
-            outline: none;
-            transform: translateY(-1px);
-            box-shadow: 0 18px 34px rgba(15, 95, 73, 0.24);
-        }
-
         .photo-gallery-thumbs-wrap {
             display: grid;
-            gap: 12px;
-            grid-column: 1 / -1;
+            align-content: stretch;
+            gap: 0;
         }
 
         .photo-gallery-thumbs {
             display: grid;
-            grid-template-columns: repeat(5, minmax(0, 1fr));
-            gap: 8px;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(5, minmax(0, 1fr));
+            gap: 7px;
+            height: 100%;
         }
 
         .photo-gallery-thumb {
             position: relative;
             display: grid;
-            gap: 6px;
-            min-height: 98px;
+            grid-template-columns: 54px minmax(0, 1fr);
+            align-items: center;
+            gap: 7px;
+            min-height: 0;
             padding: 6px;
             border: 1px solid rgba(15, 95, 73, 0.16);
             border-radius: 14px;
@@ -2653,7 +2548,7 @@
             font-weight: 800;
             line-height: 1.2;
             letter-spacing: 0.06em;
-            text-align: center;
+            text-align: left;
             text-transform: uppercase;
         }
 
@@ -4107,6 +4002,14 @@
                 grid-template-columns: 1fr;
             }
 
+            .photo-gallery-thumbs-wrap {
+                order: 2;
+            }
+
+            .photo-frame-featured {
+                order: 1;
+            }
+
             .photo-frame,
             .photo-frame-featured {
                 min-height: 0;
@@ -4137,32 +4040,20 @@
                 font-size: 11px;
             }
 
-            .photo-gallery-info {
-                gap: 10px;
-                padding: 16px;
-                border-radius: 18px;
-            }
-
-            .photo-gallery-info-title {
-                font-size: 1.55rem;
-            }
-
-            .photo-gallery-info-button {
-                min-height: 38px;
-                padding: 9px 14px;
-                font-size: 12px;
-            }
-
             .photo-gallery-showcase {
                 gap: 14px;
             }
 
             .photo-gallery-thumbs {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
+                grid-template-rows: none;
+                height: auto;
                 gap: 7px;
             }
 
             .photo-gallery-thumb {
+                grid-template-columns: 1fr;
+                align-items: stretch;
                 min-height: 96px;
                 padding: 5px;
                 border-radius: 12px;
@@ -4174,6 +4065,7 @@
 
             .photo-gallery-thumb span {
                 font-size: 9.5px;
+                text-align: center;
             }
 
             .app-shell.is-rtl .education-subtitle {
