@@ -4020,6 +4020,8 @@
             .photo-gallery-thumbs-wrap {
                 order: 2;
                 height: 100%;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
             }
 
             .photo-frame-featured {
@@ -4064,12 +4066,13 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                height: 100%;
+                min-height: 100%;
+                height: auto;
                 gap: 6px;
             }
 
             .photo-gallery-thumb {
-                flex-basis: calc((100% - 24px) / 5);
+                flex: 0 0 82px;
                 min-height: 0;
                 padding: 4px;
                 border-radius: 12px;
@@ -4914,6 +4917,8 @@
 
             .photo-gallery-thumbs-wrap {
                 height: 100%;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
             }
 
             .photo-frame-featured {
@@ -4924,6 +4929,8 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+                min-height: 100%;
+                height: auto;
             }
 
             .music-player {
