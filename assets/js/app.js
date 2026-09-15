@@ -1958,6 +1958,7 @@
           onClick: handleBismillahViewBiodata,
           dir: selectedTranslation.dir
         },
+        /* @__PURE__ */ React.createElement("i", { className: "fas fa-hand-pointer bismillah-loading-view-click", "aria-hidden": "true" }),
         /* @__PURE__ */ React.createElement("span", null, copy.bismillahIntro.viewButton)
       ))
     ) : null, isIntroPopupOpen ? /* @__PURE__ */ React.createElement(

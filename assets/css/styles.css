@@ -424,6 +424,15 @@
             white-space: pre-line;
         }
 
+        .bismillah-loading-view-click {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 6px;
+            color: #ffe39a;
+            font-size: 17px;
+            filter: drop-shadow(0 3px 5px rgba(3, 43, 35, 0.36));
+        }
+
         .bismillah-loading-view-button::before {
             content: "";
             position: absolute;
@@ -665,6 +674,11 @@
 
             .bismillah-loading-view-button.is-en {
                 font-size: 12px;
+            }
+
+            .bismillah-loading-view-click {
+                margin-bottom: 4px;
+                font-size: 14px;
             }
         }
 

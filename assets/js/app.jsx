@@ -2196,6 +2196,7 @@
                                     onClick={handleBismillahViewBiodata}
                                     dir={selectedTranslation.dir}
                                 >
+                                    <i className="fas fa-hand-pointer bismillah-loading-view-click" aria-hidden="true"></i>
                                     <span>{copy.bismillahIntro.viewButton}</span>
                                 </button>
                             </div>
