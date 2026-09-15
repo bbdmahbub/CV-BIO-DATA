@@ -537,7 +537,7 @@ const playlist = [
             if (isMusicPlayerInitialized) return;
             isMusicPlayerInitialized = true;
             audioPlayer.volume = MUSIC_VOLUME;
-            audioPlayer.preload = 'auto';
+            audioPlayer.preload = 'metadata';
             loadTrack(0);
             applyMusicLanguage();
 

@@ -129,7 +129,7 @@
                     bismillahIntro: {
                         ayahReference: 'Surah An-Nur, Ayah 32',
                         ayahMeaning: 'And marry the unmarried among you and the righteous among your male servants and female servants. If they are poor, Allah will enrich them from His bounty. And Allah is All-Encompassing, All-Knowing.',
-                        viewButton: 'VIEW BIO-DATA'
+                        viewButton: 'View\nBIO-DATA'
                     },
                     voice: {
                         tapToStart: 'Tap the mic once to start Bismillah voice verification.',
@@ -179,7 +179,7 @@
                     profile: {
                         name: 'Md Mahbubur Rahman',
                         subtitle: 'IT Professional',
-                        tagline: 'A Muslim young man is seeking a Muslimah companion who will be the coolness of his eyes in this world and the Hereafter!',
+                        tagline: 'A Muslim young man is seeking a Muslimah life partner who will be the coolness of his eyes in this world and the Hereafter!',
                         stats: {
                             age: 'YEARS OLD',
                             education: 'HIGHLY EDUCATED',
@@ -443,7 +443,7 @@
                     profile: {
                         name: 'محمد محبوب الرحمن',
                         subtitle: 'محترف تقنية معلومات',
-                        tagline: 'شاب مسلم يبحث عن رفيقة مسلمة تكون قرة عينه في الدنيا والآخرة!',
+                        tagline: 'شاب مسلم يبحث عن شريكة حياة مسلمة تكون قرة عينه في الدنيا والآخرة!',
                         stats: {
                             age: '28 عاماً',
                             education: 'تعليم عالٍ',
@@ -708,7 +708,7 @@
                     profile: {
                         name: 'মো. মাহবুবুর রহমান',
                         subtitle: 'তথ্যপ্রযুক্তি পেশাজীবী',
-                        tagline: 'একজন মুসলিম যুবক, দুনিয়া ও আখেরাতের চক্ষুশীতলকারিনী মুসলিমাহ্  সঙ্গী খুজছে!',
+                        tagline: 'একজন মুসলিম যুবক, দুনিয়া ও আখেরাতের চক্ষুশীতলকারিনী মুসলিমাহ্ জীবনসঙ্গী খুজছেন!',
                         stats: {
                             age: '২৮ বছর',
                             education: 'উচ্চশিক্ষিত',
@@ -928,52 +928,12 @@
             const warmCvAssetCache = () => {
                 if (typeof document === 'undefined') return;
 
-                const photoAssets = Object.values(translations).flatMap((translation) => (
-                    translation.gallery.photos.map(({ src }) => src)
-                ));
-                const audioAssets = [
-                    bismillahToneSrc,
-                    withCvCacheVersion(encodeURI('assets/audio/jodi-kotha-dao-bondhu.mp3')),
-                    withCvCacheVersion(encodeURI('assets/audio/rasuler-simahin-valobasha.mp3')),
-                    withCvCacheVersion(encodeURI('assets/audio/khadijar-moto-jibon-goro.mp3'))
-                ];
-                const preloadAssets = [
-                    ...photoAssets.map((href) => ({ href, as: 'image' })),
-                    ...audioAssets.map((href) => ({ href, as: 'audio' }))
-                ];
+                const firstPhoto = translations[language]?.gallery.photos[0]?.src;
+                if (!firstPhoto) return;
 
-                preloadAssets.forEach(({ href, as }) => {
-                    if (document.querySelector(`link[data-cv-preload="${href}"]`)) return;
-
-                    const link = document.createElement('link');
-                    link.rel = 'preload';
-                    link.href = href;
-                    link.as = as;
-                    link.setAttribute('data-cv-preload', href);
-                    if (as === 'audio') {
-                        link.type = 'audio/mpeg';
-                    }
-                    document.head.appendChild(link);
-                });
-
-                Array.from(new Set(photoAssets)).forEach((src) => {
-                    const image = new Image();
-                    image.decoding = 'async';
-                    image.src = src;
-                });
-
-                if (typeof window !== 'undefined' && typeof window.Audio === 'function') {
-                    Array.from(new Set(audioAssets)).forEach((src) => {
-                        try {
-                            const audio = new window.Audio();
-                            audio.preload = 'auto';
-                            audio.src = src;
-                            audio.load();
-                        } catch (error) {
-                            // Ignore browser autoplay or preload restrictions.
-                        }
-                    });
-                }
+                const image = new Image();
+                image.decoding = 'async';
+                image.src = firstPhoto;
             };
             const getInitialLanguage = () => {
                 try {
@@ -2225,7 +2185,8 @@
                                             aria-pressed={language === code ? 'true' : 'false'}
                                             key={code}
                                         >
-                                            {nativeLabel}
+                                            <span>{nativeLabel}</span>
+                                            <i className="fas fa-circle-check bismillah-loading-language-check" aria-hidden="true"></i>
                                         </button>
                                     ))}
                                 </div>
@@ -2235,9 +2196,6 @@
                                     onClick={handleBismillahViewBiodata}
                                     dir={selectedTranslation.dir}
                                 >
-                                    <span className="bismillah-loading-view-finger" aria-hidden="true">
-                                        <i className={`fas ${isRtl ? 'fa-hand-point-left' : 'fa-hand-point-right'}`}></i>
-                                    </span>
                                     <span>{copy.bismillahIntro.viewButton}</span>
                                 </button>
                             </div>

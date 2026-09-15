@@ -126,7 +126,7 @@
         bismillahIntro: {
           ayahReference: "Surah An-Nur, Ayah 32",
           ayahMeaning: "And marry the unmarried among you and the righteous among your male servants and female servants. If they are poor, Allah will enrich them from His bounty. And Allah is All-Encompassing, All-Knowing.",
-          viewButton: "VIEW BIO-DATA"
+          viewButton: "View\nBIO-DATA"
         },
         voice: {
           tapToStart: "Tap the mic once to start Bismillah voice verification.",
@@ -176,7 +176,7 @@
         profile: {
           name: "Md Mahbubur Rahman",
           subtitle: "IT Professional",
-          tagline: "A Muslim young man is seeking a Muslimah companion who will be the coolness of his eyes in this world and the Hereafter!",
+          tagline: "A Muslim young man is seeking a Muslimah life partner who will be the coolness of his eyes in this world and the Hereafter!",
           stats: {
             age: "YEARS OLD",
             education: "HIGHLY EDUCATED",
@@ -440,7 +440,7 @@
         profile: {
           name: "\u0645\u062D\u0645\u062F \u0645\u062D\u0628\u0648\u0628 \u0627\u0644\u0631\u062D\u0645\u0646",
           subtitle: "\u0645\u062D\u062A\u0631\u0641 \u062A\u0642\u0646\u064A\u0629 \u0645\u0639\u0644\u0648\u0645\u0627\u062A",
-          tagline: "\u0634\u0627\u0628 \u0645\u0633\u0644\u0645 \u064A\u0628\u062D\u062B \u0639\u0646 \u0631\u0641\u064A\u0642\u0629 \u0645\u0633\u0644\u0645\u0629 \u062A\u0643\u0648\u0646 \u0642\u0631\u0629 \u0639\u064A\u0646\u0647 \u0641\u064A \u0627\u0644\u062F\u0646\u064A\u0627 \u0648\u0627\u0644\u0622\u062E\u0631\u0629!",
+          tagline: "\u0634\u0627\u0628 \u0645\u0633\u0644\u0645 \u064A\u0628\u062D\u062B \u0639\u0646 \u0634\u0631\u064A\u0643\u0629 \u062D\u064A\u0627\u0629 \u0645\u0633\u0644\u0645\u0629 \u062A\u0643\u0648\u0646 \u0642\u0631\u0629 \u0639\u064A\u0646\u0647 \u0641\u064A \u0627\u0644\u062F\u0646\u064A\u0627 \u0648\u0627\u0644\u0622\u062E\u0631\u0629!",
           stats: {
             age: "28 \u0639\u0627\u0645\u0627\u064B",
             education: "\u062A\u0639\u0644\u064A\u0645 \u0639\u0627\u0644\u064D",
@@ -705,7 +705,7 @@
         profile: {
           name: "\u09AE\u09CB. \u09AE\u09BE\u09B9\u09AC\u09C1\u09AC\u09C1\u09B0 \u09B0\u09B9\u09AE\u09BE\u09A8",
           subtitle: "\u09A4\u09A5\u09CD\u09AF\u09AA\u09CD\u09B0\u09AF\u09C1\u0995\u09CD\u09A4\u09BF \u09AA\u09C7\u09B6\u09BE\u099C\u09C0\u09AC\u09C0",
-          tagline: "\u098F\u0995\u099C\u09A8 \u09AE\u09C1\u09B8\u09B2\u09BF\u09AE \u09AF\u09C1\u09AC\u0995, \u09A6\u09C1\u09A8\u09BF\u09DF\u09BE \u0993 \u0986\u0996\u09C7\u09B0\u09BE\u09A4\u09C7\u09B0 \u099A\u0995\u09CD\u09B7\u09C1\u09B6\u09C0\u09A4\u09B2\u0995\u09BE\u09B0\u09BF\u09A8\u09C0 \u09AE\u09C1\u09B8\u09B2\u09BF\u09AE\u09BE\u09B9\u09CD  \u09B8\u0999\u09CD\u0997\u09C0 \u0996\u09C1\u099C\u099B\u09C7!",
+          tagline: "\u098F\u0995\u099C\u09A8 \u09AE\u09C1\u09B8\u09B2\u09BF\u09AE \u09AF\u09C1\u09AC\u0995, \u09A6\u09C1\u09A8\u09BF\u09DF\u09BE \u0993 \u0986\u0996\u09C7\u09B0\u09BE\u09A4\u09C7\u09B0 \u099A\u0995\u09CD\u09B7\u09C1\u09B6\u09C0\u09A4\u09B2\u0995\u09BE\u09B0\u09BF\u09A8\u09C0 \u09AE\u09C1\u09B8\u09B2\u09BF\u09AE\u09BE\u09B9\u09CD \u099C\u09C0\u09AC\u09A8\u09B8\u0999\u09CD\u0997\u09C0 \u0996\u09C1\u099C\u099B\u09C7\u09A8!",
           stats: {
             age: "\u09E8\u09EE \u09AC\u099B\u09B0",
             education: "\u0989\u099A\u09CD\u099A\u09B6\u09BF\u0995\u09CD\u09B7\u09BF\u09A4",
@@ -922,46 +922,12 @@
     const warmCvAssetCache = () => {
       if (typeof document === "undefined")
         return;
-      const photoAssets = Object.values(translations).flatMap((translation) => translation.gallery.photos.map(({ src }) => src));
-      const audioAssets = [
-        bismillahToneSrc,
-        withCvCacheVersion(encodeURI("assets/audio/jodi-kotha-dao-bondhu.mp3")),
-        withCvCacheVersion(encodeURI("assets/audio/rasuler-simahin-valobasha.mp3")),
-        withCvCacheVersion(encodeURI("assets/audio/khadijar-moto-jibon-goro.mp3"))
-      ];
-      const preloadAssets = [
-        ...photoAssets.map((href) => ({ href, as: "image" })),
-        ...audioAssets.map((href) => ({ href, as: "audio" }))
-      ];
-      preloadAssets.forEach(({ href, as }) => {
-        if (document.querySelector(`link[data-cv-preload="${href}"]`))
-          return;
-        const link = document.createElement("link");
-        link.rel = "preload";
-        link.href = href;
-        link.as = as;
-        link.setAttribute("data-cv-preload", href);
-        if (as === "audio") {
-          link.type = "audio/mpeg";
-        }
-        document.head.appendChild(link);
-      });
-      Array.from(new Set(photoAssets)).forEach((src) => {
-        const image = new Image();
-        image.decoding = "async";
-        image.src = src;
-      });
-      if (typeof window !== "undefined" && typeof window.Audio === "function") {
-        Array.from(new Set(audioAssets)).forEach((src) => {
-          try {
-            const audio = new window.Audio();
-            audio.preload = "auto";
-            audio.src = src;
-            audio.load();
-          } catch (error) {
-          }
-        });
-      }
+      const firstPhoto = translations[language]?.gallery.photos[0]?.src;
+      if (!firstPhoto)
+        return;
+      const image = new Image();
+      image.decoding = "async";
+      image.src = firstPhoto;
     };
     const getInitialLanguage = () => {
       try {
@@ -1982,7 +1948,8 @@
           "aria-pressed": language === code ? "true" : "false",
           key: code
         },
-        nativeLabel
+        /* @__PURE__ */ React.createElement("span", null, nativeLabel),
+        /* @__PURE__ */ React.createElement("i", { className: "fas fa-circle-check bismillah-loading-language-check", "aria-hidden": "true" })
       ))), /* @__PURE__ */ React.createElement(
         "button",
         {
@@ -1991,7 +1958,6 @@
           onClick: handleBismillahViewBiodata,
           dir: selectedTranslation.dir
         },
-        /* @__PURE__ */ React.createElement("span", { className: "bismillah-loading-view-finger", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("i", { className: `fas ${isRtl ? "fa-hand-point-left" : "fa-hand-point-right"}` })),
         /* @__PURE__ */ React.createElement("span", null, copy.bismillahIntro.viewButton)
       ))
     ) : null, isIntroPopupOpen ? /* @__PURE__ */ React.createElement(

@@ -206,7 +206,7 @@
             background: none;
             -webkit-text-fill-color: currentColor;
             font-family: var(--font-calligraphy);
-            font-size: clamp(1.72rem, 5.8vw, 3.35rem);
+            font-size: clamp(27px, 5.8vw, 54px);
             line-height: 2;
             text-align: center;
             font-weight: 400;
@@ -267,7 +267,9 @@
 
         .bismillah-loading-ayah {
             width: min(640px, 100%);
+            height: 238px;
             display: grid;
+            align-content: center;
             gap: 12px;
             padding: clamp(16px, 3vw, 24px);
             border: 1px solid rgba(15, 95, 73, 0.16);
@@ -281,7 +283,7 @@
         .bismillah-loading-ayah-text {
             color: #0d5f4b;
             font-family: var(--font-arabic);
-            font-size: clamp(1.08rem, 2.4vw, 1.46rem);
+            font-size: clamp(17px, 2.4vw, 23px);
             font-weight: 600;
             line-height: 2.05;
             text-align: center;
@@ -289,7 +291,7 @@
 
         .bismillah-loading-ayah-meaning {
             color: #28423b;
-            font-size: clamp(0.94rem, 1.8vw, 1.06rem);
+            font-size: clamp(15px, 1.8vw, 17px);
             font-weight: 600;
             line-height: 1.75;
             text-align: center;
@@ -297,10 +299,14 @@
 
         .bismillah-loading-ayah-reference {
             color: #9a6d1f;
-            font-size: 0.9rem;
+            font-size: 14px;
             font-weight: 800;
             line-height: 1.4;
             text-align: center;
+        }
+
+        .app-shell.language-ar .bismillah-loading-ayah-reference {
+            font-size: 17px;
         }
 
         .bismillah-loading-language-row {
@@ -329,7 +335,16 @@
         }
 
         .bismillah-loading-language-button {
-            background: rgba(255, 255, 255, 0.72);
+            position: relative;
+            display: inline-grid;
+            grid-template-columns: auto 16px;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-width: 126px;
+            padding: 11px 14px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.82);
             color: #0d5f4b;
             box-shadow:
                 inset 0 1px 0 rgba(255, 255, 255, 0.3),
@@ -337,8 +352,19 @@
                 0 0 0 3px rgba(200, 148, 50, 0.08);
         }
 
-        .bismillah-loading-language-button.is-active,
-        .bismillah-loading-view-button {
+        .bismillah-loading-language-check {
+            font-size: 0.82rem;
+            opacity: 0;
+            transform: scale(0.6);
+            transition: opacity 0.18s ease, transform 0.18s ease;
+        }
+
+        .bismillah-loading-language-button.is-active .bismillah-loading-language-check {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .bismillah-loading-language-button.is-active {
             background: linear-gradient(135deg, #0d5f4b 0%, #13785e 58%, #0f5f49 100%);
             color: #ffd875;
             box-shadow:
@@ -349,28 +375,98 @@
         }
 
         .bismillah-loading-view-button {
-            min-width: min(260px, 100%);
-            min-height: 52px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding-inline: 28px;
-            font-size: 1rem;
+            background:
+                radial-gradient(circle at 34% 26%, rgba(255, 255, 255, 0.2), transparent 27%),
+                linear-gradient(145deg, #16866a 0%, #0f624e 52%, #093f35 100%);
+            background-size: 130% 130%, 180% 180%;
+            background-position: 15% 15%, 0% 50%;
+            color: #ffd875;
+            box-shadow:
+                inset 0 2px 0 rgba(255, 255, 255, 0.28),
+                inset 0 -16px 24px rgba(2, 45, 37, 0.26),
+                0 18px 34px rgba(13, 95, 75, 0.27),
+                0 0 0 3px rgba(255, 255, 255, 0.72),
+                0 0 0 6px rgba(200, 148, 50, 0.74),
+                0 0 0 9px rgba(15, 95, 73, 0.1);
         }
 
-        .bismillah-loading-view-finger {
+        .bismillah-loading-view-button {
+            position: relative;
+            width: 110px;
+            min-width: 110px;
+            height: 110px;
+            min-height: 110px;
             display: inline-flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 1.15em;
-            line-height: 1;
-            filter: drop-shadow(0 4px 7px rgba(4, 61, 47, 0.28));
-            animation: bismillahViewFingerPoint 0.86s ease-in-out infinite;
+            gap: 0;
+            overflow: visible;
+            padding: 16px;
+            border: 1px solid rgba(255, 225, 145, 0.8);
+            border-radius: 50%;
+            font-size: 1.02rem;
+            line-height: 1.35;
+            text-align: center;
+            margin-bottom: 0;
+            text-shadow:
+                0 1px 1px rgba(3, 43, 35, 0.72),
+                0 0 10px rgba(255, 216, 117, 0.26);
+            isolation: isolate;
+            animation: bismillahViewButtonPulse 2.1s ease-in-out infinite;
         }
 
-        .bismillah-loading-view-button[dir="rtl"] .bismillah-loading-view-finger {
-            animation-name: bismillahViewFingerPointRtl;
+        .bismillah-loading-view-button > span {
+            position: relative;
+            z-index: 2;
+            display: block;
+            max-width: 78px;
+            white-space: pre-line;
+        }
+
+        .bismillah-loading-view-button::before {
+            content: "";
+            position: absolute;
+            inset: 1px;
+            z-index: 1;
+            border-radius: inherit;
+            background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.2) 43%, transparent 64%);
+            background-size: 250% 100%;
+            background-position: -150% 0;
+            clip-path: circle(50% at 50% 50%);
+            animation: bismillahViewButtonShine 3s ease-in-out infinite;
+        }
+
+        @keyframes bismillahViewButtonShine {
+            0%, 58% { background-position: -150% 0; }
+            82%, 100% { background-position: 150% 0; }
+        }
+
+        @keyframes bismillahViewButtonPulse {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+                filter: brightness(1);
+                background-position: 15% 15%, 0% 50%;
+                box-shadow:
+                    inset 0 2px 0 rgba(255, 255, 255, 0.28),
+                    inset 0 -16px 24px rgba(2, 45, 37, 0.26),
+                    0 16px 30px rgba(13, 95, 75, 0.24),
+                    0 0 0 3px rgba(255, 255, 255, 0.7),
+                    0 0 0 6px rgba(200, 148, 50, 0.66),
+                    0 0 0 9px rgba(15, 95, 73, 0.08);
+            }
+            50% {
+                transform: translateY(-3px) scale(1.035);
+                filter: brightness(1.07) drop-shadow(0 7px 8px rgba(15, 95, 73, 0.14));
+                background-position: 68% 22%, 100% 50%;
+                box-shadow:
+                    inset 0 2px 0 rgba(255, 255, 255, 0.38),
+                    inset 0 -14px 22px rgba(2, 45, 37, 0.2),
+                    0 22px 38px rgba(13, 95, 75, 0.32),
+                    0 0 0 3px rgba(255, 255, 255, 0.84),
+                    0 0 0 7px rgba(225, 174, 68, 0.86),
+                    0 0 0 12px rgba(15, 95, 73, 0.1);
+            }
         }
 
         .bismillah-loading-language-button.is-bn,
@@ -383,6 +479,10 @@
         .bismillah-loading-view-button.is-en {
             font-family: var(--font-english);
             font-weight: 800;
+        }
+
+        .bismillah-loading-view-button.is-en {
+            font-size: 14px;
         }
 
         .bismillah-loading-language-button.is-ar,
@@ -403,6 +503,18 @@
                 inset 0 -10px 18px rgba(4, 61, 47, 0.1),
                 0 20px 38px rgba(13, 95, 75, 0.32),
                 0 0 0 4px rgba(200, 148, 50, 0.16);
+        }
+
+        .bismillah-loading-view-button:hover,
+        .bismillah-loading-view-button:focus-visible {
+            animation-play-state: paused;
+            box-shadow:
+                inset 0 2px 0 rgba(255, 255, 255, 0.34),
+                inset 0 -16px 24px rgba(2, 45, 37, 0.24),
+                0 22px 40px rgba(13, 95, 75, 0.34),
+                0 0 0 3px rgba(255, 255, 255, 0.82),
+                0 0 0 6px rgba(218, 166, 62, 0.88),
+                0 0 0 10px rgba(15, 95, 73, 0.12);
         }
 
         @media (max-width: 640px) {
@@ -438,24 +550,25 @@
 
             .bismillah-loading-mark {
                 max-width: 100%;
-                font-size: clamp(1.36rem, 7.6vw, 2rem);
+                font-size: clamp(22px, 7.6vw, 32px);
                 line-height: 1.9;
                 overflow-wrap: anywhere;
             }
 
             .bismillah-loading-ayah {
+                height: 270px;
                 gap: 10px;
                 padding: 14px;
                 border-radius: 16px;
             }
 
             .bismillah-loading-ayah-text {
-                font-size: clamp(0.98rem, 4.2vw, 1.2rem);
+                font-size: clamp(16px, 4.2vw, 19px);
                 line-height: 1.9;
             }
 
             .bismillah-loading-ayah-meaning {
-                font-size: 0.9rem;
+                font-size: 14px;
                 line-height: 1.65;
             }
 
@@ -468,13 +581,20 @@
                 flex: 1 1 106px;
                 min-width: 0;
                 min-height: 44px;
-                padding: 10px 12px;
+                padding: 9px 10px;
                 font-size: 0.9rem;
             }
 
             .bismillah-loading-view-button {
-                width: min(300px, 100%);
-                min-height: 50px;
+                width: 102px;
+                min-width: 102px;
+                height: 102px;
+                min-height: 102px;
+                padding: 12px;
+            }
+
+            .bismillah-loading-view-button.is-en {
+                font-size: 13px;
             }
         }
 
@@ -510,26 +630,41 @@
             }
 
             .bismillah-loading-mark {
-                font-size: clamp(1.16rem, 8.2vw, 1.58rem);
+                font-size: clamp(19px, 8.2vw, 25px);
                 line-height: 1.85;
             }
 
+            .bismillah-loading-ayah {
+                height: 282px;
+            }
+
             .bismillah-loading-language-row {
-                display: grid;
-                grid-template-columns: 1fr;
-                width: min(240px, 100%);
+                display: flex;
+                width: 100%;
+                gap: 6px;
             }
 
             .bismillah-loading-language-button {
-                width: 100%;
+                grid-template-columns: auto 12px;
+                gap: 5px;
+                width: auto;
+                min-width: 0;
                 min-height: 42px;
-                font-size: 0.86rem;
+                padding: 6px;
+                font-size: 0.74rem;
             }
 
             .bismillah-loading-view-button {
-                width: min(240px, 100%);
-                min-height: 48px;
-                font-size: 0.92rem;
+                width: 94px;
+                min-width: 94px;
+                height: 94px;
+                min-height: 94px;
+                padding: 10px;
+                font-size: 0.82rem;
+            }
+
+            .bismillah-loading-view-button.is-en {
+                font-size: 12px;
             }
         }
 
@@ -1208,7 +1343,8 @@
             .bismillah-loading-mark,
             .bismillah-loading-mark::before,
             .bismillah-loading-mark::after,
-            .bismillah-loading-view-finger {
+            .bismillah-loading-view-button,
+            .bismillah-loading-view-button::before {
                 animation: none;
             }
         }
