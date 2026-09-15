@@ -250,6 +250,7 @@ const playlist = [
         function updateToggleLabel() {
             const copy = getMusicCopy();
             document.getElementById('music-toggle').textContent = audioPlayer.paused ? copy.play : copy.pause;
+            document.getElementById('music-player')?.classList.toggle('is-playing', !audioPlayer.paused);
         }
 
         function updateMusicPanelState() {
