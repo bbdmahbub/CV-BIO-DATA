@@ -258,15 +258,11 @@ const playlist = [
             const panelToggleIcon = document.getElementById('music-panel-toggle-icon');
             if (!player || !panelToggle || !panelToggleIcon) return;
 
-            const isRtlLayout = document.body.classList.contains('is-rtl-language');
-            const expandedIconClass = isRtlLayout ? 'fa-chevron-left' : 'fa-chevron-right';
-            const collapsedIconClass = isRtlLayout ? 'fa-chevron-right' : 'fa-chevron-left';
-
             player.classList.toggle('is-collapsed', isMusicPanelCollapsed);
             panelToggle.setAttribute('aria-expanded', String(!isMusicPanelCollapsed));
             panelToggle.setAttribute('aria-label', isMusicPanelCollapsed ? getMusicCopy().expand : getMusicCopy().collapse);
             panelToggleIcon.classList.remove('fa-chevron-right', 'fa-chevron-left');
-            panelToggleIcon.classList.add(isMusicPanelCollapsed ? collapsedIconClass : expandedIconClass);
+            panelToggleIcon.classList.add('fa-music');
         }
 
         function autoCollapseMusicPanel() {

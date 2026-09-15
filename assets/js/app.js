@@ -909,16 +909,19 @@
     const hasRecentVoiceVerification = () => {
       try {
         const storedValue = window.localStorage.getItem(voiceVerificationStorageKey);
-        if (!storedValue) return false;
+        if (!storedValue)
+          return false;
         const verifiedAt = Number(storedValue);
-        if (!Number.isFinite(verifiedAt) || verifiedAt <= 0) return false;
+        if (!Number.isFinite(verifiedAt) || verifiedAt <= 0)
+          return false;
         return Date.now() - verifiedAt < voiceVerificationGracePeriodMs;
       } catch (error) {
         return false;
       }
     };
     const warmCvAssetCache = () => {
-      if (typeof document === "undefined") return;
+      if (typeof document === "undefined")
+        return;
       const photoAssets = Object.values(translations).flatMap((translation) => translation.gallery.photos.map(({ src }) => src));
       const audioAssets = [
         bismillahToneSrc,
@@ -931,7 +934,8 @@
         ...audioAssets.map((href) => ({ href, as: "audio" }))
       ];
       preloadAssets.forEach(({ href, as }) => {
-        if (document.querySelector(`link[data-cv-preload="${href}"]`)) return;
+        if (document.querySelector(`link[data-cv-preload="${href}"]`))
+          return;
         const link = document.createElement("link");
         link.rel = "preload";
         link.href = href;
@@ -1031,10 +1035,12 @@
     const isKnownSectionId = (sectionId) => menuItems.some(([id]) => id === sectionId);
     const getSavedActiveSection = () => {
       const hashId = window.location.hash.replace("#", "");
-      if (isKnownSectionId(hashId)) return hashId;
+      if (isKnownSectionId(hashId))
+        return hashId;
       try {
         const storedSection = window.localStorage.getItem(activeSectionStorageKey);
-        if (isKnownSectionId(storedSection)) return storedSection;
+        if (isKnownSectionId(storedSection))
+          return storedSection;
       } catch (error) {
       }
       return menuItems[0][0];
@@ -1133,7 +1139,8 @@
       return activePuzzleSet.title;
     };
     const renderTextWithLtrNumbers = (text) => {
-      if (!isRtl || typeof text !== "string") return text;
+      if (!isRtl || typeof text !== "string")
+        return text;
       const parts = [];
       let lastIndex = 0;
       text.replace(ltrNumberRunPattern, (match, offset) => {
@@ -1165,9 +1172,11 @@
     };
     const centerMenuLink = (id, behavior = "smooth") => {
       const menuLinks = menuLinksRef.current;
-      if (!menuLinks) return;
+      if (!menuLinks)
+        return;
       const targetLink = menuLinks.querySelector(`[data-menu-id="${id}"]`);
-      if (!targetLink) return;
+      if (!targetLink)
+        return;
       targetLink.scrollIntoView({
         behavior,
         block: "nearest",
@@ -1196,7 +1205,8 @@
       photoGestureRef.current = null;
     };
     const changePhotoViewerByOffset = (offset) => {
-      if (!zoomedPhoto || galleryPhotos.length <= 1) return;
+      if (!zoomedPhoto || galleryPhotos.length <= 1)
+        return;
       const currentPhotoIndex = galleryPhotos.findIndex(({ src }) => src === zoomedPhoto.src);
       const safeCurrentIndex = currentPhotoIndex >= 0 ? currentPhotoIndex : activeGalleryPhotoIndex;
       const nextPhotoIndex = (safeCurrentIndex + offset + galleryPhotos.length) % galleryPhotos.length;
@@ -1239,7 +1249,8 @@
       };
     };
     const handlePhotoPointerMove = (event) => {
-      if (!photoPointerCacheRef.current.has(event.pointerId)) return;
+      if (!photoPointerCacheRef.current.has(event.pointerId))
+        return;
       event.preventDefault();
       photoPointerCacheRef.current.set(event.pointerId, {
         x: event.clientX,
@@ -1247,7 +1258,8 @@
       });
       const pointers = Array.from(photoPointerCacheRef.current.values());
       const gesture = photoGestureRef.current;
-      if (!gesture) return;
+      if (!gesture)
+        return;
       if (pointers.length >= 2 && gesture.type === "pinch") {
         const distance = getPhotoPointerDistance(pointers[0], pointers[1]) || 1;
         const center = getPhotoPointerCenter(pointers[0], pointers[1]);
@@ -1260,7 +1272,8 @@
         return;
       }
       if (pointers.length === 1 && gesture.type === "pan") {
-        if (gesture.startTransform.scale <= 1) return;
+        if (gesture.startTransform.scale <= 1)
+          return;
         setPhotoViewerTransform({
           scale: gesture.startTransform.scale,
           x: gesture.startTransform.x + (event.clientX - gesture.startPointer.x),
@@ -1288,12 +1301,15 @@
       hasCenteredMenuRef.current = true;
     }, [activeSection, language]);
     React.useEffect(() => {
-      if (isIntroPopupOpen || isBismillahLoadingOpen) return;
-      if (hasRestoredActiveSectionRef.current) return;
+      if (isIntroPopupOpen || isBismillahLoadingOpen)
+        return;
+      if (hasRestoredActiveSectionRef.current)
+        return;
       window.requestAnimationFrame(() => {
         const target = document.getElementById(activeSection);
         hasRestoredActiveSectionRef.current = true;
-        if (!target) return;
+        if (!target)
+          return;
         target.scrollIntoView({
           behavior: "auto",
           block: "start"
@@ -1301,7 +1317,8 @@
       });
     }, [activeSection, isIntroPopupOpen, isBismillahLoadingOpen]);
     React.useEffect(() => {
-      if (!hasRestoredActiveSectionRef.current) return;
+      if (!hasRestoredActiveSectionRef.current)
+        return;
       try {
         window.localStorage.setItem(activeSectionStorageKey, activeSection);
       } catch (error) {
@@ -1316,9 +1333,12 @@
       }
     }, []);
     React.useEffect(() => {
-      if (hasBootstrappedSavedVerificationRef.current) return;
-      if (isIntroPopupOpen) return;
-      if (isBismillahLoadingOpen) return;
+      if (hasBootstrappedSavedVerificationRef.current)
+        return;
+      if (isIntroPopupOpen)
+        return;
+      if (isBismillahLoadingOpen)
+        return;
       hasBootstrappedSavedVerificationRef.current = true;
       if (!document.body.classList.contains("has-entered-biodata")) {
         document.body.classList.add("has-entered-biodata");
@@ -1326,11 +1346,14 @@
       }
     }, [isIntroPopupOpen, isBismillahLoadingOpen]);
     React.useEffect(() => {
-      if (isIntroPopupOpen) return void 0;
-      if (!hasRecentVoiceVerification()) return void 0;
+      if (isIntroPopupOpen)
+        return void 0;
+      if (!hasRecentVoiceVerification())
+        return void 0;
       const refreshVerificationActivity = () => {
         const now = Date.now();
-        if (now - lastVoiceVerificationTouchRef.current < 6e4) return;
+        if (now - lastVoiceVerificationTouchRef.current < 6e4)
+          return;
         lastVoiceVerificationTouchRef.current = now;
         touchVoiceVerificationTimestamp();
       };
@@ -1373,7 +1396,8 @@
       }));
     }, [isRtl, language]);
     React.useEffect(() => {
-      if (isVoiceListening || speechRecognitionRef.current) return;
+      if (isVoiceListening || speechRecognitionRef.current)
+        return;
       setVoicePrompt(introVoiceHint);
     }, [introVoiceHint, isVoiceListening]);
     React.useEffect(() => {
@@ -1391,10 +1415,13 @@
           document.documentElement.style.setProperty("--menu-offset", `${menu.offsetHeight + stickyTop}px`);
         }
         window.dispatchEvent(new Event("bbdMahbub:menu-resize"));
-        if (isIntroPopupOpen || isBismillahLoadingOpen) return;
-        if (!hasRestoredActiveSectionRef.current) return;
+        if (isIntroPopupOpen || isBismillahLoadingOpen)
+          return;
+        if (!hasRestoredActiveSectionRef.current)
+          return;
         const target = document.getElementById(activeSection);
-        if (!target) return;
+        if (!target)
+          return;
         target.scrollIntoView({
           behavior: "auto",
           block: "start"
@@ -1422,7 +1449,8 @@
         let nextActiveSection = menuItems[0][0];
         for (const [id] of menuItems) {
           const section = document.getElementById(id);
-          if (!section) continue;
+          if (!section)
+            continue;
           if (section.offsetTop <= scrollReference) {
             nextActiveSection = id;
             continue;
@@ -1436,7 +1464,8 @@
         ticking = false;
       };
       const scheduleActiveSectionUpdate = () => {
-        if (ticking) return;
+        if (ticking)
+          return;
         ticking = true;
         window.requestAnimationFrame(updateActiveSection);
       };
@@ -1452,7 +1481,8 @@
     }, []);
     React.useEffect(() => {
       const showLanguageRowHint = () => {
-        if (hasShownLanguageRowHintRef.current) return;
+        if (hasShownLanguageRowHintRef.current)
+          return;
         hasShownLanguageRowHintRef.current = true;
         setIsLanguageRowCollapsed(false);
         if (languageRowHideTimeoutRef.current) {
@@ -1467,7 +1497,8 @@
         showLanguageRowHint();
       };
       const handleFirstPointerMove = (event) => {
-        if (event.pointerType !== "mouse") return;
+        if (event.pointerType !== "mouse")
+          return;
         showLanguageRowHint();
       };
       window.addEventListener("pointerdown", handleFirstPointerDown, { passive: true });
@@ -1478,10 +1509,13 @@
       };
     }, []);
     const handleMenuPointerDown = (event) => {
-      if (event.pointerType === "mouse" && event.button !== 0) return;
-      if (event.pointerType === "touch") return;
+      if (event.pointerType === "mouse" && event.button !== 0)
+        return;
+      if (event.pointerType === "touch")
+        return;
       const menuLinks = menuLinksRef.current;
-      if (!menuLinks) return;
+      if (!menuLinks)
+        return;
       if (menuClickResetTimeoutRef.current) {
         window.clearTimeout(menuClickResetTimeoutRef.current);
         menuClickResetTimeoutRef.current = null;
@@ -1498,20 +1532,23 @@
     const handleMenuPointerMove = (event) => {
       const menuLinks = menuLinksRef.current;
       const dragState = menuDragStateRef.current;
-      if (!menuLinks || dragState.pointerId !== event.pointerId) return;
+      if (!menuLinks || dragState.pointerId !== event.pointerId)
+        return;
       const deltaX = event.clientX - dragState.startX;
       if (!dragState.moved && Math.abs(deltaX) > 6) {
         dragState.moved = true;
         suppressMenuClickRef.current = true;
       }
-      if (!dragState.moved) return;
+      if (!dragState.moved)
+        return;
       event.preventDefault();
       menuLinks.scrollLeft = dragState.startScrollLeft + (isRtl ? deltaX : -deltaX);
     };
     const finishMenuDrag = (event) => {
       const menuLinks = menuLinksRef.current;
       const dragState = menuDragStateRef.current;
-      if (!menuLinks || dragState.pointerId !== event.pointerId) return;
+      if (!menuLinks || dragState.pointerId !== event.pointerId)
+        return;
       menuDragStateRef.current = {
         pointerId: null,
         startX: 0,
@@ -1519,14 +1556,16 @@
         moved: false
       };
       setIsMenuDragging(false);
-      if (!suppressMenuClickRef.current) return;
+      if (!suppressMenuClickRef.current)
+        return;
       menuClickResetTimeoutRef.current = window.setTimeout(() => {
         suppressMenuClickRef.current = false;
         menuClickResetTimeoutRef.current = null;
       }, 0);
     };
     React.useEffect(() => {
-      if (!isMenuDragging) return void 0;
+      if (!isMenuDragging)
+        return void 0;
       const handleWindowPointerMove = (event) => {
         handleMenuPointerMove(event);
       };
@@ -1549,7 +1588,8 @@
       };
     }, [isIntroPopupOpen, isBismillahLoadingOpen, zoomedPhoto]);
     React.useEffect(() => {
-      if (!zoomedPhoto) return void 0;
+      if (!zoomedPhoto)
+        return void 0;
       const handlePhotoViewerKeyDown = (event) => {
         if (event.key === "Escape") {
           closePhotoViewer();
@@ -1565,8 +1605,10 @@
       };
     }, [zoomedPhoto, galleryPhotos.length, activeGalleryPhotoIndex]);
     React.useEffect(() => {
-      if (!isBismillahLoadingOpen) return void 0;
-      if (hasPreloadedCvAssetsRef.current) return void 0;
+      if (!isBismillahLoadingOpen)
+        return void 0;
+      if (hasPreloadedCvAssetsRef.current)
+        return void 0;
       hasPreloadedCvAssetsRef.current = true;
       if (typeof window.requestIdleCallback === "function") {
         const idleCallbackId = window.requestIdleCallback(warmCvAssetCache, { timeout: 1200 });
@@ -1603,7 +1645,8 @@
       }
     };
     const handleEnterBiodata = () => {
-      if (isEnteringBiodataRef.current) return;
+      if (isEnteringBiodataRef.current)
+        return;
       isEnteringBiodataRef.current = true;
       clearSpeechRecognition();
       voiceMatchedRef.current = true;
@@ -1632,7 +1675,8 @@
     const normalizeVoiceTranscript = (value) => value.toLowerCase().replace(/[\u064B-\u065F\u0670]/g, "").replace(/[\s.,/#!$%^&*;:{}=\-_`~()"'?؟،]+/g, "");
     const matchesBismillahPhrase = (value) => {
       const normalizedValue = normalizeVoiceTranscript(value);
-      if (!normalizedValue) return false;
+      if (!normalizedValue)
+        return false;
       const fallbackFragments = [
         "bismil",
         "bismilla",
@@ -1648,7 +1692,8 @@
     };
     const stopBismillahVoiceCheck = () => {
       const recognition = speechRecognitionRef.current;
-      if (!recognition) return;
+      if (!recognition)
+        return;
       if (voiceStopReasonRef.current === "listening") {
         voiceStopReasonRef.current = "cancelled";
       }
@@ -1666,7 +1711,8 @@
         setVoicePrompt(voiceCopy.browserNoSupport);
         return;
       }
-      if (isVoiceListening || speechRecognitionRef.current || isPreparingVoiceRef.current) return;
+      if (isVoiceListening || speechRecognitionRef.current || isPreparingVoiceRef.current)
+        return;
       isPreparingVoiceRef.current = true;
       setVoiceUiState("preparing");
       setVoicePrompt(voiceCopy.starting);
@@ -1679,7 +1725,8 @@
       recognition.maxAlternatives = 5;
       recognition.continuous = false;
       recognition.onstart = () => {
-        if (speechRecognitionRef.current !== recognition) return;
+        if (speechRecognitionRef.current !== recognition)
+          return;
         isPreparingVoiceRef.current = false;
         setIsVoiceListening(true);
         setVoiceUiState("listening");
@@ -1771,7 +1818,8 @@
       return new Promise((resolve) => {
         try {
           let finish2 = function() {
-            if (hasResolved) return;
+            if (hasResolved)
+              return;
             hasResolved = true;
             window.clearTimeout(fallbackTimer);
             audio.removeEventListener("ended", finish2);
@@ -1789,7 +1837,8 @@
           const playPromise = audio.play();
           if (playPromise && typeof playPromise.catch === "function") {
             playPromise.catch(() => {
-              if (hasResolved) return;
+              if (hasResolved)
+                return;
               hasResolved = true;
               window.clearTimeout(fallbackTimer);
               audio.removeEventListener("ended", finish2);
@@ -1803,7 +1852,8 @@
       });
     };
     const completeBismillahPuzzle = ({ shouldPlaySound = true } = {}) => {
-      if (isPuzzleSolved || isBismillahSuccessInProgressRef.current) return;
+      if (isPuzzleSolved || isBismillahSuccessInProgressRef.current)
+        return;
       isBismillahSuccessInProgressRef.current = true;
       setIsPuzzleSolved(true);
       setVoiceUiState("idle");
@@ -1814,22 +1864,27 @@
       });
     };
     const handleBismillahLanguageSelect = (nextLanguage) => {
-      if (!isBismillahLoadingOpen) return;
+      if (!isBismillahLoadingOpen)
+        return;
       setLanguage(nextLanguage);
       setIsLanguageRowCollapsed(true);
     };
     const handleBismillahViewBiodata = () => {
-      if (!isBismillahLoadingOpen) return;
-      if (isBismillahLoadingClickInProgressRef.current) return;
+      if (!isBismillahLoadingOpen)
+        return;
+      if (isBismillahLoadingClickInProgressRef.current)
+        return;
       isBismillahLoadingClickInProgressRef.current = true;
       handleEnterBiodata();
       setIsBismillahLoadingOpen(false);
     };
     const handlePuzzlePieceSelect = (pieceIndex) => {
-      if (isPuzzleSolved || selectedPuzzleIndexes.includes(pieceIndex)) return;
+      if (isPuzzleSolved || selectedPuzzleIndexes.includes(pieceIndex))
+        return;
       const nextIndexes = [...selectedPuzzleIndexes, pieceIndex];
       setSelectedPuzzleIndexes(nextIndexes);
-      if (nextIndexes.length !== activePuzzleSet.answer.length) return;
+      if (nextIndexes.length !== activePuzzleSet.answer.length)
+        return;
       const answerText = nextIndexes.map((index) => activePuzzleSet.pieces[index]).join("");
       const targetText = activePuzzleSet.answer.join("");
       if (answerText === targetText) {
@@ -1840,13 +1895,15 @@
       setVoicePrompt(voiceCopy.notVerified);
     };
     const handlePuzzlePieceRemove = (pieceIndex) => {
-      if (isPuzzleSolved) return;
+      if (isPuzzleSolved)
+        return;
       setSelectedPuzzleIndexes((currentIndexes) => currentIndexes.filter((index) => index !== pieceIndex));
       setVoiceUiState("idle");
       setVoicePrompt(introVoiceHint);
     };
     const handlePuzzleReset = () => {
-      if (isPuzzleSolved) return;
+      if (isPuzzleSolved)
+        return;
       setSelectedPuzzleIndexes([]);
       setVoiceUiState("idle");
       setVoicePrompt(introVoiceHint);
@@ -1858,7 +1915,8 @@
       }
       event.preventDefault();
       const target = document.getElementById(id);
-      if (!target) return;
+      if (!target)
+        return;
       hasRestoredActiveSectionRef.current = true;
       setActiveSection(id);
       centerMenuLink(id);
@@ -1905,7 +1963,7 @@
           "aria-label": copy.navigation.languageSwitcherLabel,
           onClick: handleLanguageRowToggle
         },
-        /* @__PURE__ */ React.createElement("i", { className: `fas ${isLanguageRowCollapsed ? "fa-chevron-down" : "fa-chevron-up"}`, "aria-hidden": "true" })
+        /* @__PURE__ */ React.createElement("i", { className: "fas fa-language", "aria-hidden": "true" })
       )
     );
     return /* @__PURE__ */ React.createElement("div", { className: `app-shell language-${language}${isRtl ? " is-rtl" : ""}` }, isBismillahLoadingOpen ? /* @__PURE__ */ React.createElement(

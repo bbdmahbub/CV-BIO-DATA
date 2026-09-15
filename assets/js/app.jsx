@@ -2190,7 +2190,7 @@
                         aria-label={copy.navigation.languageSwitcherLabel}
                         onClick={handleLanguageRowToggle}
                     >
-                        <i className={`fas ${isLanguageRowCollapsed ? 'fa-chevron-down' : 'fa-chevron-up'}`} aria-hidden="true"></i>
+                        <i className="fas fa-language" aria-hidden="true"></i>
                     </button>
                 </div>
             );
