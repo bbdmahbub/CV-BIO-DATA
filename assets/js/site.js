@@ -2,7 +2,8 @@
 const playlist = [
             { title: 'Jodi Kotha Dao Bondhu', src: encodeURI('assets/audio/jodi-kotha-dao-bondhu.mp3') + '?v=' + musicCacheVersion },
             { title: 'Rasuler Simahin Valobasha', src: encodeURI('assets/audio/rasuler-simahin-valobasha.mp3') + '?v=' + musicCacheVersion },
-            { title: 'Khadijar Moto Jibon Goro', src: encodeURI('assets/audio/khadijar-moto-jibon-goro.mp3') + '?v=' + musicCacheVersion }
+            { title: 'Khadijar Moto Jibon Goro', src: encodeURI('assets/audio/khadijar-moto-jibon-goro.mp3') + '?v=' + musicCacheVersion },
+            { title: 'Allah Tomake Chai', src: encodeURI('assets/audio/Allah Tomake Chai.mp3') + '?v=' + musicCacheVersion }
         ];
         const MUSIC_VOLUME = 0.05;
         const AUTOPLAY_DELAY_MS = 10000;
@@ -536,9 +537,13 @@ const playlist = [
         function setupMusicPlayer() {
             if (isMusicPlayerInitialized) return;
             isMusicPlayerInitialized = true;
+            const storedMusicState = getStoredMusicState();
             audioPlayer.volume = MUSIC_VOLUME;
             audioPlayer.preload = 'metadata';
-            loadTrack(0);
+            loadTrack(
+                storedMusicState?.hasStarted ? storedMusicState.trackIndex : 0,
+                storedMusicState?.hasStarted ? storedMusicState.currentTime : 0
+            );
             applyMusicLanguage();
 
             audioPlayer.addEventListener('ended', () => {
@@ -636,9 +641,7 @@ const playlist = [
                 updateMusicPanelState();
             });
 
-            const storedMusicState = getStoredMusicState();
             if (storedMusicState && storedMusicState.hasStarted) {
-                loadTrack(storedMusicState.trackIndex, storedMusicState.currentTime);
                 const shouldForceResume = getStoredResumeOnReload();
 
                 if (storedMusicState.isPaused && !shouldForceResume) {
@@ -673,9 +676,18 @@ const playlist = [
 
             armMusicPanelAutoCollapse();
             armScrollTickSound();
-            setupMusicPlayer();
             createBubbleBurst();
             bubbleIntervalId = window.setInterval(createBubbleBurst, 22000);
+
+            const startMusicAfterBiodata = () => {
+                setupMusicPlayer();
+            };
+
+            if (typeof window.requestIdleCallback === 'function') {
+                window.requestIdleCallback(startMusicAfterBiodata, { timeout: 1500 });
+            } else {
+                window.setTimeout(startMusicAfterBiodata, 500);
+            }
         }
 
         function makeBubbleDraggable(bubble) {

@@ -23,7 +23,8 @@
                 'وَأَنكِحُوا الْأَيَامَىٰ مِنكُمْ وَالصَّالِحِينَ مِنْ عِبَادِكُمْ وَإِمَائِكُمْ ۚ إِن يَكُونُوا فُقَرَاءَ يُغْنِهِمُ اللَّهُ مِن فَضْلِهِ ۗ وَاللَّهُ وَاسِعٌ عَلِيمٌ',
                 '\u0631\u064e\u0628\u064e\u0651\u0646\u064e\u0627 \u0647\u064e\u0628\u0652 \u0644\u064e\u0646\u064e\u0627 \u0645\u0650\u0646\u0652 \u0623\u064e\u0632\u0652\u0648\u064e\u0627\u062c\u0650\u0646\u064e\u0627 \u0648\u064e\u0630\u064f\u0631\u0650\u0651\u064a\u064e\u0651\u0627\u062a\u0650\u0646\u064e\u0627 \u0642\u064f\u0631\u064e\u0651\u0629\u064e \u0623\u064e\u0639\u0652\u064a\u064f\u0646\u064d \u0648\u064e\u0627\u062c\u0652\u0639\u064e\u0644\u0652\u0646\u064e\u0627 \u0644\u0650\u0644\u0652\u0645\u064f\u062a\u064e\u0651\u0642\u0650\u064a\u0646\u064e \u0625\u0650\u0645\u064e\u0627\u0645\u064b\u0627',
                 '\u0631\u064e\u0628\u0650\u0651 \u0647\u064e\u0628\u0652 \u0644\u0650\u064a \u0645\u0650\u0646\u064e \u0627\u0644\u0635\u064e\u0651\u0627\u0644\u0650\u062d\u0650\u064a\u0646\u064e',
-                '\u0631\u064e\u0628\u064e\u0651\u0646\u064e\u0627 \u0622\u062a\u0650\u0646\u064e\u0627 \u0645\u0650\u0646\u0652 \u0644\u064e\u062f\u064f\u0646\u0643\u064e \u0631\u064e\u062d\u0652\u0645\u064e\u0629\u064b \u0648\u064e\u0647\u064e\u064a\u0650\u0651\u0626\u0652 \u0644\u064e\u0646\u064e\u0627 \u0645\u0650\u0646\u0652 \u0623\u064e\u0645\u0652\u0631\u0650\u0646\u064e\u0627 \u0631\u064e\u0634\u064e\u062f\u064b\u0627'
+                '\u0631\u064e\u0628\u064e\u0651\u0646\u064e\u0627 \u0622\u062a\u0650\u0646\u064e\u0627 \u0645\u0650\u0646\u0652 \u0644\u064e\u062f\u064f\u0646\u0643\u064e \u0631\u064e\u062d\u0652\u0645\u064e\u0629\u064b \u0648\u064e\u0647\u064e\u064a\u0650\u0651\u0626\u0652 \u0644\u064e\u0646\u064e\u0627 \u0645\u0650\u0646\u0652 \u0623\u064e\u0645\u0652\u0631\u0650\u0646\u064e\u0627 \u0631\u064e\u0634\u064e\u062f\u064b\u0627',
+                'هُنَّ لِبَاسٌ لَّكُمْ وَأَنتُمْ لِبَاسٌ لَّهُنَّ'
             ];
             const acceptedBismillahPhrases = [
                 'bismillah',
@@ -190,9 +191,9 @@
                     gallery: {
                         title: 'Photo Gallery',
                         photos: [
-                            { src: withCvCacheVersion('assets/images/mahbub-portrait-1.jpg'), alt: 'Md Mahbubur Rahman portrait 1', label: 'Portrait 01', featured: true },
-                            { src: withCvCacheVersion('assets/images/mahbub-portrait-2.jpg'), alt: 'Md Mahbubur Rahman portrait 2', label: 'Portrait 02', featured: false },
-                            { src: withCvCacheVersion('assets/images/mahbub-potrait-4.jpg'), alt: 'Md Mahbubur Rahman portrait 4', label: 'Portrait 04', featured: false }
+                            { src: withCvCacheVersion('assets/images/mahbub-portrait-1.webp'), alt: 'Md Mahbubur Rahman portrait 1', label: 'Portrait 01', featured: true },
+                            { src: withCvCacheVersion('assets/images/mahbub-portrait-2.webp'), alt: 'Md Mahbubur Rahman portrait 2', label: 'Portrait 02', featured: false },
+                            { src: withCvCacheVersion('assets/images/mahbub-potrait-4.webp'), alt: 'Md Mahbubur Rahman portrait 4', label: 'Portrait 04', featured: false }
                         ]
                     },
                     sectionHeaders: {
@@ -298,6 +299,7 @@
                             {
                                 title: 'Volunteering',
                                 items: [
+                                    { text: 'Founder President (Present), A S Foundation, Morrelganj, Bagerhat.', iconClass: 'fas fa-hand-holding-heart' },
                                     { text: 'Former Elected CR of the class for 2 years, Islamic University, Kushtia.', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'Visit' },
                                     { text: 'Former Director of Betikrom Shahitya Shangskritik Jote, IU.', iconClass: 'fas fa-masks-theater', href: 'https://web.facebook.com/betikrom87', linkLabel: 'Visit' },
                                     { text: 'Former Central Member of Bangladesh Islamic Chhatra Shibir', iconClass: 'fas fa-shield-halved', href: 'https://shibir.org.bd', linkLabel: 'Visit' }
@@ -345,13 +347,15 @@
                             '"And marry the unmarried among you and the righteous among your male servants and female servants. If they are poor, Allah will enrich them from His bounty, and Allah is All-Encompassing and Knowing."',
                             '"Our Rabb (Allah), grant us from among our wives and offspring comfort to our eyes and make us an example for the righteous."',
                             '"Ya Rabb (Allah)! Bestow upon me one of the righteous."',
-                            '"Our Rabb (Allah), grant us from Yourself mercy and prepare for us from our affair right guidance."'
+                            '"Our Rabb (Allah), grant us from Yourself mercy and prepare for us from our affair right guidance."',
+                            '"They are clothing for you and you are clothing for them."'
                         ],
                         references: [
                             '-Surah An-Nur, Ayah 32',
                             '-Surah Al-Furqan, Ayah 74',
                             '-Surah As-Saffat, Ayah 100',
-                            '-Surah Al-Kahf, Ayah 10'
+                            '-Surah Al-Kahf, Ayah 10',
+                            '-Surah Al-Baqarah, Ayah 187'
                         ],
                         closing: 'Ameen ya Rabbal Alameen.'
                     }
@@ -452,9 +456,9 @@
                     gallery: {
                         title: 'معرض الصور',
                         photos: [
-                            { src: withCvCacheVersion('assets/images/mahbub-portrait-1.jpg'), alt: 'الصورة الشخصية الأولى لـ محمد محبوب الرحمن', label: 'الصورة 01', featured: true },
-                            { src: withCvCacheVersion('assets/images/mahbub-portrait-2.jpg'), alt: 'الصورة الشخصية الثانية لـ محمد محبوب الرحمن', label: 'الصورة 02', featured: false },
-                            { src: withCvCacheVersion('assets/images/mahbub-potrait-4.jpg'), alt: 'الصورة الشخصية الرابعة لـ محمد محبوب الرحمن', label: 'الصورة 04', featured: false }
+                            { src: withCvCacheVersion('assets/images/mahbub-portrait-1.webp'), alt: 'الصورة الشخصية الأولى لـ محمد محبوب الرحمن', label: 'الصورة 01', featured: true },
+                            { src: withCvCacheVersion('assets/images/mahbub-portrait-2.webp'), alt: 'الصورة الشخصية الثانية لـ محمد محبوب الرحمن', label: 'الصورة 02', featured: false },
+                            { src: withCvCacheVersion('assets/images/mahbub-potrait-4.webp'), alt: 'الصورة الشخصية الرابعة لـ محمد محبوب الرحمن', label: 'الصورة 04', featured: false }
                         ]
                     },
                     sectionHeaders: {
@@ -561,6 +565,7 @@
                                 title: 'العمل التطوعي',
                                 period: '٧ يوليو ٢٠١٤ - ١٢ ديسمبر ٢٠١٥',
                                 items: [
+                                    { text: 'الرئيس المؤسس (حالياً)، مؤسسة إيه إس، موريلغانج، باغرهات.', iconClass: 'fas fa-hand-holding-heart' },
                                     { text: 'ممثل الصف المنتخب سابقًا لمدة سنتين، الجامعة الإسلامية', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'زيارة' },
                                     { text: 'المدير السابق لـ بيتكرم شاهيتيا شانغسكريتيك جوتي، الجامعة الإسلامية', iconClass: 'fas fa-masks-theater', href: 'https://web.facebook.com/betikrom87', linkLabel: 'زيارة' },
                                     { text: 'عضو مركزي سابق في شاترا شيبير الإسلامية في بنغلاديش', iconClass: 'fas fa-shield-halved', href: 'https://shibir.org.bd', linkLabel: 'زيارة' }
@@ -608,13 +613,15 @@
                             '',
                             '',
                             '',
+                            '',
                             ''
                         ],
                         references: [
                             '-سورة النور، آية ٣٢',
                             '-سورة الفرقان، آية ٧٤',
                             '-سورة الصافات، آية ١٠٠',
-                            '-سورة الكهف، آية ١٠'
+                            '-سورة الكهف، آية ١٠',
+                            '-سورة البقرة، آية ١٨٧'
                         ],
                         closing: 'آمين يا رب العالمين.'
                     }
@@ -715,9 +722,9 @@
                     gallery: {
                         title: 'ছবি গ্যালারি',
                         photos: [
-                            { src: withCvCacheVersion('assets/images/mahbub-portrait-1.jpg'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ১', label: 'ছবি ০১', featured: true },
-                            { src: withCvCacheVersion('assets/images/mahbub-portrait-2.jpg'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ২', label: 'ছবি ০২', featured: false },
-                            { src: withCvCacheVersion('assets/images/mahbub-potrait-4.jpg'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ৪', label: 'ছবি ০৪', featured: false }
+                            { src: withCvCacheVersion('assets/images/mahbub-portrait-1.webp'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ১', label: 'ছবি ০১', featured: true },
+                            { src: withCvCacheVersion('assets/images/mahbub-portrait-2.webp'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ২', label: 'ছবি ০২', featured: false },
+                            { src: withCvCacheVersion('assets/images/mahbub-potrait-4.webp'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ৪', label: 'ছবি ০৪', featured: false }
                         ]
                     },
                     sectionHeaders: {
@@ -824,6 +831,7 @@
                                 title: 'স্বেচ্ছাসেবামূলক কাজ',
                                 period: '',
                                 items: [
+                                    { text: 'প্রতিষ্ঠাতা সভাপতি (বর্তমান), এ এস ফাউন্ডেশন, মোরেলগঞ্জ, বাগেরহাট।', iconClass: 'fas fa-hand-holding-heart' },
                                     { text: 'সাবেক নির্বাচিত সিআর, ২বছর, ইসলামী বিশ্ববিদ্যালয়, কুষ্টিয়া।', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'ভিজিট' },
                                     { text: 'সাবেক পরিচালক, ব্যতিক্রম সাহিত্য সাংস্কৃতিক জোট, ইবি।', iconClass: 'fas fa-masks-theater', href: 'https://web.facebook.com/betikrom87', linkLabel: 'ভিজিট' },
                                     { text: 'সাবেক কেন্দ্রীয় সদস্য, বাংলাদেশ ইসলামী ছাত্রশিবির, ঢাকা।', iconClass: 'fas fa-shield-halved', href: 'https://shibir.org.bd', linkLabel: 'ভিজিট' }
@@ -871,13 +879,15 @@
                             'তোমাদের মধ্যে যারা অবিবাহিত এবং তোমাদের দাস-দাসীদের মধ্যে যারা সৎকর্মপরায়ণ, তাদের বিবাহ দাও। তারা অভাবী হলে আল্লাহ নিজ অনুগ্রহে তাদেরকে অভাবমুক্ত করবেন। আল্লাহ প্রাচুর্যময়, সর্বজ্ঞ।',
                             'হে আমাদের রব, আমাদের স্ত্রী ও সন্তানদেরকে আমাদের চোখের শীতলতা দান করুন এবং আমাদেরকে মুত্তাকীদের জন্য আদর্শ বানান।',
                             'হে রব, আমাকে নেককারদের একজন দান করুন।',
-                            'হে আমাদের রব, আপনি আমাদেরকে আপনার পক্ষ থেকে রহমত দিন এবং আমাদের কাজের জন্য সঠিক পথ নির্ধারণ করে দিন।'
+                            'হে আমাদের রব, আপনি আমাদেরকে আপনার পক্ষ থেকে রহমত দিন এবং আমাদের কাজের জন্য সঠিক পথ নির্ধারণ করে দিন।',
+                            'তারা তোমাদের পোশাক এবং তোমরা তাদের পোশাক।'
                         ],
                         references: [
                             '-সূরা নূর : আয়াত - ৩২',
                             '-সূরা আল-ফুরকান : আয়াত - ৭৪',
                             '-সূরা আস-সাফফাত : আয়াত - ১০০',
-                            '-সূরা কাহফ্ : আয়াত - ১০'
+                            '-সূরা কাহফ্ : আয়াত - ১০',
+                            '-সূরা আল-বাকারা : আয়াত - ১৮৭'
                         ],
                         closing: 'আমীন ইয়া রব্বাল আলামিন।'
                     }
@@ -1760,9 +1770,7 @@
                 lastVoiceVerificationTouchRef.current = Date.now();
                 markBismillahIntroSeen();
                 touchVoiceVerificationTimestamp();
-                document.body.classList.add('has-entered-biodata');
                 setIsIntroPopupOpen(false);
-                window.dispatchEvent(new Event('bbdMahbub:enter-biodata'));
             };
 
             const handleLanguageSelection = (nextLanguage) => {
@@ -2459,6 +2467,7 @@
                                                         src={photo.src}
                                                         alt={photo.alt}
                                                         loading={idx === 0 ? 'eager' : 'lazy'}
+                                                        decoding="async"
                                                     />
                                                 </button>
                                             );
@@ -2472,6 +2481,8 @@
                                             src={activeGalleryPhoto.src}
                                             alt={activeGalleryPhoto.alt}
                                             loading="eager"
+                                            decoding="async"
+                                            fetchPriority="high"
                                         />
                                         <button
                                             type="button"

@@ -17,24 +17,50 @@
     <meta name="twitter:image" content="https://bbdmahbub.github.io/CV-BIO-DATA/assets/images/mahbub-portrait-1.jpg">
     <script>
         (function () {
-            window.bbdMahbubCvCacheVersion = '20260915-popup-spacing-2';
+            window.bbdMahbubCvCacheVersion = '20260924-load-order';
         }());
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://unpkg.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Aref+Ruqaa+Ink:wght@400;700&family=Lato:wght@300;400;700;900&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Parastoo:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.msar.me/fonts/siyam-rupali/font.css" rel="stylesheet">
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <script>
-        document.write('<link rel="stylesheet" href="assets/css/styles.css?v=' + window.bbdMahbubCvCacheVersion + '">');
-    </script>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Aref+Ruqaa+Ink:wght@400;700&family=Lato:wght@300;400;700;900&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Parastoo:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.msar.me/fonts/siyam-rupali/font.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Aref+Ruqaa+Ink:wght@400;700&family=Lato:wght@300;400;700;900&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Parastoo:wght@400;500;700&display=swap" rel="stylesheet">
+        <link href="https://cdn.msar.me/fonts/siyam-rupali/font.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    </noscript>
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260924-load-order">
+    <script defer src="assets/js/vendor/react.production.min.js?v=18.3.1"></script>
+    <script defer src="assets/js/vendor/react-dom.production.min.js?v=18.3.1"></script>
+    <script defer src="assets/js/app.js?v=20260924-load-order"></script>
+    <script defer src="assets/js/site.js?v=20260924-load-order"></script>
 </head>
-<body>
-    <div id="root"></div>
+<body class="is-popup-open">
+    <div id="root">
+        <div class="app-shell language-bn">
+            <div class="bismillah-loading-popup" role="dialog" aria-modal="true" aria-busy="true">
+                <div class="bismillah-loading-panel" dir="ltr">
+                    <div class="bismillah-loading-mark" data-text="بسم الله الرحمن الرحيم" dir="rtl">بسم الله الرحمن الرحيم</div>
+                    <div class="bismillah-loading-ayah">
+                        <div class="bismillah-loading-ayah-text" dir="rtl">وَأَنكِحُوا الْأَيَامَىٰ مِنكُمْ وَالصَّالِحِينَ مِنْ عِبَادِكُمْ وَإِمَائِكُمْ ۚ إِن يَكُونُوا فُقَرَاءَ يُغْنِهِمُ اللَّهُ مِن فَضْلِهِ ۗ وَاللَّهُ وَاسِعٌ عَلِيمٌ</div>
+                        <div class="bismillah-loading-ayah-meaning">তোমাদের মধ্যে যারা অবিবাহিত এবং তোমাদের দাস-দাসীদের মধ্যে যারা সৎকর্মপরায়ণ, তাদের বিবাহ দাও। তারা অভাবী হলে আল্লাহ নিজ অনুগ্রহে তাদেরকে অভাবমুক্ত করবেন। আল্লাহ প্রাচুর্যময়, সর্বজ্ঞ।</div>
+                        <div class="bismillah-loading-ayah-reference">সূরা নূর : আয়াত - ৩২</div>
+                    </div>
+                    <div class="bismillah-loading-language-row" dir="ltr">
+                        <button type="button" class="bismillah-loading-language-button is-bn is-active" aria-pressed="true"><span>বাংলা</span><span aria-hidden="true">✓</span></button>
+                        <button type="button" class="bismillah-loading-language-button is-en" aria-pressed="false"><span>English</span><span aria-hidden="true"></span></button>
+                        <button type="button" class="bismillah-loading-language-button is-ar" aria-pressed="false"><span>العربية</span><span aria-hidden="true"></span></button>
+                    </div>
+                    <button type="button" class="bismillah-loading-view-button is-bn" aria-disabled="true">
+                        <span aria-hidden="true">☝</span>
+                        <span>বায়োডাটা দেখুন</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="music-player" id="music-player" aria-live="polite">
         <button
@@ -50,7 +76,7 @@
         <div class="music-player-body" id="music-player-body">
             <div class="music-player-label">Background Music</div>
             <div class="music-player-track" id="music-track-name">Preparing playlist...</div>
-            <div class="music-player-meta" id="music-status">3 MP3 tracks, auto play after 10 seconds at 5% volume</div>
+            <div class="music-player-meta" id="music-status">4 MP3 tracks, auto play after 10 seconds at 5% volume</div>
             <div class="music-player-volume">
                 <div class="music-player-volume-row">
                     <span>Volume</span>
@@ -74,9 +100,5 @@
         </div>
     </div>
 
-    <script>
-        document.write('<script src="assets/js/app.js?v=' + window.bbdMahbubCvCacheVersion + '"><\/script>');
-        document.write('<script src="assets/js/site.js?v=' + window.bbdMahbubCvCacheVersion + '"><\/script>');
-    </script>
 </body>
 </html>
