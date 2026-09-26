@@ -2483,6 +2483,7 @@
                                             loading="eager"
                                             decoding="async"
                                             fetchPriority="high"
+                                            style={{ objectPosition: 'center top' }}
                                         />
                                         <button
                                             type="button"

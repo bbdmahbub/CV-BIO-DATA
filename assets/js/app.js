@@ -2138,7 +2138,8 @@
         alt: activeGalleryPhoto.alt,
         loading: "eager",
         decoding: "async",
-        fetchPriority: "high"
+        fetchPriority: "high",
+        style: { objectPosition: "center top" }
       }
     ), /* @__PURE__ */ React.createElement(
       "button",
