@@ -1019,11 +1019,13 @@
                 ['personal-section', copy.menu.personal],
                 ['family-section', copy.menu.family],
                 ['work-section', copy.menu.work],
+                ['lifestyle-section', copy.menu.lifestyle],
                 ['language-section', copy.menu.language],
                 ['education-section', copy.menu.education],
                 ['training-section', copy.menu.training],
                 ['activities-section', copy.menu.activities],
                 ['hobbies-section', copy.menu.hobbies],
+                ['expectation-section', copy.menu.expectation],
                 ['contact-section', copy.menu.contact],
                 ['dua-section', copy.menu.dua]
             ];
@@ -1085,10 +1087,7 @@
             const photoGestureRef = React.useRef(null);
 
             const detailGroups = {
-                personal: copy.personalDetails.filter(({ iconClass }) => ![
-                    'fas fa-ring',
-                    'fas fa-palette'
-                ].includes(iconClass)),
+                personal: copy.personalDetails,
                 family: copy.familyDetails,
                 work: copy.workSection.items
             };
@@ -1099,6 +1098,8 @@
             const educationData = copy.education.items;
             const activityData = copy.activities.items;
             const hobbiesData = copy.hobbies.items;
+            const lifestyleData = copy.lifestyle.items;
+            const expectationItems = copy.expectation.items;
             const trainingItems = copy.training.items;
             const contactBlocks = copy.contact.blocks;
             const permanentAddressValue = copy.contact.permanentAddressValue;
@@ -2597,6 +2598,28 @@
                         </div>
                     ))}
 
+                    <div className="card section-anchor" id="lifestyle-section">
+                        <div className="section-header">
+                            <span className="section-icon"><i className="fas fa-seedling" aria-hidden="true"></i></span>
+                            {copy.lifestyle.title}
+                        </div>
+                        <div className="card-content">
+                            <div className="section-item-list">
+                                {lifestyleData.map(({ label, value, iconClass }, idx) => (
+                                    <div className="detail-row section-card-item" key={idx}>
+                                        <div className="detail-label">
+                                            <span className="detail-label-icon">
+                                                <i className={iconClass} aria-hidden="true"></i>
+                                            </span>
+                                            <span>{renderTextWithLtrNumbers(label)}</span>
+                                        </div>
+                                        <div className="detail-value">{renderTextWithLtrNumbers(value)}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
                     <div className="card section-anchor" id="language-section">
                         <div className="section-header">
                             <span className="section-icon">{iconLanguage}</span>
@@ -2781,6 +2804,26 @@
                                             <i className={iconClass} aria-hidden="true"></i>
                                         </span>
                                         <div className="hobby-text">{renderTextWithLtrNumbers(text)}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="card section-anchor" id="expectation-section">
+                        <div className="section-header">
+                            <span className="section-icon"><i className="fas fa-heart-circle-check" aria-hidden="true"></i></span>
+                            {copy.expectation.title}
+                        </div>
+                        <div className="card-content">
+                            <div className="expectation-list">
+                                {expectationItems.map(({ iconClass, title, text }) => (
+                                    <div className="expectation-item section-card-item" key={title}>
+                                        <span className="expectation-item-icon"><i className={iconClass} aria-hidden="true"></i></span>
+                                        <div className="expectation-item-content">
+                                            <div className="expectation-item-title">{renderTextWithLtrNumbers(title)}</div>
+                                            <div className="expectation-item-text">{renderTextWithLtrNumbers(text)}</div>
+                                        </div>
                                     </div>
                                 ))}
                             </div>
