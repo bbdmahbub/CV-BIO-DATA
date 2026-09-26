@@ -1017,6 +1017,7 @@
                 ['profile-top', copy.menu.profile],
                 ['gallery-section', copy.menu.gallery],
                 ['personal-section', copy.menu.personal],
+                ['family-section', copy.menu.family],
                 ['work-section', copy.menu.work],
                 ['language-section', copy.menu.language],
                 ['education-section', copy.menu.education],
@@ -1088,9 +1089,12 @@
                     'fas fa-ring',
                     'fas fa-palette'
                 ].includes(iconClass)),
+                family: copy.familyDetails,
                 work: copy.workSection.items
             };
             const workData = copy.workSection.items;
+            const familySiblings = copy.familySiblings;
+            const siblingStatusData = copy.siblingStatusData;
             const languageData = copy.languages.items;
             const educationData = copy.education.items;
             const activityData = copy.activities.items;
@@ -1121,6 +1125,8 @@
                 'fas fa-lock',
                 'fas fa-lightbulb'
             ];
+            const familyDetailIconClass = 'fas fa-people-roof';
+            const siblingDetailIconClass = 'fas fa-user-group';
             const languageDetailIconClass = 'fas fa-language';
             const educationDetailIconClass = 'fas fa-graduation-cap';
             const activityDetailIconClass = 'fas fa-star';
@@ -2511,6 +2517,20 @@
                                 <span className="section-icon">{sectionIcons[group]}</span>
                                 {copy.sectionHeaders[group]}
                             </div>
+                            {group === 'family' ? (
+                                <div className="family-summary">
+                                    <div className="family-summary-label">
+                                        <i className="fas fa-shield-halved" aria-hidden="true"></i>
+                                        {copy.familySummary.label}
+                                    </div>
+                                    <div className="family-summary-title">{copy.familySummary.title}</div>
+                                    <div className="family-summary-tags">
+                                        {copy.familySummary.tags.map((tag) => (
+                                            <span className="family-summary-tag" key={tag}>{tag}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            ) : null}
                             <div className="card-content">
                                 <div className="section-item-list">
                                 {group === 'work' ? (
@@ -2534,7 +2554,7 @@
                                         const label = isObjectDetail ? detail.label : detail[0];
                                         const value = isObjectDetail ? detail.value : detail[1];
                                         const iconClass = isObjectDetail ? detail.iconClass : null;
-                                        const resolvedIconClass = iconClass || null;
+                                        const resolvedIconClass = iconClass || (group === 'family' ? familyDetailIconClass : null);
 
                                         return (
                                         <div className="detail-row section-card-item" key={idx}>
@@ -2552,6 +2572,27 @@
                                     })
                                 )}
                                 </div>
+                                {group === 'family' ? (
+                                    <>
+                                        <div className="subsection-title">{copy.familySiblingsTitle}</div>
+                                        <div className="section-item-list section-item-list-compact">
+                                            {familySiblings.map(([label, value], idx) => (
+                                                <div className="sub-detail-row section-card-item" key={idx}>
+                                                    <div className="detail-label sibling-label">
+                                                        <span className="detail-label-icon">
+                                                            <i className={siblingDetailIconClass} aria-hidden="true"></i>
+                                                        </span>
+                                                        <span>{renderTextWithLtrNumbers(label)}</span>
+                                                    </div>
+                                                    <div className="detail-value">{renderTextWithLtrNumbers(value)}</div>
+                                                    <div className={`badge sibling-status sibling-status-cell ${siblingStatusData[label]?.className || ''}`}>
+                                                        {siblingStatusData[label]?.text || ''}
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </>
+                                ) : null}
                             </div>
                         </div>
                     ))}
