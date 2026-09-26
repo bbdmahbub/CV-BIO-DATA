@@ -214,7 +214,7 @@
                         { label: 'Health Status', value: 'Healthy, non-smoker, no addiction', iconClass: 'fas fa-heart-pulse' }
                     ],
                     familyDetails: [
-                        ['Father', 'Late Abdul Kader Howlader (Village Doctor and Primary Teacher)'],
+                        ['Father', 'Late Abdul Kader Howlader (He was a village doctor and primary school teacher)'],
                         ['Mother', 'Farida Begum - Housewife'],
                         ['Siblings', '4 Brothers and 3 Sisters'],
                         ['Permanent Address', 'Uttar Sutalori, Jomaddar Para, Morrelganj, Bagerhat'],
@@ -479,7 +479,7 @@
                         { label: 'الحالة الصحية', value: 'بصحة جيدة، غير مدخن، بلا إدمان', iconClass: 'fas fa-heart-pulse' }
                     ],
                     familyDetails: [
-                        ['الأب', 'عبد القادر هولادر (دكتور عبد القادر)- كان طبيب قروي ومعلم ابتدائي '],
+                        ['الأب', 'المرحوم عبد القادر هولادر (كان طبيباً قروياً ومعلماً في مدرسة ابتدائية)'],
                         ['الأم', 'فريدة بيغم - ربة منزل'],
                         ['الإخوة والأخوات', '4 إخوة و3 أخوات'],
                         ['العنوان الدائم', 'أتار شوتالار, زمادر بارا, مورلفانز, باغرهات'],
@@ -745,7 +745,7 @@
                         { label: 'স্বাস্থ্য অবস্থা', value: 'সুস্থ, ধূমপানমুক্ত, কোনো নেশা নেই', iconClass: 'fas fa-heart-pulse' }
                     ],
                     familyDetails: [
-                        ['পিতা', 'মরহুম আব্দুল কাদের হাওলাদার (গ্রাম্য ডাক্তার ও প্রাথমিক শিক্ষক ছিলেন)'],
+                        ['পিতা', 'মরহুম আব্দুল কাদের হাওলাদার (গ্রাম্য ডাক্তার ও প্রাথমিক বিদ্যালয় শিক্ষক ছিলেন)'],
                         ['মাতা', 'ফরিদা বেগম - গৃহিণী'],
                         ['ভাইবোন', '৪ ভাই ও ৩ বোন'],
                         ['স্থায়ী ঠিকানা', 'উত্তর সুতালরি, জোমাদ্দার পাড়া, মোরেলগঞ্জ, বাগেরহাট'],
