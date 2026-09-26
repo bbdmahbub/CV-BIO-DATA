@@ -190,6 +190,8 @@
                     },
                     gallery: {
                         title: 'Photo Gallery',
+                        unlockTitle: 'Photo Show',
+                        unlockAria: 'Slide right to show photos',
                         photos: [
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-1.webp'), alt: 'Md Mahbubur Rahman portrait 1', label: 'Portrait 01', featured: true },
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-2.webp'), alt: 'Md Mahbubur Rahman portrait 2', label: 'Portrait 02', featured: false },
@@ -455,6 +457,8 @@
                     },
                     gallery: {
                         title: 'معرض الصور',
+                        unlockTitle: 'عرض الصور',
+                        unlockAria: 'اسحب إلى اليمين لعرض الصور',
                         photos: [
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-1.webp'), alt: 'الصورة الشخصية الأولى لـ محمد محبوب الرحمن', label: 'الصورة 01', featured: true },
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-2.webp'), alt: 'الصورة الشخصية الثانية لـ محمد محبوب الرحمن', label: 'الصورة 02', featured: false },
@@ -721,6 +725,8 @@
                     },
                     gallery: {
                         title: 'ছবি গ্যালারি',
+                        unlockTitle: 'ছবি দেখুন',
+                        unlockAria: 'ছবি দেখতে ডান দিকে টানুন',
                         photos: [
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-1.webp'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ১', label: 'ছবি ০১', featured: true },
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-2.webp'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ২', label: 'ছবি ০২', featured: false },
@@ -1054,12 +1060,23 @@
             const [voicePrompt, setVoicePrompt] = React.useState(introVoiceHint);
             const [selectedPuzzleIndexes, setSelectedPuzzleIndexes] = React.useState([]);
             const [isPuzzleSolved, setIsPuzzleSolved] = React.useState(false);
+            const [isGalleryUnlocked, setIsGalleryUnlocked] = React.useState(false);
+            const [galleryUnlockOffset, setGalleryUnlockOffset] = React.useState(0);
+            const [isGalleryUnlockDragging, setIsGalleryUnlockDragging] = React.useState(false);
+            const [isGalleryUnlockComplete, setIsGalleryUnlockComplete] = React.useState(false);
             const [isMenuDragging, setIsMenuDragging] = React.useState(false);
             const [isLanguageRowCollapsed, setIsLanguageRowCollapsed] = React.useState(true);
             const [zoomedPhoto, setZoomedPhoto] = React.useState(null);
             const [photoViewerTransform, setPhotoViewerTransform] = React.useState({ scale: 1, x: 0, y: 0 });
             const [activeGalleryPhotoIndex, setActiveGalleryPhotoIndex] = React.useState(0);
             const menuLinksRef = React.useRef(null);
+            const galleryUnlockTrackRef = React.useRef(null);
+            const galleryUnlockProgressRef = React.useRef(0);
+            const galleryUnlockTimerRef = React.useRef(null);
+            const galleryUnlockDragRef = React.useRef({
+                pointerId: null,
+                grabOffsetX: 0
+            });
             const hasCenteredMenuRef = React.useRef(false);
             const speechRecognitionRef = React.useRef(null);
             const recognitionTimerRef = React.useRef(null);
@@ -1397,6 +1414,38 @@
                 if (languageRowHideTimeoutRef.current) {
                     window.clearTimeout(languageRowHideTimeoutRef.current);
                 }
+                if (galleryUnlockTimerRef.current) {
+                    window.clearTimeout(galleryUnlockTimerRef.current);
+                }
+            }, []);
+
+            React.useEffect(() => {
+                const resetGalleryAccess = () => {
+                    if (galleryUnlockTimerRef.current) {
+                        window.clearTimeout(galleryUnlockTimerRef.current);
+                        galleryUnlockTimerRef.current = null;
+                    }
+
+                    galleryUnlockProgressRef.current = 0;
+                    galleryUnlockDragRef.current.pointerId = null;
+                    setGalleryUnlockOffset(0);
+                    setIsGalleryUnlockDragging(false);
+                    setIsGalleryUnlockComplete(false);
+                    setIsGalleryUnlocked(false);
+                    setZoomedPhoto(null);
+                };
+
+                const handlePageShow = (event) => {
+                    if (event.persisted) resetGalleryAccess();
+                };
+
+                window.addEventListener('pagehide', resetGalleryAccess);
+                window.addEventListener('pageshow', handlePageShow);
+
+                return () => {
+                    window.removeEventListener('pagehide', resetGalleryAccess);
+                    window.removeEventListener('pageshow', handlePageShow);
+                };
             }, []);
 
             React.useEffect(() => {
@@ -2086,6 +2135,119 @@
                 setVoicePrompt(introVoiceHint);
             };
 
+            const getGalleryUnlockMetrics = () => {
+                const track = galleryUnlockTrackRef.current;
+                if (!track) return null;
+
+                const rect = track.getBoundingClientRect();
+                const inset = 5;
+                const handleSize = 58;
+
+                return {
+                    rect,
+                    inset,
+                    maxOffset: Math.max(0, rect.width - handleSize - (inset * 2))
+                };
+            };
+
+            const setGalleryUnlockPosition = (offset, maxOffset) => {
+                const safeOffset = Math.max(0, Math.min(offset, maxOffset));
+                const progress = maxOffset > 0 ? safeOffset / maxOffset : 0;
+
+                galleryUnlockProgressRef.current = progress;
+                setGalleryUnlockOffset(safeOffset);
+            };
+
+            const completeGalleryUnlock = () => {
+                if (isGalleryUnlockComplete) return;
+
+                const metrics = getGalleryUnlockMetrics();
+                if (metrics) {
+                    setGalleryUnlockPosition(metrics.maxOffset, metrics.maxOffset);
+                }
+
+                setIsGalleryUnlockDragging(false);
+                setIsGalleryUnlockComplete(true);
+                galleryUnlockTimerRef.current = window.setTimeout(() => {
+                    setIsGalleryUnlocked(true);
+                }, 320);
+            };
+
+            const handleGalleryUnlockPointerDown = (event) => {
+                if (isGalleryUnlockComplete) return;
+
+                const metrics = getGalleryUnlockMetrics();
+                if (!metrics) return;
+
+                const handleRect = event.currentTarget.getBoundingClientRect();
+                galleryUnlockDragRef.current = {
+                    pointerId: event.pointerId,
+                    grabOffsetX: event.clientX - handleRect.left
+                };
+                event.currentTarget.setPointerCapture(event.pointerId);
+                setIsGalleryUnlockDragging(true);
+            };
+
+            const handleGalleryUnlockPointerMove = (event) => {
+                if (galleryUnlockDragRef.current.pointerId !== event.pointerId) return;
+
+                const metrics = getGalleryUnlockMetrics();
+                if (!metrics) return;
+
+                const nextOffset = event.clientX
+                    - metrics.rect.left
+                    - metrics.inset
+                    - galleryUnlockDragRef.current.grabOffsetX;
+                setGalleryUnlockPosition(nextOffset, metrics.maxOffset);
+            };
+
+            const finishGalleryUnlockDrag = (event, cancelled = false) => {
+                if (galleryUnlockDragRef.current.pointerId !== event.pointerId) return;
+
+                if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+                    event.currentTarget.releasePointerCapture(event.pointerId);
+                }
+
+                galleryUnlockDragRef.current.pointerId = null;
+                setIsGalleryUnlockDragging(false);
+
+                if (!cancelled && galleryUnlockProgressRef.current >= 0.8) {
+                    completeGalleryUnlock();
+                    return;
+                }
+
+                galleryUnlockProgressRef.current = 0;
+                setGalleryUnlockOffset(0);
+            };
+
+            const handleGalleryUnlockKeyDown = (event) => {
+                if (isGalleryUnlockComplete) return;
+
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    completeGalleryUnlock();
+                    return;
+                }
+
+                if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+                event.preventDefault();
+
+                const metrics = getGalleryUnlockMetrics();
+                if (!metrics) return;
+
+                const currentProgress = galleryUnlockProgressRef.current;
+                const nextProgress = event.key === 'Home'
+                    ? 0
+                    : event.key === 'End'
+                        ? 1
+                        : Math.max(0, Math.min(1, currentProgress + (event.key === 'ArrowRight' ? 0.2 : -0.2)));
+
+                setGalleryUnlockPosition(metrics.maxOffset * nextProgress, metrics.maxOffset);
+                if (nextProgress >= 0.8) {
+                    completeGalleryUnlock();
+                }
+            };
+
             const handleMenuClick = (event, id) => {
                 if (suppressMenuClickRef.current) {
                     event.preventDefault();
@@ -2453,6 +2615,47 @@
                             {copy.gallery.title}
                         </div>
                         <div className="card-content">
+                            {!isGalleryUnlocked ? (
+                                <div className="gallery-access-gate">
+                                    <div className="gallery-access-title">
+                                        <i className="fas fa-lock" aria-hidden="true"></i>
+                                        <span>{copy.gallery.unlockTitle}</span>
+                                    </div>
+                                    <div
+                                        className={`gallery-unlock-track${isGalleryUnlockDragging ? ' is-dragging' : ''}${isGalleryUnlockComplete ? ' is-complete' : ''}`}
+                                        ref={galleryUnlockTrackRef}
+                                        dir="ltr"
+                                    >
+                                        <div
+                                            className="gallery-unlock-fill"
+                                            style={{ width: `${galleryUnlockOffset + 68}px` }}
+                                            aria-hidden="true"
+                                        ></div>
+                                        <div className="gallery-unlock-copy" aria-hidden="true">
+                                            <span className="gallery-bismillah-mark" dir="rtl">بِسْمِ اللهِ</span>
+                                        </div>
+                                        <i className="fas fa-lock-open gallery-unlock-destination" aria-hidden="true"></i>
+                                        <button
+                                            type="button"
+                                            className="gallery-unlock-handle"
+                                            style={{ transform: `translate3d(${galleryUnlockOffset}px, 0, 0)` }}
+                                            onPointerDown={handleGalleryUnlockPointerDown}
+                                            onPointerMove={handleGalleryUnlockPointerMove}
+                                            onPointerUp={(event) => finishGalleryUnlockDrag(event)}
+                                            onPointerCancel={(event) => finishGalleryUnlockDrag(event, true)}
+                                            onKeyDown={handleGalleryUnlockKeyDown}
+                                            role="slider"
+                                            aria-label={copy.gallery.unlockAria}
+                                            aria-orientation="horizontal"
+                                            aria-valuemin="0"
+                                            aria-valuemax="100"
+                                            aria-valuenow={Math.round(galleryUnlockProgressRef.current * 100)}
+                                        >
+                                            <i className={`fas ${isGalleryUnlockComplete ? 'fa-check' : 'fa-lock'}`} aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            ) : (
                             <div className="photo-gallery-showcase">
                                 <div className="photo-gallery-thumbs-wrap">
                                     <div className="photo-gallery-thumbs">
@@ -2509,6 +2712,7 @@
                                     </div>
                                 </figure>
                             </div>
+                            )}
                         </div>
                     </div>
 

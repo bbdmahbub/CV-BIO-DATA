@@ -187,6 +187,8 @@
         },
         gallery: {
           title: "Photo Gallery",
+          unlockTitle: "Photo Show",
+          unlockAria: "Slide right to show photos",
           photos: [
             { src: withCvCacheVersion("assets/images/mahbub-portrait-1.webp"), alt: "Md Mahbubur Rahman portrait 1", label: "Portrait 01", featured: true },
             { src: withCvCacheVersion("assets/images/mahbub-portrait-2.webp"), alt: "Md Mahbubur Rahman portrait 2", label: "Portrait 02", featured: false },
@@ -452,6 +454,8 @@
         },
         gallery: {
           title: "\u0645\u0639\u0631\u0636 \u0627\u0644\u0635\u0648\u0631",
+          unlockTitle: "\u0639\u0631\u0636 \u0627\u0644\u0635\u0648\u0631",
+          unlockAria: "\u0627\u0633\u062D\u0628 \u0625\u0644\u0649 \u0627\u0644\u064A\u0645\u064A\u0646 \u0644\u0639\u0631\u0636 \u0627\u0644\u0635\u0648\u0631",
           photos: [
             { src: withCvCacheVersion("assets/images/mahbub-portrait-1.webp"), alt: "\u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0634\u062E\u0635\u064A\u0629 \u0627\u0644\u0623\u0648\u0644\u0649 \u0644\u0640 \u0645\u062D\u0645\u062F \u0645\u062D\u0628\u0648\u0628 \u0627\u0644\u0631\u062D\u0645\u0646", label: "\u0627\u0644\u0635\u0648\u0631\u0629 01", featured: true },
             { src: withCvCacheVersion("assets/images/mahbub-portrait-2.webp"), alt: "\u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0634\u062E\u0635\u064A\u0629 \u0627\u0644\u062B\u0627\u0646\u064A\u0629 \u0644\u0640 \u0645\u062D\u0645\u062F \u0645\u062D\u0628\u0648\u0628 \u0627\u0644\u0631\u062D\u0645\u0646", label: "\u0627\u0644\u0635\u0648\u0631\u0629 02", featured: false },
@@ -718,6 +722,8 @@
         },
         gallery: {
           title: "\u099B\u09AC\u09BF \u0997\u09CD\u09AF\u09BE\u09B2\u09BE\u09B0\u09BF",
+          unlockTitle: "\u099B\u09AC\u09BF \u09A6\u09C7\u0996\u09C1\u09A8",
+          unlockAria: "\u099B\u09AC\u09BF \u09A6\u09C7\u0996\u09A4\u09C7 \u09A1\u09BE\u09A8 \u09A6\u09BF\u0995\u09C7 \u099F\u09BE\u09A8\u09C1\u09A8",
           photos: [
             { src: withCvCacheVersion("assets/images/mahbub-portrait-1.webp"), alt: "Md Mahbubur Rahman-\u098F\u09B0 \u09AA\u09CB\u09B0\u09CD\u099F\u09CD\u09B0\u09C7\u099F \u09E7", label: "\u099B\u09AC\u09BF \u09E6\u09E7", featured: true },
             { src: withCvCacheVersion("assets/images/mahbub-portrait-2.webp"), alt: "Md Mahbubur Rahman-\u098F\u09B0 \u09AA\u09CB\u09B0\u09CD\u099F\u09CD\u09B0\u09C7\u099F \u09E8", label: "\u099B\u09AC\u09BF \u09E6\u09E8", featured: false },
@@ -1028,12 +1034,23 @@
     const [voicePrompt, setVoicePrompt] = React.useState(introVoiceHint);
     const [selectedPuzzleIndexes, setSelectedPuzzleIndexes] = React.useState([]);
     const [isPuzzleSolved, setIsPuzzleSolved] = React.useState(false);
+    const [isGalleryUnlocked, setIsGalleryUnlocked] = React.useState(false);
+    const [galleryUnlockOffset, setGalleryUnlockOffset] = React.useState(0);
+    const [isGalleryUnlockDragging, setIsGalleryUnlockDragging] = React.useState(false);
+    const [isGalleryUnlockComplete, setIsGalleryUnlockComplete] = React.useState(false);
     const [isMenuDragging, setIsMenuDragging] = React.useState(false);
     const [isLanguageRowCollapsed, setIsLanguageRowCollapsed] = React.useState(true);
     const [zoomedPhoto, setZoomedPhoto] = React.useState(null);
     const [photoViewerTransform, setPhotoViewerTransform] = React.useState({ scale: 1, x: 0, y: 0 });
     const [activeGalleryPhotoIndex, setActiveGalleryPhotoIndex] = React.useState(0);
     const menuLinksRef = React.useRef(null);
+    const galleryUnlockTrackRef = React.useRef(null);
+    const galleryUnlockProgressRef = React.useRef(0);
+    const galleryUnlockTimerRef = React.useRef(null);
+    const galleryUnlockDragRef = React.useRef({
+      pointerId: null,
+      grabOffsetX: 0
+    });
     const hasCenteredMenuRef = React.useRef(false);
     const speechRecognitionRef = React.useRef(null);
     const recognitionTimerRef = React.useRef(null);
@@ -1308,6 +1325,34 @@
       if (languageRowHideTimeoutRef.current) {
         window.clearTimeout(languageRowHideTimeoutRef.current);
       }
+      if (galleryUnlockTimerRef.current) {
+        window.clearTimeout(galleryUnlockTimerRef.current);
+      }
+    }, []);
+    React.useEffect(() => {
+      const resetGalleryAccess = () => {
+        if (galleryUnlockTimerRef.current) {
+          window.clearTimeout(galleryUnlockTimerRef.current);
+          galleryUnlockTimerRef.current = null;
+        }
+        galleryUnlockProgressRef.current = 0;
+        galleryUnlockDragRef.current.pointerId = null;
+        setGalleryUnlockOffset(0);
+        setIsGalleryUnlockDragging(false);
+        setIsGalleryUnlockComplete(false);
+        setIsGalleryUnlocked(false);
+        setZoomedPhoto(null);
+      };
+      const handlePageShow = (event) => {
+        if (event.persisted)
+          resetGalleryAccess();
+      };
+      window.addEventListener("pagehide", resetGalleryAccess);
+      window.addEventListener("pageshow", handlePageShow);
+      return () => {
+        window.removeEventListener("pagehide", resetGalleryAccess);
+        window.removeEventListener("pageshow", handlePageShow);
+      };
     }, []);
     React.useEffect(() => {
       if (hasBootstrappedSavedVerificationRef.current)
@@ -1883,6 +1928,97 @@
       setVoiceUiState("idle");
       setVoicePrompt(introVoiceHint);
     };
+    const getGalleryUnlockMetrics = () => {
+      const track = galleryUnlockTrackRef.current;
+      if (!track)
+        return null;
+      const rect = track.getBoundingClientRect();
+      const inset = 5;
+      const handleSize = 58;
+      return {
+        rect,
+        inset,
+        maxOffset: Math.max(0, rect.width - handleSize - inset * 2)
+      };
+    };
+    const setGalleryUnlockPosition = (offset, maxOffset) => {
+      const safeOffset = Math.max(0, Math.min(offset, maxOffset));
+      const progress = maxOffset > 0 ? safeOffset / maxOffset : 0;
+      galleryUnlockProgressRef.current = progress;
+      setGalleryUnlockOffset(safeOffset);
+    };
+    const completeGalleryUnlock = () => {
+      if (isGalleryUnlockComplete)
+        return;
+      const metrics = getGalleryUnlockMetrics();
+      if (metrics) {
+        setGalleryUnlockPosition(metrics.maxOffset, metrics.maxOffset);
+      }
+      setIsGalleryUnlockDragging(false);
+      setIsGalleryUnlockComplete(true);
+      galleryUnlockTimerRef.current = window.setTimeout(() => {
+        setIsGalleryUnlocked(true);
+      }, 320);
+    };
+    const handleGalleryUnlockPointerDown = (event) => {
+      if (isGalleryUnlockComplete)
+        return;
+      const metrics = getGalleryUnlockMetrics();
+      if (!metrics)
+        return;
+      const handleRect = event.currentTarget.getBoundingClientRect();
+      galleryUnlockDragRef.current = {
+        pointerId: event.pointerId,
+        grabOffsetX: event.clientX - handleRect.left
+      };
+      event.currentTarget.setPointerCapture(event.pointerId);
+      setIsGalleryUnlockDragging(true);
+    };
+    const handleGalleryUnlockPointerMove = (event) => {
+      if (galleryUnlockDragRef.current.pointerId !== event.pointerId)
+        return;
+      const metrics = getGalleryUnlockMetrics();
+      if (!metrics)
+        return;
+      const nextOffset = event.clientX - metrics.rect.left - metrics.inset - galleryUnlockDragRef.current.grabOffsetX;
+      setGalleryUnlockPosition(nextOffset, metrics.maxOffset);
+    };
+    const finishGalleryUnlockDrag = (event, cancelled = false) => {
+      if (galleryUnlockDragRef.current.pointerId !== event.pointerId)
+        return;
+      if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+        event.currentTarget.releasePointerCapture(event.pointerId);
+      }
+      galleryUnlockDragRef.current.pointerId = null;
+      setIsGalleryUnlockDragging(false);
+      if (!cancelled && galleryUnlockProgressRef.current >= 0.8) {
+        completeGalleryUnlock();
+        return;
+      }
+      galleryUnlockProgressRef.current = 0;
+      setGalleryUnlockOffset(0);
+    };
+    const handleGalleryUnlockKeyDown = (event) => {
+      if (isGalleryUnlockComplete)
+        return;
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        completeGalleryUnlock();
+        return;
+      }
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key))
+        return;
+      event.preventDefault();
+      const metrics = getGalleryUnlockMetrics();
+      if (!metrics)
+        return;
+      const currentProgress = galleryUnlockProgressRef.current;
+      const nextProgress = event.key === "Home" ? 0 : event.key === "End" ? 1 : Math.max(0, Math.min(1, currentProgress + (event.key === "ArrowRight" ? 0.2 : -0.2)));
+      setGalleryUnlockPosition(metrics.maxOffset * nextProgress, metrics.maxOffset);
+      if (nextProgress >= 0.8) {
+        completeGalleryUnlock();
+      }
+    };
     const handleMenuClick = (event, id) => {
       if (suppressMenuClickRef.current) {
         event.preventDefault();
@@ -2113,7 +2249,44 @@
         },
         label
       ))
-    )), /* @__PURE__ */ React.createElement("div", { className: "header-banner section-anchor", id: "profile-top" }, /* @__PURE__ */ React.createElement("h1", { className: "profile-name" }, /* @__PURE__ */ React.createElement("span", { className: "profile-name-text" }, copy.profile.name)), /* @__PURE__ */ React.createElement("div", { className: "subtitle" }, copy.profile.subtitle)), /* @__PURE__ */ React.createElement("div", { style: { marginBottom: "30px" } }, /* @__PURE__ */ React.createElement("div", { className: "stats" }, /* @__PURE__ */ React.createElement("div", { className: "stat-box" }, /* @__PURE__ */ React.createElement("div", { className: "stat-value" }, iconEducation), /* @__PURE__ */ React.createElement("div", { className: "stat-label" }, copy.profile.stats.education)), /* @__PURE__ */ React.createElement("div", { className: "stat-box" }, /* @__PURE__ */ React.createElement("div", { className: "stat-value" }, iconMosque), /* @__PURE__ */ React.createElement("div", { className: "stat-label" }, copy.profile.stats.faith)))), /* @__PURE__ */ React.createElement("div", { className: "card section-anchor", id: "gallery-section" }, /* @__PURE__ */ React.createElement("div", { className: "section-header" }, /* @__PURE__ */ React.createElement("span", { className: "section-icon" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-images", "aria-hidden": "true" })), copy.gallery.title), /* @__PURE__ */ React.createElement("div", { className: "card-content" }, /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-showcase" }, /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-thumbs-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-thumbs" }, galleryPhotos.map((photo, idx) => {
+    )), /* @__PURE__ */ React.createElement("div", { className: "header-banner section-anchor", id: "profile-top" }, /* @__PURE__ */ React.createElement("h1", { className: "profile-name" }, /* @__PURE__ */ React.createElement("span", { className: "profile-name-text" }, copy.profile.name)), /* @__PURE__ */ React.createElement("div", { className: "subtitle" }, copy.profile.subtitle)), /* @__PURE__ */ React.createElement("div", { style: { marginBottom: "30px" } }, /* @__PURE__ */ React.createElement("div", { className: "stats" }, /* @__PURE__ */ React.createElement("div", { className: "stat-box" }, /* @__PURE__ */ React.createElement("div", { className: "stat-value" }, iconEducation), /* @__PURE__ */ React.createElement("div", { className: "stat-label" }, copy.profile.stats.education)), /* @__PURE__ */ React.createElement("div", { className: "stat-box" }, /* @__PURE__ */ React.createElement("div", { className: "stat-value" }, iconMosque), /* @__PURE__ */ React.createElement("div", { className: "stat-label" }, copy.profile.stats.faith)))), /* @__PURE__ */ React.createElement("div", { className: "card section-anchor", id: "gallery-section" }, /* @__PURE__ */ React.createElement("div", { className: "section-header" }, /* @__PURE__ */ React.createElement("span", { className: "section-icon" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-images", "aria-hidden": "true" })), copy.gallery.title), /* @__PURE__ */ React.createElement("div", { className: "card-content" }, !isGalleryUnlocked ? /* @__PURE__ */ React.createElement("div", { className: "gallery-access-gate" }, /* @__PURE__ */ React.createElement("div", { className: "gallery-access-title" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-lock", "aria-hidden": "true" }), /* @__PURE__ */ React.createElement("span", null, copy.gallery.unlockTitle)), /* @__PURE__ */ React.createElement(
+      "div",
+      {
+        className: `gallery-unlock-track${isGalleryUnlockDragging ? " is-dragging" : ""}${isGalleryUnlockComplete ? " is-complete" : ""}`,
+        ref: galleryUnlockTrackRef,
+        dir: "ltr"
+      },
+      /* @__PURE__ */ React.createElement(
+        "div",
+        {
+          className: "gallery-unlock-fill",
+          style: { width: `${galleryUnlockOffset + 68}px` },
+          "aria-hidden": "true"
+        }
+      ),
+      /* @__PURE__ */ React.createElement("div", { className: "gallery-unlock-copy", "aria-hidden": "true" }, /* @__PURE__ */ React.createElement("span", { className: "gallery-bismillah-mark", dir: "rtl" }, "\u0628\u0650\u0633\u0652\u0645\u0650 \u0627\u0644\u0644\u0647\u0650")),
+      /* @__PURE__ */ React.createElement("i", { className: "fas fa-lock-open gallery-unlock-destination", "aria-hidden": "true" }),
+      /* @__PURE__ */ React.createElement(
+        "button",
+        {
+          type: "button",
+          className: "gallery-unlock-handle",
+          style: { transform: `translate3d(${galleryUnlockOffset}px, 0, 0)` },
+          onPointerDown: handleGalleryUnlockPointerDown,
+          onPointerMove: handleGalleryUnlockPointerMove,
+          onPointerUp: (event) => finishGalleryUnlockDrag(event),
+          onPointerCancel: (event) => finishGalleryUnlockDrag(event, true),
+          onKeyDown: handleGalleryUnlockKeyDown,
+          role: "slider",
+          "aria-label": copy.gallery.unlockAria,
+          "aria-orientation": "horizontal",
+          "aria-valuemin": "0",
+          "aria-valuemax": "100",
+          "aria-valuenow": Math.round(galleryUnlockProgressRef.current * 100)
+        },
+        /* @__PURE__ */ React.createElement("i", { className: `fas ${isGalleryUnlockComplete ? "fa-check" : "fa-lock"}`, "aria-hidden": "true" })
+      )
+    )) : /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-showcase" }, /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-thumbs-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "photo-gallery-thumbs" }, galleryPhotos.map((photo, idx) => {
       const photoIndex = galleryPhotos.findIndex(({ src }) => src === photo.src);
       const resolvedPhotoIndex = photoIndex >= 0 ? photoIndex : idx;
       const isActivePhoto = resolvedPhotoIndex === activeGalleryPhotoIndex;

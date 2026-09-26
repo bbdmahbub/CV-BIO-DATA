@@ -2551,6 +2551,210 @@
             align-items: stretch;
         }
 
+        .gallery-access-gate {
+            min-height: 340px;
+            display: grid;
+            align-content: center;
+            justify-items: center;
+            gap: 18px;
+            padding: 28px 20px;
+            border: 1px solid rgba(15, 95, 73, 0.14);
+            border-radius: 20px;
+            background:
+                linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)),
+                repeating-linear-gradient(45deg, rgba(15, 95, 73, 0.08) 0 1px, transparent 1px 18px),
+                repeating-linear-gradient(-45deg, rgba(185, 133, 40, 0.07) 0 1px, transparent 1px 18px);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86);
+        }
+
+        .gallery-access-title {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #0f5f49;
+            font-size: 1.1rem;
+            font-weight: 900;
+            letter-spacing: 0;
+        }
+
+        .gallery-access-title i {
+            color: #b98522;
+        }
+
+        .gallery-unlock-track {
+            position: relative;
+            width: min(390px, 100%);
+            height: 68px;
+            overflow: hidden;
+            border: 1px solid rgba(218, 176, 82, 0.78);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.86),
+                0 14px 28px rgba(13, 95, 75, 0.16),
+                0 0 0 4px rgba(185, 133, 40, 0.1);
+        }
+
+        .gallery-unlock-destination {
+            position: absolute;
+            top: 50%;
+            right: 18px;
+            z-index: 2;
+            color: rgba(15, 95, 73, 0.58);
+            font-size: 1.05rem;
+            line-height: 1;
+            transform: translateY(-50%);
+            pointer-events: none;
+            animation: galleryUnlockDestinationHint 1.45s ease-in-out infinite;
+            transition: opacity 0.18s ease;
+        }
+
+        .gallery-unlock-track.is-complete .gallery-unlock-destination {
+            opacity: 0;
+        }
+
+        .gallery-unlock-fill {
+            position: absolute;
+            top: 5px;
+            bottom: 5px;
+            left: 5px;
+            z-index: 1;
+            max-width: calc(100% - 10px);
+            border-radius: 11px;
+            background: linear-gradient(145deg, rgba(22, 134, 106, 0.2), rgba(185, 133, 40, 0.24));
+            transition: width 0.2s ease;
+        }
+
+        .gallery-unlock-track.is-dragging .gallery-unlock-fill {
+            transition: none;
+        }
+
+        .gallery-unlock-track.is-complete .gallery-unlock-fill {
+            background: linear-gradient(145deg, #16866a 0%, #0f624e 58%, #b98522 100%);
+        }
+
+        .gallery-unlock-copy {
+            position: absolute;
+            inset: 0 64px;
+            z-index: 2;
+            display: grid;
+            align-content: center;
+            justify-items: center;
+            min-width: 0;
+            pointer-events: none;
+            transition: opacity 0.18s ease;
+        }
+
+        .gallery-unlock-track.is-complete .gallery-unlock-copy {
+            opacity: 0;
+        }
+
+        .gallery-bismillah-mark {
+            color: #0f5f49;
+            font-family: var(--font-arabic);
+            font-size: 1.12rem;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+
+        .gallery-unlock-handle {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            z-index: 3;
+            width: 58px;
+            height: 58px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            border: 1px solid rgba(255, 225, 145, 0.82);
+            border-radius: 12px;
+            background: linear-gradient(145deg, #16866a 0%, #0f624e 52%, #093f35 100%);
+            color: #ffe39a;
+            cursor: grab;
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.26),
+                0 7px 15px rgba(13, 95, 75, 0.24);
+            touch-action: none;
+            user-select: none;
+            transition: transform 0.22s ease, background 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .gallery-unlock-handle::after {
+            content: "\203A\203A";
+            position: absolute;
+            left: calc(100% + 7px);
+            color: rgba(185, 133, 34, 0.82);
+            font-size: 1.15rem;
+            font-weight: 900;
+            line-height: 1;
+            pointer-events: none;
+            animation: galleryUnlockDragTrail 1.45s ease-in-out infinite;
+        }
+
+        .gallery-unlock-handle i {
+            animation: galleryUnlockIconNudge 1.45s ease-in-out infinite;
+        }
+
+        .gallery-unlock-track.is-dragging .gallery-unlock-handle {
+            cursor: grabbing;
+            transition: background 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .gallery-unlock-track.is-dragging .gallery-unlock-destination,
+        .gallery-unlock-track.is-dragging .gallery-unlock-handle::after,
+        .gallery-unlock-track.is-dragging .gallery-unlock-handle i,
+        .gallery-unlock-track.is-complete .gallery-unlock-destination,
+        .gallery-unlock-track.is-complete .gallery-unlock-handle::after,
+        .gallery-unlock-track.is-complete .gallery-unlock-handle i {
+            animation: none;
+        }
+
+        .gallery-unlock-handle:hover,
+        .gallery-unlock-handle:focus-visible {
+            outline: none;
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                0 9px 19px rgba(13, 95, 75, 0.3),
+                0 0 0 3px rgba(185, 133, 40, 0.14);
+        }
+
+        .gallery-unlock-track.is-complete .gallery-unlock-handle {
+            background: linear-gradient(145deg, #22a06b, #0f6a50);
+            cursor: default;
+        }
+
+        .gallery-unlock-track.is-complete .gallery-unlock-handle::after {
+            opacity: 0;
+        }
+
+        @keyframes galleryUnlockIconNudge {
+            0%, 28%, 100% { transform: translateX(0); }
+            52% { transform: translateX(6px); }
+            70% { transform: translateX(2px); }
+        }
+
+        @keyframes galleryUnlockDragTrail {
+            0%, 24%, 100% { opacity: 0.25; transform: translateX(0); }
+            52% { opacity: 1; transform: translateX(8px); }
+            72% { opacity: 0.5; transform: translateX(13px); }
+        }
+
+        @keyframes galleryUnlockDestinationHint {
+            0%, 30%, 100% { opacity: 0.34; transform: translateY(-50%) translateX(0); }
+            55% { opacity: 0.9; transform: translateY(-50%) scale(1.12); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .gallery-unlock-destination,
+            .gallery-unlock-handle::after,
+            .gallery-unlock-handle i {
+                animation: none;
+            }
+        }
+
         .photo-gallery-showcase {
             --gallery-height: clamp(620px, 86vw, 940px);
             --gallery-thumb-width: clamp(74px, 18%, 118px);
