@@ -18,6 +18,7 @@
     const popupBismillah = "\u0628\u0633\u0645 \u0627\u0644\u0644\u0647 \u0627\u0644\u0631\u062D\u0645\u0646 \u0627\u0644\u0631\u062D\u064A\u0645";
     const popupDarud = "\u0627\u0644\u0644\u0647\u0645 \u0635\u0644 \u0648\u0633\u0644\u0645 \u0639\u0644\u0649 \u0633\u064A\u062F\u0646\u0627 \u0645\u062D\u0645\u062F \uFDFA";
     const popupTaawuz = "\u0623\u064E\u0639\u064F\u0648\u0630\u064F \u0628\u0650\u0627\u0644\u0644\u064E\u0651\u0647\u0650 \u0645\u0650\u0646\u064E \u0627\u0644\u0634\u064E\u0651\u064A\u0652\u0637\u064E\u0627\u0646\u0650 \u0627\u0644\u0631\u064E\u0651\u062C\u0650\u064A\u0645\u0650";
+    const marriageHadithArabic = "\u062A\u064F\u0646\u0652\u0643\u064E\u062D\u064F \u0627\u0644\u0652\u0645\u064E\u0631\u0652\u0623\u064E\u0629\u064F \u0644\u0650\u0623\u064E\u0631\u0652\u0628\u064E\u0639\u064D: \u0644\u0650\u0645\u064E\u0627\u0644\u0650\u0647\u064E\u0627 \u0648\u064E\u0644\u0650\u062D\u064E\u0633\u064E\u0628\u0650\u0647\u064E\u0627 \u0648\u064E\u0644\u0650\u062C\u064E\u0645\u064E\u0627\u0644\u0650\u0647\u064E\u0627 \u0648\u064E\u0644\u0650\u062F\u0650\u064A\u0646\u0650\u0647\u064E\u0627\u060C \u0641\u064E\u0627\u0638\u0652\u0641\u064E\u0631\u0652 \u0628\u0650\u0630\u064E\u0627\u062A\u0650 \u0627\u0644\u062F\u0650\u0651\u064A\u0646\u0650\u060C \u062A\u064E\u0631\u0650\u0628\u064E\u062A\u0652 \u064A\u064E\u062F\u064E\u0627\u0643\u064E";
     const duaArabicLines = [
       "\u0648\u064E\u0623\u064E\u0646\u0643\u0650\u062D\u064F\u0648\u0627 \u0627\u0644\u0652\u0623\u064E\u064A\u064E\u0627\u0645\u064E\u0649\u0670 \u0645\u0650\u0646\u0643\u064F\u0645\u0652 \u0648\u064E\u0627\u0644\u0635\u064E\u0651\u0627\u0644\u0650\u062D\u0650\u064A\u0646\u064E \u0645\u0650\u0646\u0652 \u0639\u0650\u0628\u064E\u0627\u062F\u0650\u0643\u064F\u0645\u0652 \u0648\u064E\u0625\u0650\u0645\u064E\u0627\u0626\u0650\u0643\u064F\u0645\u0652 \u06DA \u0625\u0650\u0646 \u064A\u064E\u0643\u064F\u0648\u0646\u064F\u0648\u0627 \u0641\u064F\u0642\u064E\u0631\u064E\u0627\u0621\u064E \u064A\u064F\u063A\u0652\u0646\u0650\u0647\u0650\u0645\u064F \u0627\u0644\u0644\u064E\u0651\u0647\u064F \u0645\u0650\u0646 \u0641\u064E\u0636\u0652\u0644\u0650\u0647\u0650 \u06D7 \u0648\u064E\u0627\u0644\u0644\u064E\u0651\u0647\u064F \u0648\u064E\u0627\u0633\u0650\u0639\u064C \u0639\u064E\u0644\u0650\u064A\u0645\u064C",
       "\u0631\u064E\u0628\u064E\u0651\u0646\u064E\u0627 \u0647\u064E\u0628\u0652 \u0644\u064E\u0646\u064E\u0627 \u0645\u0650\u0646\u0652 \u0623\u064E\u0632\u0652\u0648\u064E\u0627\u062C\u0650\u0646\u064E\u0627 \u0648\u064E\u0630\u064F\u0631\u0650\u0651\u064A\u064E\u0651\u0627\u062A\u0650\u0646\u064E\u0627 \u0642\u064F\u0631\u064E\u0651\u0629\u064E \u0623\u064E\u0639\u0652\u064A\u064F\u0646\u064D \u0648\u064E\u0627\u062C\u0652\u0639\u064E\u0644\u0652\u0646\u064E\u0627 \u0644\u0650\u0644\u0652\u0645\u064F\u062A\u064E\u0651\u0642\u0650\u064A\u0646\u064E \u0625\u0650\u0645\u064E\u0627\u0645\u064B\u0627",
@@ -105,7 +106,10 @@
           languageSwitcherLabel: "Language versions",
           languagePanelHint: "Change the page language at any time.",
           languagePanelCollapse: "Collapse language controls",
-          languagePanelExpand: "Expand language controls"
+          languagePanelExpand: "Expand language controls",
+          downloadPdf: "Download PDF",
+          scrollMenuLeft: "Scroll menu left",
+          scrollMenuRight: "Scroll menu right"
         },
         common: {
           visit: "Visit",
@@ -127,6 +131,13 @@
         bismillahIntro: {
           ayahReference: "Surah An-Nur, Ayah 32",
           ayahMeaning: "And marry the unmarried among you and the righteous among your male servants and female servants. If they are poor, Allah will enrich them from His bounty. And Allah is All-Encompassing, All-Knowing.",
+          garmentAyahReference: "Surah Al-Baqarah, Ayah 187",
+          garmentAyahMeaning: "They are clothing for you and you are clothing for them.",
+          marriageHadithReference: "Sahih al-Bukhari 5090; Sahih Muslim 1466",
+          marriageHadithMeaning: "A woman is married for four qualities: her wealth, lineage, beauty, and religion. Give priority to the woman of faith so that you may prosper.",
+          ayahCardLabel: "Show card",
+          previousCard: "Show previous card",
+          nextCard: "Show next card",
           viewButton: "View\nBIO-DATA"
         },
         voice: {
@@ -172,7 +183,7 @@
           hobbies: "Hobbies",
           expectation: "Expectation",
           contact: "Contact",
-          dua: "Dua"
+          dua: "Ayat, Hadith & Dua"
         },
         profile: {
           name: "Md Mahbubur Rahman",
@@ -192,7 +203,7 @@
           photos: [
             { src: withCvCacheVersion("assets/images/mahbub-portrait-1.webp"), alt: "Md Mahbubur Rahman portrait 1", label: "Portrait 01", featured: true },
             { src: withCvCacheVersion("assets/images/mahbub-portrait-2.webp"), alt: "Md Mahbubur Rahman portrait 2", label: "Portrait 02", featured: false },
-            { src: withCvCacheVersion("assets/images/mahbub-potrait-4.webp"), alt: "Md Mahbubur Rahman portrait 4", label: "Portrait 04", featured: false }
+            { src: withCvCacheVersion("assets/images/mahbub-potrait-4.webp"), alt: "Md Mahbubur Rahman portrait 3", label: "Portrait 03", featured: false }
           ]
         },
         sectionHeaders: {
@@ -341,7 +352,7 @@
           ]
         },
         dua: {
-          title: "Final Words & Dua",
+          title: "Ayat, Hadith & Dua",
           meanings: [
             '"And marry the unmarried among you and the righteous among your male servants and female servants. If they are poor, Allah will enrich them from His bounty, and Allah is All-Encompassing and Knowing."',
             '"Our Rabb (Allah), grant us from among our wives and offspring comfort to our eyes and make us an example for the righteous."',
@@ -372,7 +383,10 @@
           languageSwitcherLabel: "\u0625\u0635\u062F\u0627\u0631\u0627\u062A \u0627\u0644\u0644\u063A\u0629",
           languagePanelHint: "\u064A\u0645\u0643\u0646\u0643 \u062A\u063A\u064A\u064A\u0631 \u0644\u063A\u0629 \u0627\u0644\u0635\u0641\u062D\u0629 \u0641\u064A \u0623\u064A \u0648\u0642\u062A.",
           languagePanelCollapse: "\u0637\u064A \u0639\u0646\u0627\u0635\u0631 \u0627\u0644\u062A\u062D\u0643\u0645 \u0628\u0627\u0644\u0644\u063A\u0629",
-          languagePanelExpand: "\u0625\u0638\u0647\u0627\u0631 \u0639\u0646\u0627\u0635\u0631 \u0627\u0644\u062A\u062D\u0643\u0645 \u0628\u0627\u0644\u0644\u063A\u0629"
+          languagePanelExpand: "\u0625\u0638\u0647\u0627\u0631 \u0639\u0646\u0627\u0635\u0631 \u0627\u0644\u062A\u062D\u0643\u0645 \u0628\u0627\u0644\u0644\u063A\u0629",
+          downloadPdf: "\u062A\u0646\u0632\u064A\u0644 PDF",
+          scrollMenuLeft: "\u062A\u0645\u0631\u064A\u0631 \u0627\u0644\u0642\u0627\u0626\u0645\u0629 \u0625\u0644\u0649 \u0627\u0644\u064A\u0633\u0627\u0631",
+          scrollMenuRight: "\u062A\u0645\u0631\u064A\u0631 \u0627\u0644\u0642\u0627\u0626\u0645\u0629 \u0625\u0644\u0649 \u0627\u0644\u064A\u0645\u064A\u0646"
         },
         common: {
           visit: "\u0632\u064A\u0627\u0631\u0629",
@@ -394,6 +408,13 @@
         bismillahIntro: {
           ayahReference: "\u0633\u0648\u0631\u0629 \u0627\u0644\u0646\u0648\u0631\u060C \u0622\u064A\u0629 \u0663\u0662",
           ayahMeaning: "\u0623\u064A: \u0632\u0648\u0651\u062C\u0648\u0627 \u063A\u064A\u0631 \u0627\u0644\u0645\u062A\u0632\u0648\u062C\u064A\u0646 \u0645\u0646\u0643\u0645 \u0648\u0627\u0644\u0635\u0627\u0644\u062D\u064A\u0646 \u0645\u0646 \u0639\u0628\u0627\u062F\u0643\u0645 \u0648\u0625\u0645\u0627\u0626\u0643\u0645\u060C \u0641\u0625\u0646 \u0643\u0627\u0646\u0648\u0627 \u0641\u0642\u0631\u0627\u0621 \u0623\u063A\u0646\u0627\u0647\u0645 \u0627\u0644\u0644\u0647 \u0645\u0646 \u0641\u0636\u0644\u0647\u060C \u0648\u0627\u0644\u0644\u0647 \u0648\u0627\u0633\u0639 \u0627\u0644\u0641\u0636\u0644 \u0639\u0644\u064A\u0645 \u0628\u0623\u062D\u0648\u0627\u0644 \u0639\u0628\u0627\u062F\u0647.",
+          garmentAyahReference: "\u0633\u0648\u0631\u0629 \u0627\u0644\u0628\u0642\u0631\u0629\u060C \u0622\u064A\u0629 \u0661\u0668\u0667",
+          garmentAyahMeaning: "\u0623\u064A: \u0643\u0644\u064C\u0651 \u0645\u0646 \u0627\u0644\u0632\u0648\u062C\u064A\u0646 \u0633\u062A\u0631\u064C \u0648\u0633\u0643\u0646\u064C \u0644\u0644\u0622\u062E\u0631.",
+          marriageHadithReference: "\u0635\u062D\u064A\u062D \u0627\u0644\u0628\u062E\u0627\u0631\u064A \u0665\u0660\u0669\u0660\u061B \u0635\u062D\u064A\u062D \u0645\u0633\u0644\u0645 \u0661\u0664\u0666\u0666",
+          marriageHadithMeaning: "\u062A\u064F\u0646\u0643\u062D \u0627\u0644\u0645\u0631\u0623\u0629 \u0644\u0645\u0627\u0644\u0647\u0627 \u0648\u0646\u0633\u0628\u0647\u0627 \u0648\u062C\u0645\u0627\u0644\u0647\u0627 \u0648\u062F\u064A\u0646\u0647\u0627\u060C \u0648\u0627\u0644\u0623\u064E\u0648\u0652\u0644\u0649 \u0627\u062E\u062A\u064A\u0627\u0631 \u0635\u0627\u062D\u0628\u0629 \u0627\u0644\u062F\u064A\u0646.",
+          ayahCardLabel: "\u0639\u0631\u0636 \u0627\u0644\u0628\u0637\u0627\u0642\u0629",
+          previousCard: "\u0639\u0631\u0636 \u0627\u0644\u0628\u0637\u0627\u0642\u0629 \u0627\u0644\u0633\u0627\u0628\u0642\u0629",
+          nextCard: "\u0639\u0631\u0636 \u0627\u0644\u0628\u0637\u0627\u0642\u0629 \u0627\u0644\u062A\u0627\u0644\u064A\u0629",
           viewButton: "\u0639\u0631\u0636 \u0627\u0644\u0633\u064A\u0631\u0629 \u0627\u0644\u0630\u0627\u062A\u064A\u0629"
         },
         voice: {
@@ -439,7 +460,7 @@
           hobbies: "\u0627\u0644\u0647\u0648\u0627\u064A\u0627\u062A",
           expectation: "\u0627\u0644\u062A\u0648\u0642\u0639\u0627\u062A",
           contact: "\u0627\u0644\u062A\u0648\u0627\u0635\u0644",
-          dua: "\u0627\u0644\u062F\u0639\u0627\u0621"
+          dua: "\u0622\u064A\u0627\u062A \u0648\u062D\u062F\u064A\u062B \u0648\u062F\u0639\u0627\u0621"
         },
         profile: {
           name: "\u0645\u062D\u0645\u062F \u0645\u062D\u0628\u0648\u0628 \u0627\u0644\u0631\u062D\u0645\u0646",
@@ -455,11 +476,11 @@
         gallery: {
           title: "\u0645\u0639\u0631\u0636 \u0627\u0644\u0635\u0648\u0631",
           unlockTitle: "\u0639\u0631\u0636 \u0627\u0644\u0635\u0648\u0631",
-          unlockAria: "\u0627\u0633\u062D\u0628 \u0625\u0644\u0649 \u0627\u0644\u064A\u0645\u064A\u0646 \u0644\u0639\u0631\u0636 \u0627\u0644\u0635\u0648\u0631",
+          unlockAria: "\u0627\u0633\u062D\u0628 \u0625\u0644\u0649 \u0627\u0644\u064A\u0633\u0627\u0631 \u0644\u0639\u0631\u0636 \u0627\u0644\u0635\u0648\u0631",
           photos: [
             { src: withCvCacheVersion("assets/images/mahbub-portrait-1.webp"), alt: "\u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0634\u062E\u0635\u064A\u0629 \u0627\u0644\u0623\u0648\u0644\u0649 \u0644\u0640 \u0645\u062D\u0645\u062F \u0645\u062D\u0628\u0648\u0628 \u0627\u0644\u0631\u062D\u0645\u0646", label: "\u0627\u0644\u0635\u0648\u0631\u0629 01", featured: true },
             { src: withCvCacheVersion("assets/images/mahbub-portrait-2.webp"), alt: "\u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0634\u062E\u0635\u064A\u0629 \u0627\u0644\u062B\u0627\u0646\u064A\u0629 \u0644\u0640 \u0645\u062D\u0645\u062F \u0645\u062D\u0628\u0648\u0628 \u0627\u0644\u0631\u062D\u0645\u0646", label: "\u0627\u0644\u0635\u0648\u0631\u0629 02", featured: false },
-            { src: withCvCacheVersion("assets/images/mahbub-potrait-4.webp"), alt: "\u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0634\u062E\u0635\u064A\u0629 \u0627\u0644\u0631\u0627\u0628\u0639\u0629 \u0644\u0640 \u0645\u062D\u0645\u062F \u0645\u062D\u0628\u0648\u0628 \u0627\u0644\u0631\u062D\u0645\u0646", label: "\u0627\u0644\u0635\u0648\u0631\u0629 04", featured: false }
+            { src: withCvCacheVersion("assets/images/mahbub-potrait-4.webp"), alt: "\u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0634\u062E\u0635\u064A\u0629 \u0627\u0644\u062B\u0627\u0644\u062B\u0629 \u0644\u0640 \u0645\u062D\u0645\u062F \u0645\u062D\u0628\u0648\u0628 \u0627\u0644\u0631\u062D\u0645\u0646", label: "\u0627\u0644\u0635\u0648\u0631\u0629 03", featured: false }
           ]
         },
         sectionHeaders: {
@@ -609,7 +630,7 @@
           ]
         },
         dua: {
-          title: "\u0643\u0644\u0645\u0627\u062A \u062E\u062A\u0627\u0645\u064A\u0629 \u0648\u062F\u0639\u0627\u0621",
+          title: "\u0622\u064A\u0627\u062A \u0648\u062D\u062F\u064A\u062B \u0648\u062F\u0639\u0627\u0621",
           meanings: [
             "",
             "",
@@ -640,7 +661,10 @@
           languageSwitcherLabel: "\u09AD\u09BE\u09B7\u09BE \u09B8\u0982\u09B8\u09CD\u0995\u09B0\u09A3",
           languagePanelHint: "\u09AF\u09C7\u0995\u09CB\u09A8\u09CB \u09B8\u09AE\u09DF \u09AA\u09C7\u099C\u09C7\u09B0 \u09AD\u09BE\u09B7\u09BE \u09AC\u09A6\u09B2\u09BE\u09A8\u0964",
           languagePanelCollapse: "\u09AD\u09BE\u09B7\u09BE \u0995\u09A8\u09CD\u099F\u09CD\u09B0\u09CB\u09B2 \u09B2\u09C1\u0995\u09BE\u09A8",
-          languagePanelExpand: "\u09AD\u09BE\u09B7\u09BE \u0995\u09A8\u09CD\u099F\u09CD\u09B0\u09CB\u09B2 \u09A6\u09C7\u0996\u09BE\u09A8"
+          languagePanelExpand: "\u09AD\u09BE\u09B7\u09BE \u0995\u09A8\u09CD\u099F\u09CD\u09B0\u09CB\u09B2 \u09A6\u09C7\u0996\u09BE\u09A8",
+          downloadPdf: "PDF \u09A1\u09BE\u0989\u09A8\u09B2\u09CB\u09A1",
+          scrollMenuLeft: "\u09AE\u09C7\u09A8\u09C1 \u09AC\u09BE\u09AE\u09C7 \u09A8\u09BF\u09A8",
+          scrollMenuRight: "\u09AE\u09C7\u09A8\u09C1 \u09A1\u09BE\u09A8\u09C7 \u09A8\u09BF\u09A8"
         },
         common: {
           visit: "\u09AD\u09BF\u099C\u09BF\u099F",
@@ -662,6 +686,13 @@
         bismillahIntro: {
           ayahReference: "\u09B8\u09C2\u09B0\u09BE \u09A8\u09C2\u09B0 : \u0986\u09DF\u09BE\u09A4 - \u09E9\u09E8",
           ayahMeaning: "\u09A4\u09CB\u09AE\u09BE\u09A6\u09C7\u09B0 \u09AE\u09A7\u09CD\u09AF\u09C7 \u09AF\u09BE\u09B0\u09BE \u0985\u09AC\u09BF\u09AC\u09BE\u09B9\u09BF\u09A4 \u098F\u09AC\u0982 \u09A4\u09CB\u09AE\u09BE\u09A6\u09C7\u09B0 \u09A6\u09BE\u09B8-\u09A6\u09BE\u09B8\u09C0\u09A6\u09C7\u09B0 \u09AE\u09A7\u09CD\u09AF\u09C7 \u09AF\u09BE\u09B0\u09BE \u09B8\u09CE\u0995\u09B0\u09CD\u09AE\u09AA\u09B0\u09BE\u09DF\u09A3, \u09A4\u09BE\u09A6\u09C7\u09B0 \u09AC\u09BF\u09AC\u09BE\u09B9 \u09A6\u09BE\u0993\u0964 \u09A4\u09BE\u09B0\u09BE \u0985\u09AD\u09BE\u09AC\u09C0 \u09B9\u09B2\u09C7 \u0986\u09B2\u09CD\u09B2\u09BE\u09B9 \u09A8\u09BF\u099C \u0985\u09A8\u09C1\u0997\u09CD\u09B0\u09B9\u09C7 \u09A4\u09BE\u09A6\u09C7\u09B0\u0995\u09C7 \u0985\u09AD\u09BE\u09AC\u09AE\u09C1\u0995\u09CD\u09A4 \u0995\u09B0\u09AC\u09C7\u09A8\u0964 \u0986\u09B2\u09CD\u09B2\u09BE\u09B9 \u09AA\u09CD\u09B0\u09BE\u099A\u09C1\u09B0\u09CD\u09AF\u09AE\u09DF, \u09B8\u09B0\u09CD\u09AC\u099C\u09CD\u099E\u0964",
+          garmentAyahReference: "\u09B8\u09C2\u09B0\u09BE \u0986\u09B2-\u09AC\u09BE\u0995\u09BE\u09B0\u09BE : \u0986\u09DF\u09BE\u09A4 - \u09E7\u09EE\u09ED",
+          garmentAyahMeaning: "\u09A4\u09BE\u09B0\u09BE \u09A4\u09CB\u09AE\u09BE\u09A6\u09C7\u09B0 \u099C\u09A8\u09CD\u09AF \u09AA\u09CB\u09B6\u09BE\u0995\u09B8\u09CD\u09AC\u09B0\u09C2\u09AA \u098F\u09AC\u0982 \u09A4\u09CB\u09AE\u09B0\u09BE \u09A4\u09BE\u09A6\u09C7\u09B0 \u099C\u09A8\u09CD\u09AF \u09AA\u09CB\u09B6\u09BE\u0995\u09B8\u09CD\u09AC\u09B0\u09C2\u09AA\u0964",
+          marriageHadithReference: "\u09B8\u09B9\u09BF\u09B9 \u09AC\u09C1\u0996\u09BE\u09B0\u09BF: \u09EB\u09E6\u09EF\u09E6; \u09B8\u09B9\u09BF\u09B9 \u09AE\u09C1\u09B8\u09B2\u09BF\u09AE: \u09E7\u09EA\u09EC\u09EC",
+          marriageHadithMeaning: "\u099A\u09BE\u09B0\u099F\u09BF \u0997\u09C1\u09A3\u09C7\u09B0 \u0995\u09BE\u09B0\u09A3\u09C7 \u09A8\u09BE\u09B0\u09C0\u0995\u09C7 \u09AC\u09BF\u09AC\u09BE\u09B9 \u0995\u09B0\u09BE \u09B9\u09DF\u2014\u09A4\u09BE\u09B0 \u09B8\u09AE\u09CD\u09AA\u09A6, \u09AC\u0982\u09B6\u09AE\u09B0\u09CD\u09AF\u09BE\u09A6\u09BE, \u09B8\u09CC\u09A8\u09CD\u09A6\u09B0\u09CD\u09AF \u0993 \u09A6\u09CD\u09AC\u09C0\u09A8\u09A6\u09BE\u09B0\u09BF\u09B0 \u099C\u09A8\u09CD\u09AF\u0964 \u0985\u09A4\u098F\u09AC \u09A6\u09CD\u09AC\u09C0\u09A8\u09A6\u09BE\u09B0 \u09A8\u09BE\u09B0\u09C0\u0995\u09C7 \u0985\u0997\u09CD\u09B0\u09BE\u09A7\u09BF\u0995\u09BE\u09B0 \u09A6\u09BE\u0993, \u09A4\u09BE\u09A4\u09C7\u0987 \u0995\u09B2\u09CD\u09AF\u09BE\u09A3\u0964",
+          ayahCardLabel: "\u0995\u09BE\u09B0\u09CD\u09A1 \u09A6\u09C7\u0996\u09C1\u09A8",
+          previousCard: "\u0986\u0997\u09C7\u09B0 \u0995\u09BE\u09B0\u09CD\u09A1 \u09A6\u09C7\u0996\u09C1\u09A8",
+          nextCard: "\u09AA\u09B0\u09C7\u09B0 \u0995\u09BE\u09B0\u09CD\u09A1 \u09A6\u09C7\u0996\u09C1\u09A8",
           viewButton: "\u09AC\u09BE\u09DF\u09CB\u09A1\u09BE\u099F\u09BE \u09A6\u09C7\u0996\u09C1\u09A8"
         },
         voice: {
@@ -707,7 +738,7 @@
           hobbies: "\u09B6\u0996",
           expectation: "\u09AA\u09CD\u09B0\u09A4\u09CD\u09AF\u09BE\u09B6\u09BE",
           contact: "\u09AF\u09CB\u0997\u09BE\u09AF\u09CB\u0997",
-          dua: "\u09A6\u09CB\u0986"
+          dua: "\u0986\u09DF\u09BE\u09A4, \u09B9\u09BE\u09A6\u09BF\u09B8 \u0993 \u09A6\u09CB\u09DF\u09BE"
         },
         profile: {
           name: "\u09AE\u09CB. \u09AE\u09BE\u09B9\u09AC\u09C1\u09AC\u09C1\u09B0 \u09B0\u09B9\u09AE\u09BE\u09A8",
@@ -727,7 +758,7 @@
           photos: [
             { src: withCvCacheVersion("assets/images/mahbub-portrait-1.webp"), alt: "Md Mahbubur Rahman-\u098F\u09B0 \u09AA\u09CB\u09B0\u09CD\u099F\u09CD\u09B0\u09C7\u099F \u09E7", label: "\u099B\u09AC\u09BF \u09E6\u09E7", featured: true },
             { src: withCvCacheVersion("assets/images/mahbub-portrait-2.webp"), alt: "Md Mahbubur Rahman-\u098F\u09B0 \u09AA\u09CB\u09B0\u09CD\u099F\u09CD\u09B0\u09C7\u099F \u09E8", label: "\u099B\u09AC\u09BF \u09E6\u09E8", featured: false },
-            { src: withCvCacheVersion("assets/images/mahbub-potrait-4.webp"), alt: "Md Mahbubur Rahman-\u098F\u09B0 \u09AA\u09CB\u09B0\u09CD\u099F\u09CD\u09B0\u09C7\u099F \u09EA", label: "\u099B\u09AC\u09BF \u09E6\u09EA", featured: false }
+            { src: withCvCacheVersion("assets/images/mahbub-potrait-4.webp"), alt: "Md Mahbubur Rahman-\u098F\u09B0 \u09AA\u09CB\u09B0\u09CD\u099F\u09CD\u09B0\u09C7\u099F \u09E9", label: "\u099B\u09AC\u09BF \u09E6\u09E9", featured: false }
           ]
         },
         sectionHeaders: {
@@ -877,7 +908,7 @@
           ]
         },
         dua: {
-          title: "\u09B6\u09C7\u09B7 \u0995\u09A5\u09BE \u0993 \u09A6\u09CB\u0986",
+          title: "\u0986\u09DF\u09BE\u09A4, \u09B9\u09BE\u09A6\u09BF\u09B8 \u0993 \u09A6\u09CB\u09DF\u09BE",
           meanings: [
             "\u09A4\u09CB\u09AE\u09BE\u09A6\u09C7\u09B0 \u09AE\u09A7\u09CD\u09AF\u09C7 \u09AF\u09BE\u09B0\u09BE \u0985\u09AC\u09BF\u09AC\u09BE\u09B9\u09BF\u09A4 \u098F\u09AC\u0982 \u09A4\u09CB\u09AE\u09BE\u09A6\u09C7\u09B0 \u09A6\u09BE\u09B8-\u09A6\u09BE\u09B8\u09C0\u09A6\u09C7\u09B0 \u09AE\u09A7\u09CD\u09AF\u09C7 \u09AF\u09BE\u09B0\u09BE \u09B8\u09CE\u0995\u09B0\u09CD\u09AE\u09AA\u09B0\u09BE\u09AF\u09BC\u09A3, \u09A4\u09BE\u09A6\u09C7\u09B0 \u09AC\u09BF\u09AC\u09BE\u09B9 \u09A6\u09BE\u0993\u0964 \u09A4\u09BE\u09B0\u09BE \u0985\u09AD\u09BE\u09AC\u09C0 \u09B9\u09B2\u09C7 \u0986\u09B2\u09CD\u09B2\u09BE\u09B9 \u09A8\u09BF\u099C \u0985\u09A8\u09C1\u0997\u09CD\u09B0\u09B9\u09C7 \u09A4\u09BE\u09A6\u09C7\u09B0\u0995\u09C7 \u0985\u09AD\u09BE\u09AC\u09AE\u09C1\u0995\u09CD\u09A4 \u0995\u09B0\u09AC\u09C7\u09A8\u0964 \u0986\u09B2\u09CD\u09B2\u09BE\u09B9 \u09AA\u09CD\u09B0\u09BE\u099A\u09C1\u09B0\u09CD\u09AF\u09AE\u09AF\u09BC, \u09B8\u09B0\u09CD\u09AC\u099C\u09CD\u099E\u0964",
             "\u09B9\u09C7 \u0986\u09AE\u09BE\u09A6\u09C7\u09B0 \u09B0\u09AC, \u0986\u09AE\u09BE\u09A6\u09C7\u09B0 \u09B8\u09CD\u09A4\u09CD\u09B0\u09C0 \u0993 \u09B8\u09A8\u09CD\u09A4\u09BE\u09A8\u09A6\u09C7\u09B0\u0995\u09C7 \u0986\u09AE\u09BE\u09A6\u09C7\u09B0 \u099A\u09CB\u0996\u09C7\u09B0 \u09B6\u09C0\u09A4\u09B2\u09A4\u09BE \u09A6\u09BE\u09A8 \u0995\u09B0\u09C1\u09A8 \u098F\u09AC\u0982 \u0986\u09AE\u09BE\u09A6\u09C7\u09B0\u0995\u09C7 \u09AE\u09C1\u09A4\u09CD\u09A4\u09BE\u0995\u09C0\u09A6\u09C7\u09B0 \u099C\u09A8\u09CD\u09AF \u0986\u09A6\u09B0\u09CD\u09B6 \u09AC\u09BE\u09A8\u09BE\u09A8\u0964",
@@ -1029,6 +1060,8 @@
     });
     const [isIntroPopupOpen, setIsIntroPopupOpen] = React.useState(false);
     const [isBismillahLoadingOpen, setIsBismillahLoadingOpen] = React.useState(true);
+    const [activeLoadingAyahIndex, setActiveLoadingAyahIndex] = React.useState(0);
+    const [isLoadingAyahPaused, setIsLoadingAyahPaused] = React.useState(false);
     const [isVoiceListening, setIsVoiceListening] = React.useState(false);
     const [voiceUiState, setVoiceUiState] = React.useState("idle");
     const [voicePrompt, setVoicePrompt] = React.useState(introVoiceHint);
@@ -1047,6 +1080,7 @@
     const galleryUnlockTrackRef = React.useRef(null);
     const galleryUnlockProgressRef = React.useRef(0);
     const galleryUnlockTimerRef = React.useRef(null);
+    const printTimerRef = React.useRef(null);
     const galleryUnlockDragRef = React.useRef({
       pointerId: null,
       grabOffsetX: 0
@@ -1097,6 +1131,64 @@
     const galleryPhotos = copy.gallery.photos;
     const activeGalleryPhoto = galleryPhotos[activeGalleryPhotoIndex] || galleryPhotos[0];
     const activePuzzleSet = bismillahPuzzleSets[language] || bismillahPuzzleSets.en;
+    const bismillahAyahCards = [
+      {
+        arabic: duaArabicLines[0],
+        meaning: copy.bismillahIntro.ayahMeaning,
+        reference: copy.bismillahIntro.ayahReference
+      },
+      {
+        arabic: duaArabicLines[4],
+        meaning: copy.bismillahIntro.garmentAyahMeaning,
+        reference: copy.bismillahIntro.garmentAyahReference
+      },
+      {
+        arabic: marriageHadithArabic,
+        meaning: copy.bismillahIntro.marriageHadithMeaning,
+        reference: copy.bismillahIntro.marriageHadithReference
+      }
+    ];
+    const activeBismillahAyahCard = bismillahAyahCards[activeLoadingAyahIndex] || bismillahAyahCards[0];
+    const faithTextEntries = [
+      {
+        type: "ayah",
+        arabic: duaArabicLines[0],
+        meaning: copy.dua.meanings[0],
+        reference: copy.dua.references[0]
+      },
+      {
+        type: "ayah",
+        arabic: duaArabicLines[4],
+        meaning: copy.dua.meanings[4],
+        reference: copy.dua.references[4]
+      },
+      {
+        type: "hadith",
+        arabic: marriageHadithArabic,
+        meaning: copy.bismillahIntro.marriageHadithMeaning,
+        reference: copy.bismillahIntro.marriageHadithReference
+      },
+      {
+        type: "dua",
+        arabic: duaArabicLines[1],
+        meaning: copy.dua.meanings[1],
+        reference: copy.dua.references[1],
+        arabicClassName: "dua-arabic-furqan"
+      },
+      {
+        type: "dua",
+        arabic: duaArabicLines[2],
+        meaning: copy.dua.meanings[2],
+        reference: copy.dua.references[2]
+      },
+      {
+        type: "dua",
+        arabic: duaArabicLines[3],
+        meaning: copy.dua.meanings[3],
+        reference: copy.dua.references[3],
+        arabicClassName: "dua-arabic-green"
+      }
+    ];
     const voicePuzzleSeparatorText = language === "bn" ? "\u0985\u09A5\u09AC\u09BE" : language === "ar" ? "\u0623\u0648" : "OR";
     const selectedPuzzlePieces = selectedPuzzleIndexes.map((pieceIndex) => ({
       index: pieceIndex,
@@ -1327,6 +1419,9 @@
       }
       if (galleryUnlockTimerRef.current) {
         window.clearTimeout(galleryUnlockTimerRef.current);
+      }
+      if (printTimerRef.current) {
+        window.clearTimeout(printTimerRef.current);
       }
     }, []);
     React.useEffect(() => {
@@ -1643,6 +1738,23 @@
         window.clearTimeout(preloadTimerId);
       };
     }, [isBismillahLoadingOpen]);
+    React.useEffect(() => {
+      if (!isBismillahLoadingOpen)
+        return;
+      setActiveLoadingAyahIndex(0);
+    }, [isBismillahLoadingOpen, language]);
+    React.useEffect(() => {
+      if (!isBismillahLoadingOpen)
+        return void 0;
+      if (isLoadingAyahPaused)
+        return void 0;
+      const ayahSlideTimer = window.setTimeout(() => {
+        setActiveLoadingAyahIndex((currentIndex) => (currentIndex + 1) % bismillahAyahCards.length);
+      }, 5e3);
+      return () => {
+        window.clearTimeout(ayahSlideTimer);
+      };
+    }, [activeLoadingAyahIndex, isBismillahLoadingOpen, isLoadingAyahPaused, language]);
     React.useEffect(() => () => {
       clearSpeechRecognition();
     }, []);
@@ -1938,6 +2050,7 @@
       return {
         rect,
         inset,
+        handleSize,
         maxOffset: Math.max(0, rect.width - handleSize - inset * 2)
       };
     };
@@ -1980,7 +2093,7 @@
       const metrics = getGalleryUnlockMetrics();
       if (!metrics)
         return;
-      const nextOffset = event.clientX - metrics.rect.left - metrics.inset - galleryUnlockDragRef.current.grabOffsetX;
+      const nextOffset = isRtl ? metrics.rect.right - metrics.inset - metrics.handleSize - event.clientX + galleryUnlockDragRef.current.grabOffsetX : event.clientX - metrics.rect.left - metrics.inset - galleryUnlockDragRef.current.grabOffsetX;
       setGalleryUnlockPosition(nextOffset, metrics.maxOffset);
     };
     const finishGalleryUnlockDrag = (event, cancelled = false) => {
@@ -2013,11 +2126,55 @@
       if (!metrics)
         return;
       const currentProgress = galleryUnlockProgressRef.current;
-      const nextProgress = event.key === "Home" ? 0 : event.key === "End" ? 1 : Math.max(0, Math.min(1, currentProgress + (event.key === "ArrowRight" ? 0.2 : -0.2)));
+      const nextProgress = event.key === "Home" ? 0 : event.key === "End" ? 1 : Math.max(0, Math.min(1, currentProgress + (isRtl ? event.key === "ArrowLeft" ? 0.2 : -0.2 : event.key === "ArrowRight" ? 0.2 : -0.2)));
       setGalleryUnlockPosition(metrics.maxOffset * nextProgress, metrics.maxOffset);
       if (nextProgress >= 0.8) {
         completeGalleryUnlock();
       }
+    };
+    const handleDownloadPdf = () => {
+      if (printTimerRef.current) {
+        window.clearTimeout(printTimerRef.current);
+      }
+      const wasGalleryUnlocked = isGalleryUnlocked;
+      const printWindow = window.open("", "_blank");
+      setZoomedPhoto(null);
+      setIsGalleryUnlocked(true);
+      setIsGalleryUnlockDragging(false);
+      printTimerRef.current = window.setTimeout(() => {
+        printTimerRef.current = null;
+        const printableContainer = document.querySelector(".container");
+        if (!printableContainer) {
+          if (printWindow)
+            printWindow.close();
+          return;
+        }
+        const payload = JSON.stringify({
+          markup: printableContainer.innerHTML,
+          language,
+          dir: selectedTranslation.dir,
+          title: copy.meta.title,
+          createdAt: Date.now()
+        });
+        const printUrl = new URL("print.html", window.location.href);
+        printUrl.searchParams.set("lang", language);
+        printUrl.searchParams.set("v", cvCacheVersion);
+        try {
+          if (!printWindow || printWindow.closed)
+            throw new Error("Print window unavailable");
+          printWindow.sessionStorage.setItem("bbdMahbubPrintPayload", payload);
+          printWindow.location.replace(printUrl.href);
+        } catch (error) {
+          window.sessionStorage.setItem("bbdMahbubPrintPayload", payload);
+          window.location.href = printUrl.href;
+        }
+        if (!wasGalleryUnlocked) {
+          galleryUnlockProgressRef.current = 0;
+          setGalleryUnlockOffset(0);
+          setIsGalleryUnlockComplete(false);
+          setIsGalleryUnlocked(false);
+        }
+      }, 180);
     };
     const handleMenuClick = (event, id) => {
       if (suppressMenuClickRef.current) {
@@ -2036,6 +2193,15 @@
         block: "start"
       });
       window.history.replaceState(null, "", `#${id}`);
+    };
+    const scrollTopMenu = (direction) => {
+      const menuLinks = menuLinksRef.current;
+      if (!menuLinks)
+        return;
+      menuLinks.scrollBy({
+        left: direction * Math.max(180, menuLinks.clientWidth * 0.55),
+        behavior: "smooth"
+      });
     };
     const isVoiceError = hasSpeechRecognitionSupport && voiceUiState === "error";
     const isVoicePreparing = hasSpeechRecognitionSupport && voiceUiState === "preparing";
@@ -2084,7 +2250,57 @@
         role: "dialog",
         "aria-modal": "true"
       },
-      /* @__PURE__ */ React.createElement("div", { className: "bismillah-loading-panel", dir: selectedTranslation.dir }, /* @__PURE__ */ React.createElement("div", { className: "bismillah-loading-mark", "data-text": popupBismillah, dir: "rtl" }, popupBismillah), /* @__PURE__ */ React.createElement("div", { className: "bismillah-loading-ayah" }, /* @__PURE__ */ React.createElement("div", { className: "bismillah-loading-ayah-text", dir: "rtl" }, duaArabicLines[0]), /* @__PURE__ */ React.createElement("div", { className: "bismillah-loading-ayah-meaning" }, copy.bismillahIntro.ayahMeaning), /* @__PURE__ */ React.createElement("div", { className: "bismillah-loading-ayah-reference" }, copy.bismillahIntro.ayahReference)), /* @__PURE__ */ React.createElement("div", { className: "bismillah-loading-language-row", dir: "ltr" }, bismillahLanguageOptions.map(({ code, nativeLabel }) => /* @__PURE__ */ React.createElement(
+      /* @__PURE__ */ React.createElement("div", { className: "bismillah-loading-panel", dir: selectedTranslation.dir }, /* @__PURE__ */ React.createElement("div", { className: "bismillah-loading-mark", "data-text": popupBismillah, dir: "rtl" }, popupBismillah), /* @__PURE__ */ React.createElement(
+        "div",
+        {
+          className: "bismillah-loading-ayah",
+          onMouseEnter: () => setIsLoadingAyahPaused(true),
+          onMouseLeave: () => setIsLoadingAyahPaused(false)
+        },
+        /* @__PURE__ */ React.createElement(
+          "button",
+          {
+            type: "button",
+            className: "bismillah-loading-ayah-arrow is-previous",
+            onClick: () => setActiveLoadingAyahIndex((currentIndex) => (currentIndex - 1 + bismillahAyahCards.length) % bismillahAyahCards.length),
+            "aria-label": copy.bismillahIntro.previousCard,
+            title: copy.bismillahIntro.previousCard
+          },
+          /* @__PURE__ */ React.createElement("i", { className: "fas fa-chevron-left", "aria-hidden": "true" })
+        ),
+        /* @__PURE__ */ React.createElement(
+          "div",
+          {
+            className: "bismillah-loading-ayah-card",
+            dir: selectedTranslation.dir,
+            key: `${language}-${activeLoadingAyahIndex}`
+          },
+          /* @__PURE__ */ React.createElement("div", { className: "bismillah-loading-ayah-text", dir: "rtl" }, activeBismillahAyahCard.arabic),
+          /* @__PURE__ */ React.createElement("div", { className: "bismillah-loading-ayah-meaning" }, activeBismillahAyahCard.meaning),
+          /* @__PURE__ */ React.createElement("div", { className: "bismillah-loading-ayah-reference" }, activeBismillahAyahCard.reference)
+        ),
+        /* @__PURE__ */ React.createElement(
+          "button",
+          {
+            type: "button",
+            className: "bismillah-loading-ayah-arrow is-next",
+            onClick: () => setActiveLoadingAyahIndex((currentIndex) => (currentIndex + 1) % bismillahAyahCards.length),
+            "aria-label": copy.bismillahIntro.nextCard,
+            title: copy.bismillahIntro.nextCard
+          },
+          /* @__PURE__ */ React.createElement("i", { className: "fas fa-chevron-right", "aria-hidden": "true" })
+        )
+      ), /* @__PURE__ */ React.createElement("div", { className: "bismillah-loading-ayah-dots", dir: "ltr" }, bismillahAyahCards.map((ayahCard, index) => /* @__PURE__ */ React.createElement(
+        "button",
+        {
+          type: "button",
+          className: `bismillah-loading-ayah-dot${activeLoadingAyahIndex === index ? " is-active" : ""}`,
+          onClick: () => setActiveLoadingAyahIndex(index),
+          "aria-label": `${copy.bismillahIntro.ayahCardLabel} ${index + 1}`,
+          "aria-pressed": activeLoadingAyahIndex === index ? "true" : "false",
+          key: ayahCard.reference
+        }
+      ))), /* @__PURE__ */ React.createElement("div", { className: "bismillah-loading-language-row", dir: "ltr" }, bismillahLanguageOptions.map(({ code, nativeLabel }) => /* @__PURE__ */ React.createElement(
         "button",
         {
           type: "button",
@@ -2230,7 +2446,28 @@
           }
         )
       ), /* @__PURE__ */ React.createElement("div", { className: "photo-viewer-caption" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-magnifying-glass-plus", "aria-hidden": "true" }), /* @__PURE__ */ React.createElement("span", null, zoomedPhoto.label)))
-    ) : null, !isBismillahLoadingOpen && !isIntroPopupOpen ? /* @__PURE__ */ React.createElement("div", { className: "container" }, /* @__PURE__ */ React.createElement("nav", { className: "top-menu", "aria-label": copy.navigation.sectionsAria }, /* @__PURE__ */ React.createElement("div", { className: "top-menu-language-slot" }, renderLanguageMenu("top-menu-language-row")), /* @__PURE__ */ React.createElement("div", { className: "top-menu-head" }, /* @__PURE__ */ React.createElement("div", { className: "top-menu-label" }, copy.navigation.quickJump)), /* @__PURE__ */ React.createElement(
+    ) : null, !isBismillahLoadingOpen && !isIntroPopupOpen ? /* @__PURE__ */ React.createElement("div", { className: "container" }, /* @__PURE__ */ React.createElement("nav", { className: "top-menu", "aria-label": copy.navigation.sectionsAria }, /* @__PURE__ */ React.createElement("div", { className: "top-menu-language-slot" }, renderLanguageMenu("top-menu-language-row")), /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        type: "button",
+        className: "top-menu-download",
+        onClick: handleDownloadPdf,
+        "aria-label": copy.navigation.downloadPdf,
+        title: copy.navigation.downloadPdf
+      },
+      /* @__PURE__ */ React.createElement("i", { className: "fas fa-download", "aria-hidden": "true" }),
+      /* @__PURE__ */ React.createElement("span", null, copy.navigation.downloadPdf)
+    ), /* @__PURE__ */ React.createElement("div", { className: "top-menu-head" }, /* @__PURE__ */ React.createElement("div", { className: "top-menu-label" }, copy.navigation.quickJump)), /* @__PURE__ */ React.createElement("div", { className: "top-menu-links-shell" }, /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        type: "button",
+        className: "top-menu-scroll-arrow is-left",
+        onClick: () => scrollTopMenu(-1),
+        "aria-label": copy.navigation.scrollMenuLeft,
+        title: copy.navigation.scrollMenuLeft
+      },
+      /* @__PURE__ */ React.createElement("i", { className: "fas fa-chevron-left", "aria-hidden": "true" })
+    ), /* @__PURE__ */ React.createElement(
       "div",
       {
         className: `top-menu-links${isMenuDragging ? " is-dragging" : ""}`,
@@ -2249,10 +2486,20 @@
         },
         label
       ))
-    )), /* @__PURE__ */ React.createElement("div", { className: "header-banner section-anchor", id: "profile-top" }, /* @__PURE__ */ React.createElement("h1", { className: "profile-name" }, /* @__PURE__ */ React.createElement("span", { className: "profile-name-text" }, copy.profile.name)), /* @__PURE__ */ React.createElement("div", { className: "subtitle" }, copy.profile.subtitle)), /* @__PURE__ */ React.createElement("div", { style: { marginBottom: "30px" } }, /* @__PURE__ */ React.createElement("div", { className: "stats" }, /* @__PURE__ */ React.createElement("div", { className: "stat-box" }, /* @__PURE__ */ React.createElement("div", { className: "stat-value" }, iconEducation), /* @__PURE__ */ React.createElement("div", { className: "stat-label" }, copy.profile.stats.education)), /* @__PURE__ */ React.createElement("div", { className: "stat-box" }, /* @__PURE__ */ React.createElement("div", { className: "stat-value" }, iconMosque), /* @__PURE__ */ React.createElement("div", { className: "stat-label" }, copy.profile.stats.faith)))), /* @__PURE__ */ React.createElement("div", { className: "card section-anchor", id: "gallery-section" }, /* @__PURE__ */ React.createElement("div", { className: "section-header" }, /* @__PURE__ */ React.createElement("span", { className: "section-icon" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-images", "aria-hidden": "true" })), copy.gallery.title), /* @__PURE__ */ React.createElement("div", { className: "card-content" }, !isGalleryUnlocked ? /* @__PURE__ */ React.createElement("div", { className: "gallery-access-gate" }, /* @__PURE__ */ React.createElement("div", { className: "gallery-access-title" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-lock", "aria-hidden": "true" }), /* @__PURE__ */ React.createElement("span", null, copy.gallery.unlockTitle)), /* @__PURE__ */ React.createElement(
+    ), /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        type: "button",
+        className: "top-menu-scroll-arrow is-right",
+        onClick: () => scrollTopMenu(1),
+        "aria-label": copy.navigation.scrollMenuRight,
+        title: copy.navigation.scrollMenuRight
+      },
+      /* @__PURE__ */ React.createElement("i", { className: "fas fa-chevron-right", "aria-hidden": "true" })
+    ))), /* @__PURE__ */ React.createElement("div", { className: "header-banner section-anchor", id: "profile-top" }, /* @__PURE__ */ React.createElement("h1", { className: "profile-name" }, /* @__PURE__ */ React.createElement("span", { className: "profile-name-text" }, copy.profile.name)), /* @__PURE__ */ React.createElement("div", { className: "subtitle" }, copy.profile.subtitle)), /* @__PURE__ */ React.createElement("div", { style: { marginBottom: "30px" } }, /* @__PURE__ */ React.createElement("div", { className: "stats" }, /* @__PURE__ */ React.createElement("div", { className: "stat-box" }, /* @__PURE__ */ React.createElement("div", { className: "stat-value" }, iconEducation), /* @__PURE__ */ React.createElement("div", { className: "stat-label" }, copy.profile.stats.education)), /* @__PURE__ */ React.createElement("div", { className: "stat-box" }, /* @__PURE__ */ React.createElement("div", { className: "stat-value" }, iconMosque), /* @__PURE__ */ React.createElement("div", { className: "stat-label" }, copy.profile.stats.faith)))), /* @__PURE__ */ React.createElement("div", { className: "card section-anchor", id: "gallery-section" }, /* @__PURE__ */ React.createElement("div", { className: "section-header" }, /* @__PURE__ */ React.createElement("span", { className: "section-icon" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-images", "aria-hidden": "true" })), copy.gallery.title), /* @__PURE__ */ React.createElement("div", { className: "card-content" }, !isGalleryUnlocked ? /* @__PURE__ */ React.createElement("div", { className: "gallery-access-gate" }, /* @__PURE__ */ React.createElement("div", { className: "gallery-access-title" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-lock", "aria-hidden": "true" }), /* @__PURE__ */ React.createElement("span", null, copy.gallery.unlockTitle)), /* @__PURE__ */ React.createElement(
       "div",
       {
-        className: `gallery-unlock-track${isGalleryUnlockDragging ? " is-dragging" : ""}${isGalleryUnlockComplete ? " is-complete" : ""}`,
+        className: `gallery-unlock-track${isRtl ? " is-rtl" : ""}${isGalleryUnlockDragging ? " is-dragging" : ""}${isGalleryUnlockComplete ? " is-complete" : ""}`,
         ref: galleryUnlockTrackRef,
         dir: "ltr"
       },
@@ -2271,7 +2518,7 @@
         {
           type: "button",
           className: "gallery-unlock-handle",
-          style: { transform: `translate3d(${galleryUnlockOffset}px, 0, 0)` },
+          style: { transform: `translate3d(${isRtl ? -galleryUnlockOffset : galleryUnlockOffset}px, 0, 0)` },
           onPointerDown: handleGalleryUnlockPointerDown,
           onPointerMove: handleGalleryUnlockPointerMove,
           onPointerUp: (event) => finishGalleryUnlockDrag(event),
@@ -2403,7 +2650,7 @@
       },
       /* @__PURE__ */ React.createElement("i", { className: "fas fa-location-arrow", "aria-hidden": "true" }),
       copy.contact.mapButton
-    )) : null))))), /* @__PURE__ */ React.createElement("div", { className: "card section-anchor", id: "dua-section" }, /* @__PURE__ */ React.createElement("div", { className: "section-header" }, /* @__PURE__ */ React.createElement("span", { className: "section-icon" }, iconPrayerHands), copy.dua.title), /* @__PURE__ */ React.createElement("div", { className: "card-content" }, /* @__PURE__ */ React.createElement("div", { className: "final-dua" }, duaArabicLines.map((arabicLine, idx) => /* @__PURE__ */ React.createElement("div", { className: "dua-entry", key: arabicLine }, /* @__PURE__ */ React.createElement("div", { className: "dua-block" }, /* @__PURE__ */ React.createElement("div", { className: `dua-arabic${idx === 1 ? " dua-arabic-furqan" : ""}${idx === 3 ? " dua-arabic-green" : ""}` }, arabicLine), copy.dua.meanings[idx] ? /* @__PURE__ */ React.createElement("div", { className: "dua-english" }, copy.dua.meanings[idx]) : null, /* @__PURE__ */ React.createElement("div", { className: "dua-reference" }, copy.dua.references[idx])))), /* @__PURE__ */ React.createElement("div", { className: "dua-closing" }, /* @__PURE__ */ React.createElement("span", null, copy.dua.closing), /* @__PURE__ */ React.createElement("span", { className: "dua-closing-icon", "aria-hidden": "true" }, iconKaaba))))), /* @__PURE__ */ React.createElement("div", { className: "profile-tagline-note" }, iconEducation, " ", copy.profile.tagline, " ", iconWork), /* @__PURE__ */ React.createElement("div", { style: { textAlign: "center", marginTop: "60px", paddingTop: "20px", borderTop: "2px solid rgba(13, 115, 119, 0.1)", color: "#0d7377", fontSize: "24px", letterSpacing: "8px" } }, dividerOrnament)) : null);
+    )) : null))))), /* @__PURE__ */ React.createElement("div", { className: "card section-anchor", id: "dua-section" }, /* @__PURE__ */ React.createElement("div", { className: "section-header" }, /* @__PURE__ */ React.createElement("span", { className: "section-icon" }, iconPrayerHands), copy.dua.title), /* @__PURE__ */ React.createElement("div", { className: "card-content" }, /* @__PURE__ */ React.createElement("div", { className: "final-dua" }, faithTextEntries.map((entry) => /* @__PURE__ */ React.createElement("div", { className: `dua-entry${entry.type === "hadith" ? " is-hadith" : ""}`, key: `${entry.type}-${entry.reference}` }, /* @__PURE__ */ React.createElement("div", { className: "dua-block" }, /* @__PURE__ */ React.createElement("div", { className: `dua-arabic${entry.type === "hadith" ? " dua-arabic-hadith" : ""}${entry.arabicClassName ? ` ${entry.arabicClassName}` : ""}` }, entry.arabic), entry.meaning ? /* @__PURE__ */ React.createElement("div", { className: "dua-english" }, entry.meaning) : null, /* @__PURE__ */ React.createElement("div", { className: "dua-reference" }, entry.reference)))), /* @__PURE__ */ React.createElement("div", { className: "dua-closing" }, /* @__PURE__ */ React.createElement("span", null, copy.dua.closing), /* @__PURE__ */ React.createElement("span", { className: "dua-closing-icon", "aria-hidden": "true" }, iconKaaba))))), /* @__PURE__ */ React.createElement("div", { className: "profile-tagline-note" }, iconEducation, " ", copy.profile.tagline, " ", iconWork), /* @__PURE__ */ React.createElement("div", { style: { textAlign: "center", marginTop: "60px", paddingTop: "20px", borderTop: "2px solid rgba(13, 115, 119, 0.1)", color: "#0d7377", fontSize: "24px", letterSpacing: "8px" } }, dividerOrnament)) : null);
   };
   const root = ReactDOM.createRoot(document.getElementById("root"));
   root.render(/* @__PURE__ */ React.createElement(BioDataComponent, null));

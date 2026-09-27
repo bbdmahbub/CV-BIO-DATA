@@ -269,16 +269,73 @@
         .bismillah-loading-ayah {
             width: min(640px, 100%);
             height: 238px;
-            display: grid;
-            align-content: center;
-            gap: 12px;
-            padding: clamp(16px, 3vw, 24px);
+            position: relative;
+            overflow: hidden;
             border: 1px solid rgba(15, 95, 73, 0.16);
             border-radius: 18px;
             background:
                 linear-gradient(135deg, rgba(255, 255, 255, 0.76), rgba(255, 252, 243, 0.82)),
                 radial-gradient(circle at top right, rgba(185, 133, 40, 0.1), transparent 36%);
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.62);
+        }
+
+        .bismillah-loading-ayah-card {
+            width: 100%;
+            height: 100%;
+            min-width: 0;
+            display: grid;
+            align-content: center;
+            gap: 12px;
+            padding: clamp(16px, 3vw, 34px) 44px;
+            animation: bismillahAyahCardSlide 650ms cubic-bezier(0.22, 0.75, 0.25, 1) both;
+        }
+
+        .bismillah-loading-ayah-arrow {
+            position: absolute;
+            top: 50%;
+            z-index: 3;
+            width: 32px;
+            height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            border-radius: 8px;
+            padding: 0;
+            color: #0f5f49;
+            background: rgba(255, 255, 255, 0.78);
+            box-shadow: 0 4px 14px rgba(15, 95, 73, 0.12);
+            cursor: pointer;
+            transform: translateY(-50%);
+            transition: color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+        }
+
+        .bismillah-loading-ayah-arrow:hover,
+        .bismillah-loading-ayah-arrow:focus-visible {
+            color: #9a6d1f;
+            background: #fff;
+            box-shadow: 0 6px 18px rgba(15, 95, 73, 0.18);
+            outline: none;
+        }
+
+        .bismillah-loading-ayah-arrow.is-previous {
+            left: 8px;
+        }
+
+        .bismillah-loading-ayah-arrow.is-next {
+            right: 8px;
+        }
+
+        @keyframes bismillahAyahCardSlide {
+            from {
+                opacity: 0.12;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .bismillah-loading-ayah-text {
@@ -308,6 +365,31 @@
 
         .app-shell.language-ar .bismillah-loading-ayah-reference {
             font-size: 17px;
+        }
+
+        .bismillah-loading-ayah-dots {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            min-height: 10px;
+            margin-top: -7px;
+        }
+
+        .bismillah-loading-ayah-dot {
+            width: 8px;
+            height: 8px;
+            border: 0;
+            border-radius: 999px;
+            padding: 0;
+            background: rgba(15, 95, 73, 0.28);
+            cursor: pointer;
+            transition: width 220ms ease, background-color 220ms ease;
+        }
+
+        .bismillah-loading-ayah-dot.is-active {
+            width: 24px;
+            background: #b98528;
         }
 
         .bismillah-loading-language-row {
@@ -569,9 +651,25 @@
 
             .bismillah-loading-ayah {
                 height: 270px;
-                gap: 10px;
-                padding: 14px;
                 border-radius: 16px;
+            }
+
+            .bismillah-loading-ayah-card {
+                gap: 10px;
+                padding: 18px 40px 34px;
+            }
+
+            .bismillah-loading-ayah-arrow {
+                width: 28px;
+                height: 44px;
+            }
+
+            .bismillah-loading-ayah-arrow.is-previous {
+                left: 5px;
+            }
+
+            .bismillah-loading-ayah-arrow.is-next {
+                right: 5px;
             }
 
             .bismillah-loading-ayah-text {
@@ -1461,13 +1559,60 @@
             left: auto;
             transform: none;
             width: 100%;
-            padding: 0 16px 14px;
+            padding: 0 4px 10px;
             border-radius: 0 0 20px 20px;
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid rgba(15, 95, 73, 0.16);
-            box-shadow: none;
-            backdrop-filter: blur(16px);
+            background: linear-gradient(135deg, #ffffff 0%, #f1faf7 58%, #fff8e8 100%);
+            border: 1px solid rgba(15, 95, 73, 0.14);
+            box-shadow: 0 10px 24px rgba(15, 95, 73, 0.1);
+            backdrop-filter: none;
             z-index: 100005;
+        }
+
+        .top-menu-download {
+            position: absolute;
+            top: 0;
+            right: 4px;
+            bottom: auto;
+            z-index: 3;
+            width: 42px;
+            height: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            border: 1px solid rgba(15, 95, 73, 0.22);
+            border-top: none;
+            border-radius: 0 0 10px 10px;
+            background: #ffffff;
+            color: #0f5f49;
+            font: inherit;
+            cursor: pointer;
+            box-shadow: none;
+            transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+        }
+
+        .top-menu-download:hover,
+        .top-menu-download:focus-visible {
+            outline: none;
+            color: #ffffff;
+            border-color: #0f5f49;
+            background: #0f5f49;
+        }
+
+        .top-menu-download i {
+            font-size: 10px;
+        }
+
+        .top-menu-download span {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
         .top-menu-head {
@@ -1496,6 +1641,7 @@
 
         .top-menu-language-slot {
             display: block;
+            position: relative;
             overflow: visible;
         }
 
@@ -1631,10 +1777,47 @@
             white-space: nowrap;
         }
 
+        .top-menu-links-shell {
+            display: grid;
+            grid-template-columns: 18px minmax(0, 1fr) 18px;
+            align-items: stretch;
+            gap: 0;
+            direction: ltr;
+        }
+
+        .top-menu-scroll-arrow {
+            min-width: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            color: rgba(15, 95, 73, 0.42);
+            cursor: pointer;
+            box-shadow: none;
+            transition: color 0.18s ease, opacity 0.18s ease;
+        }
+
+        .top-menu-scroll-arrow:hover,
+        .top-menu-scroll-arrow:focus-visible {
+            outline: none;
+            color: rgba(15, 95, 73, 0.9);
+            background: transparent;
+        }
+
+        .top-menu-scroll-arrow i {
+            font-size: 13px;
+        }
+
         .top-menu-links {
             display: flex;
             gap: 10px;
             overflow-x: auto;
+            overflow-y: hidden;
+            border-radius: 999px;
+            clip-path: inset(0 round 999px);
             scrollbar-width: none;
             -ms-overflow-style: none;
             scroll-snap-type: x proximity;
@@ -2170,6 +2353,17 @@
             color: #0f5f49;
         }
 
+        .dua-entry.is-hadith {
+            border-color: rgba(185, 133, 40, 0.28);
+            background: linear-gradient(135deg, rgba(255, 250, 237, 0.96), rgba(255, 255, 255, 0.98) 58%, rgba(15, 95, 73, 0.06));
+        }
+
+        .dua-arabic.dua-arabic-hadith::before {
+            content: '\FDFA';
+            color: #b98528;
+            font-size: 1.08em;
+        }
+
         .dua-arabic::before {
             content: '\06DE';
             display: inline-block;
@@ -2610,6 +2804,11 @@
             transition: opacity 0.18s ease;
         }
 
+        .gallery-unlock-track.is-rtl .gallery-unlock-destination {
+            right: auto;
+            left: 18px;
+        }
+
         .gallery-unlock-track.is-complete .gallery-unlock-destination {
             opacity: 0;
         }
@@ -2624,6 +2823,11 @@
             border-radius: 11px;
             background: linear-gradient(145deg, rgba(22, 134, 106, 0.2), rgba(185, 133, 40, 0.24));
             transition: width 0.2s ease;
+        }
+
+        .gallery-unlock-track.is-rtl .gallery-unlock-fill {
+            right: 5px;
+            left: auto;
         }
 
         .gallery-unlock-track.is-dragging .gallery-unlock-fill {
@@ -2682,6 +2886,11 @@
             transition: transform 0.22s ease, background 0.18s ease, box-shadow 0.18s ease;
         }
 
+        .gallery-unlock-track.is-rtl .gallery-unlock-handle {
+            right: 5px;
+            left: auto;
+        }
+
         .gallery-unlock-handle::after {
             content: "\203A\203A";
             position: absolute;
@@ -2694,8 +2903,19 @@
             animation: galleryUnlockDragTrail 1.45s ease-in-out infinite;
         }
 
+        .gallery-unlock-track.is-rtl .gallery-unlock-handle::after {
+            content: "\2039\2039";
+            right: calc(100% + 7px);
+            left: auto;
+            animation-name: galleryUnlockDragTrailRtl;
+        }
+
         .gallery-unlock-handle i {
             animation: galleryUnlockIconNudge 1.45s ease-in-out infinite;
+        }
+
+        .gallery-unlock-track.is-rtl .gallery-unlock-handle i {
+            animation-name: galleryUnlockIconNudgeRtl;
         }
 
         .gallery-unlock-track.is-dragging .gallery-unlock-handle {
@@ -2736,10 +2956,22 @@
             70% { transform: translateX(2px); }
         }
 
+        @keyframes galleryUnlockIconNudgeRtl {
+            0%, 28%, 100% { transform: translateX(0); }
+            52% { transform: translateX(-6px); }
+            70% { transform: translateX(-2px); }
+        }
+
         @keyframes galleryUnlockDragTrail {
             0%, 24%, 100% { opacity: 0.25; transform: translateX(0); }
             52% { opacity: 1; transform: translateX(8px); }
             72% { opacity: 0.5; transform: translateX(13px); }
+        }
+
+        @keyframes galleryUnlockDragTrailRtl {
+            0%, 24%, 100% { opacity: 0.25; transform: translateX(0); }
+            52% { opacity: 1; transform: translateX(-8px); }
+            72% { opacity: 0.5; transform: translateX(-13px); }
         }
 
         @keyframes galleryUnlockDestinationHint {
@@ -4850,8 +5082,12 @@
             .top-menu {
                 top: 0;
                 width: 100%;
-                padding: 12px 12px 10px;
+                padding: 12px 4px 8px;
                 border-radius: 0 0 18px 18px;
+            }
+
+            .top-menu-download {
+                top: 12px;
             }
 
             .top-menu-label {
@@ -5449,13 +5685,19 @@
             color: rgba(15, 95, 73, 0.1);
         }
 
-        .top-menu,
         .music-player {
             border-color: rgba(200, 148, 50, 0.22);
             background:
                 linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 248, 230, 0.94)),
                 linear-gradient(135deg, rgba(15, 95, 73, 0.08), rgba(200, 148, 50, 0.08));
             box-shadow: 0 14px 34px rgba(15, 95, 73, 0.14);
+        }
+
+        .top-menu {
+            border-color: rgba(200, 148, 50, 0.2);
+            background: linear-gradient(135deg, #ffffff 0%, #f1faf7 58%, #fff8e8 100%);
+            box-shadow: 0 10px 24px rgba(15, 95, 73, 0.1);
+            backdrop-filter: none;
         }
 
         .top-menu-label,
@@ -5646,4 +5888,243 @@
         .expectation-item-title,
         .education-subtitle {
             color: #0f5f49;
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 11mm;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            html,
+            body {
+                width: 100%;
+                min-height: auto;
+                overflow: visible !important;
+                background: #ffffff !important;
+            }
+
+            html {
+                font-size: 10.5px;
+            }
+
+            body {
+                font-size: 1rem;
+                line-height: 1.35;
+            }
+
+            body::before,
+            body::after,
+            .top-menu,
+            .music-player,
+            .intro-popup,
+            .bismillah-loading-popup,
+            .photo-viewer-overlay,
+            .photo-gallery-thumbs-wrap,
+            .photo-frame-overlay {
+                display: none !important;
+            }
+
+            .app-shell,
+            .container {
+                width: 100%;
+                max-width: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .header-banner {
+                margin: 0 0 4mm;
+                padding: 8mm 7mm;
+                border-radius: 3mm;
+                box-shadow: none;
+            }
+
+            .header-banner::before,
+            .header-banner::after {
+                display: none;
+            }
+
+            .profile-name-text {
+                font-size: 2.25rem;
+            }
+
+            .header-banner .subtitle {
+                margin-top: 2mm;
+                font-size: 1.1rem;
+                line-height: 1.4;
+            }
+
+            .header-banner + div {
+                margin-bottom: 4mm !important;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 3mm;
+                margin-bottom: 0;
+            }
+
+            .stat-box {
+                padding: 3mm;
+                border-radius: 2mm;
+                box-shadow: none;
+            }
+
+            .stat-value {
+                font-size: 1.65rem;
+            }
+
+            .header-banner,
+            .stats,
+            .detail-row,
+            .sub-detail-row,
+            .education-item,
+            .work-item,
+            .activity-item,
+            .hobby-item,
+            .expectation-item,
+            .contact-block,
+            .dua-entry {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            .card {
+                margin: 0 0 3.5mm;
+                border: 1px solid rgba(15, 95, 73, 0.2);
+                border-radius: 2.5mm;
+                box-shadow: none !important;
+                break-inside: auto;
+                page-break-inside: auto;
+            }
+
+            .section-header {
+                min-height: 0;
+                padding: 2.5mm 4mm;
+                gap: 2mm;
+                font-size: 1.35rem;
+                break-after: avoid;
+                page-break-after: avoid;
+                box-shadow: none;
+            }
+
+            .section-icon,
+            #language-section .section-header::before,
+            #contact-section .section-header::before {
+                font-size: 1.4rem;
+            }
+
+            .card-content {
+                padding: 3mm 4mm;
+            }
+
+            .section-card-list,
+            .hobby-list,
+            .activity-list,
+            .expectation-list,
+            .final-dua {
+                gap: 2mm;
+            }
+
+            .detail-row.section-card-item,
+            .work-row.section-card-item,
+            .language-row.section-card-item,
+            .education-row.section-card-item,
+            .activity-item.section-card-item,
+            .expectation-item,
+            .hobby-item,
+            .dua-entry {
+                padding: 2.5mm 3mm;
+                border-radius: 2mm;
+                box-shadow: none;
+            }
+
+            .detail-row.section-card-item {
+                gap: 1.5mm;
+            }
+
+            .work-header,
+            .language-header,
+            .activity-header {
+                gap: 2mm;
+                margin-bottom: 1.5mm;
+            }
+
+            .work-title-icon,
+            .language-title-icon,
+            .education-title-icon,
+            .activity-title-icon,
+            .training-bullet,
+            .activity-point-icon,
+            .expectation-item-icon {
+                width: 6mm;
+                height: 6mm;
+                border-radius: 1.5mm;
+                box-shadow: none;
+            }
+
+            .activity-points {
+                gap: 1.5mm;
+            }
+
+            .activity-points li {
+                gap: 2mm;
+                padding: 2mm 2.5mm;
+                border-radius: 1.5mm;
+            }
+
+            .work-org,
+            .activity-point-text,
+            .expectation-item-text,
+            .address-box {
+                line-height: 1.4;
+            }
+
+            .family-summary {
+                margin: 0 4mm 2.5mm;
+                padding-bottom: 2.5mm;
+            }
+
+            .dua-entry {
+                gap: 2mm;
+            }
+
+            .dua-arabic,
+            .dua-english,
+            .dua-reference {
+                line-height: 1.45;
+            }
+
+            .photo-gallery-showcase {
+                display: block;
+                height: 72mm;
+                overflow: hidden;
+            }
+
+            .photo-frame {
+                height: 100%;
+                padding: 4mm;
+                border-radius: 4mm;
+                background: #ffffff;
+                box-shadow: none;
+            }
+
+            .photo-frame-featured .photo-gallery-image {
+                object-fit: contain;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
         }

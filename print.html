@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Biodata - A4 Print</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Lato:wght@400;700;900&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.msar.me/fonts/siyam-rupali/font.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/print.css?v=20260927-reference-document-layout">
+</head>
+<body>
+    <header class="print-toolbar">
+        <button type="button" class="print-toolbar-button is-secondary" id="print-back">
+            <i class="fas fa-arrow-left" aria-hidden="true"></i>
+            <span>Back</span>
+        </button>
+        <div class="print-toolbar-title" id="print-toolbar-title">A4 Biodata</div>
+        <button type="button" class="print-toolbar-button" id="print-download">
+            <i class="fas fa-file-pdf" aria-hidden="true"></i>
+            <span>Download PDF</span>
+        </button>
+    </header>
+
+    <main class="print-document" id="print-document" aria-live="polite">
+        <section class="a4-page" aria-label="Page 1">
+            <div class="a4-content"><div class="a4-content-inner" id="print-page-one"></div></div>
+            <footer class="a4-footer"><span id="print-name-one"></span><span>1 / 2</span></footer>
+        </section>
+        <section class="a4-page" aria-label="Page 2">
+            <div class="a4-content"><div class="a4-content-inner" id="print-page-two"></div></div>
+            <footer class="a4-footer"><span id="print-name-two"></span><span>2 / 2</span></footer>
+        </section>
+    </main>
+
+    <div class="print-empty" id="print-empty" hidden>
+        <strong>Print data was not found.</strong>
+        <a href="index.html">Return to the biodata</a>
+    </div>
+
+    <div class="print-measure" id="print-measure" aria-hidden="true"></div>
+    <script src="assets/js/print.js?v=20260927-reference-document-layout"></script>
+</body>
+</html>

@@ -19,6 +19,7 @@
             const popupBismillah = '\u0628\u0633\u0645\u0020\u0627\u0644\u0644\u0647\u0020\u0627\u0644\u0631\u062D\u0645\u0646\u0020\u0627\u0644\u0631\u062D\u064A\u0645';
             const popupDarud = '\u0627\u0644\u0644\u0647\u0645\u0020\u0635\u0644\u0020\u0648\u0633\u0644\u0645\u0020\u0639\u0644\u0649\u0020\u0633\u064A\u062F\u0646\u0627\u0020\u0645\u062D\u0645\u062F\u0020\ufdfa';
             const popupTaawuz = '\u0623\u064e\u0639\u064f\u0648\u0630\u064f\u0020\u0628\u0650\u0627\u0644\u0644\u064e\u0651\u0647\u0650\u0020\u0645\u0650\u0646\u064e\u0020\u0627\u0644\u0634\u064e\u0651\u064a\u0652\u0637\u064e\u0627\u0646\u0650\u0020\u0627\u0644\u0631\u064e\u0651\u062c\u0650\u064a\u0645\u0650';
+            const marriageHadithArabic = 'تُنْكَحُ الْمَرْأَةُ لِأَرْبَعٍ: لِمَالِهَا وَلِحَسَبِهَا وَلِجَمَالِهَا وَلِدِينِهَا، فَاظْفَرْ بِذَاتِ الدِّينِ، تَرِبَتْ يَدَاكَ';
             const duaArabicLines = [
                 'وَأَنكِحُوا الْأَيَامَىٰ مِنكُمْ وَالصَّالِحِينَ مِنْ عِبَادِكُمْ وَإِمَائِكُمْ ۚ إِن يَكُونُوا فُقَرَاءَ يُغْنِهِمُ اللَّهُ مِن فَضْلِهِ ۗ وَاللَّهُ وَاسِعٌ عَلِيمٌ',
                 '\u0631\u064e\u0628\u064e\u0651\u0646\u064e\u0627 \u0647\u064e\u0628\u0652 \u0644\u064e\u0646\u064e\u0627 \u0645\u0650\u0646\u0652 \u0623\u064e\u0632\u0652\u0648\u064e\u0627\u062c\u0650\u0646\u064e\u0627 \u0648\u064e\u0630\u064f\u0631\u0650\u0651\u064a\u064e\u0651\u0627\u062a\u0650\u0646\u064e\u0627 \u0642\u064f\u0631\u064e\u0651\u0629\u064e \u0623\u064e\u0639\u0652\u064a\u064f\u0646\u064d \u0648\u064e\u0627\u062c\u0652\u0639\u064e\u0644\u0652\u0646\u064e\u0627 \u0644\u0650\u0644\u0652\u0645\u064f\u062a\u064e\u0651\u0642\u0650\u064a\u0646\u064e \u0625\u0650\u0645\u064e\u0627\u0645\u064b\u0627',
@@ -108,7 +109,10 @@
                         languageSwitcherLabel: 'Language versions',
                         languagePanelHint: 'Change the page language at any time.',
                         languagePanelCollapse: 'Collapse language controls',
-                        languagePanelExpand: 'Expand language controls'
+                        languagePanelExpand: 'Expand language controls',
+                        downloadPdf: 'Download PDF',
+                        scrollMenuLeft: 'Scroll menu left',
+                        scrollMenuRight: 'Scroll menu right'
                     },
                     common: {
                         visit: 'Visit',
@@ -130,6 +134,13 @@
                     bismillahIntro: {
                         ayahReference: 'Surah An-Nur, Ayah 32',
                         ayahMeaning: 'And marry the unmarried among you and the righteous among your male servants and female servants. If they are poor, Allah will enrich them from His bounty. And Allah is All-Encompassing, All-Knowing.',
+                        garmentAyahReference: 'Surah Al-Baqarah, Ayah 187',
+                        garmentAyahMeaning: 'They are clothing for you and you are clothing for them.',
+                        marriageHadithReference: 'Sahih al-Bukhari 5090; Sahih Muslim 1466',
+                        marriageHadithMeaning: 'A woman is married for four qualities: her wealth, lineage, beauty, and religion. Give priority to the woman of faith so that you may prosper.',
+                        ayahCardLabel: 'Show card',
+                        previousCard: 'Show previous card',
+                        nextCard: 'Show next card',
                         viewButton: 'View\nBIO-DATA'
                     },
                     voice: {
@@ -175,7 +186,7 @@
                         hobbies: 'Hobbies',
                         expectation: 'Expectation',
                         contact: 'Contact',
-                        dua: 'Dua'
+                        dua: 'Ayat, Hadith & Dua'
                     },
                     profile: {
                         name: 'Md Mahbubur Rahman',
@@ -195,7 +206,7 @@
                         photos: [
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-1.webp'), alt: 'Md Mahbubur Rahman portrait 1', label: 'Portrait 01', featured: true },
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-2.webp'), alt: 'Md Mahbubur Rahman portrait 2', label: 'Portrait 02', featured: false },
-                            { src: withCvCacheVersion('assets/images/mahbub-potrait-4.webp'), alt: 'Md Mahbubur Rahman portrait 4', label: 'Portrait 04', featured: false }
+                            { src: withCvCacheVersion('assets/images/mahbub-potrait-4.webp'), alt: 'Md Mahbubur Rahman portrait 3', label: 'Portrait 03', featured: false }
                         ]
                     },
                     sectionHeaders: {
@@ -344,7 +355,7 @@
                         ]
                     },
                     dua: {
-                        title: 'Final Words & Dua',
+                        title: 'Ayat, Hadith & Dua',
                         meanings: [
                             '"And marry the unmarried among you and the righteous among your male servants and female servants. If they are poor, Allah will enrich them from His bounty, and Allah is All-Encompassing and Knowing."',
                             '"Our Rabb (Allah), grant us from among our wives and offspring comfort to our eyes and make us an example for the righteous."',
@@ -375,7 +386,10 @@
                         languageSwitcherLabel: 'إصدارات اللغة',
                         languagePanelHint: 'يمكنك تغيير لغة الصفحة في أي وقت.',
                         languagePanelCollapse: 'طي عناصر التحكم باللغة',
-                        languagePanelExpand: 'إظهار عناصر التحكم باللغة'
+                        languagePanelExpand: 'إظهار عناصر التحكم باللغة',
+                        downloadPdf: 'تنزيل PDF',
+                        scrollMenuLeft: 'تمرير القائمة إلى اليسار',
+                        scrollMenuRight: 'تمرير القائمة إلى اليمين'
                     },
                     common: {
                         visit: 'زيارة',
@@ -397,6 +411,13 @@
                     bismillahIntro: {
                         ayahReference: 'سورة النور، آية ٣٢',
                         ayahMeaning: 'أي: زوّجوا غير المتزوجين منكم والصالحين من عبادكم وإمائكم، فإن كانوا فقراء أغناهم الله من فضله، والله واسع الفضل عليم بأحوال عباده.',
+                        garmentAyahReference: 'سورة البقرة، آية ١٨٧',
+                        garmentAyahMeaning: 'أي: كلٌّ من الزوجين سترٌ وسكنٌ للآخر.',
+                        marriageHadithReference: 'صحيح البخاري ٥٠٩٠؛ صحيح مسلم ١٤٦٦',
+                        marriageHadithMeaning: 'تُنكح المرأة لمالها ونسبها وجمالها ودينها، والأَوْلى اختيار صاحبة الدين.',
+                        ayahCardLabel: 'عرض البطاقة',
+                        previousCard: 'عرض البطاقة السابقة',
+                        nextCard: 'عرض البطاقة التالية',
                         viewButton: 'عرض السيرة الذاتية'
                     },
                     voice: {
@@ -442,7 +463,7 @@
                         hobbies: 'الهوايات',
                         expectation: 'التوقعات',
                         contact: 'التواصل',
-                        dua: 'الدعاء'
+                        dua: 'آيات وحديث ودعاء'
                     },
                     profile: {
                         name: 'محمد محبوب الرحمن',
@@ -458,11 +479,11 @@
                     gallery: {
                         title: 'معرض الصور',
                         unlockTitle: 'عرض الصور',
-                        unlockAria: 'اسحب إلى اليمين لعرض الصور',
+                        unlockAria: 'اسحب إلى اليسار لعرض الصور',
                         photos: [
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-1.webp'), alt: 'الصورة الشخصية الأولى لـ محمد محبوب الرحمن', label: 'الصورة 01', featured: true },
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-2.webp'), alt: 'الصورة الشخصية الثانية لـ محمد محبوب الرحمن', label: 'الصورة 02', featured: false },
-                            { src: withCvCacheVersion('assets/images/mahbub-potrait-4.webp'), alt: 'الصورة الشخصية الرابعة لـ محمد محبوب الرحمن', label: 'الصورة 04', featured: false }
+                            { src: withCvCacheVersion('assets/images/mahbub-potrait-4.webp'), alt: 'الصورة الشخصية الثالثة لـ محمد محبوب الرحمن', label: 'الصورة 03', featured: false }
                         ]
                     },
                     sectionHeaders: {
@@ -612,7 +633,7 @@
                         ]
                     },
                     dua: {
-                        title: 'كلمات ختامية ودعاء',
+                        title: 'آيات وحديث ودعاء',
                         meanings: [
                             '',
                             '',
@@ -643,7 +664,10 @@
                         languageSwitcherLabel: 'ভাষা সংস্করণ',
                         languagePanelHint: 'যেকোনো সময় পেজের ভাষা বদলান।',
                         languagePanelCollapse: 'ভাষা কন্ট্রোল লুকান',
-                        languagePanelExpand: 'ভাষা কন্ট্রোল দেখান'
+                        languagePanelExpand: 'ভাষা কন্ট্রোল দেখান',
+                        downloadPdf: 'PDF ডাউনলোড',
+                        scrollMenuLeft: 'মেনু বামে নিন',
+                        scrollMenuRight: 'মেনু ডানে নিন'
                     },
                     common: {
                         visit: 'ভিজিট',
@@ -665,6 +689,13 @@
                     bismillahIntro: {
                         ayahReference: 'সূরা নূর : আয়াত - ৩২',
                         ayahMeaning: 'তোমাদের মধ্যে যারা অবিবাহিত এবং তোমাদের দাস-দাসীদের মধ্যে যারা সৎকর্মপরায়ণ, তাদের বিবাহ দাও। তারা অভাবী হলে আল্লাহ নিজ অনুগ্রহে তাদেরকে অভাবমুক্ত করবেন। আল্লাহ প্রাচুর্যময়, সর্বজ্ঞ।',
+                        garmentAyahReference: 'সূরা আল-বাকারা : আয়াত - ১৮৭',
+                        garmentAyahMeaning: 'তারা তোমাদের জন্য পোশাকস্বরূপ এবং তোমরা তাদের জন্য পোশাকস্বরূপ।',
+                        marriageHadithReference: 'সহিহ বুখারি: ৫০৯০; সহিহ মুসলিম: ১৪৬৬',
+                        marriageHadithMeaning: 'চারটি গুণের কারণে নারীকে বিবাহ করা হয়—তার সম্পদ, বংশমর্যাদা, সৌন্দর্য ও দ্বীনদারির জন্য। অতএব দ্বীনদার নারীকে অগ্রাধিকার দাও, তাতেই কল্যাণ।',
+                        ayahCardLabel: 'কার্ড দেখুন',
+                        previousCard: 'আগের কার্ড দেখুন',
+                        nextCard: 'পরের কার্ড দেখুন',
                         viewButton: 'বায়োডাটা দেখুন'
                     },
                     voice: {
@@ -710,7 +741,7 @@
                         hobbies: 'শখ',
                         expectation: 'প্রত্যাশা',
                         contact: 'যোগাযোগ',
-                        dua: 'দোআ'
+                        dua: 'আয়াত, হাদিস ও দোয়া'
                     },
                     profile: {
                         name: 'মো. মাহবুবুর রহমান',
@@ -730,7 +761,7 @@
                         photos: [
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-1.webp'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ১', label: 'ছবি ০১', featured: true },
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-2.webp'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ২', label: 'ছবি ০২', featured: false },
-                            { src: withCvCacheVersion('assets/images/mahbub-potrait-4.webp'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ৪', label: 'ছবি ০৪', featured: false }
+                            { src: withCvCacheVersion('assets/images/mahbub-potrait-4.webp'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ৩', label: 'ছবি ০৩', featured: false }
                         ]
                     },
                     sectionHeaders: {
@@ -880,7 +911,7 @@
                         ]
                     },
                     dua: {
-                        title: 'শেষ কথা ও দোআ',
+                        title: 'আয়াত, হাদিস ও দোয়া',
                         meanings: [
                             'তোমাদের মধ্যে যারা অবিবাহিত এবং তোমাদের দাস-দাসীদের মধ্যে যারা সৎকর্মপরায়ণ, তাদের বিবাহ দাও। তারা অভাবী হলে আল্লাহ নিজ অনুগ্রহে তাদেরকে অভাবমুক্ত করবেন। আল্লাহ প্রাচুর্যময়, সর্বজ্ঞ।',
                             'হে আমাদের রব, আমাদের স্ত্রী ও সন্তানদেরকে আমাদের চোখের শীতলতা দান করুন এবং আমাদেরকে মুত্তাকীদের জন্য আদর্শ বানান।',
@@ -1055,6 +1086,8 @@
             });
             const [isIntroPopupOpen, setIsIntroPopupOpen] = React.useState(false);
             const [isBismillahLoadingOpen, setIsBismillahLoadingOpen] = React.useState(true);
+            const [activeLoadingAyahIndex, setActiveLoadingAyahIndex] = React.useState(0);
+            const [isLoadingAyahPaused, setIsLoadingAyahPaused] = React.useState(false);
             const [isVoiceListening, setIsVoiceListening] = React.useState(false);
             const [voiceUiState, setVoiceUiState] = React.useState('idle');
             const [voicePrompt, setVoicePrompt] = React.useState(introVoiceHint);
@@ -1073,6 +1106,7 @@
             const galleryUnlockTrackRef = React.useRef(null);
             const galleryUnlockProgressRef = React.useRef(0);
             const galleryUnlockTimerRef = React.useRef(null);
+            const printTimerRef = React.useRef(null);
             const galleryUnlockDragRef = React.useRef({
                 pointerId: null,
                 grabOffsetX: 0
@@ -1124,6 +1158,64 @@
             const galleryPhotos = copy.gallery.photos;
             const activeGalleryPhoto = galleryPhotos[activeGalleryPhotoIndex] || galleryPhotos[0];
             const activePuzzleSet = bismillahPuzzleSets[language] || bismillahPuzzleSets.en;
+            const bismillahAyahCards = [
+                {
+                    arabic: duaArabicLines[0],
+                    meaning: copy.bismillahIntro.ayahMeaning,
+                    reference: copy.bismillahIntro.ayahReference
+                },
+                {
+                    arabic: duaArabicLines[4],
+                    meaning: copy.bismillahIntro.garmentAyahMeaning,
+                    reference: copy.bismillahIntro.garmentAyahReference
+                },
+                {
+                    arabic: marriageHadithArabic,
+                    meaning: copy.bismillahIntro.marriageHadithMeaning,
+                    reference: copy.bismillahIntro.marriageHadithReference
+                }
+            ];
+            const activeBismillahAyahCard = bismillahAyahCards[activeLoadingAyahIndex] || bismillahAyahCards[0];
+            const faithTextEntries = [
+                {
+                    type: 'ayah',
+                    arabic: duaArabicLines[0],
+                    meaning: copy.dua.meanings[0],
+                    reference: copy.dua.references[0]
+                },
+                {
+                    type: 'ayah',
+                    arabic: duaArabicLines[4],
+                    meaning: copy.dua.meanings[4],
+                    reference: copy.dua.references[4]
+                },
+                {
+                    type: 'hadith',
+                    arabic: marriageHadithArabic,
+                    meaning: copy.bismillahIntro.marriageHadithMeaning,
+                    reference: copy.bismillahIntro.marriageHadithReference
+                },
+                {
+                    type: 'dua',
+                    arabic: duaArabicLines[1],
+                    meaning: copy.dua.meanings[1],
+                    reference: copy.dua.references[1],
+                    arabicClassName: 'dua-arabic-furqan'
+                },
+                {
+                    type: 'dua',
+                    arabic: duaArabicLines[2],
+                    meaning: copy.dua.meanings[2],
+                    reference: copy.dua.references[2]
+                },
+                {
+                    type: 'dua',
+                    arabic: duaArabicLines[3],
+                    meaning: copy.dua.meanings[3],
+                    reference: copy.dua.references[3],
+                    arabicClassName: 'dua-arabic-green'
+                }
+            ];
             const voicePuzzleSeparatorText = language === 'bn' ? 'অথবা' : language === 'ar' ? 'أو' : 'OR';
             const selectedPuzzlePieces = selectedPuzzleIndexes.map((pieceIndex) => ({
                 index: pieceIndex,
@@ -1416,6 +1508,9 @@
                 }
                 if (galleryUnlockTimerRef.current) {
                     window.clearTimeout(galleryUnlockTimerRef.current);
+                }
+                if (printTimerRef.current) {
+                    window.clearTimeout(printTimerRef.current);
                 }
             }, []);
 
@@ -1787,6 +1882,25 @@
                 };
             }, [isBismillahLoadingOpen]);
 
+            React.useEffect(() => {
+                if (!isBismillahLoadingOpen) return;
+
+                setActiveLoadingAyahIndex(0);
+            }, [isBismillahLoadingOpen, language]);
+
+            React.useEffect(() => {
+                if (!isBismillahLoadingOpen) return undefined;
+                if (isLoadingAyahPaused) return undefined;
+
+                const ayahSlideTimer = window.setTimeout(() => {
+                    setActiveLoadingAyahIndex((currentIndex) => (currentIndex + 1) % bismillahAyahCards.length);
+                }, 5000);
+
+                return () => {
+                    window.clearTimeout(ayahSlideTimer);
+                };
+            }, [activeLoadingAyahIndex, isBismillahLoadingOpen, isLoadingAyahPaused, language]);
+
             React.useEffect(() => () => {
                 clearSpeechRecognition();
             }, []);
@@ -2146,6 +2260,7 @@
                 return {
                     rect,
                     inset,
+                    handleSize,
                     maxOffset: Math.max(0, rect.width - handleSize - (inset * 2))
                 };
             };
@@ -2194,10 +2309,16 @@
                 const metrics = getGalleryUnlockMetrics();
                 if (!metrics) return;
 
-                const nextOffset = event.clientX
-                    - metrics.rect.left
-                    - metrics.inset
-                    - galleryUnlockDragRef.current.grabOffsetX;
+                const nextOffset = isRtl
+                    ? metrics.rect.right
+                        - metrics.inset
+                        - metrics.handleSize
+                        - event.clientX
+                        + galleryUnlockDragRef.current.grabOffsetX
+                    : event.clientX
+                        - metrics.rect.left
+                        - metrics.inset
+                        - galleryUnlockDragRef.current.grabOffsetX;
                 setGalleryUnlockPosition(nextOffset, metrics.maxOffset);
             };
 
@@ -2240,12 +2361,64 @@
                     ? 0
                     : event.key === 'End'
                         ? 1
-                        : Math.max(0, Math.min(1, currentProgress + (event.key === 'ArrowRight' ? 0.2 : -0.2)));
+                        : Math.max(0, Math.min(1, currentProgress + (
+                            isRtl
+                                ? (event.key === 'ArrowLeft' ? 0.2 : -0.2)
+                                : (event.key === 'ArrowRight' ? 0.2 : -0.2)
+                        )));
 
                 setGalleryUnlockPosition(metrics.maxOffset * nextProgress, metrics.maxOffset);
                 if (nextProgress >= 0.8) {
                     completeGalleryUnlock();
                 }
+            };
+
+            const handleDownloadPdf = () => {
+                if (printTimerRef.current) {
+                    window.clearTimeout(printTimerRef.current);
+                }
+
+                const wasGalleryUnlocked = isGalleryUnlocked;
+                const printWindow = window.open('', '_blank');
+                setZoomedPhoto(null);
+                setIsGalleryUnlocked(true);
+                setIsGalleryUnlockDragging(false);
+
+                printTimerRef.current = window.setTimeout(() => {
+                    printTimerRef.current = null;
+                    const printableContainer = document.querySelector('.container');
+                    if (!printableContainer) {
+                        if (printWindow) printWindow.close();
+                        return;
+                    }
+
+                    const payload = JSON.stringify({
+                        markup: printableContainer.innerHTML,
+                        language,
+                        dir: selectedTranslation.dir,
+                        title: copy.meta.title,
+                        createdAt: Date.now()
+                    });
+                    const printUrl = new URL('print.html', window.location.href);
+                    printUrl.searchParams.set('lang', language);
+                    printUrl.searchParams.set('v', cvCacheVersion);
+
+                    try {
+                        if (!printWindow || printWindow.closed) throw new Error('Print window unavailable');
+                        printWindow.sessionStorage.setItem('bbdMahbubPrintPayload', payload);
+                        printWindow.location.replace(printUrl.href);
+                    } catch (error) {
+                        window.sessionStorage.setItem('bbdMahbubPrintPayload', payload);
+                        window.location.href = printUrl.href;
+                    }
+
+                    if (!wasGalleryUnlocked) {
+                        galleryUnlockProgressRef.current = 0;
+                        setGalleryUnlockOffset(0);
+                        setIsGalleryUnlockComplete(false);
+                        setIsGalleryUnlocked(false);
+                    }
+                }, 180);
             };
 
             const handleMenuClick = (event, id) => {
@@ -2269,6 +2442,16 @@
                 });
 
                 window.history.replaceState(null, '', `#${id}`);
+            };
+
+            const scrollTopMenu = (direction) => {
+                const menuLinks = menuLinksRef.current;
+                if (!menuLinks) return;
+
+                menuLinks.scrollBy({
+                    left: direction * Math.max(180, menuLinks.clientWidth * 0.55),
+                    behavior: 'smooth'
+                });
             };
 
             const isVoiceError = hasSpeechRecognitionSupport && voiceUiState === 'error';
@@ -2336,16 +2519,60 @@
                         >
                             <div className="bismillah-loading-panel" dir={selectedTranslation.dir}>
                                 <div className="bismillah-loading-mark" data-text={popupBismillah} dir="rtl">{popupBismillah}</div>
-                                <div className="bismillah-loading-ayah">
-                                    <div className="bismillah-loading-ayah-text" dir="rtl">
-                                        {duaArabicLines[0]}
+                                <div
+                                    className="bismillah-loading-ayah"
+                                    onMouseEnter={() => setIsLoadingAyahPaused(true)}
+                                    onMouseLeave={() => setIsLoadingAyahPaused(false)}
+                                >
+                                    <button
+                                        type="button"
+                                        className="bismillah-loading-ayah-arrow is-previous"
+                                        onClick={() => setActiveLoadingAyahIndex((currentIndex) => (
+                                            (currentIndex - 1 + bismillahAyahCards.length) % bismillahAyahCards.length
+                                        ))}
+                                        aria-label={copy.bismillahIntro.previousCard}
+                                        title={copy.bismillahIntro.previousCard}
+                                    >
+                                        <i className="fas fa-chevron-left" aria-hidden="true"></i>
+                                    </button>
+                                    <div
+                                        className="bismillah-loading-ayah-card"
+                                        dir={selectedTranslation.dir}
+                                        key={`${language}-${activeLoadingAyahIndex}`}
+                                    >
+                                        <div className="bismillah-loading-ayah-text" dir="rtl">
+                                            {activeBismillahAyahCard.arabic}
+                                        </div>
+                                        <div className="bismillah-loading-ayah-meaning">
+                                            {activeBismillahAyahCard.meaning}
+                                        </div>
+                                        <div className="bismillah-loading-ayah-reference">
+                                            {activeBismillahAyahCard.reference}
+                                        </div>
                                     </div>
-                                    <div className="bismillah-loading-ayah-meaning">
-                                        {copy.bismillahIntro.ayahMeaning}
-                                    </div>
-                                    <div className="bismillah-loading-ayah-reference">
-                                        {copy.bismillahIntro.ayahReference}
-                                    </div>
+                                    <button
+                                        type="button"
+                                        className="bismillah-loading-ayah-arrow is-next"
+                                        onClick={() => setActiveLoadingAyahIndex((currentIndex) => (
+                                            (currentIndex + 1) % bismillahAyahCards.length
+                                        ))}
+                                        aria-label={copy.bismillahIntro.nextCard}
+                                        title={copy.bismillahIntro.nextCard}
+                                    >
+                                        <i className="fas fa-chevron-right" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div className="bismillah-loading-ayah-dots" dir="ltr">
+                                    {bismillahAyahCards.map((ayahCard, index) => (
+                                        <button
+                                            type="button"
+                                            className={`bismillah-loading-ayah-dot${activeLoadingAyahIndex === index ? ' is-active' : ''}`}
+                                            onClick={() => setActiveLoadingAyahIndex(index)}
+                                            aria-label={`${copy.bismillahIntro.ayahCardLabel} ${index + 1}`}
+                                            aria-pressed={activeLoadingAyahIndex === index ? 'true' : 'false'}
+                                            key={ayahCard.reference}
+                                        ></button>
+                                    ))}
                                 </div>
                                 <div className="bismillah-loading-language-row" dir="ltr">
                                     {bismillahLanguageOptions.map(({ code, nativeLabel }) => (
@@ -2566,26 +2793,56 @@
                         <div className="top-menu-language-slot">
                             {renderLanguageMenu('top-menu-language-row')}
                         </div>
+                        <button
+                            type="button"
+                            className="top-menu-download"
+                            onClick={handleDownloadPdf}
+                            aria-label={copy.navigation.downloadPdf}
+                            title={copy.navigation.downloadPdf}
+                        >
+                            <i className="fas fa-download" aria-hidden="true"></i>
+                            <span>{copy.navigation.downloadPdf}</span>
+                        </button>
                         <div className="top-menu-head">
                             <div className="top-menu-label">{copy.navigation.quickJump}</div>
                         </div>
-                        <div
-                            className={`top-menu-links${isMenuDragging ? ' is-dragging' : ''}`}
-                            ref={menuLinksRef}
-                            onPointerDown={handleMenuPointerDown}
-                        >
-                            {menuItems.map(([id, label]) => (
-                                <a
-                                    className={`top-menu-link${activeSection === id ? ' is-active' : ''}`}
-                                    href={`#${id}`}
-                                    key={id}
-                                    data-menu-id={id}
-                                    aria-current={activeSection === id ? 'page' : undefined}
-                                    onClick={(event) => handleMenuClick(event, id)}
-                                >
-                                    {label}
-                                </a>
-                            ))}
+                        <div className="top-menu-links-shell">
+                            <button
+                                type="button"
+                                className="top-menu-scroll-arrow is-left"
+                                onClick={() => scrollTopMenu(-1)}
+                                aria-label={copy.navigation.scrollMenuLeft}
+                                title={copy.navigation.scrollMenuLeft}
+                            >
+                                <i className="fas fa-chevron-left" aria-hidden="true"></i>
+                            </button>
+                            <div
+                                className={`top-menu-links${isMenuDragging ? ' is-dragging' : ''}`}
+                                ref={menuLinksRef}
+                                onPointerDown={handleMenuPointerDown}
+                            >
+                                {menuItems.map(([id, label]) => (
+                                    <a
+                                        className={`top-menu-link${activeSection === id ? ' is-active' : ''}`}
+                                        href={`#${id}`}
+                                        key={id}
+                                        data-menu-id={id}
+                                        aria-current={activeSection === id ? 'page' : undefined}
+                                        onClick={(event) => handleMenuClick(event, id)}
+                                    >
+                                        {label}
+                                    </a>
+                                ))}
+                            </div>
+                            <button
+                                type="button"
+                                className="top-menu-scroll-arrow is-right"
+                                onClick={() => scrollTopMenu(1)}
+                                aria-label={copy.navigation.scrollMenuRight}
+                                title={copy.navigation.scrollMenuRight}
+                            >
+                                <i className="fas fa-chevron-right" aria-hidden="true"></i>
+                            </button>
                         </div>
                     </nav>
 
@@ -2622,7 +2879,7 @@
                                         <span>{copy.gallery.unlockTitle}</span>
                                     </div>
                                     <div
-                                        className={`gallery-unlock-track${isGalleryUnlockDragging ? ' is-dragging' : ''}${isGalleryUnlockComplete ? ' is-complete' : ''}`}
+                                        className={`gallery-unlock-track${isRtl ? ' is-rtl' : ''}${isGalleryUnlockDragging ? ' is-dragging' : ''}${isGalleryUnlockComplete ? ' is-complete' : ''}`}
                                         ref={galleryUnlockTrackRef}
                                         dir="ltr"
                                     >
@@ -2638,7 +2895,7 @@
                                         <button
                                             type="button"
                                             className="gallery-unlock-handle"
-                                            style={{ transform: `translate3d(${galleryUnlockOffset}px, 0, 0)` }}
+                                            style={{ transform: `translate3d(${isRtl ? -galleryUnlockOffset : galleryUnlockOffset}px, 0, 0)` }}
                                             onPointerDown={handleGalleryUnlockPointerDown}
                                             onPointerMove={handleGalleryUnlockPointerMove}
                                             onPointerUp={(event) => finishGalleryUnlockDrag(event)}
@@ -3082,16 +3339,16 @@
                         </div>
                         <div className="card-content">
                             <div className="final-dua">
-                                {duaArabicLines.map((arabicLine, idx) => (
-                                    <div className="dua-entry" key={arabicLine}>
+                                {faithTextEntries.map((entry) => (
+                                    <div className={`dua-entry${entry.type === 'hadith' ? ' is-hadith' : ''}`} key={`${entry.type}-${entry.reference}`}>
                                         <div className="dua-block">
-                                            <div className={`dua-arabic${idx === 1 ? ' dua-arabic-furqan' : ''}${idx === 3 ? ' dua-arabic-green' : ''}`}>
-                                                {arabicLine}
+                                            <div className={`dua-arabic${entry.type === 'hadith' ? ' dua-arabic-hadith' : ''}${entry.arabicClassName ? ` ${entry.arabicClassName}` : ''}`}>
+                                                {entry.arabic}
                                             </div>
-                                            {copy.dua.meanings[idx] ? (
-                                                <div className="dua-english">{copy.dua.meanings[idx]}</div>
+                                            {entry.meaning ? (
+                                                <div className="dua-english">{entry.meaning}</div>
                                             ) : null}
-                                            <div className="dua-reference">{copy.dua.references[idx]}</div>
+                                            <div className="dua-reference">{entry.reference}</div>
                                         </div>
                                     </div>
                                 ))}
