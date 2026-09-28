@@ -16,12 +16,48 @@
     const pageOne = document.getElementById('print-page-one');
     const pageTwo = document.getElementById('print-page-two');
     const measureRoot = document.getElementById('print-measure');
+    const languageSwitcher = document.querySelector('.print-language-switcher');
+    const languageButtons = Array.from(document.querySelectorAll('.print-language-button'));
 
     document.getElementById('print-toolbar-title').textContent = copy.title;
     document.querySelector('#print-back span').textContent = copy.back;
     document.querySelector('#print-download span').textContent = copy.save;
     emptyState.querySelector('strong').textContent = copy.empty;
     emptyState.querySelector('a').textContent = copy.returnLink;
+
+    languageButtons.forEach((button) => {
+        const buttonLanguage = button.dataset.language;
+        button.classList.toggle('is-active', buttonLanguage === requestedLanguage);
+        button.setAttribute('aria-pressed', buttonLanguage === requestedLanguage ? 'true' : 'false');
+        button.addEventListener('click', () => {
+            if (buttonLanguage === requestedLanguage) return;
+
+            if (window.opener && !window.opener.closed) {
+                languageSwitcher.classList.add('is-loading');
+                languageButtons.forEach((languageButton) => {
+                    languageButton.disabled = true;
+                });
+                window.opener.postMessage({
+                    type: 'bbdMahbub:request-print-language',
+                    language: buttonLanguage
+                }, window.location.origin);
+                window.setTimeout(() => {
+                    languageSwitcher.classList.remove('is-loading');
+                    languageButtons.forEach((languageButton) => {
+                        languageButton.disabled = false;
+                    });
+                }, 3500);
+                return;
+            }
+
+            try {
+                window.localStorage.setItem('bbdMahbubLanguage', buttonLanguage);
+            } catch (error) {
+                // Continue to the main page even if storage is unavailable.
+            }
+            window.location.href = 'index.html';
+        });
+    });
 
     document.getElementById('print-back').addEventListener('click', () => {
         if (window.history.length > 1) {

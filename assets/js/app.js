@@ -221,7 +221,7 @@
           { label: "Complexion", value: "Medium Dark", iconClass: "fas fa-palette" },
           { label: "Height & Weight", value: `5' 3" & 70 KGs`, iconClass: "fas fa-ruler-combined" },
           { label: "Blood Group", value: "A+", iconClass: "fas fa-droplet" },
-          { label: "Health Status", value: "Healthy, non-smoker, no addiction", iconClass: "fas fa-heart-pulse" }
+          { label: "Health Status", value: "Healthy, non-smoker and drug-free", iconClass: "fas fa-heart-pulse" }
         ],
         familyDetails: [
           ["Father", "Late Abdul Kader Howlader (He was a village doctor and primary school teacher)"],
@@ -498,7 +498,7 @@
           { label: "\u0644\u0648\u0646 \u0627\u0644\u0628\u0634\u0631\u0629", value: "\u0642\u0645\u062D\u064A \u0645\u0627\u0626\u0644 \u0644\u0644\u062F\u0627\u0643\u0646", iconClass: "fas fa-palette" },
           { label: "\u0627\u0644\u0637\u0648\u0644 \u0648\u0627\u0644\u0648\u0632\u0646", value: `5' 3" \u0648\u0667\u0660 \u0643\u062C\u0645`, iconClass: "fas fa-ruler-combined" },
           { label: "\u0641\u0635\u064A\u0644\u0629 \u0627\u0644\u062F\u0645", value: "A+", iconClass: "fas fa-droplet" },
-          { label: "\u0627\u0644\u062D\u0627\u0644\u0629 \u0627\u0644\u0635\u062D\u064A\u0629", value: "\u0628\u0635\u062D\u0629 \u062C\u064A\u062F\u0629\u060C \u063A\u064A\u0631 \u0645\u062F\u062E\u0646\u060C \u0628\u0644\u0627 \u0625\u062F\u0645\u0627\u0646", iconClass: "fas fa-heart-pulse" }
+          { label: "\u0627\u0644\u062D\u0627\u0644\u0629 \u0627\u0644\u0635\u062D\u064A\u0629", value: "\u0628\u0635\u062D\u0629 \u062C\u064A\u062F\u0629\u060C \u063A\u064A\u0631 \u0645\u062F\u062E\u0646 \u0648\u062E\u0627\u0644\u064D \u0645\u0646 \u0627\u0644\u0645\u062E\u062F\u0631\u0627\u062A", iconClass: "fas fa-heart-pulse" }
         ],
         familyDetails: [
           ["\u0627\u0644\u0623\u0628", "\u0627\u0644\u0645\u0631\u062D\u0648\u0645 \u0639\u0628\u062F \u0627\u0644\u0642\u0627\u062F\u0631 \u0647\u0648\u0644\u0627\u062F\u0631 (\u0643\u0627\u0646 \u0637\u0628\u064A\u0628\u0627\u064B \u0642\u0631\u0648\u064A\u0627\u064B \u0648\u0645\u0639\u0644\u0645\u0627\u064B \u0641\u064A \u0645\u062F\u0631\u0633\u0629 \u0627\u0628\u062A\u062F\u0627\u0626\u064A\u0629)"],
@@ -776,7 +776,7 @@
           { label: "\u0997\u09BE\u09DF\u09C7\u09B0 \u09B0\u0982", value: "\u09AE\u09BE\u099D\u09BE\u09B0\u09BF \u09B6\u09CD\u09AF\u09BE\u09AE\u09B2\u09BE", iconClass: "fas fa-palette" },
           { label: "\u0989\u099A\u09CD\u099A\u09A4\u09BE \u0993 \u0993\u099C\u09A8", value: `\u09EB' \u09E9" \u0993 \u09ED\u09E6 \u0995\u09C7\u099C\u09BF`, iconClass: "fas fa-ruler-combined" },
           { label: "\u09B0\u0995\u09CD\u09A4\u09C7\u09B0 \u0997\u09CD\u09B0\u09C1\u09AA", value: "\u098F+", iconClass: "fas fa-droplet" },
-          { label: "\u09B8\u09CD\u09AC\u09BE\u09B8\u09CD\u09A5\u09CD\u09AF \u0985\u09AC\u09B8\u09CD\u09A5\u09BE", value: "\u09B8\u09C1\u09B8\u09CD\u09A5, \u09A7\u09C2\u09AE\u09AA\u09BE\u09A8\u09AE\u09C1\u0995\u09CD\u09A4, \u0995\u09CB\u09A8\u09CB \u09A8\u09C7\u09B6\u09BE \u09A8\u09C7\u0987", iconClass: "fas fa-heart-pulse" }
+          { label: "\u09B8\u09CD\u09AC\u09BE\u09B8\u09CD\u09A5\u09CD\u09AF \u0985\u09AC\u09B8\u09CD\u09A5\u09BE", value: "\u09B8\u09C1\u09B8\u09CD\u09A5, \u09A7\u09C2\u09AE\u09AA\u09BE\u09A8 \u0993 \u09AE\u09BE\u09A6\u0995\u09AE\u09C1\u0995\u09CD\u09A4", iconClass: "fas fa-heart-pulse" }
         ],
         familyDetails: [
           ["\u09AA\u09BF\u09A4\u09BE", "\u09AE\u09B0\u09B9\u09C1\u09AE \u0986\u09AC\u09CD\u09A6\u09C1\u09B2 \u0995\u09BE\u09A6\u09C7\u09B0 \u09B9\u09BE\u0993\u09B2\u09BE\u09A6\u09BE\u09B0 (\u0997\u09CD\u09B0\u09BE\u09AE\u09CD\u09AF \u09A1\u09BE\u0995\u09CD\u09A4\u09BE\u09B0 \u0993 \u09AA\u09CD\u09B0\u09BE\u09A5\u09AE\u09BF\u0995 \u09AC\u09BF\u09A6\u09CD\u09AF\u09BE\u09B2\u09DF \u09B6\u09BF\u0995\u09CD\u09B7\u0995 \u099B\u09BF\u09B2\u09C7\u09A8)"],
@@ -1081,6 +1081,7 @@
     const galleryUnlockProgressRef = React.useRef(0);
     const galleryUnlockTimerRef = React.useRef(null);
     const printTimerRef = React.useRef(null);
+    const printLanguageRequestRef = React.useRef(null);
     const galleryUnlockDragRef = React.useRef({
       pointerId: null,
       grabOffsetX: 0
@@ -1704,6 +1705,68 @@
         document.body.classList.remove("is-popup-open");
       };
     }, [isIntroPopupOpen, isBismillahLoadingOpen, zoomedPhoto]);
+    React.useEffect(() => {
+      const handlePrintLanguageRequest = (event) => {
+        if (event.origin !== window.location.origin)
+          return;
+        if (!event.data || event.data.type !== "bbdMahbub:request-print-language")
+          return;
+        if (!translations[event.data.language])
+          return;
+        if (!event.source || event.source.closed)
+          return;
+        printLanguageRequestRef.current = {
+          language: event.data.language,
+          source: event.source,
+          wasGalleryUnlocked: isGalleryUnlocked
+        };
+        setZoomedPhoto(null);
+        setIsGalleryUnlocked(true);
+        setLanguage(event.data.language);
+      };
+      window.addEventListener("message", handlePrintLanguageRequest);
+      return () => {
+        window.removeEventListener("message", handlePrintLanguageRequest);
+      };
+    }, [isGalleryUnlocked]);
+    React.useEffect(() => {
+      const request = printLanguageRequestRef.current;
+      if (!request || request.language !== language)
+        return void 0;
+      const responseTimer = window.setTimeout(() => {
+        const printableContainer = document.querySelector(".container");
+        if (!printableContainer || !request.source || request.source.closed) {
+          printLanguageRequestRef.current = null;
+          return;
+        }
+        const payload = JSON.stringify({
+          markup: printableContainer.innerHTML,
+          language,
+          dir: selectedTranslation.dir,
+          title: copy.meta.title,
+          createdAt: Date.now()
+        });
+        const printUrl = new URL("print.html", window.location.href);
+        printUrl.searchParams.set("lang", language);
+        printUrl.searchParams.set("v", cvCacheVersion);
+        try {
+          request.source.sessionStorage.setItem("bbdMahbubPrintPayload", payload);
+          request.source.location.replace(printUrl.href);
+        } catch (error) {
+          request.source.postMessage({
+            type: "bbdMahbub:print-language-error"
+          }, window.location.origin);
+        }
+        if (!request.wasGalleryUnlocked) {
+          galleryUnlockProgressRef.current = 0;
+          setGalleryUnlockOffset(0);
+          setIsGalleryUnlockComplete(false);
+          setIsGalleryUnlocked(false);
+        }
+        printLanguageRequestRef.current = null;
+      }, 240);
+      return () => window.clearTimeout(responseTimer);
+    }, [language]);
     React.useEffect(() => {
       if (!zoomedPhoto)
         return void 0;

@@ -37,13 +37,49 @@ a {
     z-index: 10;
     min-height: 58px;
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto minmax(120px, 1fr) auto auto;
     align-items: center;
     gap: 12px;
     padding: 10px max(14px, calc((100vw - var(--paper-width)) / 2));
     color: #ffffff;
     background: rgba(11, 73, 57, 0.97);
     box-shadow: 0 8px 24px rgba(15, 55, 45, 0.18);
+}
+
+.print-language-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.print-language-button {
+    min-width: 42px;
+    height: 28px;
+    border: 0;
+    border-radius: 4px;
+    padding: 3px 7px;
+    color: rgba(255, 255, 255, 0.82);
+    background: transparent;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.print-language-button:hover,
+.print-language-button:focus-visible,
+.print-language-button.is-active {
+    color: var(--green-dark);
+    background: #ffffff;
+    outline: none;
+}
+
+.print-language-switcher.is-loading .print-language-button {
+    cursor: wait;
+    opacity: 0.58;
 }
 
 .print-toolbar-title {
@@ -473,7 +509,6 @@ a {
 .gallery-access-gate,
 .activity-link-button,
 .map-link-button,
-.contact-action-link,
 .top-menu {
     display: none !important;
 }
@@ -565,6 +600,7 @@ html[dir="rtl"] .print-profile-photo {
     position: absolute;
     top: calc(100% + 9px);
     right: 0;
+    left: auto;
     z-index: 2;
     width: 31mm;
     height: 39mm;
@@ -581,6 +617,7 @@ html[dir="rtl"] .print-profile-photo {
 .print-personal-section {
     min-height: 42mm;
     padding-right: 35mm;
+    padding-left: 0;
 }
 
 .print-personal-section .section-item-list {
@@ -591,7 +628,6 @@ html[dir="rtl"] .print-profile-photo {
 .print-family-section .section-item-list-compact,
 .print-training-section .section-item-list,
 .print-expectation-section .expectation-list,
-.print-contact-section .contact-list,
 .print-dua-section .final-dua {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 16px;
@@ -600,6 +636,62 @@ html[dir="rtl"] .print-profile-photo {
 
 .print-dua-section .dua-closing {
     grid-column: 1 / -1;
+}
+
+.print-contact-section .contact-list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+}
+
+.print-contact-section .contact-block {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr);
+    align-items: baseline;
+    column-gap: 10px;
+    padding: 2px 0;
+}
+
+.print-contact-section .icon-text {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-inline-end: 12px;
+    color: #0874c9;
+    font-weight: 700;
+}
+
+.print-contact-section .icon-text::after {
+    content: ":";
+    position: absolute;
+    inset-inline-end: 0;
+}
+
+.print-contact-section .contact-title-icon {
+    flex: 0 0 18px;
+    width: 18px;
+    color: var(--gold);
+    text-align: center;
+}
+
+.print-contact-section .address-box {
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    color: #111827;
+}
+
+.print-contact-section .contact-action-link {
+    display: inline !important;
+    color: #111827;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.print-contact-section .contact-action-link[href*="wa.me"],
+.print-contact-section .contact-action-link[href^="mailto:"] {
+    direction: ltr;
+    unicode-bidi: isolate;
 }
 
 .card + .card {
@@ -624,6 +716,11 @@ html[dir="rtl"] .print-profile-photo {
 
 .card-content {
     padding: 1px 0 0;
+    padding-inline-start: 16px;
+}
+
+.subsection-title + .section-item-list {
+    padding-inline-start: 14px;
 }
 
 .section-item-list,
@@ -664,6 +761,38 @@ html[dir="rtl"] .print-profile-photo {
     align-items: baseline;
 }
 
+.detail-row:not(.work-row):not(.language-row):not(.education-row):not(.training-row) {
+    grid-template-columns: 145px minmax(0, 1fr);
+    column-gap: 10px;
+}
+
+.sub-detail-row {
+    grid-template-columns: 105px minmax(0, 1fr) auto;
+    column-gap: 9px;
+}
+
+.detail-label {
+    position: relative;
+    max-width: none;
+    padding-inline-end: 12px;
+}
+
+.detail-label::after {
+    content: ":";
+    position: absolute;
+    inset-inline-end: 0;
+    color: #0874c9;
+    font-weight: 700;
+}
+
+.training-row .detail-label {
+    padding-inline-end: 0;
+}
+
+.training-row .detail-label::after {
+    content: none;
+}
+
 .sub-detail-row {
     grid-template-columns: max-content minmax(0, 1fr) auto;
 }
@@ -680,10 +809,6 @@ html[dir="rtl"] .print-profile-photo {
     font-family: var(--font-body);
     font-size: 15px;
     line-height: 1.16;
-}
-
-.detail-label {
-    max-width: 180px;
 }
 
 .detail-value,
@@ -786,13 +911,13 @@ html[dir="rtl"] .print-profile-photo {
 }
 
 html[dir="rtl"] .print-profile-photo {
-    right: 0;
-    left: auto;
+    right: auto;
+    left: 0;
 }
 
 html[dir="rtl"] .print-personal-section {
-    padding-right: 35mm;
-    padding-left: 0;
+    padding-right: 0;
+    padding-left: 35mm;
 }
 
 .print-empty {
@@ -838,6 +963,14 @@ html[dir="rtl"] .print-personal-section {
         min-height: 34px;
         padding: 6px 9px;
         font-size: 12px;
+    }
+
+    .print-toolbar-title {
+        display: none;
+    }
+
+    .print-language-switcher {
+        justify-self: center;
     }
 
     .print-document {

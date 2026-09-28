@@ -224,7 +224,7 @@
                         { label: 'Complexion', value: 'Medium Dark', iconClass: 'fas fa-palette' },
                         { label: 'Height & Weight', value: '5\' 3" & 70 KGs', iconClass: 'fas fa-ruler-combined' },
                         { label: 'Blood Group', value: 'A+', iconClass: 'fas fa-droplet' },
-                        { label: 'Health Status', value: 'Healthy, non-smoker, no addiction', iconClass: 'fas fa-heart-pulse' }
+                        { label: 'Health Status', value: 'Healthy, non-smoker and drug-free', iconClass: 'fas fa-heart-pulse' }
                     ],
                     familyDetails: [
                         ['Father', 'Late Abdul Kader Howlader (He was a village doctor and primary school teacher)'],
@@ -501,7 +501,7 @@
                         { label: 'لون البشرة', value: 'قمحي مائل للداكن', iconClass: 'fas fa-palette' },
                         { label: 'الطول والوزن', value: '5\' 3" و٧٠ كجم', iconClass: 'fas fa-ruler-combined' },
                         { label: 'فصيلة الدم', value: 'A+', iconClass: 'fas fa-droplet' },
-                        { label: 'الحالة الصحية', value: 'بصحة جيدة، غير مدخن، بلا إدمان', iconClass: 'fas fa-heart-pulse' }
+                        { label: 'الحالة الصحية', value: 'بصحة جيدة، غير مدخن وخالٍ من المخدرات', iconClass: 'fas fa-heart-pulse' }
                     ],
                     familyDetails: [
                         ['الأب', 'المرحوم عبد القادر هولادر (كان طبيباً قروياً ومعلماً في مدرسة ابتدائية)'],
@@ -779,7 +779,7 @@
                         { label: 'গায়ের রং', value: 'মাঝারি শ্যামলা', iconClass: 'fas fa-palette' },
                         { label: 'উচ্চতা ও ওজন', value: '৫\' ৩" ও ৭০ কেজি', iconClass: 'fas fa-ruler-combined' },
                         { label: 'রক্তের গ্রুপ', value: 'এ+', iconClass: 'fas fa-droplet' },
-                        { label: 'স্বাস্থ্য অবস্থা', value: 'সুস্থ, ধূমপানমুক্ত, কোনো নেশা নেই', iconClass: 'fas fa-heart-pulse' }
+                        { label: 'স্বাস্থ্য অবস্থা', value: 'সুস্থ, ধূমপান ও মাদকমুক্ত', iconClass: 'fas fa-heart-pulse' }
                     ],
                     familyDetails: [
                         ['পিতা', 'মরহুম আব্দুল কাদের হাওলাদার (গ্রাম্য ডাক্তার ও প্রাথমিক বিদ্যালয় শিক্ষক ছিলেন)'],
@@ -1107,6 +1107,7 @@
             const galleryUnlockProgressRef = React.useRef(0);
             const galleryUnlockTimerRef = React.useRef(null);
             const printTimerRef = React.useRef(null);
+            const printLanguageRequestRef = React.useRef(null);
             const galleryUnlockDragRef = React.useRef({
                 pointerId: null,
                 grabOffsetX: 0
@@ -1843,6 +1844,72 @@
                     document.body.classList.remove('is-popup-open');
                 };
             }, [isIntroPopupOpen, isBismillahLoadingOpen, zoomedPhoto]);
+
+            React.useEffect(() => {
+                const handlePrintLanguageRequest = (event) => {
+                    if (event.origin !== window.location.origin) return;
+                    if (!event.data || event.data.type !== 'bbdMahbub:request-print-language') return;
+                    if (!translations[event.data.language]) return;
+                    if (!event.source || event.source.closed) return;
+
+                    printLanguageRequestRef.current = {
+                        language: event.data.language,
+                        source: event.source,
+                        wasGalleryUnlocked: isGalleryUnlocked
+                    };
+                    setZoomedPhoto(null);
+                    setIsGalleryUnlocked(true);
+                    setLanguage(event.data.language);
+                };
+
+                window.addEventListener('message', handlePrintLanguageRequest);
+                return () => {
+                    window.removeEventListener('message', handlePrintLanguageRequest);
+                };
+            }, [isGalleryUnlocked]);
+
+            React.useEffect(() => {
+                const request = printLanguageRequestRef.current;
+                if (!request || request.language !== language) return undefined;
+
+                const responseTimer = window.setTimeout(() => {
+                    const printableContainer = document.querySelector('.container');
+                    if (!printableContainer || !request.source || request.source.closed) {
+                        printLanguageRequestRef.current = null;
+                        return;
+                    }
+
+                    const payload = JSON.stringify({
+                        markup: printableContainer.innerHTML,
+                        language,
+                        dir: selectedTranslation.dir,
+                        title: copy.meta.title,
+                        createdAt: Date.now()
+                    });
+                    const printUrl = new URL('print.html', window.location.href);
+                    printUrl.searchParams.set('lang', language);
+                    printUrl.searchParams.set('v', cvCacheVersion);
+
+                    try {
+                        request.source.sessionStorage.setItem('bbdMahbubPrintPayload', payload);
+                        request.source.location.replace(printUrl.href);
+                    } catch (error) {
+                        request.source.postMessage({
+                            type: 'bbdMahbub:print-language-error'
+                        }, window.location.origin);
+                    }
+
+                    if (!request.wasGalleryUnlocked) {
+                        galleryUnlockProgressRef.current = 0;
+                        setGalleryUnlockOffset(0);
+                        setIsGalleryUnlockComplete(false);
+                        setIsGalleryUnlocked(false);
+                    }
+                    printLanguageRequestRef.current = null;
+                }, 240);
+
+                return () => window.clearTimeout(responseTimer);
+            }, [language]);
 
             React.useEffect(() => {
                 if (!zoomedPhoto) return undefined;
