@@ -187,11 +187,11 @@
         },
         profile: {
           name: "Md Mahbubur Rahman",
-          subtitle: "IT Professional",
+          subtitle: "IT Professional, Web Developer & Entrepreneur",
           tagline: "A Muslim young man is seeking a Muslimah life partner who will be the coolness of his eyes in this world and the Hereafter!",
           stats: {
             age: "YEARS OLD",
-            education: "HIGHLY EDUCATED",
+            education: "M.A. \xB7 ISLAMIC UNIVERSITY",
             work: "WELL ESTABLISHED",
             faith: "PRACTICING MUSLIM"
           }
@@ -199,6 +199,7 @@
         gallery: {
           title: "Photo Gallery",
           unlockTitle: "Photo Show",
+          unlockHint: "Slide the lock to the right",
           unlockAria: "Slide right to show photos",
           photos: [
             { src: withCvCacheVersion("assets/images/mahbub-portrait-1.webp"), alt: "Md Mahbubur Rahman portrait 1", label: "Portrait 01", featured: true },
@@ -464,11 +465,11 @@
         },
         profile: {
           name: "\u0645\u062D\u0645\u062F \u0645\u062D\u0628\u0648\u0628 \u0627\u0644\u0631\u062D\u0645\u0646",
-          subtitle: "\u0645\u062D\u062A\u0631\u0641 \u062A\u0642\u0646\u064A\u0629 \u0645\u0639\u0644\u0648\u0645\u0627\u062A",
+          subtitle: "\u0645\u062A\u062E\u0635\u0635 \u0641\u064A \u062A\u0642\u0646\u064A\u0629 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062A\u060C \u0648\u0645\u0637\u0648\u0631 \u0648\u064A\u0628\u060C \u0648\u0631\u0627\u0626\u062F \u0623\u0639\u0645\u0627\u0644",
           tagline: "\u0634\u0627\u0628 \u0645\u0633\u0644\u0645 \u064A\u0628\u062D\u062B \u0639\u0646 \u0634\u0631\u064A\u0643\u0629 \u062D\u064A\u0627\u0629 \u0645\u0633\u0644\u0645\u0629 \u062A\u0643\u0648\u0646 \u0642\u0631\u0629 \u0639\u064A\u0646\u0647 \u0641\u064A \u0627\u0644\u062F\u0646\u064A\u0627 \u0648\u0627\u0644\u0622\u062E\u0631\u0629!",
           stats: {
             age: "28 \u0639\u0627\u0645\u0627\u064B",
-            education: "\u062A\u0639\u0644\u064A\u0645 \u0639\u0627\u0644\u064D",
+            education: "\u0645\u0627\u062C\u0633\u062A\u064A\u0631 \xB7 \u0627\u0644\u062C\u0627\u0645\u0639\u0629 \u0627\u0644\u0625\u0633\u0644\u0627\u0645\u064A\u0629",
             work: "\u0645\u0633\u062A\u0642\u0631 \u0645\u0647\u0646\u064A\u0627\u064B",
             faith: "\u0645\u0644\u062A\u0632\u0645 \u062F\u064A\u0646\u064A\u0627\u064B"
           }
@@ -476,6 +477,7 @@
         gallery: {
           title: "\u0645\u0639\u0631\u0636 \u0627\u0644\u0635\u0648\u0631",
           unlockTitle: "\u0639\u0631\u0636 \u0627\u0644\u0635\u0648\u0631",
+          unlockHint: "\u0627\u0633\u062D\u0628 \u0627\u0644\u0642\u0641\u0644 \u0625\u0644\u0649 \u0627\u0644\u064A\u0633\u0627\u0631",
           unlockAria: "\u0627\u0633\u062D\u0628 \u0625\u0644\u0649 \u0627\u0644\u064A\u0633\u0627\u0631 \u0644\u0639\u0631\u0636 \u0627\u0644\u0635\u0648\u0631",
           photos: [
             { src: withCvCacheVersion("assets/images/mahbub-portrait-1.webp"), alt: "\u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0634\u062E\u0635\u064A\u0629 \u0627\u0644\u0623\u0648\u0644\u0649 \u0644\u0640 \u0645\u062D\u0645\u062F \u0645\u062D\u0628\u0648\u0628 \u0627\u0644\u0631\u062D\u0645\u0646", label: "\u0627\u0644\u0635\u0648\u0631\u0629 01", featured: true },
@@ -742,11 +744,11 @@
         },
         profile: {
           name: "\u09AE\u09CB. \u09AE\u09BE\u09B9\u09AC\u09C1\u09AC\u09C1\u09B0 \u09B0\u09B9\u09AE\u09BE\u09A8",
-          subtitle: "\u09A4\u09A5\u09CD\u09AF\u09AA\u09CD\u09B0\u09AF\u09C1\u0995\u09CD\u09A4\u09BF \u09AA\u09C7\u09B6\u09BE\u099C\u09C0\u09AC\u09C0",
+          subtitle: "\u09A4\u09A5\u09CD\u09AF\u09AA\u09CD\u09B0\u09AF\u09C1\u0995\u09CD\u09A4\u09BF \u09AA\u09C7\u09B6\u09BE\u099C\u09C0\u09AC\u09C0, \u0993\u09DF\u09C7\u09AC \u09A1\u09C7\u09AD\u09C7\u09B2\u09AA\u09BE\u09B0 \u0993 \u0989\u09A6\u09CD\u09AF\u09CB\u0995\u09CD\u09A4\u09BE",
           tagline: "\u098F\u0995\u099C\u09A8 \u09AE\u09C1\u09B8\u09B2\u09BF\u09AE \u09AF\u09C1\u09AC\u0995, \u09A6\u09C1\u09A8\u09BF\u09DF\u09BE \u0993 \u0986\u0996\u09C7\u09B0\u09BE\u09A4\u09C7\u09B0 \u099A\u0995\u09CD\u09B7\u09C1\u09B6\u09C0\u09A4\u09B2\u0995\u09BE\u09B0\u09BF\u09A8\u09C0 \u09AE\u09C1\u09B8\u09B2\u09BF\u09AE\u09BE\u09B9\u09CD \u099C\u09C0\u09AC\u09A8\u09B8\u0999\u09CD\u0997\u09C0 \u0996\u09C1\u099C\u099B\u09C7\u09A8!",
           stats: {
             age: "\u09E8\u09EE \u09AC\u099B\u09B0",
-            education: "\u0989\u099A\u09CD\u099A\u09B6\u09BF\u0995\u09CD\u09B7\u09BF\u09A4",
+            education: "\u09B8\u09CD\u09A8\u09BE\u09A4\u0995\u09CB\u09A4\u09CD\u09A4\u09B0 \xB7 \u0987\u09B8\u09B2\u09BE\u09AE\u09C0 \u09AC\u09BF\u09B6\u09CD\u09AC\u09AC\u09BF\u09A6\u09CD\u09AF\u09BE\u09B2\u09DF",
             work: "\u09B8\u09C1\u09AA\u09CD\u09B0\u09A4\u09BF\u09B7\u09CD\u09A0\u09BF\u09A4",
             faith: "\u09A6\u09CD\u09AC\u09C0\u09A8\u09A6\u09BE\u09B0 \u09AE\u09C1\u09B8\u09B2\u09BF\u09AE"
           }
@@ -754,6 +756,7 @@
         gallery: {
           title: "\u099B\u09AC\u09BF \u0997\u09CD\u09AF\u09BE\u09B2\u09BE\u09B0\u09BF",
           unlockTitle: "\u099B\u09AC\u09BF \u09A6\u09C7\u0996\u09C1\u09A8",
+          unlockHint: "\u09B2\u0995\u099F\u09BF \u09A1\u09BE\u09A8\u09C7 \u09B8\u09CD\u09B2\u09BE\u0987\u09A1 \u0995\u09B0\u09C1\u09A8",
           unlockAria: "\u099B\u09AC\u09BF \u09A6\u09C7\u0996\u09A4\u09C7 \u09A1\u09BE\u09A8 \u09A6\u09BF\u0995\u09C7 \u099F\u09BE\u09A8\u09C1\u09A8",
           photos: [
             { src: withCvCacheVersion("assets/images/mahbub-portrait-1.webp"), alt: "Md Mahbubur Rahman-\u098F\u09B0 \u09AA\u09CB\u09B0\u09CD\u099F\u09CD\u09B0\u09C7\u099F \u09E7", label: "\u099B\u09AC\u09BF \u09E6\u09E7", featured: true },
@@ -2559,7 +2562,7 @@
         title: copy.navigation.scrollMenuRight
       },
       /* @__PURE__ */ React.createElement("i", { className: "fas fa-chevron-right", "aria-hidden": "true" })
-    ))), /* @__PURE__ */ React.createElement("div", { className: "header-banner section-anchor", id: "profile-top" }, /* @__PURE__ */ React.createElement("h1", { className: "profile-name" }, /* @__PURE__ */ React.createElement("span", { className: "profile-name-text" }, copy.profile.name)), /* @__PURE__ */ React.createElement("div", { className: "subtitle" }, copy.profile.subtitle)), /* @__PURE__ */ React.createElement("div", { style: { marginBottom: "30px" } }, /* @__PURE__ */ React.createElement("div", { className: "stats" }, /* @__PURE__ */ React.createElement("div", { className: "stat-box" }, /* @__PURE__ */ React.createElement("div", { className: "stat-value" }, iconEducation), /* @__PURE__ */ React.createElement("div", { className: "stat-label" }, copy.profile.stats.education)), /* @__PURE__ */ React.createElement("div", { className: "stat-box" }, /* @__PURE__ */ React.createElement("div", { className: "stat-value" }, iconMosque), /* @__PURE__ */ React.createElement("div", { className: "stat-label" }, copy.profile.stats.faith)))), /* @__PURE__ */ React.createElement("div", { className: "card section-anchor", id: "gallery-section" }, /* @__PURE__ */ React.createElement("div", { className: "section-header" }, /* @__PURE__ */ React.createElement("span", { className: "section-icon" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-images", "aria-hidden": "true" })), copy.gallery.title), /* @__PURE__ */ React.createElement("div", { className: "card-content" }, !isGalleryUnlocked ? /* @__PURE__ */ React.createElement("div", { className: "gallery-access-gate" }, /* @__PURE__ */ React.createElement("div", { className: "gallery-access-title" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-lock", "aria-hidden": "true" }), /* @__PURE__ */ React.createElement("span", null, copy.gallery.unlockTitle)), /* @__PURE__ */ React.createElement(
+    ))), /* @__PURE__ */ React.createElement("div", { className: "header-banner section-anchor", id: "profile-top" }, /* @__PURE__ */ React.createElement("h1", { className: "profile-name" }, /* @__PURE__ */ React.createElement("span", { className: "profile-name-text" }, copy.profile.name)), /* @__PURE__ */ React.createElement("div", { className: "subtitle" }, copy.profile.subtitle)), /* @__PURE__ */ React.createElement("div", { style: { marginBottom: "30px" } }, /* @__PURE__ */ React.createElement("div", { className: "stats" }, /* @__PURE__ */ React.createElement("div", { className: "stat-box" }, /* @__PURE__ */ React.createElement("div", { className: "stat-value" }, iconEducation), /* @__PURE__ */ React.createElement("div", { className: "stat-label" }, copy.profile.stats.education)), /* @__PURE__ */ React.createElement("div", { className: "stat-box" }, /* @__PURE__ */ React.createElement("div", { className: "stat-value" }, iconMosque), /* @__PURE__ */ React.createElement("div", { className: "stat-label" }, copy.profile.stats.faith)))), /* @__PURE__ */ React.createElement("div", { className: "card section-anchor", id: "gallery-section" }, /* @__PURE__ */ React.createElement("div", { className: "section-header" }, /* @__PURE__ */ React.createElement("span", { className: "section-icon" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-images", "aria-hidden": "true" })), copy.gallery.title), /* @__PURE__ */ React.createElement("div", { className: "card-content" }, !isGalleryUnlocked ? /* @__PURE__ */ React.createElement("div", { className: "gallery-access-gate" }, /* @__PURE__ */ React.createElement("div", { className: "gallery-access-heading" }, /* @__PURE__ */ React.createElement("div", { className: "gallery-access-title" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-lock", "aria-hidden": "true" }), /* @__PURE__ */ React.createElement("span", null, copy.gallery.unlockTitle)), /* @__PURE__ */ React.createElement("div", { className: "gallery-access-hint" }, copy.gallery.unlockHint)), /* @__PURE__ */ React.createElement(
       "div",
       {
         className: `gallery-unlock-track${isRtl ? " is-rtl" : ""}${isGalleryUnlockDragging ? " is-dragging" : ""}${isGalleryUnlockComplete ? " is-complete" : ""}`,

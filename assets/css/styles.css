@@ -1,9 +1,27 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
+@font-face {
+            font-family: 'Bornomala Web';
+            src: url('../fonts/bornomala-regular.woff2') format('woff2');
+            font-style: normal;
+            font-weight: 400;
+            size-adjust: 104%;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Bornomala Web';
+            src: url('../fonts/bornomala-bold.woff2') format('woff2');
+            font-style: normal;
+            font-weight: 700;
+            size-adjust: 104%;
+            font-display: swap;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         html {
             --menu-offset: 88px;
             --font-english: 'Lato', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            --font-bangla: 'SiyamRupali', 'Siyam Rupali', 'Lato', sans-serif;
+            --font-bangla: 'Bornomala Web', 'SiyamRupali', 'Siyam Rupali', 'Lato', serif;
             --font-arabic: 'Parastoo', 'Noto Naskh Arabic', 'Amiri', 'Scheherazade', 'Traditional Arabic', Tahoma, serif;
             --font-calligraphy: 'Amiri Quran', 'Aref Ruqaa Ink', 'Parastoo', 'Noto Naskh Arabic', serif;
             --font-body: var(--font-english);
@@ -21,6 +39,10 @@
 
         html:lang(en) {
             --font-body: var(--font-english);
+        }
+
+        .app-shell.language-bn {
+            font-family: var(--font-bangla);
         }
         
         body,
@@ -2770,6 +2792,20 @@
             font-size: 1.1rem;
             font-weight: 900;
             letter-spacing: 0;
+        }
+
+        .gallery-access-heading {
+            display: grid;
+            justify-items: center;
+            gap: 5px;
+            text-align: center;
+        }
+
+        .gallery-access-hint {
+            color: #64748b;
+            font-size: 0.82rem;
+            font-weight: 600;
+            line-height: 1.35;
         }
 
         .gallery-access-title i {

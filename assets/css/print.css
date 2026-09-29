@@ -1,3 +1,21 @@
+@font-face {
+    font-family: "Bornomala Web";
+    src: url("../fonts/bornomala-regular.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    size-adjust: 104%;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Bornomala Web";
+    src: url("../fonts/bornomala-bold.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 700;
+    size-adjust: 104%;
+    font-display: swap;
+}
+
 :root {
     --green: #0f5f49;
     --green-dark: #0b4939;
@@ -11,6 +29,11 @@
     --font-body: "Times New Roman", "Siyam Rupali", "Noto Sans Bengali", serif;
     --font-heading: "Lato", "Siyam Rupali", "Noto Sans Bengali", Arial, sans-serif;
     --font-arabic: "Amiri Quran", "Noto Nastaliq Urdu", serif;
+}
+
+html[lang="bn"] {
+    --font-body: "Bornomala Web", "Noto Serif Bengali", serif;
+    --font-heading: "Bornomala Web", "Noto Sans Bengali", Arial, sans-serif;
 }
 
 * {
@@ -35,12 +58,12 @@ a {
     position: sticky;
     top: 0;
     z-index: 10;
-    min-height: 58px;
+    min-height: 50px;
     display: grid;
     grid-template-columns: auto minmax(120px, 1fr) auto auto;
     align-items: center;
-    gap: 12px;
-    padding: 10px max(14px, calc((100vw - var(--paper-width)) / 2));
+    gap: 9px;
+    padding: 7px max(14px, calc((100vw - var(--paper-width)) / 2));
     color: #ffffff;
     background: rgba(11, 73, 57, 0.97);
     box-shadow: 0 8px 24px rgba(15, 55, 45, 0.18);
@@ -84,7 +107,7 @@ a {
 
 .print-toolbar-title {
     overflow: hidden;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 800;
     text-align: center;
     text-overflow: ellipsis;
@@ -92,16 +115,17 @@ a {
 }
 
 .print-toolbar-button {
-    min-height: 36px;
+    min-height: 32px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 7px;
-    padding: 7px 12px;
+    gap: 6px;
+    padding: 5px 9px;
     border: 1px solid rgba(255, 255, 255, 0.28);
     border-radius: 6px;
     color: var(--green-dark);
     background: #ffffff;
+    font-size: 13px;
     font-weight: 800;
     cursor: pointer;
 }
@@ -575,7 +599,7 @@ html[dir="rtl"] .print-profile-photo {
 .print-document-heading {
     color: #173d70;
     font-family: var(--font-heading);
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 900;
     line-height: 1.1;
 }
@@ -584,7 +608,7 @@ html[dir="rtl"] .print-profile-photo {
     margin-top: 2px;
     color: #0874c9;
     font-family: var(--font-heading);
-    font-size: 27px;
+    font-size: 25px;
     line-height: 1.08;
 }
 
@@ -592,7 +616,7 @@ html[dir="rtl"] .print-profile-photo {
     max-width: 145mm;
     margin: 3px auto 0;
     color: #263b57;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.25;
 }
 
@@ -774,6 +798,9 @@ html[dir="rtl"] .print-profile-photo {
 .detail-label {
     position: relative;
     max-width: none;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
     padding-inline-end: 12px;
 }
 
@@ -832,7 +859,7 @@ html[dir="rtl"] .print-profile-photo {
 .hobby-item,
 .activity-points li,
 .family-summary-label {
-    gap: 5px;
+    gap: 6px;
 }
 
 .detail-label-icon,
@@ -850,10 +877,23 @@ html[dir="rtl"] .print-profile-photo {
 }
 
 .print-lifestyle-section .section-item-list,
-.print-language-section .section-item-list,
 .print-hobbies-section .hobby-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 18px;
+}
+
+.print-language-section .section-item-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 14px;
+}
+
+.print-language-section .language-row {
+    display: block;
+    min-width: 0;
+}
+
+.print-language-section .language-progress-track {
+    display: none;
 }
 
 .work-header,
@@ -899,8 +939,8 @@ html[dir="rtl"] .print-profile-photo {
 }
 
 .dua-arabic {
-    font-size: 17px;
-    line-height: 1.25;
+    font-size: 16px;
+    line-height: 1.18;
 }
 
 .dua-english,
@@ -908,6 +948,10 @@ html[dir="rtl"] .print-profile-photo {
     margin-top: 2px;
     font-size: 14px;
     line-height: 1.15;
+}
+
+.dua-arabic + .dua-english {
+    margin-top: 6px;
 }
 
 html[dir="rtl"] .print-profile-photo {
@@ -918,6 +962,19 @@ html[dir="rtl"] .print-profile-photo {
 html[dir="rtl"] .print-personal-section {
     padding-right: 0;
     padding-left: 35mm;
+}
+
+html[dir="rtl"] .a4-content-inner {
+    transform-origin: top right;
+}
+
+html[dir="rtl"] #print-page-two > :first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+html[dir="rtl"] #print-page-two > :first-child .section-header {
+    padding-top: 0;
 }
 
 .print-empty {
@@ -960,8 +1017,8 @@ html[dir="rtl"] .print-personal-section {
     }
 
     .print-toolbar-button {
-        min-height: 34px;
-        padding: 6px 9px;
+        min-height: 31px;
+        padding: 4px 8px;
         font-size: 12px;
     }
 

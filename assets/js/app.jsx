@@ -190,11 +190,11 @@
                     },
                     profile: {
                         name: 'Md Mahbubur Rahman',
-                        subtitle: 'IT Professional',
+                        subtitle: 'IT Professional, Web Developer & Entrepreneur',
                         tagline: 'A Muslim young man is seeking a Muslimah life partner who will be the coolness of his eyes in this world and the Hereafter!',
                         stats: {
                             age: 'YEARS OLD',
-                            education: 'HIGHLY EDUCATED',
+                            education: 'M.A. · ISLAMIC UNIVERSITY',
                             work: 'WELL ESTABLISHED',
                             faith: 'PRACTICING MUSLIM'
                         }
@@ -202,6 +202,7 @@
                     gallery: {
                         title: 'Photo Gallery',
                         unlockTitle: 'Photo Show',
+                        unlockHint: 'Slide the lock to the right',
                         unlockAria: 'Slide right to show photos',
                         photos: [
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-1.webp'), alt: 'Md Mahbubur Rahman portrait 1', label: 'Portrait 01', featured: true },
@@ -467,11 +468,11 @@
                     },
                     profile: {
                         name: 'محمد محبوب الرحمن',
-                        subtitle: 'محترف تقنية معلومات',
+                        subtitle: 'متخصص في تقنية المعلومات، ومطور ويب، ورائد أعمال',
                         tagline: 'شاب مسلم يبحث عن شريكة حياة مسلمة تكون قرة عينه في الدنيا والآخرة!',
                         stats: {
                             age: '28 عاماً',
-                            education: 'تعليم عالٍ',
+                            education: 'ماجستير · الجامعة الإسلامية',
                             work: 'مستقر مهنياً',
                             faith: 'ملتزم دينياً'
                         }
@@ -479,6 +480,7 @@
                     gallery: {
                         title: 'معرض الصور',
                         unlockTitle: 'عرض الصور',
+                        unlockHint: 'اسحب القفل إلى اليسار',
                         unlockAria: 'اسحب إلى اليسار لعرض الصور',
                         photos: [
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-1.webp'), alt: 'الصورة الشخصية الأولى لـ محمد محبوب الرحمن', label: 'الصورة 01', featured: true },
@@ -745,11 +747,11 @@
                     },
                     profile: {
                         name: 'মো. মাহবুবুর রহমান',
-                        subtitle: 'তথ্যপ্রযুক্তি পেশাজীবী',
+                        subtitle: 'তথ্যপ্রযুক্তি পেশাজীবী, ওয়েব ডেভেলপার ও উদ্যোক্তা',
                         tagline: 'একজন মুসলিম যুবক, দুনিয়া ও আখেরাতের চক্ষুশীতলকারিনী মুসলিমাহ্ জীবনসঙ্গী খুজছেন!',
                         stats: {
                             age: '২৮ বছর',
-                            education: 'উচ্চশিক্ষিত',
+                            education: 'স্নাতকোত্তর · ইসলামী বিশ্ববিদ্যালয়',
                             work: 'সুপ্রতিষ্ঠিত',
                             faith: 'দ্বীনদার মুসলিম'
                         }
@@ -757,6 +759,7 @@
                     gallery: {
                         title: 'ছবি গ্যালারি',
                         unlockTitle: 'ছবি দেখুন',
+                        unlockHint: 'লকটি ডানে স্লাইড করুন',
                         unlockAria: 'ছবি দেখতে ডান দিকে টানুন',
                         photos: [
                             { src: withCvCacheVersion('assets/images/mahbub-portrait-1.webp'), alt: 'Md Mahbubur Rahman-এর পোর্ট্রেট ১', label: 'ছবি ০১', featured: true },
@@ -2941,9 +2944,12 @@
                         <div className="card-content">
                             {!isGalleryUnlocked ? (
                                 <div className="gallery-access-gate">
-                                    <div className="gallery-access-title">
-                                        <i className="fas fa-lock" aria-hidden="true"></i>
-                                        <span>{copy.gallery.unlockTitle}</span>
+                                    <div className="gallery-access-heading">
+                                        <div className="gallery-access-title">
+                                            <i className="fas fa-lock" aria-hidden="true"></i>
+                                            <span>{copy.gallery.unlockTitle}</span>
+                                        </div>
+                                        <div className="gallery-access-hint">{copy.gallery.unlockHint}</div>
                                     </div>
                                     <div
                                         className={`gallery-unlock-track${isRtl ? ' is-rtl' : ''}${isGalleryUnlockDragging ? ' is-dragging' : ''}${isGalleryUnlockComplete ? ' is-complete' : ''}`}
