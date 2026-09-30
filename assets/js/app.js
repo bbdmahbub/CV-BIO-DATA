@@ -220,7 +220,7 @@
           { label: "Nickname", value: "Nasir Uddin", iconClass: "fas fa-signature" },
           { label: "Date of Birth", value: "20 December 1997", iconClass: "fas fa-calendar-days" },
           { label: "Age", value: "28 Years", iconClass: "fas fa-hourglass-half" },
-          { label: "Religion", value: "Islam (Practicing Muslim)", iconClass: "fas fa-mosque" },
+          { label: "Religion", value: "Islam (Religiously Observant)", iconClass: "fas fa-mosque" },
           { label: "Marital Status", value: "Unmarried", iconClass: "fas fa-ring" },
           { label: "Complexion", value: "Medium Dark", iconClass: "fas fa-palette" },
           { label: "Height & Weight", value: `5' 3" & 70 KGs`, iconClass: "fas fa-ruler-combined" },
@@ -474,7 +474,7 @@
             age: "28 \u0639\u0627\u0645\u0627\u064B",
             education: "\u0645\u0627\u062C\u0633\u062A\u064A\u0631 \xB7 \u0627\u0644\u062C\u0627\u0645\u0639\u0629 \u0627\u0644\u0625\u0633\u0644\u0627\u0645\u064A\u0629",
             work: "\u0645\u0633\u062A\u0642\u0631 \u0645\u0647\u0646\u064A\u0627\u064B",
-            faith: "\u0645\u0644\u062A\u0632\u0645 \u062F\u064A\u0646\u064A\u0627\u064B"
+            faith: "\u062D\u0631\u064A\u0635 \u0639\u0644\u0649 \u0627\u0644\u0627\u0644\u062A\u0632\u0627\u0645 \u0628\u0627\u0644\u062F\u064A\u0646"
           }
         },
         gallery: {
@@ -498,7 +498,7 @@
           { label: "\u0627\u0644\u0627\u0633\u0645 \u0627\u0644\u0645\u062E\u062A\u0635\u0631", value: "\u0646\u0627\u0635\u0631 \u0627\u0644\u062F\u064A\u0646", iconClass: "fas fa-signature" },
           { label: "\u062A\u0627\u0631\u064A\u062E \u0627\u0644\u0645\u064A\u0644\u0627\u062F", value: " \u0662\u0660 \u062F\u064A\u0633\u0645\u0628\u0631 \u0661\u0669\u0669\u0667", iconClass: "fas fa-calendar-days" },
           { label: "\u0627\u0644\u0639\u0645\u0631", value: "28 \u0633\u0646\u0629", iconClass: "fas fa-hourglass-half" },
-          { label: "\u0627\u0644\u062F\u064A\u0627\u0646\u0629", value: "\u0627\u0644\u0625\u0633\u0644\u0627\u0645 (\u0645\u0644\u062A\u0632\u0645)", iconClass: "fas fa-mosque" },
+          { label: "\u0627\u0644\u062F\u064A\u0627\u0646\u0629", value: "\u0627\u0644\u0625\u0633\u0644\u0627\u0645 (\u062D\u0631\u064A\u0635 \u0639\u0644\u0649 \u0627\u0644\u0627\u0644\u062A\u0632\u0627\u0645 \u0628\u0627\u0644\u062F\u064A\u0646)", iconClass: "fas fa-mosque" },
           { label: "\u0627\u0644\u062D\u0627\u0644\u0629 \u0627\u0644\u0627\u062C\u062A\u0645\u0627\u0639\u064A\u0629", value: "\u0623\u0639\u0632\u0628", iconClass: "fas fa-ring" },
           { label: "\u0644\u0648\u0646 \u0627\u0644\u0628\u0634\u0631\u0629", value: "\u0642\u0645\u062D\u064A \u0645\u0627\u0626\u0644 \u0644\u0644\u062F\u0627\u0643\u0646", iconClass: "fas fa-palette" },
           { label: "\u0627\u0644\u0637\u0648\u0644 \u0648\u0627\u0644\u0648\u0632\u0646", value: `5' 3" \u0648\u0667\u0660 \u0643\u062C\u0645`, iconClass: "fas fa-ruler-combined" },
@@ -753,7 +753,7 @@
             age: "\u09E8\u09EE \u09AC\u099B\u09B0",
             education: "\u09B8\u09CD\u09A8\u09BE\u09A4\u0995\u09CB\u09A4\u09CD\u09A4\u09B0 \xB7 \u0987\u09B8\u09B2\u09BE\u09AE\u09C0 \u09AC\u09BF\u09B6\u09CD\u09AC\u09AC\u09BF\u09A6\u09CD\u09AF\u09BE\u09B2\u09DF",
             work: "\u09B8\u09C1\u09AA\u09CD\u09B0\u09A4\u09BF\u09B7\u09CD\u09A0\u09BF\u09A4",
-            faith: "\u09A6\u09CD\u09AC\u09C0\u09A8\u09A6\u09BE\u09B0 \u09AE\u09C1\u09B8\u09B2\u09BF\u09AE"
+            faith: "\u09A6\u09CD\u09AC\u09C0\u09A8 \u09AA\u09BE\u09B2\u09A8\u09C7 \u09B8\u099A\u09C7\u09A4\u09A8"
           }
         },
         gallery: {
@@ -777,7 +777,7 @@
           { label: "\u09A1\u09BE\u0995\u09A8\u09BE\u09AE", value: "\u09A8\u09BE\u09B8\u09BF\u09B0 \u0989\u09A6\u09CD\u09A6\u09BF\u09A8", iconClass: "fas fa-signature" },
           { label: "\u099C\u09A8\u09CD\u09AE \u09A4\u09BE\u09B0\u09BF\u0996", value: "\u09E8\u09E6 \u09A1\u09BF\u09B8\u09C7\u09AE\u09CD\u09AC\u09B0 \u09E7\u09EF\u09EF\u09ED", iconClass: "fas fa-calendar-days" },
           { label: "\u09AC\u09DF\u09B8", value: "\u09E8\u09EE \u09AC\u099B\u09B0", iconClass: "fas fa-hourglass-half" },
-          { label: "\u09A7\u09B0\u09CD\u09AE", value: "\u0987\u09B8\u09B2\u09BE\u09AE (\u09AA\u09CD\u09B0\u09CD\u09AF\u09BE\u0995\u099F\u09BF\u09B8\u09BF\u0982 \u09AE\u09C1\u09B8\u09B2\u09BF\u09AE)", iconClass: "fas fa-mosque" },
+          { label: "\u09A7\u09B0\u09CD\u09AE", value: "\u0987\u09B8\u09B2\u09BE\u09AE (\u09A6\u09CD\u09AC\u09C0\u09A8 \u09AA\u09BE\u09B2\u09A8\u09C7 \u09B8\u099A\u09C7\u09A4\u09A8)", iconClass: "fas fa-mosque" },
           { label: "\u09AC\u09C8\u09AC\u09BE\u09B9\u09BF\u0995 \u0985\u09AC\u09B8\u09CD\u09A5\u09BE", value: "\u0985\u09AC\u09BF\u09AC\u09BE\u09B9\u09BF\u09A4", iconClass: "fas fa-ring" },
           { label: "\u0997\u09BE\u09DF\u09C7\u09B0 \u09B0\u0982", value: "\u09AE\u09BE\u099D\u09BE\u09B0\u09BF \u09B6\u09CD\u09AF\u09BE\u09AE\u09B2\u09BE", iconClass: "fas fa-palette" },
           { label: "\u0989\u099A\u09CD\u099A\u09A4\u09BE \u0993 \u0993\u099C\u09A8", value: `\u09EB' \u09E9" \u0993 \u09ED\u09E6 \u0995\u09C7\u099C\u09BF`, iconClass: "fas fa-ruler-combined" },

@@ -223,7 +223,7 @@
                         { label: 'Nickname', value: 'Nasir Uddin', iconClass: 'fas fa-signature' },
                         { label: 'Date of Birth', value: '20 December 1997', iconClass: 'fas fa-calendar-days' },
                         { label: 'Age', value: '28 Years', iconClass: 'fas fa-hourglass-half' },
-                        { label: 'Religion', value: 'Islam (Practicing Muslim)', iconClass: 'fas fa-mosque' },
+                        { label: 'Religion', value: 'Islam (Religiously Observant)', iconClass: 'fas fa-mosque' },
                         { label: 'Marital Status', value: 'Unmarried', iconClass: 'fas fa-ring' },
                         { label: 'Complexion', value: 'Medium Dark', iconClass: 'fas fa-palette' },
                         { label: 'Height & Weight', value: '5\' 3" & 70 KGs', iconClass: 'fas fa-ruler-combined' },
@@ -477,7 +477,7 @@
                             age: '28 عاماً',
                             education: 'ماجستير · الجامعة الإسلامية',
                             work: 'مستقر مهنياً',
-                            faith: 'ملتزم دينياً'
+                            faith: 'حريص على الالتزام بالدين'
                         }
                     },
                     gallery: {
@@ -501,7 +501,7 @@
                         { label: 'الاسم المختصر', value: 'ناصر الدين', iconClass: 'fas fa-signature' },
                         { label: 'تاريخ الميلاد', value: ' ٢٠ ديسمبر ١٩٩٧', iconClass: 'fas fa-calendar-days' },
                         { label: 'العمر', value: '28 سنة', iconClass: 'fas fa-hourglass-half' },
-                        { label: 'الديانة', value: 'الإسلام (ملتزم)', iconClass: 'fas fa-mosque' },
+                        { label: 'الديانة', value: 'الإسلام (حريص على الالتزام بالدين)', iconClass: 'fas fa-mosque' },
                         { label: 'الحالة الاجتماعية', value: 'أعزب', iconClass: 'fas fa-ring' },
                         { label: 'لون البشرة', value: 'قمحي مائل للداكن', iconClass: 'fas fa-palette' },
                         { label: 'الطول والوزن', value: '5\' 3" و٧٠ كجم', iconClass: 'fas fa-ruler-combined' },
@@ -756,7 +756,7 @@
                             age: '২৮ বছর',
                             education: 'স্নাতকোত্তর · ইসলামী বিশ্ববিদ্যালয়',
                             work: 'সুপ্রতিষ্ঠিত',
-                            faith: 'দ্বীনদার মুসলিম'
+                            faith: 'দ্বীন পালনে সচেতন'
                         }
                     },
                     gallery: {
@@ -780,7 +780,7 @@
                         { label: 'ডাকনাম', value: 'নাসির উদ্দিন', iconClass: 'fas fa-signature' },
                         { label: 'জন্ম তারিখ', value: '২০ ডিসেম্বর ১৯৯৭', iconClass: 'fas fa-calendar-days' },
                         { label: 'বয়স', value: '২৮ বছর', iconClass: 'fas fa-hourglass-half' },
-                        { label: 'ধর্ম', value: 'ইসলাম (প্র্যাকটিসিং মুসলিম)', iconClass: 'fas fa-mosque' },
+                        { label: 'ধর্ম', value: 'ইসলাম (দ্বীন পালনে সচেতন)', iconClass: 'fas fa-mosque' },
                         { label: 'বৈবাহিক অবস্থা', value: 'অবিবাহিত', iconClass: 'fas fa-ring' },
                         { label: 'গায়ের রং', value: 'মাঝারি শ্যামলা', iconClass: 'fas fa-palette' },
                         { label: 'উচ্চতা ও ওজন', value: '৫\' ৩" ও ৭০ কেজি', iconClass: 'fas fa-ruler-combined' },
