@@ -107,14 +107,42 @@
         documentHeading.className = 'print-document-heading';
         documentHeading.textContent = copy.documentTitle;
         profileHeader.prepend(documentHeading);
+        const headingVine = document.createElement('span');
+        headingVine.className = 'print-heading-vine';
+        headingVine.setAttribute('aria-hidden', 'true');
+        ['fa-leaf', 'fa-leaf', 'fa-spa', 'fa-leaf', 'fa-spa', 'fa-leaf', 'fa-leaf'].forEach((iconName) => {
+            const icon = document.createElement('i');
+            icon.className = `fas ${iconName}`;
+            headingVine.appendChild(icon);
+        });
+        profileHeader.appendChild(headingVine);
     }
 
     if (profileHeader && featuredPhoto) {
         const profilePhoto = featuredPhoto.cloneNode(true);
         profilePhoto.className = 'print-profile-photo';
         profilePhoto.removeAttribute('style');
+        const profileFrame = document.createElement('figure');
+        profileFrame.className = 'print-profile-frame';
+        profileFrame.appendChild(profilePhoto);
+        const addPhotoVine = (position, icons) => {
+            const vine = document.createElement('span');
+            vine.className = `print-photo-vine print-photo-vine-${position}`;
+            vine.setAttribute('aria-hidden', 'true');
+            icons.forEach((iconName) => {
+                const icon = document.createElement('i');
+                icon.className = `fas ${iconName}`;
+                vine.appendChild(icon);
+            });
+            profileFrame.appendChild(vine);
+        };
+
+        addPhotoVine('top', ['fa-leaf', 'fa-spa', 'fa-leaf', 'fa-spa', 'fa-leaf']);
+        addPhotoVine('right', ['fa-leaf', 'fa-spa', 'fa-leaf']);
+        addPhotoVine('bottom', ['fa-leaf', 'fa-spa', 'fa-leaf', 'fa-spa', 'fa-leaf']);
+        addPhotoVine('left', ['fa-leaf', 'fa-spa', 'fa-leaf']);
         profileHeader.classList.add('has-print-photo');
-        profileHeader.appendChild(profilePhoto);
+        profileHeader.appendChild(profileFrame);
         gallerySection.remove();
     }
 
@@ -123,6 +151,34 @@
         if (statsContainer && statsContainer.parentElement === source) statsContainer.remove();
         else profileStats.remove();
     }
+
+    const flowSectionRowsForPrint = (sectionId) => {
+        const section = source.querySelector(`#${sectionId}`);
+        const list = section?.querySelector('.section-item-list, .section-item-list-compact');
+        if (!section || !list || list.children.length < 2) return;
+
+        const rows = Array.from(list.children);
+        const sectionHeader = section.querySelector(':scope > .section-header');
+        const fragments = rows.map((row, index) => {
+            const fragment = section.cloneNode(false);
+            fragment.classList.add('print-flow-fragment');
+            if (index === 0 && sectionHeader) fragment.appendChild(sectionHeader.cloneNode(true));
+
+            const content = document.createElement('div');
+            content.className = 'card-content';
+            const rowList = list.cloneNode(false);
+            rowList.appendChild(row.cloneNode(true));
+            content.appendChild(rowList);
+            fragment.appendChild(content);
+            return fragment;
+        });
+
+        section.replaceWith(...fragments);
+    };
+
+    // Let the training lines flow across the page boundary instead of moving
+    // the complete section away and leaving unused space on page one.
+    flowSectionRowsForPrint('training-section');
 
     source.querySelectorAll('[id]').forEach((node) => node.removeAttribute('id'));
     source.querySelectorAll('button').forEach((button) => {
@@ -149,64 +205,59 @@
         }));
     };
 
-    const chooseSplitIndex = (nodes) => {
-        const heights = nodes.map((node) => node.getBoundingClientRect().height + 10);
-        const total = heights.reduce((sum, height) => sum + height, 0);
-        let running = 0;
-        let bestIndex = Math.max(1, Math.floor(nodes.length / 2));
-        let bestDifference = Number.POSITIVE_INFINITY;
-
-        for (let index = 1; index < nodes.length; index += 1) {
-            running += heights[index - 1];
-            const difference = Math.abs(running - (total - running));
-            if (difference < bestDifference) {
-                bestDifference = difference;
-                bestIndex = index;
-            }
-        }
-        return bestIndex;
-    };
-
     const setPageScale = (inner, scale) => {
         inner.style.width = `${100 / scale}%`;
         inner.style.transform = `scale(${scale})`;
     };
 
-    const fitsAtScale = (inner, scale) => {
-        const viewport = inner.parentElement;
-        setPageScale(inner, scale);
-        return inner.scrollHeight * scale <= viewport.clientHeight;
-    };
+    const layoutAtScale = (nodes, scale) => {
+        const pageHeight = pageOne.parentElement.clientHeight;
+        pageOne.replaceChildren();
+        pageTwo.replaceChildren();
+        setPageScale(pageOne, scale);
+        setPageScale(pageTwo, scale);
 
-    const fitPage = (inner) => {
-        const viewport = inner.parentElement;
-        let low = 0.72;
-        let high = 1;
+        let splitIndex = 0;
+        for (let index = 0; index < nodes.length; index += 1) {
+            const node = nodes[index];
+            pageOne.appendChild(node);
 
-        for (let step = 0; step < 14; step += 1) {
-            const scale = (low + high) / 2;
-            const fits = fitsAtScale(inner, scale);
-            if (fits) low = scale;
-            else high = scale;
+            if (index > 0 && pageOne.scrollHeight * scale > pageHeight) {
+                pageOne.removeChild(node);
+                break;
+            }
+            splitIndex = index + 1;
         }
 
-        const finalScale = Math.min(1, low);
-        setPageScale(inner, finalScale);
-        return finalScale;
+        nodes.slice(splitIndex).forEach((node) => pageTwo.appendChild(node));
+        return {
+            fits: pageTwo.scrollHeight * scale <= pageHeight,
+            splitIndex
+        };
     };
 
     const renderPages = () => {
         const measuredItems = Array.from(measureRoot.children);
-        const splitIndex = chooseSplitIndex(measuredItems);
-        measuredItems.slice(0, splitIndex).forEach((item) => pageOne.appendChild(item));
-        measuredItems.slice(splitIndex).forEach((item) => pageTwo.appendChild(item));
-        const pageOneScale = fitPage(pageOne);
-        const pageTwoScale = fitPage(pageTwo);
-        const sharedScale = fitsAtScale(pageTwo, pageOneScale)
-            ? pageOneScale
-            : Math.min(pageOneScale, pageTwoScale);
-        setPageScale(pageOne, sharedScale);
-        setPageScale(pageTwo, sharedScale);
+        // Preserve every item inside the two A4 pages before accepting a
+        // larger type scale that would crop the document content.
+        const minimumScale = 0.58;
+        let low = minimumScale;
+        let high = 1;
+        let bestScale = minimumScale;
+
+        if (layoutAtScale(measuredItems, minimumScale).fits) {
+            for (let step = 0; step < 12; step += 1) {
+                const scale = (low + high) / 2;
+                if (layoutAtScale(measuredItems, scale).fits) {
+                    bestScale = scale;
+                    low = scale;
+                } else {
+                    high = scale;
+                }
+            }
+        }
+
+        layoutAtScale(measuredItems, bestScale);
         measureRoot.remove();
     };
 

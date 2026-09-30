@@ -581,12 +581,12 @@ html[dir="rtl"] .print-profile-photo {
 /* Formal document layout based on the supplied visual reference. */
 .a4-content-inner {
     color: #20262b;
-    font-size: 15px;
-    line-height: 1.18;
+    font-size: 21px;
+    line-height: 1.16;
 }
 
 .a4-content-inner > * + * {
-    margin-top: 3px;
+    margin-top: 2px;
 }
 
 .header-banner {
@@ -599,54 +599,216 @@ html[dir="rtl"] .print-profile-photo {
 .header-banner.has-print-photo {
     min-height: 0;
     display: block;
-    padding: 4px 0 8px;
+    padding: 4px 58mm 8px 0;
+    border-bottom: 0;
+}
+
+.header-banner.has-print-photo::before,
+.header-banner.has-print-photo::after {
+    content: none;
+}
+
+.print-heading-vine {
+    position: absolute;
+    right: 0;
+    bottom: -8px;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    height: 17px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px;
+    color: #0f5f49;
+    pointer-events: none;
+}
+
+.print-heading-vine::before {
+    content: '';
+    position: absolute;
+    right: 8px;
+    left: 8px;
+    z-index: 0;
+    height: 1.5px;
+    border-radius: 99px;
+    background: linear-gradient(90deg, #0f5f49, #76a866, #0f5f49);
+}
+
+.print-heading-vine i {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 16px;
+    height: 16px;
+    place-items: center;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #0f5f49;
+    font-family: "Font Awesome 6 Free";
+    font-size: 10px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.print-heading-vine i:nth-child(3n) {
+    color: #c5912c;
+    font-size: 12px;
 }
 
 .print-document-heading {
     color: #173d70;
     font-family: var(--font-heading);
-    font-size: 22px;
+    font-size: 23px;
     font-weight: 900;
     line-height: 1.1;
 }
 
 .profile-name {
-    margin-top: 2px;
+    margin-top: 3px;
     color: #0874c9;
     font-family: var(--font-heading);
-    font-size: 25px;
-    line-height: 1.08;
+    font-size: 30px;
+    line-height: 1.1;
 }
 
 .subtitle {
     max-width: 145mm;
-    margin: 3px auto 0;
+    margin: 7px auto 11px;
     color: #263b57;
-    font-size: 13px;
-    line-height: 1.25;
+    font-size: 17px;
+    line-height: 1.32;
 }
 
-.print-profile-photo {
+.print-profile-frame {
     position: absolute;
-    top: calc(100% + 9px);
+    top: 8px;
     right: 0;
     left: auto;
     z-index: 2;
-    width: 31mm;
-    height: 39mm;
-    padding: 2px;
-    border: 1.5px solid #4f88c8;
-    border-radius: 2px;
-    outline: 0;
+    width: 54mm;
+    height: 68mm;
+    margin: 0;
+    padding: 3px;
+    border: 1.5px solid #0f5f49;
+    border-radius: 8px 8px 16px 8px;
     background: #ffffff;
-    box-shadow: none;
+    box-shadow: 0 0 0 2px rgba(197, 145, 44, 0.45);
+}
+
+.print-profile-frame::before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border: 1px solid #c5912c;
+    border-radius: 12px 12px 20px 12px;
+    pointer-events: none;
+}
+
+.print-profile-frame::after {
+    content: none;
+}
+
+.print-photo-vine {
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #0f5f49;
+    font-family: "Font Awesome 6 Free";
+    pointer-events: none;
+}
+
+.print-photo-vine::before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    border-radius: 99px;
+    background: linear-gradient(90deg, #0f5f49, #76a866, #0f5f49);
+}
+
+.print-photo-vine i {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 16px;
+    height: 16px;
+    place-items: center;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #0f5f49;
+    font-size: 11px;
+    line-height: 1;
+}
+
+.print-photo-vine i:nth-child(even) {
+    color: #c5912c;
+    font-size: 13px;
+}
+
+.print-photo-vine-top,
+.print-photo-vine-bottom {
+    right: 3px;
+    left: 3px;
+    height: 16px;
+}
+
+.print-photo-vine-top {
+    top: -8px;
+}
+
+.print-photo-vine-bottom {
+    bottom: -8px;
+}
+
+.print-photo-vine-top::before,
+.print-photo-vine-bottom::before {
+    top: 7px;
+    right: 5px;
+    left: 5px;
+    height: 1.5px;
+}
+
+.print-photo-vine-right,
+.print-photo-vine-left {
+    top: 5px;
+    bottom: 5px;
+    width: 16px;
+    flex-direction: column;
+}
+
+.print-photo-vine-right {
+    right: -9px;
+}
+
+.print-photo-vine-left {
+    left: -9px;
+}
+
+.print-photo-vine-right::before,
+.print-photo-vine-left::before {
+    top: 5px;
+    bottom: 5px;
+    left: 7px;
+    width: 1.5px;
+    background: linear-gradient(180deg, #0f5f49, #76a866, #0f5f49);
+}
+
+.print-profile-photo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: 4px 4px 11px 4px;
     object-fit: cover;
     object-position: center top;
 }
 
 .print-personal-section {
-    min-height: 42mm;
-    padding-right: 35mm;
+    min-height: 56mm;
+    margin-top: 10px;
+    padding-right: 58mm;
     padding-left: 0;
 }
 
@@ -729,19 +891,19 @@ html[dir="rtl"] .print-profile-photo {
 }
 
 .section-header {
-    gap: 6px;
+    gap: 9px;
     padding: 3px 0 1px;
     border-bottom: 0;
     color: #4f86c5;
     font-family: var(--font-heading);
-    font-size: 18px;
+    font-size: 23px;
     line-height: 1.08;
 }
 
 .section-icon {
     width: 22px;
     color: #287bc1;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .card-content {
@@ -786,19 +948,19 @@ html[dir="rtl"] .print-profile-photo {
 .print-personal-section .detail-row,
 .print-lifestyle-section .detail-row {
     grid-template-columns: max-content minmax(0, 1fr);
-    column-gap: 9px;
+    column-gap: 12px;
     row-gap: 0;
     align-items: baseline;
 }
 
 .detail-row:not(.work-row):not(.language-row):not(.education-row):not(.training-row) {
     grid-template-columns: 145px minmax(0, 1fr);
-    column-gap: 10px;
+    column-gap: 12px;
 }
 
 .sub-detail-row {
     grid-template-columns: 105px minmax(0, 1fr) auto;
-    column-gap: 9px;
+    column-gap: 12px;
 }
 
 .detail-label {
@@ -806,7 +968,7 @@ html[dir="rtl"] .print-profile-photo {
     max-width: none;
     display: flex;
     align-items: baseline;
-    gap: 6px;
+    gap: 9px;
     padding-inline-end: 12px;
 }
 
@@ -840,7 +1002,7 @@ html[dir="rtl"] .print-profile-photo {
 .family-summary-title {
     color: #0874c9;
     font-family: var(--font-body);
-    font-size: 15px;
+    font-size: 19px;
     line-height: 1.16;
 }
 
@@ -852,7 +1014,7 @@ html[dir="rtl"] .print-profile-photo {
 .hobby-text,
 .address-box {
     color: #111827;
-    font-size: 15px;
+    font-size: 19px;
     line-height: 1.18;
 }
 
@@ -865,7 +1027,7 @@ html[dir="rtl"] .print-profile-photo {
 .hobby-item,
 .activity-points li,
 .family-summary-label {
-    gap: 6px;
+    gap: 9px;
 }
 
 .detail-label-icon,
@@ -921,7 +1083,7 @@ html[dir="rtl"] .print-profile-photo {
 .detail-inline-badge,
 .late-inline-badge {
     padding: 1px 4px;
-    font-size: 13px;
+    font-size: 17px;
     line-height: 1.2;
 }
 
@@ -945,14 +1107,14 @@ html[dir="rtl"] .print-profile-photo {
 }
 
 .dua-arabic {
-    font-size: 16px;
+    font-size: 20px;
     line-height: 1.18;
 }
 
 .dua-english,
 .dua-reference {
     margin-top: 2px;
-    font-size: 14px;
+    font-size: 17px;
     line-height: 1.15;
 }
 
@@ -960,14 +1122,32 @@ html[dir="rtl"] .print-profile-photo {
     margin-top: 6px;
 }
 
-html[dir="rtl"] .print-profile-photo {
+html[dir="rtl"] .print-profile-frame {
     right: auto;
     left: 0;
 }
 
+html[dir="rtl"] .header-banner.has-print-photo {
+    padding: 4px 0 8px 58mm;
+}
+
+html[dir="rtl"] .header-banner.has-print-photo::before {
+    background: linear-gradient(90deg, #c5912c 0%, #c5912c 22%, #2f78bd 22%, #2f78bd 100%);
+}
+
+html[dir="rtl"] .print-profile-frame,
+html[dir="rtl"] .print-profile-frame::before {
+    border-radius: 7px 7px 7px 15px;
+}
+
+html[dir="rtl"] .print-profile-frame::after {
+    right: 10px;
+    left: auto;
+}
+
 html[dir="rtl"] .print-personal-section {
     padding-right: 0;
-    padding-left: 35mm;
+    padding-left: 58mm;
 }
 
 html[dir="rtl"] .a4-content-inner {
@@ -1012,7 +1192,7 @@ html[dir="rtl"] #print-page-two > :first-child .section-header {
 }
 
 .print-measure > * + * {
-    margin-top: 2.5mm;
+    margin-top: 1.5mm;
 }
 
 @media (max-width: 850px) {
