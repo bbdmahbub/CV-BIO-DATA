@@ -557,6 +557,12 @@ html[dir="rtl"] .stat-box {
     text-align: right;
 }
 
+html[dir="rtl"] .stat-label {
+    font-family: var(--font-arabic);
+    font-size: 10pt;
+    line-height: 1.25;
+}
+
 html[dir="rtl"] .header-banner.has-print-photo {
     grid-template-columns: 23mm minmax(0, 1fr);
     padding-right: 0;

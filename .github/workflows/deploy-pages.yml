@@ -33,6 +33,7 @@ jobs:
         run: |
           mkdir _site
           cp index.html _site/index.html
+          cp print.html _site/print.html
           cp .nojekyll _site/.nojekyll
           cp -r assets _site/assets
 

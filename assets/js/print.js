@@ -164,6 +164,17 @@
         return bestIndex;
     };
 
+    const setPageScale = (inner, scale) => {
+        inner.style.width = `${100 / scale}%`;
+        inner.style.transform = `scale(${scale})`;
+    };
+
+    const fitsAtScale = (inner, scale) => {
+        const viewport = inner.parentElement;
+        setPageScale(inner, scale);
+        return inner.scrollHeight * scale <= viewport.clientHeight;
+    };
+
     const fitPage = (inner) => {
         const viewport = inner.parentElement;
         let low = 0.72;
@@ -171,16 +182,14 @@
 
         for (let step = 0; step < 14; step += 1) {
             const scale = (low + high) / 2;
-            inner.style.width = `${100 / scale}%`;
-            inner.style.transform = `scale(${scale})`;
-            const fits = inner.scrollHeight * scale <= viewport.clientHeight;
+            const fits = fitsAtScale(inner, scale);
             if (fits) low = scale;
             else high = scale;
         }
 
         const finalScale = Math.min(1, low);
-        inner.style.width = `${100 / finalScale}%`;
-        inner.style.transform = `scale(${finalScale})`;
+        setPageScale(inner, finalScale);
+        return finalScale;
     };
 
     const renderPages = () => {
@@ -188,8 +197,13 @@
         const splitIndex = chooseSplitIndex(measuredItems);
         measuredItems.slice(0, splitIndex).forEach((item) => pageOne.appendChild(item));
         measuredItems.slice(splitIndex).forEach((item) => pageTwo.appendChild(item));
-        fitPage(pageOne);
-        fitPage(pageTwo);
+        const pageOneScale = fitPage(pageOne);
+        const pageTwoScale = fitPage(pageTwo);
+        const sharedScale = fitsAtScale(pageTwo, pageOneScale)
+            ? pageOneScale
+            : Math.min(pageOneScale, pageTwoScale);
+        setPageScale(pageOne, sharedScale);
+        setPageScale(pageTwo, sharedScale);
         measureRoot.remove();
     };
 
