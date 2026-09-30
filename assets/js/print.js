@@ -77,8 +77,11 @@
     }
 
     if (!payload || !payload.markup) {
-        documentRoot.hidden = true;
-        emptyState.hidden = false;
+        const fallbackUrl = new URL('index.html', window.location.href);
+        fallbackUrl.searchParams.set('print', '1');
+        fallbackUrl.searchParams.set('lang', requestedLanguage);
+        fallbackUrl.searchParams.set('v', params.get('v') || '');
+        window.location.replace(fallbackUrl.href);
         return;
     }
 

@@ -2,6 +2,9 @@
             const cvCacheVersion = (typeof window !== 'undefined' && window.bbdMahbubCvCacheVersion)
                 ? window.bbdMahbubCvCacheVersion
                 : Date.now();
+            const pageParams = new URLSearchParams(window.location.search);
+            const printMode = pageParams.get('print') === '1';
+            const printLanguage = pageParams.get('lang');
             const withCvCacheVersion = (src) => `${src}${src.includes('?') ? '&' : '?'}v=${cvCacheVersion}`;
             const iconProfile = String.fromCodePoint(0x1F464);
             const iconFamily = String.fromCodePoint(0x1F46A);
@@ -980,6 +983,10 @@
                 image.src = firstPhoto;
             };
             const getInitialLanguage = () => {
+                if (printMode && printLanguage && translations[printLanguage]) {
+                    return printLanguage;
+                }
+
                 try {
                     const storedLanguage = window.localStorage.getItem('bbdMahbubLanguage');
                     if (storedLanguage && translations[storedLanguage]) {
@@ -1140,6 +1147,35 @@
             const hasPreloadedCvAssetsRef = React.useRef(false);
             const photoPointerCacheRef = React.useRef(new Map());
             const photoGestureRef = React.useRef(null);
+
+            React.useEffect(() => {
+                if (!printMode) return undefined;
+
+                setIsBismillahLoadingOpen(false);
+                setIsIntroPopupOpen(false);
+                setIsGalleryUnlocked(true);
+                setIsGalleryUnlockComplete(true);
+
+                const printTimer = window.setTimeout(() => {
+                    const printableContainer = document.querySelector('.container');
+                    if (!printableContainer) return;
+
+                    const payload = JSON.stringify({
+                        markup: printableContainer.innerHTML,
+                        language,
+                        dir: selectedTranslation.dir,
+                        title: copy.meta.title,
+                        createdAt: Date.now()
+                    });
+                    const printUrl = new URL('print.html', window.location.href);
+                    printUrl.searchParams.set('lang', language);
+                    printUrl.searchParams.set('v', cvCacheVersion);
+                    window.sessionStorage.setItem('bbdMahbubPrintPayload', payload);
+                    window.location.replace(printUrl.href);
+                }, 450);
+
+                return () => window.clearTimeout(printTimer);
+            }, [language]);
 
             const detailGroups = {
                 personal: copy.personalDetails,
