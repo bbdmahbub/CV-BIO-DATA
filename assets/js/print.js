@@ -60,12 +60,19 @@
     });
 
     document.getElementById('print-back').addEventListener('click', () => {
-        if (window.history.length > 1) {
+        if (window.opener && !window.opener.closed) {
+            window.opener.focus();
             window.close();
-            window.setTimeout(() => window.history.back(), 80);
+            window.setTimeout(() => {
+                if (!window.closed) window.location.href = `index.html?return=print&lang=${requestedLanguage}`;
+            }, 150);
             return;
         }
-        window.location.href = 'index.html';
+
+        const returnUrl = new URL('index.html', window.location.href);
+        returnUrl.searchParams.set('return', 'print');
+        returnUrl.searchParams.set('lang', requestedLanguage);
+        window.location.href = returnUrl.href;
     });
     document.getElementById('print-download').addEventListener('click', () => window.print());
 

@@ -1,10 +1,11 @@
-﻿const BioDataComponent = () => {
+const BioDataComponent = () => {
             const cvCacheVersion = (typeof window !== 'undefined' && window.bbdMahbubCvCacheVersion)
                 ? window.bbdMahbubCvCacheVersion
                 : Date.now();
             const pageParams = new URLSearchParams(window.location.search);
             const printMode = pageParams.get('print') === '1';
             const printLanguage = pageParams.get('lang');
+            const skipIntro = pageParams.get('return') === 'print';
             const withCvCacheVersion = (src) => `${src}${src.includes('?') ? '&' : '?'}v=${cvCacheVersion}`;
             const iconProfile = String.fromCodePoint(0x1F464);
             const iconFamily = String.fromCodePoint(0x1F46A);
@@ -983,7 +984,7 @@
                 image.src = firstPhoto;
             };
             const getInitialLanguage = () => {
-                if (printMode && printLanguage && translations[printLanguage]) {
+                if ((printMode || skipIntro) && printLanguage && translations[printLanguage]) {
                     return printLanguage;
                 }
 
@@ -1095,7 +1096,7 @@
                 return getSavedActiveSection();
             });
             const [isIntroPopupOpen, setIsIntroPopupOpen] = React.useState(false);
-            const [isBismillahLoadingOpen, setIsBismillahLoadingOpen] = React.useState(true);
+            const [isBismillahLoadingOpen, setIsBismillahLoadingOpen] = React.useState(!skipIntro);
             const [activeLoadingAyahIndex, setActiveLoadingAyahIndex] = React.useState(0);
             const [isLoadingAyahPaused, setIsLoadingAyahPaused] = React.useState(false);
             const [isVoiceListening, setIsVoiceListening] = React.useState(false);
