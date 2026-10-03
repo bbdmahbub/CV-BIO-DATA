@@ -340,7 +340,7 @@ const BioDataComponent = () => {
                     expectation: {
                         title: 'Expectation from Bride',
                         items: [
-                            { iconClass: 'fas fa-mosque', title: 'Religious Practice', text: 'Practicing Muslimah with hijab and niqab, aware of maintaining mahram.' },
+                            { iconClass: 'fas fa-mosque', title: 'Religious Practice', text: "A religiously observant Muslimah who observes hijab and niqab, follows the guidelines concerning mahram and non-mahram, and regularly recites the Qur'an." },
                             { iconClass: 'fas fa-user-shield', title: 'Character', text: 'Educated and modest in behavior.' },
                             { iconClass: 'fas fa-house', title: 'Family Role', text: 'Aware of family responsibilities.' },
                             { iconClass: 'fas fa-heart', title: 'Lifestyle', text: 'Focused on family and Islamic lifestyle.' },
@@ -620,7 +620,7 @@ const BioDataComponent = () => {
                     expectation: {
                         title: 'التوقعات من الزوجة',
                         items: [
-                            { iconClass: 'fas fa-mosque', title: 'الالتزام الديني', text: 'مسلمة ملتزمة بالحجاب والنقاب، وتراعي أحكام المحارم.' },
+                            { iconClass: 'fas fa-mosque', title: 'الالتزام الديني', text: 'مسلمة حريصة على الالتزام بالدين، تلتزم بالحجاب والنقاب، وتراعي أحكام المحرم وغير المحرم، وتواظب على تلاوة القرآن.' },
                             { iconClass: 'fas fa-user-shield', title: 'الخلق', text: 'متعلّمة ومتواضعة في السلوك.' },
                             { iconClass: 'fas fa-house', title: 'الدور الأسري', text: 'مدركة لمسؤوليات الأسرة.' },
                             { iconClass: 'fas fa-heart', title: 'نمط الحياة', text: 'تركز على الأسرة والحياة الإسلامية.' },
@@ -900,7 +900,7 @@ const BioDataComponent = () => {
                     expectation: {
                         title: 'পাত্রীর কাছে প্রত্যাশা',
                         items: [
-                            { iconClass: 'fas fa-mosque', title: 'ধর্মীয় অনুশীলন', text: 'হিজাব ও নিকাব পালনকারী, মাহরাম-নন মাহরাম সম্পর্কে সচেতন একজন প্র্যাকটিসিং মুসলিমাহ।' },
+                            { iconClass: 'fas fa-mosque', title: 'ধর্মীয় অনুশীলন', text: 'হিজাব ও নিকাব পালনকারী, মাহরাম-নন মাহরামের বিধান মেনে চলেন এবং নিয়মিত কুরআন তিলাওয়াতে অভ্যস্ত এমন একজন দ্বীন পালনে সচেতন মুসলিমাহ।' },
                             { iconClass: 'fas fa-user-shield', title: 'চরিত্র', text: 'শিক্ষিত ও আচার-আচরণে মার্জিত।' },
                             { iconClass: 'fas fa-house', title: 'পারিবারিক ভূমিকা', text: 'পারিবারিক দায়িত্ব সম্পর্কে সচেতন।' },
                             { iconClass: 'fas fa-heart', title: 'জীবনধারা', text: 'পরিবার ও ইসলামিক জীবনধারায় মনোযোগী।' },
