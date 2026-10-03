@@ -331,8 +331,9 @@ const BioDataComponent = () => {
                     hobbies: {
                         title: 'Hobbies and Interests',
                         items: [
-                            ['fas fa-masks-theater', 'Cultural Awareness (Singing, Acting, Lyrics etc.)'],
-                            ['fas fa-lightbulb', 'Optimizing Idea.'],
+                            ['fas fa-book-quran', "Qur'an recitation and memorisation."],
+                            ['fas fa-masks-theater', "Involvement in Islamic cultural activities and da'wah-based initiatives."],
+                            ['fas fa-lightbulb', 'Idea development and problem solving.'],
                             ['fas fa-laptop-medical', 'Helping others as a tech savvy.']
                         ]
                     },
@@ -610,8 +611,9 @@ const BioDataComponent = () => {
                     hobbies: {
                         title: 'الهوايات والاهتمامات',
                         items: [
-                            ['fas fa-masks-theater', 'الوعي الثقافي (الإنشاد، التمثيل، كتابة الكلمات وغيرها).'],
-                            ['fas fa-lightbulb', 'تطوير الأفكار وتحسينها.'],
+                            ['fas fa-book-quran', 'تلاوة القرآن وحفظه.'],
+                            ['fas fa-masks-theater', 'المشاركة في الأنشطة الثقافية الإسلامية والمبادرات الدعوية.'],
+                            ['fas fa-lightbulb', 'تطوير الأفكار وحل المشكلات.'],
                             ['fas fa-laptop-medical', 'مساعدة الآخرين من خلال الخبرة التقنية.']
                         ]
                     },
@@ -889,8 +891,9 @@ const BioDataComponent = () => {
                     hobbies: {
                         title: 'শখ ও আগ্রহ',
                         items: [
-                            ['fas fa-masks-theater', 'সাংস্কৃতিক সচেতনতা (গান, অভিনয়, গীতরচনা ইত্যাদি)।'],
-                            ['fas fa-lightbulb', 'আইডিয়া উন্নয়ন ও অপ্টিমাইজেশন।'],
+                            ['fas fa-book-quran', 'কুরআন তিলাওয়াত ও মুখস্থকরণ।'],
+                            ['fas fa-masks-theater', 'ইসলামি সাংস্কৃতিক কার্যক্রম ও দাওয়াহভিত্তিক উদ্যোগে সম্পৃক্ততা।'],
+                            ['fas fa-lightbulb', 'আইডিয়া উন্নয়ন ও সমস্যা সমাধান।'],
                             ['fas fa-laptop-medical', 'প্রযুক্তিগত দক্ষতা দিয়ে অন্যকে সহায়তা করা।']
                         ]
                     },
