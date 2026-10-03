@@ -344,8 +344,7 @@ const BioDataComponent = () => {
                                 iconClass: 'fas fa-mosque',
                                 title: 'Religious Practice',
                                 points: [
-                                    { iconClass: 'fas fa-person-dress', text: 'Observes hijab and niqab.' },
-                                    { iconClass: 'fas fa-people-arrows-left-right', text: 'Follows the guidelines concerning mahram and non-mahram.' },
+                                    { iconClass: 'fas fa-person-dress', text: 'Observes hijab and niqab and is mindful of the guidelines concerning mahram and non-mahram.' },
                                     { iconClass: 'fas fa-book-quran', text: "Regularly recites the Qur'an." },
                                     { iconClass: 'fas fa-mosque', text: 'Religiously observant Muslimah.' }
                                 ]
@@ -631,8 +630,7 @@ const BioDataComponent = () => {
                                 iconClass: 'fas fa-mosque',
                                 title: 'الالتزام الديني',
                                 points: [
-                                    { iconClass: 'fas fa-person-dress', text: 'ملتزمة بالحجاب والنقاب.' },
-                                    { iconClass: 'fas fa-people-arrows-left-right', text: 'تراعي أحكام المحرم وغير المحرم.' },
+                                    { iconClass: 'fas fa-person-dress', text: 'ملتزمة بالحجاب والنقاب، وتراعي أحكام المحرم وغير المحرم.' },
                                     { iconClass: 'fas fa-book-quran', text: 'تواظب على تلاوة القرآن.' },
                                     { iconClass: 'fas fa-mosque', text: 'مسلمة حريصة على الالتزام بالدين.' }
                                 ]
@@ -918,8 +916,7 @@ const BioDataComponent = () => {
                                 iconClass: 'fas fa-mosque',
                                 title: 'ধর্মীয় অনুশীলন',
                                 points: [
-                                    { iconClass: 'fas fa-person-dress', text: 'হিজাব ও নিকাব পালনকারী।' },
-                                    { iconClass: 'fas fa-people-arrows-left-right', text: 'মাহরাম-নন মাহরামের বিধান মেনে চলেন।' },
+                                    { iconClass: 'fas fa-person-dress', text: 'হিজাব-নিকাব পালনকারী এবং মাহরাম-নন মাহরামের বিধান সম্পর্কে সচেতন।' },
                                     { iconClass: 'fas fa-book-quran', text: 'নিয়মিত কুরআন তিলাওয়াতে অভ্যস্ত।' },
                                     { iconClass: 'fas fa-mosque', text: 'দ্বীন পালনে সচেতন মুসলিমাহ।' }
                                 ]

@@ -341,8 +341,7 @@
               iconClass: "fas fa-mosque",
               title: "Religious Practice",
               points: [
-                { iconClass: "fas fa-person-dress", text: "Observes hijab and niqab." },
-                { iconClass: "fas fa-people-arrows-left-right", text: "Follows the guidelines concerning mahram and non-mahram." },
+                { iconClass: "fas fa-person-dress", text: "Observes hijab and niqab and is mindful of the guidelines concerning mahram and non-mahram." },
                 { iconClass: "fas fa-book-quran", text: "Regularly recites the Qur'an." },
                 { iconClass: "fas fa-mosque", text: "Religiously observant Muslimah." }
               ]
@@ -628,8 +627,7 @@
               iconClass: "fas fa-mosque",
               title: "\u0627\u0644\u0627\u0644\u062A\u0632\u0627\u0645 \u0627\u0644\u062F\u064A\u0646\u064A",
               points: [
-                { iconClass: "fas fa-person-dress", text: "\u0645\u0644\u062A\u0632\u0645\u0629 \u0628\u0627\u0644\u062D\u062C\u0627\u0628 \u0648\u0627\u0644\u0646\u0642\u0627\u0628." },
-                { iconClass: "fas fa-people-arrows-left-right", text: "\u062A\u0631\u0627\u0639\u064A \u0623\u062D\u0643\u0627\u0645 \u0627\u0644\u0645\u062D\u0631\u0645 \u0648\u063A\u064A\u0631 \u0627\u0644\u0645\u062D\u0631\u0645." },
+                { iconClass: "fas fa-person-dress", text: "\u0645\u0644\u062A\u0632\u0645\u0629 \u0628\u0627\u0644\u062D\u062C\u0627\u0628 \u0648\u0627\u0644\u0646\u0642\u0627\u0628\u060C \u0648\u062A\u0631\u0627\u0639\u064A \u0623\u062D\u0643\u0627\u0645 \u0627\u0644\u0645\u062D\u0631\u0645 \u0648\u063A\u064A\u0631 \u0627\u0644\u0645\u062D\u0631\u0645." },
                 { iconClass: "fas fa-book-quran", text: "\u062A\u0648\u0627\u0638\u0628 \u0639\u0644\u0649 \u062A\u0644\u0627\u0648\u0629 \u0627\u0644\u0642\u0631\u0622\u0646." },
                 { iconClass: "fas fa-mosque", text: "\u0645\u0633\u0644\u0645\u0629 \u062D\u0631\u064A\u0635\u0629 \u0639\u0644\u0649 \u0627\u0644\u0627\u0644\u062A\u0632\u0627\u0645 \u0628\u0627\u0644\u062F\u064A\u0646." }
               ]
@@ -915,8 +913,7 @@
               iconClass: "fas fa-mosque",
               title: "\u09A7\u09B0\u09CD\u09AE\u09C0\u09DF \u0985\u09A8\u09C1\u09B6\u09C0\u09B2\u09A8",
               points: [
-                { iconClass: "fas fa-person-dress", text: "\u09B9\u09BF\u099C\u09BE\u09AC \u0993 \u09A8\u09BF\u0995\u09BE\u09AC \u09AA\u09BE\u09B2\u09A8\u0995\u09BE\u09B0\u09C0\u0964" },
-                { iconClass: "fas fa-people-arrows-left-right", text: "\u09AE\u09BE\u09B9\u09B0\u09BE\u09AE-\u09A8\u09A8 \u09AE\u09BE\u09B9\u09B0\u09BE\u09AE\u09C7\u09B0 \u09AC\u09BF\u09A7\u09BE\u09A8 \u09AE\u09C7\u09A8\u09C7 \u099A\u09B2\u09C7\u09A8\u0964" },
+                { iconClass: "fas fa-person-dress", text: "\u09B9\u09BF\u099C\u09BE\u09AC-\u09A8\u09BF\u0995\u09BE\u09AC \u09AA\u09BE\u09B2\u09A8\u0995\u09BE\u09B0\u09C0 \u098F\u09AC\u0982 \u09AE\u09BE\u09B9\u09B0\u09BE\u09AE-\u09A8\u09A8 \u09AE\u09BE\u09B9\u09B0\u09BE\u09AE\u09C7\u09B0 \u09AC\u09BF\u09A7\u09BE\u09A8 \u09B8\u09AE\u09CD\u09AA\u09B0\u09CD\u0995\u09C7 \u09B8\u099A\u09C7\u09A4\u09A8\u0964" },
                 { iconClass: "fas fa-book-quran", text: "\u09A8\u09BF\u09DF\u09AE\u09BF\u09A4 \u0995\u09C1\u09B0\u0986\u09A8 \u09A4\u09BF\u09B2\u09BE\u0993\u09DF\u09BE\u09A4\u09C7 \u0985\u09AD\u09CD\u09AF\u09B8\u09CD\u09A4\u0964" },
                 { iconClass: "fas fa-mosque", text: "\u09A6\u09CD\u09AC\u09C0\u09A8 \u09AA\u09BE\u09B2\u09A8\u09C7 \u09B8\u099A\u09C7\u09A4\u09A8 \u09AE\u09C1\u09B8\u09B2\u09BF\u09AE\u09BE\u09B9\u0964" }
               ]
