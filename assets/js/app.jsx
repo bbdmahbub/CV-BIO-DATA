@@ -340,12 +340,19 @@ const BioDataComponent = () => {
                     expectation: {
                         title: 'Expectation from Bride',
                         items: [
-                            { iconClass: 'fas fa-mosque', title: 'Religious Practice', text: "A religiously observant Muslimah who observes hijab and niqab, follows the guidelines concerning mahram and non-mahram, and regularly recites the Qur'an." },
-                            { iconClass: 'fas fa-user-shield', title: 'Character', text: 'Educated and modest in behavior.' },
-                            { iconClass: 'fas fa-house', title: 'Family Role', text: 'Aware of family responsibilities.' },
-                            { iconClass: 'fas fa-heart', title: 'Lifestyle', text: 'Focused on family and Islamic lifestyle.' },
+                            {
+                                iconClass: 'fas fa-mosque',
+                                title: 'Religious Practice',
+                                points: [
+                                    { iconClass: 'fas fa-person-dress', text: 'Observes hijab and niqab.' },
+                                    { iconClass: 'fas fa-people-arrows-left-right', text: 'Follows the guidelines concerning mahram and non-mahram.' },
+                                    { iconClass: 'fas fa-book-quran', text: "Regularly recites the Qur'an." },
+                                    { iconClass: 'fas fa-mosque', text: 'Religiously observant Muslimah.' }
+                                ]
+                            },
+                            { iconClass: 'fas fa-user-shield', title: 'Personality & Family Responsibility', text: 'Educated, well-mannered, and aware of family responsibilities.' },
                             { iconClass: 'fas fa-palette', title: 'Preferred Complexion', text: 'Medium/Fair (flexible).' },
-                            { iconClass: 'fas fa-briefcase', title: 'Profession', text: 'A profession is not mandatory; a family-oriented Islamic lifestyle is preferred.' }
+                            { iconClass: 'fas fa-briefcase', title: 'Profession', text: 'A profession is not mandatory; faith, family, and mutual understanding should be prioritised.' }
                         ]
                     },
                     contact: {
@@ -620,12 +627,19 @@ const BioDataComponent = () => {
                     expectation: {
                         title: 'التوقعات من الزوجة',
                         items: [
-                            { iconClass: 'fas fa-mosque', title: 'الالتزام الديني', text: 'مسلمة حريصة على الالتزام بالدين، تلتزم بالحجاب والنقاب، وتراعي أحكام المحرم وغير المحرم، وتواظب على تلاوة القرآن.' },
-                            { iconClass: 'fas fa-user-shield', title: 'الخلق', text: 'متعلّمة ومتواضعة في السلوك.' },
-                            { iconClass: 'fas fa-house', title: 'الدور الأسري', text: 'مدركة لمسؤوليات الأسرة.' },
-                            { iconClass: 'fas fa-heart', title: 'نمط الحياة', text: 'تركز على الأسرة والحياة الإسلامية.' },
+                            {
+                                iconClass: 'fas fa-mosque',
+                                title: 'الالتزام الديني',
+                                points: [
+                                    { iconClass: 'fas fa-person-dress', text: 'ملتزمة بالحجاب والنقاب.' },
+                                    { iconClass: 'fas fa-people-arrows-left-right', text: 'تراعي أحكام المحرم وغير المحرم.' },
+                                    { iconClass: 'fas fa-book-quran', text: 'تواظب على تلاوة القرآن.' },
+                                    { iconClass: 'fas fa-mosque', text: 'مسلمة حريصة على الالتزام بالدين.' }
+                                ]
+                            },
+                            { iconClass: 'fas fa-user-shield', title: 'الشخصية والمسؤولية الأسرية', text: 'متعلّمة، حسنة السلوك، ومدركة لمسؤوليات الأسرة.' },
                             { iconClass: 'fas fa-palette', title: 'لون البشرة المفضل', text: 'قمحي أو فاتح (بمرونة).' },
-                            { iconClass: 'fas fa-briefcase', title: 'المهنة', text: 'المهنة ليست شرطاً أساسياً؛ الأولوية لحياة أسرية ذات طابع إسلامي.' }
+                            { iconClass: 'fas fa-briefcase', title: 'المهنة', text: 'المهنة ليست شرطاً إلزامياً؛ يُقدَّم الدين والأسرة والتفاهم المتبادل على غيره.' }
                         ]
                     },
                     contact: {
@@ -900,12 +914,19 @@ const BioDataComponent = () => {
                     expectation: {
                         title: 'পাত্রীর কাছে প্রত্যাশা',
                         items: [
-                            { iconClass: 'fas fa-mosque', title: 'ধর্মীয় অনুশীলন', text: 'হিজাব ও নিকাব পালনকারী, মাহরাম-নন মাহরামের বিধান মেনে চলেন এবং নিয়মিত কুরআন তিলাওয়াতে অভ্যস্ত এমন একজন দ্বীন পালনে সচেতন মুসলিমাহ।' },
-                            { iconClass: 'fas fa-user-shield', title: 'চরিত্র', text: 'শিক্ষিত ও আচার-আচরণে মার্জিত।' },
-                            { iconClass: 'fas fa-house', title: 'পারিবারিক ভূমিকা', text: 'পারিবারিক দায়িত্ব সম্পর্কে সচেতন।' },
-                            { iconClass: 'fas fa-heart', title: 'জীবনধারা', text: 'পরিবার ও ইসলামিক জীবনধারায় মনোযোগী।' },
+                            {
+                                iconClass: 'fas fa-mosque',
+                                title: 'ধর্মীয় অনুশীলন',
+                                points: [
+                                    { iconClass: 'fas fa-person-dress', text: 'হিজাব ও নিকাব পালনকারী।' },
+                                    { iconClass: 'fas fa-people-arrows-left-right', text: 'মাহরাম-নন মাহরামের বিধান মেনে চলেন।' },
+                                    { iconClass: 'fas fa-book-quran', text: 'নিয়মিত কুরআন তিলাওয়াতে অভ্যস্ত।' },
+                                    { iconClass: 'fas fa-mosque', text: 'দ্বীন পালনে সচেতন মুসলিমাহ।' }
+                                ]
+                            },
+                            { iconClass: 'fas fa-user-shield', title: 'ব্যক্তিত্ব ও পারিবারিক দায়িত্ব', text: 'শিক্ষিত, আচার-আচরণে মার্জিত এবং পারিবারিক দায়িত্ব সম্পর্কে সচেতন।' },
                             { iconClass: 'fas fa-palette', title: 'পছন্দের গায়ের রং', text: 'মাঝারি/ফর্সা (নমনীয়)।' },
-                            { iconClass: 'fas fa-briefcase', title: 'পেশা', text: 'পেশা বাধ্যতামূলক নয়; পরিবারমুখী ইসলামিক জীবনধারাকে অগ্রাধিকার দেওয়া হবে।' }
+                            { iconClass: 'fas fa-briefcase', title: 'পেশা', text: 'পেশা বাধ্যতামূলক নয়; দ্বীন, পরিবার ও পারস্পরিক বোঝাপড়াকে অগ্রাধিকার দেবেন।' }
                         ]
                     },
                     contact: {
@@ -3391,12 +3412,23 @@ const BioDataComponent = () => {
                         </div>
                         <div className="card-content">
                             <div className="expectation-list">
-                                {expectationItems.map(({ iconClass, title, text }) => (
+                                {expectationItems.map(({ iconClass, title, text, points }) => (
                                     <div className="expectation-item section-card-item" key={title}>
                                         <span className="expectation-item-icon"><i className={iconClass} aria-hidden="true"></i></span>
                                         <div className="expectation-item-content">
                                             <div className="expectation-item-title">{renderTextWithLtrNumbers(title)}</div>
-                                            <div className="expectation-item-text">{renderTextWithLtrNumbers(text)}</div>
+                                            {points ? (
+                                                <ul className="expectation-points">
+                                                    {points.map(({ iconClass: pointIconClass, text: pointText }) => (
+                                                        <li key={pointText}>
+                                                            <span className="expectation-point-icon"><i className={pointIconClass} aria-hidden="true"></i></span>
+                                                            <span>{renderTextWithLtrNumbers(pointText)}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            ) : (
+                                                <div className="expectation-item-text">{renderTextWithLtrNumbers(text)}</div>
+                                            )}
                                         </div>
                                     </div>
                                 ))}
