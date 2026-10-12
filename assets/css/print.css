@@ -377,6 +377,7 @@ a {
 .education-meta,
 .activity-point-text,
 .expectation-item-text,
+.expectation-points,
 .hobby-text,
 .address-box {
     color: var(--muted);
@@ -471,6 +472,34 @@ a {
 .activity-points li {
     padding: 0.6mm 0;
     border-top: 0;
+}
+
+.expectation-points {
+    display: grid;
+    gap: 0.5mm;
+    margin: 0.7mm 0 0;
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+.expectation-points li {
+    display: flex;
+    align-items: flex-start;
+    gap: 2mm;
+    margin: 0;
+    padding: 0.6mm 0;
+    list-style: none !important;
+}
+
+.expectation-points li::marker {
+    content: '';
+}
+
+.expectation-point-icon {
+    flex: 0 0 5mm;
+    width: 5mm;
+    color: var(--gold);
+    text-align: center;
 }
 
 .family-summary {
@@ -891,7 +920,7 @@ html[dir="rtl"] .print-profile-photo {
 }
 
 .section-header {
-    gap: 9px;
+    gap: 12px;
     padding: 3px 0 1px;
     border-bottom: 0;
     color: #4f86c5;
@@ -1011,6 +1040,7 @@ html[dir="rtl"] .print-profile-photo {
 .education-meta,
 .activity-point-text,
 .expectation-item-text,
+.expectation-points,
 .hobby-text,
 .address-box {
     color: #111827;
@@ -1024,10 +1054,18 @@ html[dir="rtl"] .print-profile-photo {
 .education-title-wrap,
 .activity-title-wrap,
 .expectation-item,
+.expectation-points li,
 .hobby-item,
 .activity-points li,
+.icon-text,
 .family-summary-label {
-    gap: 9px;
+    gap: 12px;
+}
+
+.dua-closing {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .detail-label-icon,
