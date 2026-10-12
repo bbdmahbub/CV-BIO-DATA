@@ -318,14 +318,14 @@ const BioDataComponent = () => {
                                 title: 'Volunteering',
                                 items: [
                                     { text: 'Founder President (Present), A S Foundation, Morrelganj, Bagerhat.', iconClass: 'fas fa-hand-holding-heart' },
-                                    { text: 'Former Elected CR of the class for 2 years, Islamic University, Kushtia.', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'Visit' },
+                                    { text: 'Former Central Member of Bangladesh Islamic Chhatra Shibir', iconClass: 'fas fa-shield-halved', href: 'https://shibir.org.bd', linkLabel: 'Visit' },
                                     { text: 'Former Director of Betikrom Shahitya Shangskritik Jote, IU.', iconClass: 'fas fa-masks-theater', href: 'https://web.facebook.com/betikrom87', linkLabel: 'Visit' },
-                                    { text: 'Former Central Member of Bangladesh Islamic Chhatra Shibir', iconClass: 'fas fa-shield-halved', href: 'https://shibir.org.bd', linkLabel: 'Visit' }
+                                    { text: 'Former elected Class Representative (CR), Islamic University, Kushtia — tenure: 2 years.', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'Visit' }
                                 ]
                             },
                             { title: 'Singing', items: [{ text: 'Performed song on SATV, ETV, Channel 9', iconClass: 'fas fa-music' }] },
-                            { title: 'Acting', period: '2018', items: [{ text: 'Acted in a drama, was placed 2nd Nationally.', iconClass: 'fas fa-film' }] },
-                            { title: 'Award', period: '2012', items: [{ text: 'Awarded on Poetry Recitation Placed 2nd Nationally', iconClass: 'fas fa-award' }] }
+                            { title: 'Acting', period: '2018', items: [{ text: 'Placed 2nd nationally for performing in an Islamic drama.', iconClass: 'fas fa-film' }] },
+                            { title: 'Award', period: '2012', items: [{ text: 'Achieved 2nd place nationally in poetry recitation.', iconClass: 'fas fa-award' }] }
                         ]
                     },
                     hobbies: {
@@ -604,14 +604,14 @@ const BioDataComponent = () => {
                                 period: '٧ يوليو ٢٠١٤ - ١٢ ديسمبر ٢٠١٥',
                                 items: [
                                     { text: 'الرئيس المؤسس (حالياً)، مؤسسة إيه إس، موريلغانج، باغرهات.', iconClass: 'fas fa-hand-holding-heart' },
-                                    { text: 'ممثل الصف المنتخب سابقًا لمدة سنتين، الجامعة الإسلامية', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'زيارة' },
+                                    { text: 'عضو مركزي سابق في شاترا شيبير الإسلامية في بنغلاديش', iconClass: 'fas fa-shield-halved', href: 'https://shibir.org.bd', linkLabel: 'زيارة' },
                                     { text: 'المدير السابق لـ بيتكرم شاهيتيا شانغسكريتيك جوتي، الجامعة الإسلامية', iconClass: 'fas fa-masks-theater', href: 'https://web.facebook.com/betikrom87', linkLabel: 'زيارة' },
-                                    { text: 'عضو مركزي سابق في شاترا شيبير الإسلامية في بنغلاديش', iconClass: 'fas fa-shield-halved', href: 'https://shibir.org.bd', linkLabel: 'زيارة' }
+                                    { text: 'ممثل الصف المنتخب سابقًا، الجامعة الإسلامية، كوشتيا — مدة المسؤولية: سنتان.', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'زيارة' }
                                 ]
                             },
                             { title: 'الإنشاد', items: [{ text: 'أدّى أغاني على ساتي في، إي تي في، وقناة ٩', iconClass: 'fas fa-music' }] },
-                            { title: 'التمثيل', period: '٢٠١٨', items: [{ text: 'شارك في عمل درامي وحصل على المركز الثاني على المستوى الوطني.', iconClass: 'fas fa-film' }] },
-                            { title: 'الجوائز', period: '٢٠١٢', items: [{ text: 'نال جائزة في إلقاء الشعر وحصل على المركز الثاني على المستوى الوطني.', iconClass: 'fas fa-award' }] }
+                            { title: 'التمثيل', period: '٢٠١٨', items: [{ text: 'حصل على المركز الثاني على المستوى الوطني في تقديم مسرحية إسلامية.', iconClass: 'fas fa-film' }] },
+                            { title: 'الجوائز', period: '٢٠١٢', items: [{ text: 'حقق المركز الثاني على المستوى الوطني في إلقاء الشعر.', iconClass: 'fas fa-award' }] }
                         ]
                     },
                     hobbies: {
@@ -890,14 +890,14 @@ const BioDataComponent = () => {
                                 period: '',
                                 items: [
                                     { text: 'প্রতিষ্ঠাতা সভাপতি (বর্তমান), এ এস ফাউন্ডেশন, মোরেলগঞ্জ, বাগেরহাট।', iconClass: 'fas fa-hand-holding-heart' },
-                                    { text: 'সাবেক নির্বাচিত সিআর, ২বছর, ইসলামী বিশ্ববিদ্যালয়, কুষ্টিয়া।', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'ভিজিট' },
+                                    { text: 'সাবেক কেন্দ্রীয় সদস্য, বাংলাদেশ ইসলামী ছাত্রশিবির, ঢাকা।', iconClass: 'fas fa-shield-halved', href: 'https://shibir.org.bd', linkLabel: 'ভিজিট' },
                                     { text: 'সাবেক পরিচালক, ব্যতিক্রম সাহিত্য সাংস্কৃতিক জোট, ইবি।', iconClass: 'fas fa-masks-theater', href: 'https://web.facebook.com/betikrom87', linkLabel: 'ভিজিট' },
-                                    { text: 'সাবেক কেন্দ্রীয় সদস্য, বাংলাদেশ ইসলামী ছাত্রশিবির, ঢাকা।', iconClass: 'fas fa-shield-halved', href: 'https://shibir.org.bd', linkLabel: 'ভিজিট' }
+                                    { text: 'সাবেক নির্বাচিত ক্লাস প্রতিনিধি (সিআর), ইসলামী বিশ্ববিদ্যালয়, কুষ্টিয়া — দায়িত্বকাল: ২ বছর।', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'ভিজিট' }
                                 ]
                             },
                             { title: 'গান', items: [{ text: 'SATV, ETV, Channel 9-এ গান পরিবেশন করেছেন', iconClass: 'fas fa-music' }] },
-                            { title: 'অভিনয়', period: '2018', items: [{ text: 'একটি নাটকে অভিনয় করেছেন এবং জাতীয় পর্যায়ে ২য় হয়েছেন।', iconClass: 'fas fa-film' }] },
-                            { title: 'পুরস্কার', period: '2012', items: [{ text: 'কবিতা আবৃত্তিতে জাতীয় পর্যায়ে ২য় স্থান অর্জন করেছেন।', iconClass: 'fas fa-award' }] }
+                            { title: 'অভিনয়', period: '2018', items: [{ text: 'জাতীয় পর্যায়ে ইসলামী নাটক পরিবেশনে ২য় স্থান।', iconClass: 'fas fa-film' }] },
+                            { title: 'পুরস্কার', period: '2012', items: [{ text: 'কবিতা আবৃত্তিতে জাতীয় পর্যায়ে ২য় স্থান অর্জন।', iconClass: 'fas fa-award' }] }
                         ]
                     },
                     hobbies: {
