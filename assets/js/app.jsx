@@ -323,7 +323,7 @@ const BioDataComponent = () => {
                                     { text: 'Former elected Class Representative (CR), Islamic University, Kushtia — tenure: 2 years.', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'Visit' }
                                 ]
                             },
-                            { title: 'Singing', items: [{ text: 'Performed song on SATV, ETV, Channel 9', iconClass: 'fas fa-music' }] },
+                            { title: 'Singing', items: [{ text: 'Song performances on SATV, ETV, and Channel 9.', iconClass: 'fas fa-music' }] },
                             { title: 'Acting', period: '2018', items: [{ text: 'Placed 2nd nationally for performing in an Islamic drama.', iconClass: 'fas fa-film' }] },
                             { title: 'Award', period: '2012', items: [{ text: 'Achieved 2nd place nationally in poetry recitation.', iconClass: 'fas fa-award' }] }
                         ]
@@ -609,7 +609,7 @@ const BioDataComponent = () => {
                                     { text: 'ممثل الصف المنتخب سابقًا، الجامعة الإسلامية، كوشتيا — مدة المسؤولية: سنتان.', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'زيارة' }
                                 ]
                             },
-                            { title: 'الإنشاد', items: [{ text: 'أدّى أغاني على ساتي في، إي تي في، وقناة ٩', iconClass: 'fas fa-music' }] },
+                            { title: 'الإنشاد', items: [{ text: 'أداء الأناشيد على SATV وETV وChannel 9.', iconClass: 'fas fa-music' }] },
                             { title: 'التمثيل', period: '٢٠١٨', items: [{ text: 'حصل على المركز الثاني على المستوى الوطني في تقديم مسرحية إسلامية.', iconClass: 'fas fa-film' }] },
                             { title: 'الجوائز', period: '٢٠١٢', items: [{ text: 'حقق المركز الثاني على المستوى الوطني في إلقاء الشعر.', iconClass: 'fas fa-award' }] }
                         ]
@@ -895,8 +895,8 @@ const BioDataComponent = () => {
                                     { text: 'সাবেক নির্বাচিত ক্লাস প্রতিনিধি (সিআর), ইসলামী বিশ্ববিদ্যালয়, কুষ্টিয়া — দায়িত্বকাল: ২ বছর।', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'ভিজিট' }
                                 ]
                             },
-                            { title: 'গান', items: [{ text: 'SATV, ETV, Channel 9-এ গান পরিবেশন করেছেন', iconClass: 'fas fa-music' }] },
-                            { title: 'অভিনয়', period: '2018', items: [{ text: 'জাতীয় পর্যায়ে ইসলামী নাটক পরিবেশনে ২য় স্থান।', iconClass: 'fas fa-film' }] },
+                            { title: 'গান', items: [{ text: 'SATV, ETV, Channel 9-এ গান পরিবেশন।', iconClass: 'fas fa-music' }] },
+                            { title: 'অভিনয়', period: '2018', items: [{ text: 'জাতীয় পর্যায়ে ইসলামী নাটক পরিবেশনে ২য় স্থান অর্জন।', iconClass: 'fas fa-film' }] },
                             { title: 'পুরস্কার', period: '2012', items: [{ text: 'কবিতা আবৃত্তিতে জাতীয় পর্যায়ে ২য় স্থান অর্জন।', iconClass: 'fas fa-award' }] }
                         ]
                     },

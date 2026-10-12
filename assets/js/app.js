@@ -320,7 +320,7 @@
                 { text: "Former elected Class Representative (CR), Islamic University, Kushtia \u2014 tenure: 2 years.", iconClass: "fas fa-users", href: "https://iu.ac.bd", linkLabel: "Visit" }
               ]
             },
-            { title: "Singing", items: [{ text: "Performed song on SATV, ETV, Channel 9", iconClass: "fas fa-music" }] },
+            { title: "Singing", items: [{ text: "Song performances on SATV, ETV, and Channel 9.", iconClass: "fas fa-music" }] },
             { title: "Acting", period: "2018", items: [{ text: "Placed 2nd nationally for performing in an Islamic drama.", iconClass: "fas fa-film" }] },
             { title: "Award", period: "2012", items: [{ text: "Achieved 2nd place nationally in poetry recitation.", iconClass: "fas fa-award" }] }
           ]
@@ -606,7 +606,7 @@
                 { text: "\u0645\u0645\u062B\u0644 \u0627\u0644\u0635\u0641 \u0627\u0644\u0645\u0646\u062A\u062E\u0628 \u0633\u0627\u0628\u0642\u064B\u0627\u060C \u0627\u0644\u062C\u0627\u0645\u0639\u0629 \u0627\u0644\u0625\u0633\u0644\u0627\u0645\u064A\u0629\u060C \u0643\u0648\u0634\u062A\u064A\u0627 \u2014 \u0645\u062F\u0629 \u0627\u0644\u0645\u0633\u0624\u0648\u0644\u064A\u0629: \u0633\u0646\u062A\u0627\u0646.", iconClass: "fas fa-users", href: "https://iu.ac.bd", linkLabel: "\u0632\u064A\u0627\u0631\u0629" }
               ]
             },
-            { title: "\u0627\u0644\u0625\u0646\u0634\u0627\u062F", items: [{ text: "\u0623\u062F\u0651\u0649 \u0623\u063A\u0627\u0646\u064A \u0639\u0644\u0649 \u0633\u0627\u062A\u064A \u0641\u064A\u060C \u0625\u064A \u062A\u064A \u0641\u064A\u060C \u0648\u0642\u0646\u0627\u0629 \u0669", iconClass: "fas fa-music" }] },
+            { title: "\u0627\u0644\u0625\u0646\u0634\u0627\u062F", items: [{ text: "\u0623\u062F\u0627\u0621 \u0627\u0644\u0623\u0646\u0627\u0634\u064A\u062F \u0639\u0644\u0649 SATV \u0648ETV \u0648Channel 9.", iconClass: "fas fa-music" }] },
             { title: "\u0627\u0644\u062A\u0645\u062B\u064A\u0644", period: "\u0662\u0660\u0661\u0668", items: [{ text: "\u062D\u0635\u0644 \u0639\u0644\u0649 \u0627\u0644\u0645\u0631\u0643\u0632 \u0627\u0644\u062B\u0627\u0646\u064A \u0639\u0644\u0649 \u0627\u0644\u0645\u0633\u062A\u0648\u0649 \u0627\u0644\u0648\u0637\u0646\u064A \u0641\u064A \u062A\u0642\u062F\u064A\u0645 \u0645\u0633\u0631\u062D\u064A\u0629 \u0625\u0633\u0644\u0627\u0645\u064A\u0629.", iconClass: "fas fa-film" }] },
             { title: "\u0627\u0644\u062C\u0648\u0627\u0626\u0632", period: "\u0662\u0660\u0661\u0662", items: [{ text: "\u062D\u0642\u0642 \u0627\u0644\u0645\u0631\u0643\u0632 \u0627\u0644\u062B\u0627\u0646\u064A \u0639\u0644\u0649 \u0627\u0644\u0645\u0633\u062A\u0648\u0649 \u0627\u0644\u0648\u0637\u0646\u064A \u0641\u064A \u0625\u0644\u0642\u0627\u0621 \u0627\u0644\u0634\u0639\u0631.", iconClass: "fas fa-award" }] }
           ]
@@ -892,8 +892,8 @@
                 { text: "\u09B8\u09BE\u09AC\u09C7\u0995 \u09A8\u09BF\u09B0\u09CD\u09AC\u09BE\u099A\u09BF\u09A4 \u0995\u09CD\u09B2\u09BE\u09B8 \u09AA\u09CD\u09B0\u09A4\u09BF\u09A8\u09BF\u09A7\u09BF (\u09B8\u09BF\u0986\u09B0), \u0987\u09B8\u09B2\u09BE\u09AE\u09C0 \u09AC\u09BF\u09B6\u09CD\u09AC\u09AC\u09BF\u09A6\u09CD\u09AF\u09BE\u09B2\u09DF, \u0995\u09C1\u09B7\u09CD\u099F\u09BF\u09DF\u09BE \u2014 \u09A6\u09BE\u09DF\u09BF\u09A4\u09CD\u09AC\u0995\u09BE\u09B2: \u09E8 \u09AC\u099B\u09B0\u0964", iconClass: "fas fa-users", href: "https://iu.ac.bd", linkLabel: "\u09AD\u09BF\u099C\u09BF\u099F" }
               ]
             },
-            { title: "\u0997\u09BE\u09A8", items: [{ text: "SATV, ETV, Channel 9-\u098F \u0997\u09BE\u09A8 \u09AA\u09B0\u09BF\u09AC\u09C7\u09B6\u09A8 \u0995\u09B0\u09C7\u099B\u09C7\u09A8", iconClass: "fas fa-music" }] },
-            { title: "\u0985\u09AD\u09BF\u09A8\u09DF", period: "2018", items: [{ text: "\u099C\u09BE\u09A4\u09C0\u09DF \u09AA\u09B0\u09CD\u09AF\u09BE\u09DF\u09C7 \u0987\u09B8\u09B2\u09BE\u09AE\u09C0 \u09A8\u09BE\u099F\u0995 \u09AA\u09B0\u09BF\u09AC\u09C7\u09B6\u09A8\u09C7 \u09E8\u09DF \u09B8\u09CD\u09A5\u09BE\u09A8\u0964", iconClass: "fas fa-film" }] },
+            { title: "\u0997\u09BE\u09A8", items: [{ text: "SATV, ETV, Channel 9-\u098F \u0997\u09BE\u09A8 \u09AA\u09B0\u09BF\u09AC\u09C7\u09B6\u09A8\u0964", iconClass: "fas fa-music" }] },
+            { title: "\u0985\u09AD\u09BF\u09A8\u09DF", period: "2018", items: [{ text: "\u099C\u09BE\u09A4\u09C0\u09DF \u09AA\u09B0\u09CD\u09AF\u09BE\u09DF\u09C7 \u0987\u09B8\u09B2\u09BE\u09AE\u09C0 \u09A8\u09BE\u099F\u0995 \u09AA\u09B0\u09BF\u09AC\u09C7\u09B6\u09A8\u09C7 \u09E8\u09DF \u09B8\u09CD\u09A5\u09BE\u09A8 \u0985\u09B0\u09CD\u099C\u09A8\u0964", iconClass: "fas fa-film" }] },
             { title: "\u09AA\u09C1\u09B0\u09B8\u09CD\u0995\u09BE\u09B0", period: "2012", items: [{ text: "\u0995\u09AC\u09BF\u09A4\u09BE \u0986\u09AC\u09C3\u09A4\u09CD\u09A4\u09BF\u09A4\u09C7 \u099C\u09BE\u09A4\u09C0\u09DF \u09AA\u09B0\u09CD\u09AF\u09BE\u09DF\u09C7 \u09E8\u09DF \u09B8\u09CD\u09A5\u09BE\u09A8 \u0985\u09B0\u09CD\u099C\u09A8\u0964", iconClass: "fas fa-award" }] }
           ]
         },
