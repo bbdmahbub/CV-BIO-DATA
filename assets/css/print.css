@@ -359,6 +359,11 @@ a {
     white-space: nowrap;
 }
 
+.print-family-section .detail-row .detail-value,
+.print-family-section .sub-detail-row .detail-value {
+    white-space: pre-line;
+}
+
 .detail-label,
 .subsection-title,
 .work-title,

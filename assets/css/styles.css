@@ -2727,6 +2727,11 @@
 
         .sub-detail-row.section-card-item .detail-value {
             grid-column: 1 / -1;
+            white-space: pre-line;
+        }
+
+        #family-section .detail-row .detail-value {
+            white-space: pre-line;
         }
 
         .sibling-label {

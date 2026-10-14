@@ -233,8 +233,8 @@ const BioDataComponent = () => {
                         { label: 'Health Status', value: 'Healthy, non-smoker and drug-free', iconClass: 'fas fa-heart-pulse' }
                     ],
                     familyDetails: [
-                        ['Father', 'Late Abdul Kader Howlader (He was a village doctor and primary school teacher)'],
-                        ['Mother', 'Farida Begum - Housewife'],
+                        ['Father', 'Late Abdul Kader Howlader (was a village doctor and primary school teacher)\nEducation: HSC and Professional Doctor Training'],
+                        ['Mother', 'Farida Begum - Housewife\nEducation: Class Five'],
                         ['Siblings', '4 Brothers and 3 Sisters'],
                         ['Permanent Address', 'Uttar Sutalori, Jomaddar Para, Morrelganj, Bagerhat'],
                         ['District', 'Bagerhat']
@@ -246,12 +246,12 @@ const BioDataComponent = () => {
                     },
                     familySiblingsTitle: 'Sibling Details',
                     familySiblings: [
-                        ['1st Sister', 'Shahanaj Shanti, Housewife with 4 Children. Morrelganj.'],
-                        ['2nd Brother', 'Alauddin, was a worker in UAE, Business (Dhaka). 2 Children. Morrelganj.'],
-                        ['3rd Brother', 'Giash Uddin, Driver, Bananja PCL, Chattagram, BD Navy. 2 Children, Morrelganj.'],
-                        ['4th Sister', 'Zerin Salma Beby, Housewife with 3 children. Morrelganj.'],
-                        ['5th Brother', 'Mohiuddin, Driver, Doctor Couple\'s, Chattagram. 4 Children, Chattagram.'],
-                        ['6th Sister', 'Nazma Sultana, Housewife with 2 children. Khulna.'],
+                        ['1st Sister', 'Shahanaj Shanti, education below SSC, housewife and mother of 4 children, Morrelganj.\nHusband: Choudhuri Khoka, farmer.'],
+                        ['2nd Brother', 'Md. Alauddin, education below SSC, formerly worked in the UAE, business in Feni; father of 3 children.\nWife: Jesmin Khatun, Dakhil, housewife.'],
+                        ['3rd Brother', 'Giash Uddin, SSC, driver at Bananja PCL, Chattagram, Bangladesh Navy; father of 2 children, Morrelganj.\nWife: Mukta Khatun, Dakhil, housewife.'],
+                        ['4th Sister', 'Zerin Salma Beby, SSC, housewife and mother of 3 children, Morrelganj.\nHusband: Al Amin Sheikh, SSC, farmer.'],
+                        ['5th Brother', 'Mohiuddin, driver for a doctor couple in Chattagram; father of 4 children, Chattagram.\nWife: Mariam Khatun, Qariah, Dakhil, housewife.'],
+                        ['6th Sister', 'Nazma Sultana, Dakhil, housewife and mother of 2 children, Khulna.\nHusband: Hassan Sheikh, SSC, employee at Hamko Battery.'],
                         ['7th', 'Youngest son, self.']
                     ],
                     siblingStatusData: {
@@ -519,8 +519,8 @@ const BioDataComponent = () => {
                         { label: 'الحالة الصحية', value: 'بصحة جيدة، غير مدخن وخالٍ من المخدرات', iconClass: 'fas fa-heart-pulse' }
                     ],
                     familyDetails: [
-                        ['الأب', 'المرحوم عبد القادر هولادر (كان طبيباً قروياً ومعلماً في مدرسة ابتدائية)'],
-                        ['الأم', 'فريدة بيغم - ربة منزل'],
+                        ['الأب', 'المرحوم عبد القادر هولادر (كان طبيباً قروياً ومعلماً في مدرسة ابتدائية)\nالتعليم: الثانوية العليا والتدريب الطبي المهني'],
+                        ['الأم', 'فريدة بيغم - ربة منزل\nالتعليم: الصف الخامس'],
                         ['الإخوة والأخوات', '4 إخوة و3 أخوات'],
                         ['العنوان الدائم', 'أتار شوتالار, زمادر بارا, مورلفانز, باغرهات'],
                         ['المنطقة', 'باغرهات']
@@ -532,12 +532,12 @@ const BioDataComponent = () => {
                     },
                     familySiblingsTitle: 'تفاصيل الإخوة والأخوات',
                     familySiblings: [
-                        ['الأخت الأولى', 'شاهاناز شانتي، ربة منزل ولديها 4 أطفال. مورلفانز.'],
-                        ['الأخ الثاني', 'علاء الدين، كان عاملاً في الإمارات ويعمل الآن في التجارة (داكا). لديه طفلان. مورلفانز.'],
-                        ['الأخ الثالث', 'غياثُ الدِّين، سائق في بانانجا بي سي إل، شاتّوغرام، البحرية البنغلاديشية. لديه طفلان. مورلفانز.'],
-                        ['الأخت الرابعة', 'زيرين سلمى بيبي، ربة منزل ولديها ٣ أطفال. مورلفانز.'],
-                        ['الأخ الخامس', 'محيي الدين، سائق لدى زوجين من الأطباء في شاتّوغرام. لديه 4 أطفال. شاتّوغرام.'],
-                        ['الأخت السادسة', 'نَظْمَة سُلْطَانَة، ربة منزل ولديها طفلان. خولنا.'],
+                        ['الأخت الأولى', 'شاهاناز شانتي، تعليمها دون الثانوية، ربة منزل وأم لأربعة أطفال، موريلغانج.\nالزوج: شودهوري خوكا، مزارع.'],
+                        ['الأخ الثاني', 'محمد علاء الدين، تعليمه دون الثانوية، عمل سابقًا في الإمارات، ويعمل في التجارة في فيني؛ أب لثلاثة أطفال.\nالزوجة: ياسمين خاتون، داخِل، ربة منزل.'],
+                        ['الأخ الثالث', 'غياث الدين، الثانوية، سائق في Bananja PCL، شاتّوغرام، البحرية البنغلاديشية؛ أب لطفلين، موريلغانج.\nالزوجة: موكتا خاتون، داخِل، ربة منزل.'],
+                        ['الأخت الرابعة', 'زيرين سلمى بيبي، الثانوية، ربة منزل وأم لثلاثة أطفال، موريلغانج.\nالزوج: الأمين شيخ، الثانوية، مزارع.'],
+                        ['الأخ الخامس', 'محيي الدين، سائق لدى زوجين من الأطباء في شاتّوغرام؛ أب لأربعة أطفال، شاتّوغرام.\nالزوجة: مريم خاتون، قارئة، داخِل، ربة منزل.'],
+                        ['الأخت السادسة', 'نظما سلطانة، داخِل، ربة منزل وأم لطفلين، خولنا.\nالزوج: حسن شيخ، الثانوية، موظف في Hamko Battery.'],
                         ['السابع', 'الابن الأصغر، أنا.']
                     ],
                     siblingStatusData: {
@@ -806,8 +806,8 @@ const BioDataComponent = () => {
                         { label: 'স্বাস্থ্য অবস্থা', value: 'সুস্থ, ধূমপান ও মাদকমুক্ত', iconClass: 'fas fa-heart-pulse' }
                     ],
                     familyDetails: [
-                        ['পিতা', 'মরহুম আব্দুল কাদের হাওলাদার (গ্রাম্য ডাক্তার ও প্রাথমিক বিদ্যালয় শিক্ষক ছিলেন)'],
-                        ['মাতা', 'ফরিদা বেগম - গৃহিণী'],
+                        ['পিতা', 'মরহুম আব্দুল কাদের হাওলাদার (গ্রাম্য ডাক্তার ও প্রাথমিক বিদ্যালয় শিক্ষক ছিলেন)\nশিক্ষা: এইচএসসি ও পেশাগত চিকিৎসা প্রশিক্ষণ'],
+                        ['মাতা', 'ফরিদা বেগম - গৃহিণী\nশিক্ষা: পঞ্চম শ্রেণি'],
                         ['ভাইবোন', '৪ ভাই ও ৩ বোন'],
                         ['স্থায়ী ঠিকানা', 'উত্তর সুতালরি, জোমাদ্দার পাড়া, মোরেলগঞ্জ, বাগেরহাট'],
                         ['জেলা', 'বাগেরহাট']
@@ -819,12 +819,12 @@ const BioDataComponent = () => {
                     },
                     familySiblingsTitle: 'ভাইবোনের বিস্তারিত',
                     familySiblings: [
-                        ['১ম বোন', 'শাহনাজ শান্তি, ৪ সন্তানের জননী, গৃহিণী। মোরেলগঞ্জ।'],
-                        ['২য় ভাই', 'আলাউদ্দিন, আগে আবুধাবিতে কর্মরত ছিলেন, বর্তমানে ব্যবসা (ঢাকা)। ২ সন্তানের জনক। মোরেলগঞ্জ।'],
-                        ['৩য় ভাই', 'গিয়াস উদ্দিন, গাড়ি চালক, বানঞ্জা পিএলসি, চট্টগ্রাম, বাংলাদেশ নৌবাহীন সদর। ২ সন্তানের জনক। মোরেলগঞ্জ।'],
-                        ['৪র্থ বোন', 'জেরিন সালমা বেবি, ৩ সন্তানের জননী, গৃহিণী। মোরেলগঞ্জ।'],
-                        ['৫ম ভাই', 'মহিউদ্দিন, গাড়ি চালক, (ডাক্তার দম্পত্তির) , চট্টগ্রাম। ৪ সন্তানের জনক। চট্টগ্রাম'],
-                        ['৬ষ্ঠ বোন', 'নাজমা সুলতানা, ২ সন্তানের জননী, গৃহিণী। খুলনা।'],
+                        ['১ম বোন', 'শাহনাজ শান্তি, এসএসসির নিচে, ৪ সন্তানের জননী ও গৃহিণী, মোরেলগঞ্জ।\nস্বামী: চৌধুরী খোকা, কৃষক।'],
+                        ['২য় ভাই', 'মো. আলাউদ্দিন, এসএসসির নিচে, আগে সংযুক্ত আরব আমিরাতে কর্মরত ছিলেন, ফেনীতে ব্যবসায়ী; ৩ সন্তানের জনক।\nস্ত্রী: জেসমিন খাতুন, দাখিল, গৃহিণী।'],
+                        ['৩য় ভাই', 'গিয়াস উদ্দিন, এসএসসি, গাড়িচালক, বানঞ্জা পিসিএল, চট্টগ্রাম, বাংলাদেশ নৌবাহিনী; ২ সন্তানের জনক, মোরেলগঞ্জ।\nস্ত্রী: মুক্তা খাতুন, দাখিল, গৃহিণী।'],
+                        ['৪র্থ বোন', 'জেরিন সালমা বেবি, এসএসসি, ৩ সন্তানের জননী ও গৃহিণী, মোরেলগঞ্জ।\nস্বামী: আল আমিন শেখ, এসএসসি, কৃষক।'],
+                        ['৫ম ভাই', 'মহিউদ্দিন, চট্টগ্রামে এক চিকিৎসক দম্পতির গাড়িচালক; ৪ সন্তানের জনক, চট্টগ্রাম।\nস্ত্রী: মরিয়ম খাতুন, কারিয়া, দাখিল, গৃহিণী।'],
+                        ['৬ষ্ঠ বোন', 'নাজমা সুলতানা, দাখিল, ২ সন্তানের জননী ও গৃহিণী, খুলনা।\nস্বামী: হাসান শেখ, এসএসসি, হামকো ব্যাটারিতে কর্মরত।'],
                         ['৭ম', 'সবার ছোট ছেলে, নিজে।']
                     ],
                     siblingStatusData: {
