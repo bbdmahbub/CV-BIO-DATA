@@ -1669,16 +1669,18 @@
 
         .top-menu-language-row {
             width: 100%;
+            max-width: 320px;
             display: flex;
             justify-content: center;
             overflow: hidden;
             max-height: 52px;
             opacity: 1;
             transform: translateY(0);
-            transition: max-height 0.24s ease, opacity 0.18s ease, transform 0.18s ease;
+            transition: max-width 0.26s ease, max-height 0.26s ease, opacity 0.2s ease, transform 0.2s ease;
         }
 
         .top-menu-language-shell.is-collapsed .top-menu-language-row {
+            max-width: 0;
             max-height: 0;
             opacity: 0;
             transform: translateY(-10px);
@@ -1691,13 +1693,36 @@
             border-radius: 0 0 10px 10px;
             background: #ffffff;
             color: #0f5f49;
-            width: 42px;
-            height: 18px;
+            width: auto;
+            min-width: 78px;
+            height: 0;
+            max-height: 0;
+            padding: 0 14px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(-7px) scale(0.94);
+            pointer-events: none;
             cursor: pointer;
-            transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+            transition: height 0.24s ease, max-height 0.24s ease, opacity 0.18s ease, transform 0.24s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .top-menu-language-toggle.is-collapsed {
+            height: 24px;
+            max-height: 24px;
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        .top-menu-language-toggle span {
+            font-size: 11px;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: 0;
+            white-space: nowrap;
         }
 
         .top-menu-language-toggle:hover,

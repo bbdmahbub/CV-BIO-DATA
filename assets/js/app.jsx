@@ -111,6 +111,7 @@ const BioDataComponent = () => {
                         // quickJump: 'Quick Jump',
                         sectionsAria: 'Page sections',
                         languageSwitcherLabel: 'Language versions',
+                        languageButton: 'Language',
                         languagePanelHint: 'Change the page language at any time.',
                         languagePanelCollapse: 'Collapse language controls',
                         languagePanelExpand: 'Expand language controls',
@@ -396,6 +397,7 @@ const BioDataComponent = () => {
                         // quickJump: 'انتقال سريع'
                         sectionsAria: 'أقسام الصفحة',
                         languageSwitcherLabel: 'إصدارات اللغة',
+                        languageButton: 'اللغة',
                         languagePanelHint: 'يمكنك تغيير لغة الصفحة في أي وقت.',
                         languagePanelCollapse: 'طي عناصر التحكم باللغة',
                         languagePanelExpand: 'إظهار عناصر التحكم باللغة',
@@ -682,6 +684,7 @@ const BioDataComponent = () => {
                         // quickJump: 'দ্রুত নেভিগেশন',
                         sectionsAria: 'পেজ সেকশনসমূহ',
                         languageSwitcherLabel: 'ভাষা সংস্করণ',
+                        languageButton: 'ভাষা',
                         languagePanelHint: 'যেকোনো সময় পেজের ভাষা বদলান।',
                         languagePanelCollapse: 'ভাষা কন্ট্রোল লুকান',
                         languagePanelExpand: 'ভাষা কন্ট্রোল দেখান',
@@ -2087,6 +2090,27 @@ const BioDataComponent = () => {
                 setIsLanguageRowCollapsed((currentState) => !currentState);
             };
 
+            const canHoverLanguageMenu = () => window.matchMedia
+                && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+            const handleLanguageRowMouseEnter = () => {
+                if (!canHoverLanguageMenu()) return;
+
+                hasShownLanguageRowHintRef.current = true;
+
+                if (languageRowHideTimeoutRef.current) {
+                    window.clearTimeout(languageRowHideTimeoutRef.current);
+                    languageRowHideTimeoutRef.current = null;
+                }
+
+                setIsLanguageRowCollapsed(false);
+            };
+
+            const handleLanguageRowMouseLeave = () => {
+                if (!canHoverLanguageMenu()) return;
+                setIsLanguageRowCollapsed(true);
+            };
+
             const normalizeVoiceTranscript = (value) => value
                 .toLowerCase()
                 .replace(/[\u064B-\u065F\u0670]/g, '')
@@ -2606,6 +2630,8 @@ const BioDataComponent = () => {
             const renderLanguageMenu = (rowId) => (
                 <div
                     className={`top-menu-language-shell${isLanguageRowCollapsed ? ' is-collapsed' : ''}`}
+                    onMouseEnter={handleLanguageRowMouseEnter}
+                    onMouseLeave={handleLanguageRowMouseLeave}
                 >
                     <div
                         className="top-menu-language-row"
@@ -2632,7 +2658,7 @@ const BioDataComponent = () => {
                         aria-label={copy.navigation.languageSwitcherLabel}
                         onClick={handleLanguageRowToggle}
                     >
-                        <i className="fas fa-language" aria-hidden="true"></i>
+                        <span>{copy.navigation.languageButton}</span>
                     </button>
                 </div>
             );

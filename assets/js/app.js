@@ -108,6 +108,7 @@
           // quickJump: 'Quick Jump',
           sectionsAria: "Page sections",
           languageSwitcherLabel: "Language versions",
+          languageButton: "Language",
           languagePanelHint: "Change the page language at any time.",
           languagePanelCollapse: "Collapse language controls",
           languagePanelExpand: "Expand language controls",
@@ -393,6 +394,7 @@
           // quickJump: 'انتقال سريع'
           sectionsAria: "\u0623\u0642\u0633\u0627\u0645 \u0627\u0644\u0635\u0641\u062D\u0629",
           languageSwitcherLabel: "\u0625\u0635\u062F\u0627\u0631\u0627\u062A \u0627\u0644\u0644\u063A\u0629",
+          languageButton: "\u0627\u0644\u0644\u063A\u0629",
           languagePanelHint: "\u064A\u0645\u0643\u0646\u0643 \u062A\u063A\u064A\u064A\u0631 \u0644\u063A\u0629 \u0627\u0644\u0635\u0641\u062D\u0629 \u0641\u064A \u0623\u064A \u0648\u0642\u062A.",
           languagePanelCollapse: "\u0637\u064A \u0639\u0646\u0627\u0635\u0631 \u0627\u0644\u062A\u062D\u0643\u0645 \u0628\u0627\u0644\u0644\u063A\u0629",
           languagePanelExpand: "\u0625\u0638\u0647\u0627\u0631 \u0639\u0646\u0627\u0635\u0631 \u0627\u0644\u062A\u062D\u0643\u0645 \u0628\u0627\u0644\u0644\u063A\u0629",
@@ -679,6 +681,7 @@
           // quickJump: 'দ্রুত নেভিগেশন',
           sectionsAria: "\u09AA\u09C7\u099C \u09B8\u09C7\u0995\u09B6\u09A8\u09B8\u09AE\u09C2\u09B9",
           languageSwitcherLabel: "\u09AD\u09BE\u09B7\u09BE \u09B8\u0982\u09B8\u09CD\u0995\u09B0\u09A3",
+          languageButton: "\u09AD\u09BE\u09B7\u09BE",
           languagePanelHint: "\u09AF\u09C7\u0995\u09CB\u09A8\u09CB \u09B8\u09AE\u09DF \u09AA\u09C7\u099C\u09C7\u09B0 \u09AD\u09BE\u09B7\u09BE \u09AC\u09A6\u09B2\u09BE\u09A8\u0964",
           languagePanelCollapse: "\u09AD\u09BE\u09B7\u09BE \u0995\u09A8\u09CD\u099F\u09CD\u09B0\u09CB\u09B2 \u09B2\u09C1\u0995\u09BE\u09A8",
           languagePanelExpand: "\u09AD\u09BE\u09B7\u09BE \u0995\u09A8\u09CD\u099F\u09CD\u09B0\u09CB\u09B2 \u09A6\u09C7\u0996\u09BE\u09A8",
@@ -1924,6 +1927,22 @@
       }
       setIsLanguageRowCollapsed((currentState) => !currentState);
     };
+    const canHoverLanguageMenu = () => window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    const handleLanguageRowMouseEnter = () => {
+      if (!canHoverLanguageMenu())
+        return;
+      hasShownLanguageRowHintRef.current = true;
+      if (languageRowHideTimeoutRef.current) {
+        window.clearTimeout(languageRowHideTimeoutRef.current);
+        languageRowHideTimeoutRef.current = null;
+      }
+      setIsLanguageRowCollapsed(false);
+    };
+    const handleLanguageRowMouseLeave = () => {
+      if (!canHoverLanguageMenu())
+        return;
+      setIsLanguageRowCollapsed(true);
+    };
     const normalizeVoiceTranscript = (value) => value.toLowerCase().replace(/[\u064B-\u065F\u0670]/g, "").replace(/[\s.,/#!$%^&*;:{}=\-_`~()"'?؟،]+/g, "");
     const matchesBismillahPhrase = (value) => {
       const normalizedValue = normalizeVoiceTranscript(value);
@@ -2331,7 +2350,9 @@
     const renderLanguageMenu = (rowId) => /* @__PURE__ */ React.createElement(
       "div",
       {
-        className: `top-menu-language-shell${isLanguageRowCollapsed ? " is-collapsed" : ""}`
+        className: `top-menu-language-shell${isLanguageRowCollapsed ? " is-collapsed" : ""}`,
+        onMouseEnter: handleLanguageRowMouseEnter,
+        onMouseLeave: handleLanguageRowMouseLeave
       },
       /* @__PURE__ */ React.createElement(
         "div",
@@ -2360,7 +2381,7 @@
           "aria-label": copy.navigation.languageSwitcherLabel,
           onClick: handleLanguageRowToggle
         },
-        /* @__PURE__ */ React.createElement("i", { className: "fas fa-language", "aria-hidden": "true" })
+        /* @__PURE__ */ React.createElement("span", null, copy.navigation.languageButton)
       )
     );
     return /* @__PURE__ */ React.createElement("div", { className: `app-shell language-${language}${isRtl ? " is-rtl" : ""}` }, isBismillahLoadingOpen ? /* @__PURE__ */ React.createElement(
