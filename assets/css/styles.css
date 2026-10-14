@@ -1962,6 +1962,11 @@
             line-height: 1.7;
         }
 
+        .app-shell.is-rtl .family-summary-title {
+            font-size: 1.18rem;
+            line-height: 1.65;
+        }
+
         .app-shell.is-rtl .badge,
         .app-shell.is-rtl .work-duration,
         .app-shell.is-rtl .language-level-badge,
@@ -3701,10 +3706,10 @@
         }
 
         .family-summary-title {
-            color: #1f2937;
-            font-size: 18px;
-            font-weight: 700;
-            line-height: 1.6;
+            color: #b9821f;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.55;
         }
 
         .family-summary-tags {
@@ -5070,7 +5075,12 @@
             }
 
             .family-summary-title {
-                color: #1f2937;
+                color: #b9821f;
+            }
+
+            .app-shell.is-rtl .family-summary-title {
+                font-size: 1.05rem;
+                line-height: 1.55;
             }
 
             .activity-header {
