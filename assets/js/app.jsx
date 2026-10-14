@@ -240,7 +240,7 @@ const BioDataComponent = () => {
                     ],
                     familySummary: {
                         label: 'Family Background',
-                        title: 'A middle-class family grounded in education and religious values.',
+                        title: 'A middle-class family that values education and religious principles.',
                         tags: []
                     },
                     familySiblingsTitle: 'Sibling Details',
@@ -525,7 +525,7 @@ const BioDataComponent = () => {
                     ],
                     familySummary: {
                         label: 'خلفية الأسرة',
-                        title: 'أسرة من الطبقة المتوسطة تقوم على التعليم والقيم الدينية.',
+                        title: 'أسرة من الطبقة المتوسطة تؤمن بأهمية التعليم والقيم الدينية.',
                         tags: []
                     },
                     familySiblingsTitle: 'تفاصيل الإخوة والأخوات',
@@ -811,7 +811,7 @@ const BioDataComponent = () => {
                     ],
                     familySummary: {
                         label: 'পারিবারিক পটভূমি',
-                        title: 'শিক্ষা ও ধর্মীয় মূল্যবোধে গড়া একটি মধ্যবিত্ত পরিবার।',
+                        title: 'শিক্ষা ও ধর্মীয় মূল্যবোধে বিশ্বাসী একটি মধ্যবিত্ত পরিবার।',
                         tags: []
                     },
                     familySiblingsTitle: 'ভাইবোনের বিস্তারিত',

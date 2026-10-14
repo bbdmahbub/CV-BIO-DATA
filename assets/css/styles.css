@@ -3650,13 +3650,17 @@
         }
 
         .family-summary {
-            margin: 0 30px 18px;
-            padding: 0 0 18px;
+            margin: 0 30px;
+            padding: 0 0 14px;
             border: 0;
             border-bottom: 1px solid rgba(15, 95, 73, 0.1);
             border-radius: 0;
             background: transparent;
             box-shadow: none;
+        }
+
+        .family-summary + .card-content {
+            padding-top: 12px;
         }
 
         .family-summary-label {
@@ -5036,8 +5040,8 @@
             }
 
             .family-summary {
-                margin: 0 0 16px;
-                padding: 0 0 16px;
+                margin: 0;
+                padding: 0 0 12px;
             }
 
             .family-summary-title {
