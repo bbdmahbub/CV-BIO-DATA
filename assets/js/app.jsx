@@ -240,8 +240,8 @@ const BioDataComponent = () => {
                     ],
                     familySummary: {
                         label: 'Family Background',
-                        title: 'A respectable, middle-class family grounded in education and religious values.',
-                        tags: ['Respectable', 'Middle-Class', 'Educated', 'Religious']
+                        title: 'A middle-class family grounded in education and religious values.',
+                        tags: []
                     },
                     familySiblingsTitle: 'Sibling Details',
                     familySiblings: [
@@ -525,8 +525,8 @@ const BioDataComponent = () => {
                     ],
                     familySummary: {
                         label: 'خلفية الأسرة',
-                        title: 'أسرة محترمة من الطبقة المتوسطة تقوم على التعليم والقيم الدينية.',
-                        tags: ['محترمة', 'متوسطة الحال', 'متعلمة', 'متدينة']
+                        title: 'أسرة من الطبقة المتوسطة تقوم على التعليم والقيم الدينية.',
+                        tags: []
                     },
                     familySiblingsTitle: 'تفاصيل الإخوة والأخوات',
                     familySiblings: [
@@ -811,8 +811,8 @@ const BioDataComponent = () => {
                     ],
                     familySummary: {
                         label: 'পারিবারিক পটভূমি',
-                        title: 'শিক্ষা ও ধর্মীয় মূল্যবোধে গড়া একটি সম্মানিত মধ্যবিত্ত পরিবার।',
-                        tags: ['সম্মানিত', 'মধ্যবিত্ত', 'শিক্ষিত', 'ধর্মীয় অনুশাসনে বিশ্বাসী']
+                        title: 'শিক্ষা ও ধর্মীয় মূল্যবোধে গড়া একটি মধ্যবিত্ত পরিবার।',
+                        tags: []
                     },
                     familySiblingsTitle: 'ভাইবোনের বিস্তারিত',
                     familySiblings: [
@@ -3117,11 +3117,13 @@ const BioDataComponent = () => {
                                         {copy.familySummary.label}
                                     </div>
                                     <div className="family-summary-title">{copy.familySummary.title}</div>
-                                    <div className="family-summary-tags">
-                                        {copy.familySummary.tags.map((tag) => (
-                                            <span className="family-summary-tag" key={tag}>{tag}</span>
-                                        ))}
-                                    </div>
+                                    {copy.familySummary.tags.length ? (
+                                        <div className="family-summary-tags">
+                                            {copy.familySummary.tags.map((tag) => (
+                                                <span className="family-summary-tag" key={tag}>{tag}</span>
+                                            ))}
+                                        </div>
+                                    ) : null}
                                 </div>
                             ) : null}
                             <div className="card-content">

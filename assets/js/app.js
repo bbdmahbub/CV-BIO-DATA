@@ -237,8 +237,8 @@
         ],
         familySummary: {
           label: "Family Background",
-          title: "A respectable, middle-class family grounded in education and religious values.",
-          tags: ["Respectable", "Middle-Class", "Educated", "Religious"]
+          title: "A middle-class family grounded in education and religious values.",
+          tags: []
         },
         familySiblingsTitle: "Sibling Details",
         familySiblings: [
@@ -522,8 +522,8 @@
         ],
         familySummary: {
           label: "\u062E\u0644\u0641\u064A\u0629 \u0627\u0644\u0623\u0633\u0631\u0629",
-          title: "\u0623\u0633\u0631\u0629 \u0645\u062D\u062A\u0631\u0645\u0629 \u0645\u0646 \u0627\u0644\u0637\u0628\u0642\u0629 \u0627\u0644\u0645\u062A\u0648\u0633\u0637\u0629 \u062A\u0642\u0648\u0645 \u0639\u0644\u0649 \u0627\u0644\u062A\u0639\u0644\u064A\u0645 \u0648\u0627\u0644\u0642\u064A\u0645 \u0627\u0644\u062F\u064A\u0646\u064A\u0629.",
-          tags: ["\u0645\u062D\u062A\u0631\u0645\u0629", "\u0645\u062A\u0648\u0633\u0637\u0629 \u0627\u0644\u062D\u0627\u0644", "\u0645\u062A\u0639\u0644\u0645\u0629", "\u0645\u062A\u062F\u064A\u0646\u0629"]
+          title: "\u0623\u0633\u0631\u0629 \u0645\u0646 \u0627\u0644\u0637\u0628\u0642\u0629 \u0627\u0644\u0645\u062A\u0648\u0633\u0637\u0629 \u062A\u0642\u0648\u0645 \u0639\u0644\u0649 \u0627\u0644\u062A\u0639\u0644\u064A\u0645 \u0648\u0627\u0644\u0642\u064A\u0645 \u0627\u0644\u062F\u064A\u0646\u064A\u0629.",
+          tags: []
         },
         familySiblingsTitle: "\u062A\u0641\u0627\u0635\u064A\u0644 \u0627\u0644\u0625\u062E\u0648\u0629 \u0648\u0627\u0644\u0623\u062E\u0648\u0627\u062A",
         familySiblings: [
@@ -808,8 +808,8 @@
         ],
         familySummary: {
           label: "\u09AA\u09BE\u09B0\u09BF\u09AC\u09BE\u09B0\u09BF\u0995 \u09AA\u099F\u09AD\u09C2\u09AE\u09BF",
-          title: "\u09B6\u09BF\u0995\u09CD\u09B7\u09BE \u0993 \u09A7\u09B0\u09CD\u09AE\u09C0\u09DF \u09AE\u09C2\u09B2\u09CD\u09AF\u09AC\u09CB\u09A7\u09C7 \u0997\u09DC\u09BE \u098F\u0995\u099F\u09BF \u09B8\u09AE\u09CD\u09AE\u09BE\u09A8\u09BF\u09A4 \u09AE\u09A7\u09CD\u09AF\u09AC\u09BF\u09A4\u09CD\u09A4 \u09AA\u09B0\u09BF\u09AC\u09BE\u09B0\u0964",
-          tags: ["\u09B8\u09AE\u09CD\u09AE\u09BE\u09A8\u09BF\u09A4", "\u09AE\u09A7\u09CD\u09AF\u09AC\u09BF\u09A4\u09CD\u09A4", "\u09B6\u09BF\u0995\u09CD\u09B7\u09BF\u09A4", "\u09A7\u09B0\u09CD\u09AE\u09C0\u09DF \u0985\u09A8\u09C1\u09B6\u09BE\u09B8\u09A8\u09C7 \u09AC\u09BF\u09B6\u09CD\u09AC\u09BE\u09B8\u09C0"]
+          title: "\u09B6\u09BF\u0995\u09CD\u09B7\u09BE \u0993 \u09A7\u09B0\u09CD\u09AE\u09C0\u09DF \u09AE\u09C2\u09B2\u09CD\u09AF\u09AC\u09CB\u09A7\u09C7 \u0997\u09DC\u09BE \u098F\u0995\u099F\u09BF \u09AE\u09A7\u09CD\u09AF\u09AC\u09BF\u09A4\u09CD\u09A4 \u09AA\u09B0\u09BF\u09AC\u09BE\u09B0\u0964",
+          tags: []
         },
         familySiblingsTitle: "\u09AD\u09BE\u0987\u09AC\u09CB\u09A8\u09C7\u09B0 \u09AC\u09BF\u09B8\u09CD\u09A4\u09BE\u09B0\u09BF\u09A4",
         familySiblings: [
@@ -2697,7 +2697,7 @@
         onClick: () => openPhotoViewer(activeGalleryPhoto)
       },
       /* @__PURE__ */ React.createElement("i", { className: "fas fa-magnifying-glass-plus", "aria-hidden": "true" })
-    ), /* @__PURE__ */ React.createElement("figcaption", { className: "photo-gallery-caption" }, /* @__PURE__ */ React.createElement("span", { className: "photo-gallery-caption-icon" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-camera", "aria-hidden": "true" })), activeGalleryPhoto.label)))))), Object.entries(detailGroups).map(([group, details]) => /* @__PURE__ */ React.createElement("div", { className: "card section-anchor", id: `${group}-section`, key: group }, /* @__PURE__ */ React.createElement("div", { className: "section-header" }, /* @__PURE__ */ React.createElement("span", { className: "section-icon" }, sectionIcons[group]), copy.sectionHeaders[group]), group === "family" ? /* @__PURE__ */ React.createElement("div", { className: "family-summary" }, /* @__PURE__ */ React.createElement("div", { className: "family-summary-label" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-shield-halved", "aria-hidden": "true" }), copy.familySummary.label), /* @__PURE__ */ React.createElement("div", { className: "family-summary-title" }, copy.familySummary.title), /* @__PURE__ */ React.createElement("div", { className: "family-summary-tags" }, copy.familySummary.tags.map((tag) => /* @__PURE__ */ React.createElement("span", { className: "family-summary-tag", key: tag }, tag)))) : null, /* @__PURE__ */ React.createElement("div", { className: "card-content" }, /* @__PURE__ */ React.createElement("div", { className: "section-item-list" }, group === "work" ? workData.map(({ title, organization, duration, iconClass }, idx) => /* @__PURE__ */ React.createElement("div", { className: "detail-row work-row section-card-item", key: idx }, /* @__PURE__ */ React.createElement("div", { className: "work-header" }, /* @__PURE__ */ React.createElement("div", { className: "work-title-wrap" }, /* @__PURE__ */ React.createElement("span", { className: "work-title-icon" }, /* @__PURE__ */ React.createElement("i", { className: iconClass, "aria-hidden": "true" })), /* @__PURE__ */ React.createElement("div", { className: "work-title" }, renderTextWithLtrNumbers(title))), duration ? /* @__PURE__ */ React.createElement("span", { className: "badge work-duration" }, renderTextWithLtrNumbers(duration)) : null), /* @__PURE__ */ React.createElement("div", { className: "work-org" }, renderTextWithLtrNumbers(organization)))) : details.map((detail, idx) => {
+    ), /* @__PURE__ */ React.createElement("figcaption", { className: "photo-gallery-caption" }, /* @__PURE__ */ React.createElement("span", { className: "photo-gallery-caption-icon" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-camera", "aria-hidden": "true" })), activeGalleryPhoto.label)))))), Object.entries(detailGroups).map(([group, details]) => /* @__PURE__ */ React.createElement("div", { className: "card section-anchor", id: `${group}-section`, key: group }, /* @__PURE__ */ React.createElement("div", { className: "section-header" }, /* @__PURE__ */ React.createElement("span", { className: "section-icon" }, sectionIcons[group]), copy.sectionHeaders[group]), group === "family" ? /* @__PURE__ */ React.createElement("div", { className: "family-summary" }, /* @__PURE__ */ React.createElement("div", { className: "family-summary-label" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-shield-halved", "aria-hidden": "true" }), copy.familySummary.label), /* @__PURE__ */ React.createElement("div", { className: "family-summary-title" }, copy.familySummary.title), copy.familySummary.tags.length ? /* @__PURE__ */ React.createElement("div", { className: "family-summary-tags" }, copy.familySummary.tags.map((tag) => /* @__PURE__ */ React.createElement("span", { className: "family-summary-tag", key: tag }, tag))) : null) : null, /* @__PURE__ */ React.createElement("div", { className: "card-content" }, /* @__PURE__ */ React.createElement("div", { className: "section-item-list" }, group === "work" ? workData.map(({ title, organization, duration, iconClass }, idx) => /* @__PURE__ */ React.createElement("div", { className: "detail-row work-row section-card-item", key: idx }, /* @__PURE__ */ React.createElement("div", { className: "work-header" }, /* @__PURE__ */ React.createElement("div", { className: "work-title-wrap" }, /* @__PURE__ */ React.createElement("span", { className: "work-title-icon" }, /* @__PURE__ */ React.createElement("i", { className: iconClass, "aria-hidden": "true" })), /* @__PURE__ */ React.createElement("div", { className: "work-title" }, renderTextWithLtrNumbers(title))), duration ? /* @__PURE__ */ React.createElement("span", { className: "badge work-duration" }, renderTextWithLtrNumbers(duration)) : null), /* @__PURE__ */ React.createElement("div", { className: "work-org" }, renderTextWithLtrNumbers(organization)))) : details.map((detail, idx) => {
       const isObjectDetail = !Array.isArray(detail);
       const label = isObjectDetail ? detail.label : detail[0];
       const value = isObjectDetail ? detail.value : detail[1];
