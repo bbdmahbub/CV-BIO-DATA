@@ -1299,6 +1299,7 @@ const BioDataComponent = () => {
             ];
             const familyDetailIconClass = 'fas fa-people-roof';
             const siblingDetailIconClass = 'fas fa-user-group';
+            const selfSiblingIconClass = 'fas fa-crown';
             const languageDetailIconClass = 'fas fa-language';
             const educationDetailIconClass = 'fas fa-graduation-cap';
             const activityDetailIconClass = 'fas fa-star';
@@ -3198,7 +3199,7 @@ const BioDataComponent = () => {
                                                 <div className="sub-detail-row section-card-item" key={idx}>
                                                     <div className="detail-label sibling-label">
                                                         <span className="detail-label-icon">
-                                                            <i className={siblingDetailIconClass} aria-hidden="true"></i>
+                                                            <i className={idx === familySiblings.length - 1 ? selfSiblingIconClass : siblingDetailIconClass} aria-hidden="true"></i>
                                                         </span>
                                                         <span>{renderTextWithLtrNumbers(label)}</span>
                                                     </div>
