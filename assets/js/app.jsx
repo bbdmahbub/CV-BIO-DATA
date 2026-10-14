@@ -85,7 +85,7 @@ const BioDataComponent = () => {
                     soundLang: 'ar-SA'
                 }
             };
-            const permanentAddressMapHref = 'https://maps.app.goo.gl/9XTJ1A6pDhZJs6Ld7';
+            const permanentAddressMapHref = 'https://maps.app.goo.gl/hvcHqxMvhF9cGFbM6';
             const bismillahToneSrc = withCvCacheVersion('assets/tone/Bismillah.mp3');
             const bismillahIntroSeenStorageKey = 'bbdMahbubBismillahIntroSeen';
             const activeSectionStorageKey = 'bbdMahbubActiveSection';
