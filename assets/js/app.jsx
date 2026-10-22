@@ -3522,14 +3522,13 @@ const BioDataComponent = () => {
                                 ))}
                                 <div className="dua-closing">
                                     <span>{copy.dua.closing}</span>
-                                    <span className="dua-closing-icon" aria-hidden="true">{iconKaaba}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div className="profile-tagline-note">
-                        {iconEducation} {copy.profile.tagline} {iconWork}
+                        {copy.profile.tagline}
                     </div>
                     
                     <div style={{textAlign: 'center', marginTop: '60px', paddingTop: '20px', borderTop: '2px solid rgba(13, 115, 119, 0.1)', color: '#0d7377', fontSize: '24px', letterSpacing: '8px'}}>
