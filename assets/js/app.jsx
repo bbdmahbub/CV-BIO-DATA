@@ -197,6 +197,8 @@ const BioDataComponent = () => {
                         name: 'Md Mahbubur Rahman',
                         subtitle: 'IT Professional, Web Developer & Entrepreneur',
                         tagline: 'A Muslim young man is seeking a Muslimah life partner who will be the coolness of his eyes in this world and the Hereafter!',
+                        notice: 'Personal bio-data prepared by the prospective groom • Not a matrimonial site',
+                        noticeClose: 'Close notice',
                         stats: {
                             age: 'YEARS OLD',
                             education: 'M.A. · ISLAMIC UNIVERSITY',
@@ -482,6 +484,8 @@ const BioDataComponent = () => {
                         name: 'محمد محبوب الرحمن',
                         subtitle: 'متخصص في تقنية المعلومات، ومطور ويب، ورائد أعمال',
                         tagline: 'شاب مسلم يبحث عن شريكة حياة مسلمة تكون قرة عينه في الدنيا والآخرة!',
+                        notice: 'سيرة ذاتية شخصية أعدّها الخاطب • ليست موقعًا للزواج',
+                        noticeClose: 'إغلاق التنبيه',
                         stats: {
                             age: '28 عاماً',
                             education: 'ماجستير · الجامعة الإسلامية',
@@ -768,6 +772,8 @@ const BioDataComponent = () => {
                         name: 'মো. মাহবুবুর রহমান',
                         subtitle: 'তথ্যপ্রযুক্তি পেশাজীবী, ওয়েব ডেভেলপার ও উদ্যোক্তা',
                         tagline: 'একজন মুসলিম যুবক, দুনিয়া ও আখেরাতের চক্ষুশীতলকারিনী মুসলিমাহ্ জীবনসঙ্গী খুজছেন!',
+                        notice: 'পাত্র কর্তৃক প্রস্তুত ব্যক্তিগত বায়োডাটা • কোনো ম্যাট্রিমোনিয়াল সাইট নয়',
+                        noticeClose: 'নোটিশ বন্ধ করুন',
                         stats: {
                             age: '২৮ বছর',
                             education: 'স্নাতকোত্তর · ইসলামী বিশ্ববিদ্যালয়',
@@ -1131,6 +1137,8 @@ const BioDataComponent = () => {
             const [isGalleryUnlockComplete, setIsGalleryUnlockComplete] = React.useState(false);
             const [isMenuDragging, setIsMenuDragging] = React.useState(false);
             const [isLanguageRowCollapsed, setIsLanguageRowCollapsed] = React.useState(true);
+            const [isPersonalNoticeVisible, setIsPersonalNoticeVisible] = React.useState(true);
+            const [isPersonalNoticeClosing, setIsPersonalNoticeClosing] = React.useState(false);
             const [zoomedPhoto, setZoomedPhoto] = React.useState(null);
             const [photoViewerTransform, setPhotoViewerTransform] = React.useState({ scale: 1, x: 0, y: 0 });
             const [activeGalleryPhotoIndex, setActiveGalleryPhotoIndex] = React.useState(0);
@@ -2350,6 +2358,16 @@ const BioDataComponent = () => {
                 setIsLanguageRowCollapsed(true);
             };
 
+            const handleClosePersonalNotice = () => {
+                if (isPersonalNoticeClosing) return;
+
+                setIsPersonalNoticeClosing(true);
+                window.setTimeout(() => {
+                    setIsPersonalNoticeVisible(false);
+                    setIsPersonalNoticeClosing(false);
+                }, 300);
+            };
+
             const handleBismillahViewBiodata = () => {
                 if (!isBismillahLoadingOpen) return;
                 if (isBismillahLoadingClickInProgressRef.current) return;
@@ -2940,6 +2958,24 @@ const BioDataComponent = () => {
                         </div>
                     ) : null}
                     {!isBismillahLoadingOpen && !isIntroPopupOpen ? (
+                    <>
+                    {isPersonalNoticeVisible ? (
+                    <div className={`personal-biodata-notice${isPersonalNoticeClosing ? ' is-closing' : ''}`} role="note" dir={selectedTranslation.dir}>
+                        <div className="personal-biodata-notice-content">
+                            <i className="fas fa-circle-info personal-biodata-notice-icon" aria-hidden="true"></i>
+                            <span>{copy.profile.notice}</span>
+                            <button
+                                type="button"
+                                className="personal-biodata-notice-close"
+                                onClick={handleClosePersonalNotice}
+                                aria-label={copy.profile.noticeClose}
+                                title={copy.profile.noticeClose}
+                            >
+                                <i className="fas fa-xmark" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                    ) : null}
                     <div className="container">
                     <nav className="top-menu" aria-label={copy.navigation.sectionsAria}>
                         <div className="top-menu-language-slot">
@@ -3534,7 +3570,12 @@ const BioDataComponent = () => {
                     <div style={{textAlign: 'center', marginTop: '60px', paddingTop: '20px', borderTop: '2px solid rgba(13, 115, 119, 0.1)', color: '#0d7377', fontSize: '24px', letterSpacing: '8px'}}>
                         {dividerOrnament}
                     </div>
+                    <footer className="site-footer">
+                        <span>Developed by</span>
+                        <a href="https://fb.me/wdMahbub" target="_blank" rel="noreferrer">wdMahbub</a>
+                    </footer>
                 </div>
+                    </>
                     ) : null}
                 </div>
             );

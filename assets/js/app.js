@@ -194,6 +194,8 @@
           name: "Md Mahbubur Rahman",
           subtitle: "IT Professional, Web Developer & Entrepreneur",
           tagline: "A Muslim young man is seeking a Muslimah life partner who will be the coolness of his eyes in this world and the Hereafter!",
+          notice: "Personal bio-data prepared by the prospective groom \u2022 Not a matrimonial site",
+          noticeClose: "Close notice",
           stats: {
             age: "YEARS OLD",
             education: "M.A. \xB7 ISLAMIC UNIVERSITY",
@@ -479,6 +481,8 @@
           name: "\u0645\u062D\u0645\u062F \u0645\u062D\u0628\u0648\u0628 \u0627\u0644\u0631\u062D\u0645\u0646",
           subtitle: "\u0645\u062A\u062E\u0635\u0635 \u0641\u064A \u062A\u0642\u0646\u064A\u0629 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062A\u060C \u0648\u0645\u0637\u0648\u0631 \u0648\u064A\u0628\u060C \u0648\u0631\u0627\u0626\u062F \u0623\u0639\u0645\u0627\u0644",
           tagline: "\u0634\u0627\u0628 \u0645\u0633\u0644\u0645 \u064A\u0628\u062D\u062B \u0639\u0646 \u0634\u0631\u064A\u0643\u0629 \u062D\u064A\u0627\u0629 \u0645\u0633\u0644\u0645\u0629 \u062A\u0643\u0648\u0646 \u0642\u0631\u0629 \u0639\u064A\u0646\u0647 \u0641\u064A \u0627\u0644\u062F\u0646\u064A\u0627 \u0648\u0627\u0644\u0622\u062E\u0631\u0629!",
+          notice: "\u0633\u064A\u0631\u0629 \u0630\u0627\u062A\u064A\u0629 \u0634\u062E\u0635\u064A\u0629 \u0623\u0639\u062F\u0651\u0647\u0627 \u0627\u0644\u062E\u0627\u0637\u0628 \u2022 \u0644\u064A\u0633\u062A \u0645\u0648\u0642\u0639\u064B\u0627 \u0644\u0644\u0632\u0648\u0627\u062C",
+          noticeClose: "\u0625\u063A\u0644\u0627\u0642 \u0627\u0644\u062A\u0646\u0628\u064A\u0647",
           stats: {
             age: "28 \u0639\u0627\u0645\u0627\u064B",
             education: "\u0645\u0627\u062C\u0633\u062A\u064A\u0631 \xB7 \u0627\u0644\u062C\u0627\u0645\u0639\u0629 \u0627\u0644\u0625\u0633\u0644\u0627\u0645\u064A\u0629",
@@ -765,6 +769,8 @@
           name: "\u09AE\u09CB. \u09AE\u09BE\u09B9\u09AC\u09C1\u09AC\u09C1\u09B0 \u09B0\u09B9\u09AE\u09BE\u09A8",
           subtitle: "\u09A4\u09A5\u09CD\u09AF\u09AA\u09CD\u09B0\u09AF\u09C1\u0995\u09CD\u09A4\u09BF \u09AA\u09C7\u09B6\u09BE\u099C\u09C0\u09AC\u09C0, \u0993\u09DF\u09C7\u09AC \u09A1\u09C7\u09AD\u09C7\u09B2\u09AA\u09BE\u09B0 \u0993 \u0989\u09A6\u09CD\u09AF\u09CB\u0995\u09CD\u09A4\u09BE",
           tagline: "\u098F\u0995\u099C\u09A8 \u09AE\u09C1\u09B8\u09B2\u09BF\u09AE \u09AF\u09C1\u09AC\u0995, \u09A6\u09C1\u09A8\u09BF\u09DF\u09BE \u0993 \u0986\u0996\u09C7\u09B0\u09BE\u09A4\u09C7\u09B0 \u099A\u0995\u09CD\u09B7\u09C1\u09B6\u09C0\u09A4\u09B2\u0995\u09BE\u09B0\u09BF\u09A8\u09C0 \u09AE\u09C1\u09B8\u09B2\u09BF\u09AE\u09BE\u09B9\u09CD \u099C\u09C0\u09AC\u09A8\u09B8\u0999\u09CD\u0997\u09C0 \u0996\u09C1\u099C\u099B\u09C7\u09A8!",
+          notice: "\u09AA\u09BE\u09A4\u09CD\u09B0 \u0995\u09B0\u09CD\u09A4\u09C3\u0995 \u09AA\u09CD\u09B0\u09B8\u09CD\u09A4\u09C1\u09A4 \u09AC\u09CD\u09AF\u0995\u09CD\u09A4\u09BF\u0997\u09A4 \u09AC\u09BE\u09DF\u09CB\u09A1\u09BE\u099F\u09BE \u2022 \u0995\u09CB\u09A8\u09CB \u09AE\u09CD\u09AF\u09BE\u099F\u09CD\u09B0\u09BF\u09AE\u09CB\u09A8\u09BF\u09DF\u09BE\u09B2 \u09B8\u09BE\u0987\u099F \u09A8\u09DF",
+          noticeClose: "\u09A8\u09CB\u099F\u09BF\u09B6 \u09AC\u09A8\u09CD\u09A7 \u0995\u09B0\u09C1\u09A8",
           stats: {
             age: "\u09E8\u09EE \u09AC\u099B\u09B0",
             education: "\u09B8\u09CD\u09A8\u09BE\u09A4\u0995\u09CB\u09A4\u09CD\u09A4\u09B0 \xB7 \u0987\u09B8\u09B2\u09BE\u09AE\u09C0 \u09AC\u09BF\u09B6\u09CD\u09AC\u09AC\u09BF\u09A6\u09CD\u09AF\u09BE\u09B2\u09DF",
@@ -1104,6 +1110,8 @@
     const [isGalleryUnlockComplete, setIsGalleryUnlockComplete] = React.useState(false);
     const [isMenuDragging, setIsMenuDragging] = React.useState(false);
     const [isLanguageRowCollapsed, setIsLanguageRowCollapsed] = React.useState(true);
+    const [isPersonalNoticeVisible, setIsPersonalNoticeVisible] = React.useState(true);
+    const [isPersonalNoticeClosing, setIsPersonalNoticeClosing] = React.useState(false);
     const [zoomedPhoto, setZoomedPhoto] = React.useState(null);
     const [photoViewerTransform, setPhotoViewerTransform] = React.useState({ scale: 1, x: 0, y: 0 });
     const [activeGalleryPhotoIndex, setActiveGalleryPhotoIndex] = React.useState(0);
@@ -2138,6 +2146,15 @@
       setLanguage(nextLanguage);
       setIsLanguageRowCollapsed(true);
     };
+    const handleClosePersonalNotice = () => {
+      if (isPersonalNoticeClosing)
+        return;
+      setIsPersonalNoticeClosing(true);
+      window.setTimeout(() => {
+        setIsPersonalNoticeVisible(false);
+        setIsPersonalNoticeClosing(false);
+      }, 300);
+    };
     const handleBismillahViewBiodata = () => {
       if (!isBismillahLoadingOpen)
         return;
@@ -2585,7 +2602,17 @@
           }
         )
       ), /* @__PURE__ */ React.createElement("div", { className: "photo-viewer-caption" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-magnifying-glass-plus", "aria-hidden": "true" }), /* @__PURE__ */ React.createElement("span", null, zoomedPhoto.label)))
-    ) : null, !isBismillahLoadingOpen && !isIntroPopupOpen ? /* @__PURE__ */ React.createElement("div", { className: "container" }, /* @__PURE__ */ React.createElement("nav", { className: "top-menu", "aria-label": copy.navigation.sectionsAria }, /* @__PURE__ */ React.createElement("div", { className: "top-menu-language-slot" }, renderLanguageMenu("top-menu-language-row")), /* @__PURE__ */ React.createElement(
+    ) : null, !isBismillahLoadingOpen && !isIntroPopupOpen ? /* @__PURE__ */ React.createElement(React.Fragment, null, isPersonalNoticeVisible ? /* @__PURE__ */ React.createElement("div", { className: `personal-biodata-notice${isPersonalNoticeClosing ? " is-closing" : ""}`, role: "note", dir: selectedTranslation.dir }, /* @__PURE__ */ React.createElement("div", { className: "personal-biodata-notice-content" }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-circle-info personal-biodata-notice-icon", "aria-hidden": "true" }), /* @__PURE__ */ React.createElement("span", null, copy.profile.notice), /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        type: "button",
+        className: "personal-biodata-notice-close",
+        onClick: handleClosePersonalNotice,
+        "aria-label": copy.profile.noticeClose,
+        title: copy.profile.noticeClose
+      },
+      /* @__PURE__ */ React.createElement("i", { className: "fas fa-xmark", "aria-hidden": "true" })
+    ))) : null, /* @__PURE__ */ React.createElement("div", { className: "container" }, /* @__PURE__ */ React.createElement("nav", { className: "top-menu", "aria-label": copy.navigation.sectionsAria }, /* @__PURE__ */ React.createElement("div", { className: "top-menu-language-slot" }, renderLanguageMenu("top-menu-language-row")), /* @__PURE__ */ React.createElement(
       "button",
       {
         type: "button",
@@ -2789,7 +2816,7 @@
       },
       /* @__PURE__ */ React.createElement("i", { className: "fas fa-location-arrow", "aria-hidden": "true" }),
       copy.contact.mapButton
-    )) : null))))), /* @__PURE__ */ React.createElement("div", { className: "card section-anchor", id: "dua-section" }, /* @__PURE__ */ React.createElement("div", { className: "section-header" }, /* @__PURE__ */ React.createElement("span", { className: "section-icon" }, iconPrayerHands), copy.dua.title), /* @__PURE__ */ React.createElement("div", { className: "card-content" }, /* @__PURE__ */ React.createElement("div", { className: "final-dua" }, faithTextEntries.map((entry) => /* @__PURE__ */ React.createElement("div", { className: `dua-entry${entry.type === "hadith" ? " is-hadith" : ""}`, key: `${entry.type}-${entry.reference}` }, /* @__PURE__ */ React.createElement("div", { className: "dua-block" }, /* @__PURE__ */ React.createElement("div", { className: `dua-arabic${entry.type === "hadith" ? " dua-arabic-hadith" : ""}${entry.arabicClassName ? ` ${entry.arabicClassName}` : ""}` }, entry.arabic), entry.meaning ? /* @__PURE__ */ React.createElement("div", { className: "dua-english" }, entry.meaning) : null, /* @__PURE__ */ React.createElement("div", { className: "dua-reference" }, entry.reference)))), /* @__PURE__ */ React.createElement("div", { className: "dua-closing" }, /* @__PURE__ */ React.createElement("span", null, copy.dua.closing))))), /* @__PURE__ */ React.createElement("div", { className: "profile-tagline-note" }, copy.profile.tagline), /* @__PURE__ */ React.createElement("div", { style: { textAlign: "center", marginTop: "60px", paddingTop: "20px", borderTop: "2px solid rgba(13, 115, 119, 0.1)", color: "#0d7377", fontSize: "24px", letterSpacing: "8px" } }, dividerOrnament)) : null);
+    )) : null))))), /* @__PURE__ */ React.createElement("div", { className: "card section-anchor", id: "dua-section" }, /* @__PURE__ */ React.createElement("div", { className: "section-header" }, /* @__PURE__ */ React.createElement("span", { className: "section-icon" }, iconPrayerHands), copy.dua.title), /* @__PURE__ */ React.createElement("div", { className: "card-content" }, /* @__PURE__ */ React.createElement("div", { className: "final-dua" }, faithTextEntries.map((entry) => /* @__PURE__ */ React.createElement("div", { className: `dua-entry${entry.type === "hadith" ? " is-hadith" : ""}`, key: `${entry.type}-${entry.reference}` }, /* @__PURE__ */ React.createElement("div", { className: "dua-block" }, /* @__PURE__ */ React.createElement("div", { className: `dua-arabic${entry.type === "hadith" ? " dua-arabic-hadith" : ""}${entry.arabicClassName ? ` ${entry.arabicClassName}` : ""}` }, entry.arabic), entry.meaning ? /* @__PURE__ */ React.createElement("div", { className: "dua-english" }, entry.meaning) : null, /* @__PURE__ */ React.createElement("div", { className: "dua-reference" }, entry.reference)))), /* @__PURE__ */ React.createElement("div", { className: "dua-closing" }, /* @__PURE__ */ React.createElement("span", null, copy.dua.closing))))), /* @__PURE__ */ React.createElement("div", { className: "profile-tagline-note" }, copy.profile.tagline), /* @__PURE__ */ React.createElement("div", { style: { textAlign: "center", marginTop: "60px", paddingTop: "20px", borderTop: "2px solid rgba(13, 115, 119, 0.1)", color: "#0d7377", fontSize: "24px", letterSpacing: "8px" } }, dividerOrnament), /* @__PURE__ */ React.createElement("footer", { className: "site-footer" }, /* @__PURE__ */ React.createElement("span", null, "Developed by"), /* @__PURE__ */ React.createElement("a", { href: "https://fb.me/wdMahbub", target: "_blank", rel: "noreferrer" }, "wdMahbub")))) : null);
   };
   const root = ReactDOM.createRoot(document.getElementById("root"));
   root.render(/* @__PURE__ */ React.createElement(BioDataComponent, null));

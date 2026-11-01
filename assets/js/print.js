@@ -7,6 +7,11 @@
         bn: { title: 'A4 বায়োডাটা', documentTitle: 'বায়োডাটা (CV)', back: 'ফিরুন', save: 'PDF ডাউনলোড', empty: 'প্রিন্টের তথ্য পাওয়া যায়নি।', returnLink: 'বায়োডাটায় ফিরে যান' },
         ar: { title: 'السيرة الذاتية A4', documentTitle: 'السيرة الذاتية (CV)', back: 'رجوع', save: 'تنزيل PDF', empty: 'لم يتم العثور على بيانات الطباعة.', returnLink: 'العودة إلى السيرة الذاتية' }
     };
+    const printNotices = {
+        en: 'Personal bio-data prepared by the prospective groom • Not a matrimonial site',
+        bn: 'পাত্র কর্তৃক প্রস্তুত ব্যক্তিগত বায়োডাটা • কোনো ম্যাট্রিমোনিয়াল সাইট নয়',
+        ar: 'سيرة ذاتية شخصية أعدّها الخاطب • ليست موقعًا للزواج'
+    };
 
     const params = new URLSearchParams(window.location.search);
     const requestedLanguage = params.get('lang') || 'bn';
@@ -100,7 +105,7 @@
 
     const source = document.createElement('div');
     source.innerHTML = payload.markup;
-    source.querySelectorAll('.top-menu, script, .photo-gallery-thumbs-wrap, .photo-zoom-trigger, .photo-frame-overlay, .family-summary').forEach((node) => node.remove());
+    source.querySelectorAll('.top-menu, script, .photo-gallery-thumbs-wrap, .photo-zoom-trigger, .photo-frame-overlay, .family-summary, .personal-biodata-notice, .site-footer').forEach((node) => node.remove());
     source.querySelectorAll('[id$="-section"]').forEach((section) => {
         section.classList.add(`print-${section.id}`);
     });
@@ -123,6 +128,16 @@
             headingVine.appendChild(icon);
         });
         profileHeader.appendChild(headingVine);
+
+        const printNotice = document.createElement('div');
+        printNotice.className = 'print-biodata-notice';
+        const noticeIcon = document.createElement('i');
+        noticeIcon.className = 'fas fa-circle-info';
+        noticeIcon.setAttribute('aria-hidden', 'true');
+        const noticeText = document.createElement('span');
+        noticeText.textContent = printNotices[requestedLanguage] || printNotices.bn;
+        printNotice.append(noticeIcon, noticeText);
+        profileHeader.after(printNotice);
     }
 
     if (profileHeader && featuredPhoto) {

@@ -185,6 +185,38 @@ a {
     font-size: 8pt;
 }
 
+.a4-footer-credit {
+    color: #49675f;
+    text-decoration: none;
+}
+
+.a4-footer-credit strong {
+    color: var(--green);
+    font-weight: 800;
+}
+
+.print-biodata-notice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin: 1.3mm 0 1.8mm;
+    padding: 1mm 2mm;
+    border-top: 1px solid rgba(197, 145, 44, 0.45);
+    border-bottom: 1px solid rgba(15, 95, 73, 0.28);
+    color: #345c52;
+    background: #f8fbf8;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: center;
+}
+
+.print-biodata-notice i {
+    color: #b98528;
+    font-size: 9px;
+}
+
 .header-banner {
     position: relative;
     padding: 1.5mm 0 2mm;
