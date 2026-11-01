@@ -4143,7 +4143,7 @@
         }
 
         .music-player {
-            --music-tab-width: 38px;
+            --music-tab-width: 30px;
             --music-tab-gap: 12px;
             position: fixed;
             right: 0;
@@ -5402,7 +5402,7 @@
             }
 
             .music-player {
-                --music-tab-width: 32px;
+                --music-tab-width: 30px;
                 --music-tab-gap: 10px;
                 right: 0;
                 bottom: 8px;
@@ -5934,7 +5934,7 @@
             }
 
             .music-player {
-                --music-tab-width: 30px;
+                --music-tab-width: 27px;
                 --music-tab-gap: 8px;
                 width: min(248px, calc(100vw - 6px));
                 padding: 0 10px 0 0;
