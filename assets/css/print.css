@@ -196,20 +196,24 @@ a {
 }
 
 .print-biodata-notice {
+    position: absolute;
+    top: 50%;
+    left: 4mm;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 5px;
-    margin: 1.3mm 0 1.8mm;
-    padding: 1mm 2mm;
-    border-top: 1px solid rgba(197, 145, 44, 0.45);
-    border-bottom: 1px solid rgba(15, 95, 73, 0.28);
+    padding: 0.8mm 2.5mm;
+    border: 1px solid rgba(185, 133, 40, 0.42);
+    border-radius: 0 0 5px 5px;
     color: #345c52;
     background: #f8fbf8;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 700;
     line-height: 1.25;
-    text-align: center;
+    white-space: nowrap;
+    opacity: 0.55;
+    transform: translate(-50%, -50%) rotate(-90deg);
 }
 
 .print-biodata-notice i {
@@ -894,6 +898,11 @@ html[dir="rtl"] .print-profile-photo {
 
 .print-dua-section .dua-closing {
     grid-column: 1 / -1;
+    justify-content: flex-end;
+}
+
+.profile-tagline-note {
+    text-align: center;
 }
 
 .print-contact-section .contact-list {

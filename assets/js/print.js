@@ -137,7 +137,8 @@
         const noticeText = document.createElement('span');
         noticeText.textContent = printNotices[requestedLanguage] || printNotices.bn;
         printNotice.append(noticeIcon, noticeText);
-        profileHeader.after(printNotice);
+        // Sits in the left page margin as a side sticker, outside the scaled content flow.
+        pageOne.closest('.a4-page').appendChild(printNotice);
     }
 
     if (profileHeader && featuredPhoto) {
