@@ -216,6 +216,12 @@ a {
     transform: translate(-50%, -50%) rotate(-90deg);
 }
 
+html[dir="rtl"] .print-biodata-notice {
+    right: 4mm;
+    left: auto;
+    transform: translate(50%, -50%) rotate(90deg);
+}
+
 .print-biodata-notice i {
     color: #b98528;
     font-size: 9px;
