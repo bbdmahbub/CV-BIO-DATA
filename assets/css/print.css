@@ -901,7 +901,9 @@ html[dir="rtl"] .print-profile-photo {
     justify-content: flex-end;
 }
 
-.profile-tagline-note {
+/* Matches the divider's 60px top margin so the tagline sits centred in the gap. */
+.a4-content-inner > .profile-tagline-note {
+    margin-top: 60px;
     text-align: center;
 }
 
