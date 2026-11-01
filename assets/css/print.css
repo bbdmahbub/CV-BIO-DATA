@@ -899,6 +899,7 @@ html[dir="rtl"] .print-profile-photo {
 .print-dua-section .dua-closing {
     grid-column: 1 / -1;
     justify-content: flex-end;
+    margin-top: 14px;
 }
 
 /* Matches the divider's 60px top margin so the tagline sits centred in the gap. */
