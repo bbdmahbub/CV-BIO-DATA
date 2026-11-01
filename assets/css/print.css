@@ -896,6 +896,15 @@ html[dir="rtl"] .print-profile-photo {
     align-items: start;
 }
 
+.print-dua-section .dua-entry {
+    padding: 9px 0;
+}
+
+/* Amiri Quran's tall marks collide when a long ayah wraps at 1.5. */
+.print-dua-section .dua-arabic {
+    line-height: 1.85;
+}
+
 .print-dua-section .dua-closing {
     grid-column: 1 / -1;
     justify-content: flex-end;
