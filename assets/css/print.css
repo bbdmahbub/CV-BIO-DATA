@@ -1236,6 +1236,22 @@ html[dir="rtl"] .print-profile-photo {
     display: none;
 }
 
+.print-language-section .language-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.print-language-section .language-level-badge {
+    color: var(--muted);
+    opacity: 0.85;
+}
+
+.print-language-section .language-level-badge::before {
+    content: ": ";
+}
+
 .work-header,
 .language-header,
 .education-header,
