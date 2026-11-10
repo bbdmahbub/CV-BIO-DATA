@@ -135,6 +135,75 @@ a {
     background: transparent;
 }
 
+.print-toolbar-button:disabled {
+    cursor: wait;
+    opacity: 0.75;
+}
+
+.print-download-menu {
+    position: relative;
+}
+
+.print-download-caret {
+    font-size: 9px;
+    transition: transform 0.18s ease;
+}
+
+.print-download-menu.is-open .print-download-caret {
+    transform: rotate(180deg);
+}
+
+.print-download-options {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    z-index: 20;
+    min-width: 100%;
+    display: grid;
+    gap: 2px;
+    padding: 4px;
+    border: 1px solid rgba(15, 95, 73, 0.18);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 12px 28px rgba(15, 55, 45, 0.22);
+}
+
+.print-download-options[hidden] {
+    display: none;
+}
+
+[dir="rtl"] .print-download-options {
+    right: auto;
+    left: 0;
+}
+
+.print-download-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    border: 0;
+    border-radius: 5px;
+    color: var(--green-dark);
+    background: transparent;
+    font-size: 13px;
+    font-weight: 800;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.print-download-option:hover,
+.print-download-option:focus-visible {
+    outline: none;
+    background: rgba(15, 95, 73, 0.1);
+}
+
+.print-download-option i {
+    width: 14px;
+    color: #b98528;
+    text-align: center;
+}
+
 .print-document {
     display: grid;
     justify-content: center;

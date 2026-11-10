@@ -116,6 +116,9 @@ const BioDataComponent = () => {
                         languagePanelCollapse: 'Collapse language controls',
                         languagePanelExpand: 'Expand language controls',
                         downloadPdf: 'Download PDF',
+                        download: 'Download',
+                        downloadAsPdf: 'PDF',
+                        downloadAsImage: 'Image (PNG)',
                         scrollMenuLeft: 'Scroll menu left',
                         scrollMenuRight: 'Scroll menu right'
                     },
@@ -403,6 +406,9 @@ const BioDataComponent = () => {
                         languagePanelCollapse: 'طي عناصر التحكم باللغة',
                         languagePanelExpand: 'إظهار عناصر التحكم باللغة',
                         downloadPdf: 'تنزيل PDF',
+                        download: 'تنزيل',
+                        downloadAsPdf: 'PDF',
+                        downloadAsImage: 'صورة (PNG)',
                         scrollMenuLeft: 'تمرير القائمة إلى اليسار',
                         scrollMenuRight: 'تمرير القائمة إلى اليمين'
                     },
@@ -691,6 +697,9 @@ const BioDataComponent = () => {
                         languagePanelCollapse: 'ভাষা কন্ট্রোল লুকান',
                         languagePanelExpand: 'ভাষা কন্ট্রোল দেখান',
                         downloadPdf: 'PDF ডাউনলোড',
+                        download: 'ডাউনলোড',
+                        downloadAsPdf: 'PDF',
+                        downloadAsImage: 'ছবি (PNG)',
                         scrollMenuLeft: 'মেনু বামে নিন',
                         scrollMenuRight: 'মেনু ডানে নিন'
                     },
@@ -1139,6 +1148,7 @@ const BioDataComponent = () => {
             const [isLanguageRowCollapsed, setIsLanguageRowCollapsed] = React.useState(true);
             const [isPersonalNoticeVisible, setIsPersonalNoticeVisible] = React.useState(true);
             const [isPersonalNoticeClosing, setIsPersonalNoticeClosing] = React.useState(false);
+            const [isDownloadMenuOpen, setIsDownloadMenuOpen] = React.useState(false);
             const [zoomedPhoto, setZoomedPhoto] = React.useState(null);
             const [photoViewerTransform, setPhotoViewerTransform] = React.useState({ scale: 1, x: 0, y: 0 });
             const [activeGalleryPhotoIndex, setActiveGalleryPhotoIndex] = React.useState(0);
@@ -2541,7 +2551,25 @@ const BioDataComponent = () => {
                 }
             };
 
-            const handleDownloadPdf = () => {
+            React.useEffect(() => {
+                if (!isDownloadMenuOpen) return undefined;
+
+                const closeDownloadMenu = (event) => {
+                    if (event.type === 'keydown' && event.key !== 'Escape') return;
+                    if (event.type === 'pointerdown' && event.target.closest('.top-menu-download-wrap')) return;
+                    setIsDownloadMenuOpen(false);
+                };
+                document.addEventListener('pointerdown', closeDownloadMenu);
+                document.addEventListener('keydown', closeDownloadMenu);
+                return () => {
+                    document.removeEventListener('pointerdown', closeDownloadMenu);
+                    document.removeEventListener('keydown', closeDownloadMenu);
+                };
+            }, [isDownloadMenuOpen]);
+
+            // "pdf" opens the A4 print page; "png" opens it with export=png so it saves both pages as images.
+            const handleDownload = (format) => {
+                setIsDownloadMenuOpen(false);
                 if (printTimerRef.current) {
                     window.clearTimeout(printTimerRef.current);
                 }
@@ -2570,6 +2598,7 @@ const BioDataComponent = () => {
                     const printUrl = new URL('print.html', window.location.href);
                     printUrl.searchParams.set('lang', language);
                     printUrl.searchParams.set('v', cvCacheVersion);
+                    if (format === 'png') printUrl.searchParams.set('export', 'png');
 
                     try {
                         if (!printWindow || printWindow.closed) throw new Error('Print window unavailable');
@@ -2981,16 +3010,31 @@ const BioDataComponent = () => {
                         <div className="top-menu-language-slot">
                             {renderLanguageMenu('top-menu-language-row')}
                         </div>
-                        <button
-                            type="button"
-                            className="top-menu-download"
-                            onClick={handleDownloadPdf}
-                            aria-label={copy.navigation.downloadPdf}
-                            title={copy.navigation.downloadPdf}
-                        >
-                            <i className="fas fa-download" aria-hidden="true"></i>
-                            <span>{copy.navigation.downloadPdf}</span>
-                        </button>
+                        <div className={`top-menu-download-wrap${isDownloadMenuOpen ? ' is-open' : ''}`}>
+                            <button
+                                type="button"
+                                className="top-menu-download"
+                                onClick={() => setIsDownloadMenuOpen((isOpen) => !isOpen)}
+                                aria-haspopup="menu"
+                                aria-expanded={isDownloadMenuOpen}
+                                title={copy.navigation.download}
+                            >
+                                <i className="fas fa-download" aria-hidden="true"></i>
+                                <span>{copy.navigation.download}</span>
+                            </button>
+                            {isDownloadMenuOpen ? (
+                                <div className="top-menu-download-options" role="menu">
+                                    <button type="button" role="menuitem" onClick={() => handleDownload('pdf')}>
+                                        <i className="fas fa-file-pdf" aria-hidden="true"></i>
+                                        <span>{copy.navigation.downloadAsPdf}</span>
+                                    </button>
+                                    <button type="button" role="menuitem" onClick={() => handleDownload('png')}>
+                                        <i className="fas fa-image" aria-hidden="true"></i>
+                                        <span>{copy.navigation.downloadAsImage}</span>
+                                    </button>
+                                </div>
+                            ) : null}
+                        </div>
                         <div className="top-menu-head">
                             <div className="top-menu-label">{copy.navigation.quickJump}</div>
                         </div>

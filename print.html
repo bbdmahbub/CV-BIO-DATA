@@ -7,9 +7,9 @@
     <title>Biodata - A4 Print</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Lato:wght@400;700;900&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/print.css?v=20261101-print-rtl-note">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Lato:wght@400;700;900&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/print.css?v=20261110-download-menu">
 </head>
 <body>
     <header class="print-toolbar">
@@ -23,10 +23,23 @@
             <button type="button" class="print-language-button" data-language="en">EN</button>
             <button type="button" class="print-language-button" data-language="ar">العربية</button>
         </div>
-        <button type="button" class="print-toolbar-button" id="print-download">
-            <i class="fas fa-file-pdf" aria-hidden="true"></i>
-            <span>Download PDF</span>
-        </button>
+        <div class="print-download-menu" id="print-download-menu">
+            <button type="button" class="print-toolbar-button" id="print-download" aria-haspopup="true" aria-expanded="false" aria-controls="print-download-options">
+                <i class="fas fa-download" aria-hidden="true"></i>
+                <span>Download</span>
+                <i class="fas fa-chevron-down print-download-caret" aria-hidden="true"></i>
+            </button>
+            <div class="print-download-options" id="print-download-options" hidden>
+                <button type="button" class="print-download-option" data-format="pdf">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                    <span>PDF</span>
+                </button>
+                <button type="button" class="print-download-option" data-format="png">
+                    <i class="fas fa-image" aria-hidden="true"></i>
+                    <span>Image (PNG)</span>
+                </button>
+            </div>
+        </div>
     </header>
 
     <main class="print-document" id="print-document" aria-live="polite">
@@ -46,6 +59,6 @@
     </div>
 
     <div class="print-measure" id="print-measure" aria-hidden="true"></div>
-    <script src="assets/js/print.js?v=20261101-print-rtl-note"></script>
+    <script src="assets/js/print.js?v=20261110-download-menu"></script>
 </body>
 </html>

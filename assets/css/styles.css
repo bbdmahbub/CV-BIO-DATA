@@ -1590,18 +1590,20 @@
             z-index: 100005;
         }
 
-        .top-menu-download {
+        .top-menu-download-wrap {
             position: absolute;
             top: 0;
             right: 4px;
-            bottom: auto;
             z-index: 3;
-            width: 42px;
+        }
+
+        .top-menu-download {
             height: 18px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 0;
+            gap: 4px;
+            padding: 0 8px;
             border: 1px solid rgba(15, 95, 73, 0.22);
             border-top: none;
             border-radius: 0 0 10px 10px;
@@ -1614,7 +1616,8 @@
         }
 
         .top-menu-download:hover,
-        .top-menu-download:focus-visible {
+        .top-menu-download:focus-visible,
+        .top-menu-download-wrap.is-open .top-menu-download {
             outline: none;
             color: #ffffff;
             border-color: #0f5f49;
@@ -1626,15 +1629,54 @@
         }
 
         .top-menu-download span {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
+            font-size: 10px;
+            font-weight: 700;
+            line-height: 1;
             white-space: nowrap;
+        }
+
+        .top-menu-download-options {
+            position: absolute;
+            top: calc(100% + 4px);
+            right: 0;
+            min-width: 118px;
+            display: grid;
+            gap: 2px;
+            padding: 4px;
+            border: 1px solid rgba(15, 95, 73, 0.18);
+            border-radius: 8px;
+            background: #ffffff;
+            box-shadow: 0 12px 26px rgba(15, 95, 73, 0.18);
+        }
+
+        .top-menu-download-options button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 9px;
             border: 0;
+            border-radius: 5px;
+            color: #0f5f49;
+            background: transparent;
+            font: inherit;
+            font-size: 12px;
+            font-weight: 700;
+            white-space: nowrap;
+            text-align: start;
+            cursor: pointer;
+            box-shadow: none;
+        }
+
+        .top-menu-download-options button:hover,
+        .top-menu-download-options button:focus-visible {
+            outline: none;
+            background: rgba(15, 95, 73, 0.1);
+        }
+
+        .top-menu-download-options i {
+            width: 14px;
+            color: #b98528;
+            text-align: center;
         }
 
         .top-menu-head {
@@ -5388,7 +5430,7 @@
                 border-radius: 0 0 18px 18px;
             }
 
-            .top-menu-download {
+            .top-menu-download-wrap {
                 top: 12px;
             }
 

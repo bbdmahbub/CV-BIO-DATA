@@ -3,9 +3,9 @@
 
     const payloadKey = 'bbdMahbubPrintPayload';
     const labels = {
-        en: { title: 'A4 Biodata', documentTitle: 'BIO-DATA (CV)', back: 'Back', save: 'Download PDF', empty: 'Print data was not found.', returnLink: 'Return to the biodata' },
-        bn: { title: 'A4 বায়োডাটা', documentTitle: 'বায়োডাটা (CV)', back: 'ফিরুন', save: 'PDF ডাউনলোড', empty: 'প্রিন্টের তথ্য পাওয়া যায়নি।', returnLink: 'বায়োডাটায় ফিরে যান' },
-        ar: { title: 'السيرة الذاتية A4', documentTitle: 'السيرة الذاتية (CV)', back: 'رجوع', save: 'تنزيل PDF', empty: 'لم يتم العثور على بيانات الطباعة.', returnLink: 'العودة إلى السيرة الذاتية' }
+        en: { title: 'A4 Biodata', documentTitle: 'BIO-DATA (CV)', back: 'Back', save: 'Download', pdf: 'PDF', image: 'Image (PNG)', imageBusy: 'Creating images...', imageFailed: 'The images could not be created. Please try again.', empty: 'Print data was not found.', returnLink: 'Return to the biodata' },
+        bn: { title: 'A4 বায়োডাটা', documentTitle: 'বায়োডাটা (CV)', back: 'ফিরুন', save: 'ডাউনলোড', pdf: 'PDF', image: 'ছবি (PNG)', imageBusy: 'ছবি তৈরি হচ্ছে...', imageFailed: 'ছবি তৈরি করা যায়নি। আবার চেষ্টা করুন।', empty: 'প্রিন্টের তথ্য পাওয়া যায়নি।', returnLink: 'বায়োডাটায় ফিরে যান' },
+        ar: { title: 'السيرة الذاتية A4', documentTitle: 'السيرة الذاتية (CV)', back: 'رجوع', save: 'تنزيل', pdf: 'PDF', image: 'صورة (PNG)', imageBusy: 'جارٍ إنشاء الصور...', imageFailed: 'تعذّر إنشاء الصور. يرجى المحاولة مرة أخرى.', empty: 'لم يتم العثور على بيانات الطباعة.', returnLink: 'العودة إلى السيرة الذاتية' }
     };
     const printNotices = {
         en: 'Personal bio-data prepared by the prospective groom • Not a matrimonial site',
@@ -26,7 +26,13 @@
 
     document.getElementById('print-toolbar-title').textContent = copy.title;
     document.querySelector('#print-back span').textContent = copy.back;
-    document.querySelector('#print-download span').textContent = copy.save;
+    const downloadMenu = document.getElementById('print-download-menu');
+    const downloadButton = document.getElementById('print-download');
+    const downloadButtonLabel = downloadButton.querySelector('span');
+    const downloadOptions = document.getElementById('print-download-options');
+    downloadButtonLabel.textContent = copy.save;
+    downloadOptions.querySelector('[data-format="pdf"] span').textContent = copy.pdf;
+    downloadOptions.querySelector('[data-format="png"] span').textContent = copy.image;
     emptyState.querySelector('strong').textContent = copy.empty;
     emptyState.querySelector('a').textContent = copy.returnLink;
 
@@ -79,7 +85,85 @@
         returnUrl.searchParams.set('lang', requestedLanguage);
         window.location.href = returnUrl.href;
     });
-    document.getElementById('print-download').addEventListener('click', () => window.print());
+    let resolvePagesReady;
+    const pagesReady = new Promise((resolve) => {
+        resolvePagesReady = resolve;
+    });
+
+    const setDownloadMenuOpen = (isOpen) => {
+        downloadMenu.classList.toggle('is-open', isOpen);
+        downloadOptions.hidden = !isOpen;
+        downloadButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    };
+
+    const loadImageLibrary = () => new Promise((resolve, reject) => {
+        if (window.htmlToImage) {
+            resolve(window.htmlToImage);
+            return;
+        }
+
+        const script = document.createElement('script');
+        script.src = 'assets/js/vendor/html-to-image.min.js?v=1.11.11';
+        script.onload = () => (window.htmlToImage ? resolve(window.htmlToImage) : reject(new Error('html-to-image unavailable')));
+        script.onerror = reject;
+        document.head.appendChild(script);
+    });
+
+    const saveDataUrl = (dataUrl, fileName) => {
+        const link = document.createElement('a');
+        link.href = dataUrl;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+    };
+
+    // Each A4 page becomes its own PNG, named after the biodata title: "<title>-1.png", "<title>-2.png".
+    const downloadPagesAsImages = async () => {
+        downloadButton.disabled = true;
+        downloadButtonLabel.textContent = copy.imageBusy;
+
+        try {
+            const [htmlToImage] = await Promise.all([loadImageLibrary(), pagesReady]);
+            const baseName = (document.getElementById('print-name-one').textContent || copy.title).replace(/[\\/:*?"<>|]+/g, '').trim();
+            const pages = Array.from(document.querySelectorAll('.a4-page'));
+
+            for (let index = 0; index < pages.length; index += 1) {
+                const dataUrl = await htmlToImage.toPng(pages[index], {
+                    pixelRatio: 2,
+                    backgroundColor: '#ffffff',
+                    style: { margin: '0', boxShadow: 'none' }
+                });
+                saveDataUrl(dataUrl, `${baseName}-${index + 1}.png`);
+                await new Promise((resolve) => window.setTimeout(resolve, 400));
+            }
+        } catch (error) {
+            window.alert(copy.imageFailed);
+        } finally {
+            downloadButton.disabled = false;
+            downloadButtonLabel.textContent = copy.save;
+        }
+    };
+
+    const startDownload = (format) => {
+        setDownloadMenuOpen(false);
+        if (format === 'png') downloadPagesAsImages();
+        else window.print();
+    };
+
+    downloadButton.addEventListener('click', (event) => {
+        event.stopPropagation();
+        setDownloadMenuOpen(downloadOptions.hidden);
+    });
+    downloadOptions.querySelectorAll('[data-format]').forEach((option) => {
+        option.addEventListener('click', () => startDownload(option.dataset.format));
+    });
+    document.addEventListener('click', (event) => {
+        if (!downloadMenu.contains(event.target)) setDownloadMenuOpen(false);
+    });
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') setDownloadMenuOpen(false);
+    });
 
     let payload = null;
     try {
@@ -282,7 +366,11 @@
 
         layoutAtScale(measuredItems, bestScale);
         measureRoot.remove();
+        resolvePagesReady();
     };
+
+    // The main page's "Image" download opens this page with export=png.
+    if (params.get('export') === 'png') downloadPagesAsImages();
 
     const fontsReady = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
     Promise.race([

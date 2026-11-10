@@ -113,6 +113,9 @@
           languagePanelCollapse: "Collapse language controls",
           languagePanelExpand: "Expand language controls",
           downloadPdf: "Download PDF",
+          download: "Download",
+          downloadAsPdf: "PDF",
+          downloadAsImage: "Image (PNG)",
           scrollMenuLeft: "Scroll menu left",
           scrollMenuRight: "Scroll menu right"
         },
@@ -400,6 +403,9 @@
           languagePanelCollapse: "\u0637\u064A \u0639\u0646\u0627\u0635\u0631 \u0627\u0644\u062A\u062D\u0643\u0645 \u0628\u0627\u0644\u0644\u063A\u0629",
           languagePanelExpand: "\u0625\u0638\u0647\u0627\u0631 \u0639\u0646\u0627\u0635\u0631 \u0627\u0644\u062A\u062D\u0643\u0645 \u0628\u0627\u0644\u0644\u063A\u0629",
           downloadPdf: "\u062A\u0646\u0632\u064A\u0644 PDF",
+          download: "\u062A\u0646\u0632\u064A\u0644",
+          downloadAsPdf: "PDF",
+          downloadAsImage: "\u0635\u0648\u0631\u0629 (PNG)",
           scrollMenuLeft: "\u062A\u0645\u0631\u064A\u0631 \u0627\u0644\u0642\u0627\u0626\u0645\u0629 \u0625\u0644\u0649 \u0627\u0644\u064A\u0633\u0627\u0631",
           scrollMenuRight: "\u062A\u0645\u0631\u064A\u0631 \u0627\u0644\u0642\u0627\u0626\u0645\u0629 \u0625\u0644\u0649 \u0627\u0644\u064A\u0645\u064A\u0646"
         },
@@ -688,6 +694,9 @@
           languagePanelCollapse: "\u09AD\u09BE\u09B7\u09BE \u0995\u09A8\u09CD\u099F\u09CD\u09B0\u09CB\u09B2 \u09B2\u09C1\u0995\u09BE\u09A8",
           languagePanelExpand: "\u09AD\u09BE\u09B7\u09BE \u0995\u09A8\u09CD\u099F\u09CD\u09B0\u09CB\u09B2 \u09A6\u09C7\u0996\u09BE\u09A8",
           downloadPdf: "PDF \u09A1\u09BE\u0989\u09A8\u09B2\u09CB\u09A1",
+          download: "\u09A1\u09BE\u0989\u09A8\u09B2\u09CB\u09A1",
+          downloadAsPdf: "PDF",
+          downloadAsImage: "\u099B\u09AC\u09BF (PNG)",
           scrollMenuLeft: "\u09AE\u09C7\u09A8\u09C1 \u09AC\u09BE\u09AE\u09C7 \u09A8\u09BF\u09A8",
           scrollMenuRight: "\u09AE\u09C7\u09A8\u09C1 \u09A1\u09BE\u09A8\u09C7 \u09A8\u09BF\u09A8"
         },
@@ -1112,6 +1121,7 @@
     const [isLanguageRowCollapsed, setIsLanguageRowCollapsed] = React.useState(true);
     const [isPersonalNoticeVisible, setIsPersonalNoticeVisible] = React.useState(true);
     const [isPersonalNoticeClosing, setIsPersonalNoticeClosing] = React.useState(false);
+    const [isDownloadMenuOpen, setIsDownloadMenuOpen] = React.useState(false);
     const [zoomedPhoto, setZoomedPhoto] = React.useState(null);
     const [photoViewerTransform, setPhotoViewerTransform] = React.useState({ scale: 1, x: 0, y: 0 });
     const [activeGalleryPhotoIndex, setActiveGalleryPhotoIndex] = React.useState(0);
@@ -2286,7 +2296,25 @@
         completeGalleryUnlock();
       }
     };
-    const handleDownloadPdf = () => {
+    React.useEffect(() => {
+      if (!isDownloadMenuOpen)
+        return void 0;
+      const closeDownloadMenu = (event) => {
+        if (event.type === "keydown" && event.key !== "Escape")
+          return;
+        if (event.type === "pointerdown" && event.target.closest(".top-menu-download-wrap"))
+          return;
+        setIsDownloadMenuOpen(false);
+      };
+      document.addEventListener("pointerdown", closeDownloadMenu);
+      document.addEventListener("keydown", closeDownloadMenu);
+      return () => {
+        document.removeEventListener("pointerdown", closeDownloadMenu);
+        document.removeEventListener("keydown", closeDownloadMenu);
+      };
+    }, [isDownloadMenuOpen]);
+    const handleDownload = (format) => {
+      setIsDownloadMenuOpen(false);
       if (printTimerRef.current) {
         window.clearTimeout(printTimerRef.current);
       }
@@ -2313,6 +2341,8 @@
         const printUrl = new URL("print.html", window.location.href);
         printUrl.searchParams.set("lang", language);
         printUrl.searchParams.set("v", cvCacheVersion);
+        if (format === "png")
+          printUrl.searchParams.set("export", "png");
         try {
           if (!printWindow || printWindow.closed)
             throw new Error("Print window unavailable");
@@ -2612,18 +2642,19 @@
         title: copy.profile.noticeClose
       },
       /* @__PURE__ */ React.createElement("i", { className: "fas fa-xmark", "aria-hidden": "true" })
-    ))) : null, /* @__PURE__ */ React.createElement("div", { className: "container" }, /* @__PURE__ */ React.createElement("nav", { className: "top-menu", "aria-label": copy.navigation.sectionsAria }, /* @__PURE__ */ React.createElement("div", { className: "top-menu-language-slot" }, renderLanguageMenu("top-menu-language-row")), /* @__PURE__ */ React.createElement(
+    ))) : null, /* @__PURE__ */ React.createElement("div", { className: "container" }, /* @__PURE__ */ React.createElement("nav", { className: "top-menu", "aria-label": copy.navigation.sectionsAria }, /* @__PURE__ */ React.createElement("div", { className: "top-menu-language-slot" }, renderLanguageMenu("top-menu-language-row")), /* @__PURE__ */ React.createElement("div", { className: `top-menu-download-wrap${isDownloadMenuOpen ? " is-open" : ""}` }, /* @__PURE__ */ React.createElement(
       "button",
       {
         type: "button",
         className: "top-menu-download",
-        onClick: handleDownloadPdf,
-        "aria-label": copy.navigation.downloadPdf,
-        title: copy.navigation.downloadPdf
+        onClick: () => setIsDownloadMenuOpen((isOpen) => !isOpen),
+        "aria-haspopup": "menu",
+        "aria-expanded": isDownloadMenuOpen,
+        title: copy.navigation.download
       },
       /* @__PURE__ */ React.createElement("i", { className: "fas fa-download", "aria-hidden": "true" }),
-      /* @__PURE__ */ React.createElement("span", null, copy.navigation.downloadPdf)
-    ), /* @__PURE__ */ React.createElement("div", { className: "top-menu-head" }, /* @__PURE__ */ React.createElement("div", { className: "top-menu-label" }, copy.navigation.quickJump)), /* @__PURE__ */ React.createElement("div", { className: "top-menu-links-shell" }, /* @__PURE__ */ React.createElement(
+      /* @__PURE__ */ React.createElement("span", null, copy.navigation.download)
+    ), isDownloadMenuOpen ? /* @__PURE__ */ React.createElement("div", { className: "top-menu-download-options", role: "menu" }, /* @__PURE__ */ React.createElement("button", { type: "button", role: "menuitem", onClick: () => handleDownload("pdf") }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-file-pdf", "aria-hidden": "true" }), /* @__PURE__ */ React.createElement("span", null, copy.navigation.downloadAsPdf)), /* @__PURE__ */ React.createElement("button", { type: "button", role: "menuitem", onClick: () => handleDownload("png") }, /* @__PURE__ */ React.createElement("i", { className: "fas fa-image", "aria-hidden": "true" }), /* @__PURE__ */ React.createElement("span", null, copy.navigation.downloadAsImage))) : null),/* @__PURE__ */ React.createElement("div", { className: "top-menu-head" }, /* @__PURE__ */ React.createElement("div", { className: "top-menu-label" }, copy.navigation.quickJump)), /* @__PURE__ */ React.createElement("div", { className: "top-menu-links-shell" }, /* @__PURE__ */ React.createElement(
       "button",
       {
         type: "button",
