@@ -322,7 +322,8 @@ const BioDataComponent = () => {
                             {
                                 title: 'Volunteering',
                                 items: [
-                                    { text: 'Founder President (Present), A S Foundation, Morrelganj, Bagerhat.', iconClass: 'fas fa-hand-holding-heart' },
+                                    { text: 'Founder President (Present), A S Foundation, Morrelganj, Bagerhat.', iconClass: 'fas fa-hand-holding-heart', href: 'https://asfoundation.bd', linkLabel: 'Visit' },
+                                    { text: 'Chairman, redLove.bd - Blood Donors\' Social Platform, Bangladesh.', iconClass: 'fas fa-droplet', href: 'https://redlove.bd', linkLabel: 'Visit' },
                                     { text: 'Former Central Member of Bangladesh Islamic Chhatra Shibir', iconClass: 'fas fa-shield-halved', href: 'https://shibir.org.bd', linkLabel: 'Visit' },
                                     { text: 'Former Director of Betikrom Shahitya Shangskritik Jote, IU.', iconClass: 'fas fa-masks-theater', href: 'https://web.facebook.com/betikrom87', linkLabel: 'Visit' },
                                     { text: 'Former elected Class Representative (CR), Islamic University, Kushtia — tenure: 2 years.', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'Visit' }
@@ -613,7 +614,8 @@ const BioDataComponent = () => {
                                 title: 'العمل التطوعي',
                                 period: '٧ يوليو ٢٠١٤ - ١٢ ديسمبر ٢٠١٥',
                                 items: [
-                                    { text: 'الرئيس المؤسس (حالياً)، مؤسسة إيه إس، موريلغانج، باغرهات.', iconClass: 'fas fa-hand-holding-heart' },
+                                    { text: 'الرئيس المؤسس (حالياً)، مؤسسة إيه إس، موريلغانج، باغرهات.', iconClass: 'fas fa-hand-holding-heart', href: 'https://asfoundation.bd', linkLabel: 'زيارة' },
+                                    { text: 'رئيس مجلس الإدارة، redLove.bd - منصة اجتماعية للمتبرعين بالدم، بنغلاديش.', iconClass: 'fas fa-droplet', href: 'https://redlove.bd', linkLabel: 'زيارة' },
                                     { text: 'عضو مركزي سابق في شاترا شيبير الإسلامية في بنغلاديش', iconClass: 'fas fa-shield-halved', href: 'https://shibir.org.bd', linkLabel: 'زيارة' },
                                     { text: 'المدير السابق لـ بيتكرم شاهيتيا شانغسكريتيك جوتي، الجامعة الإسلامية', iconClass: 'fas fa-masks-theater', href: 'https://web.facebook.com/betikrom87', linkLabel: 'زيارة' },
                                     { text: 'ممثل الصف المنتخب سابقًا، الجامعة الإسلامية، كوشتيا — مدة المسؤولية: سنتان.', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'زيارة' }
@@ -904,7 +906,8 @@ const BioDataComponent = () => {
                                 title: 'স্বেচ্ছাসেবামূলক কাজ',
                                 period: '',
                                 items: [
-                                    { text: 'প্রতিষ্ঠাতা সভাপতি (বর্তমান), এ এস ফাউন্ডেশন, মোরেলগঞ্জ, বাগেরহাট।', iconClass: 'fas fa-hand-holding-heart' },
+                                    { text: 'প্রতিষ্ঠাতা সভাপতি (বর্তমান), এ এস ফাউন্ডেশন, মোরেলগঞ্জ, বাগেরহাট।', iconClass: 'fas fa-hand-holding-heart', href: 'https://asfoundation.bd', linkLabel: 'ভিজিট' },
+                                    { text: 'চেয়ারম্যান, redLove.bd - রক্তদাতাদের সামাজিক প্ল্যাটফর্ম, বাংলাদেশ।', iconClass: 'fas fa-droplet', href: 'https://redlove.bd', linkLabel: 'ভিজিট' },
                                     { text: 'সাবেক কেন্দ্রীয় সদস্য, বাংলাদেশ ইসলামী ছাত্রশিবির, ঢাকা।', iconClass: 'fas fa-shield-halved', href: 'https://shibir.org.bd', linkLabel: 'ভিজিট' },
                                     { text: 'সাবেক পরিচালক, ব্যতিক্রম সাহিত্য সাংস্কৃতিক জোট, ইবি।', iconClass: 'fas fa-masks-theater', href: 'https://web.facebook.com/betikrom87', linkLabel: 'ভিজিট' },
                                     { text: 'সাবেক নির্বাচিত ক্লাস প্রতিনিধি (সিআর), ইসলামী বিশ্ববিদ্যালয়, কুষ্টিয়া — দায়িত্বকাল: ২ বছর।', iconClass: 'fas fa-users', href: 'https://iu.ac.bd', linkLabel: 'ভিজিট' }
